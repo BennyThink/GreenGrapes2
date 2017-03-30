@@ -2,8 +2,6 @@
 typecho 绿色主题
 修改自[https://github.com/hongweipeng/GreenGrapes](https://github.com/hongweipeng/GreenGrapes "https://github.com/hongweipeng/GreenGrapes")
 
-需要similies
-
 ## 改动 ##
 
 * 增加了分享功能
@@ -20,9 +18,10 @@ typecho 绿色主题
 * 增加字数统计
 * 增加最后更新时间
 * 增加文章数量统计
+* 增加评论框特效
 
 ## To do ##
-* 评论头像QQ邮箱和Gravatar同时启用
+* 评论头像QQ邮箱和Gravatar同时启用（已经完成，但是效率略低……有待改进）
 
 
 原始说明
