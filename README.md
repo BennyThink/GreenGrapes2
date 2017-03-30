@@ -2,21 +2,27 @@
 typecho 绿色主题
 修改自[https://github.com/hongweipeng/GreenGrapes](https://github.com/hongweipeng/GreenGrapes "https://github.com/hongweipeng/GreenGrapes")
 
-需要similies、Stat插件
+需要similies
 
 ## 改动 ##
 
 * 增加了分享功能
 插件来自于[river](https://github.com/revir/need-more-share2)
-* 页面和文章访问量统计
-需要Stat插件
+* 页面和文章访问量统计（不需要插件）
 * 改变协议为CC-BY-NC-SA4.0
 * 去除页面最下方的备案信息、改成动态的颜文字
 * 增加`meta theme color`使Chrome变色
 * 增加侧边后台管理
+* 启用侧边分类
+* 启用页脚加载耗时
+* 启用页脚运行时间
+* 增加编辑按钮
+* 增加字数统计
+* 增加最后更新时间
+* 增加文章数量统计
 
-## To do
-* 点赞
+## To do ##
+* 评论头像QQ邮箱和Gravatar同时启用
 
 
 原始说明

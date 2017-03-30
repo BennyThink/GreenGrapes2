@@ -1,7 +1,6 @@
 <?php
-/**加载耗时
-**/
-
+date_default_timezone_set('Asia/Shanghai');
+//加载耗时
 function timer_start() {
     global $timestart;
     $mtime = explode( ' ', microtime() );
@@ -21,6 +20,65 @@ function timer_stop( $display = 0, $precision = 3 ) {
     return $r;
 }
 
+/**
+* 判断时间区间
+* <?php if(timeZone($this->date->timeStamp)) echo ' new'; ?>
+* 使用方法  if(timeZone($this->date->timeStamp)) echo 'ok';
+*/
+function timeZone($from){
+$now = new Typecho_Date(Typecho_Date::gmtTime());
+return $now->timeStamp - $from < 24*60*60 ? true : false;
+}
+
+//字数统计
+function  art_count ($cid){
+    $db=Typecho_Db::get ();
+    $rs=$db->fetchRow ($db->select ('table.contents.text')->from ('table.contents')->where ('table.contents.cid=?',$cid)->order ('table.contents.cid',Typecho_Db::SORT_ASC)->limit (1));
+    $text = preg_replace("/[^\x{4e00}-\x{9fa5}]/u", "", $rs['text']);
+    echo mb_strlen($text,'UTF-8');
+}
+
+function getBuildTime(){
+// 在下面按格式输入本站创建的时间
+$site_create_time = strtotime('2016-12-23 13:14:52');
+$time = time() - $site_create_time; 
+$time=floor($time/86400);
+echo '<span class="time">'.'本站已经建立'.$time.'天啦!'.'</span>';
+}
+//访问量
+
+function get_post_view($archive)
+{
+    $cid    = $archive->cid;
+    $db     = Typecho_Db::get();
+    $prefix = $db->getPrefix();
+    if (!array_key_exists('views', $db->fetchRow($db->select()->from('table.contents')))) {
+        $db->query('ALTER TABLE `' . $prefix . 'contents` ADD `views` INT(10) DEFAULT 0;');
+        echo 0;
+        return;
+    }
+    $row = $db->fetchRow($db->select('views')->from('table.contents')->where('cid = ?', $cid));
+    if ($archive->is('single')) {
+       $db->query($db->update('table.contents')->rows(array('views' => (int) $row['views'] + 1))->where('cid = ?', $cid));
+    }
+    echo $row['views'];
+}
+//可能会删除，QQ头像
+
+function  qqgravatar ($qq){
+//只要输入是QQ邮箱即可
+if(strpos($qq,"@qq.com")){
+
+$geturl = 'http://ptlogin2.qq.com/getface?&imgtype=1&uin='.$qq;
+$qquser = file_get_contents($geturl);
+$str1 = explode('qq&k=', $qquser);
+$str2 = explode('&s=', $str1[1]);
+$k = $str2[0];
+$qqimg = 'https://q1.qlogo.cn/g?b=qq&k='.$k.'&s=100';
+return $qqimg;}
+else
+return 'https://www.mingyueli.com/usr/themes/GreenGrapes/img/default.jpg';
+}
 
 /**
  * 随机文章
