@@ -22,7 +22,7 @@
 
 <!--here-->
 <link href="https://www.mingyueli.com/usr/themes/GreenGrapes/css/shaky.css" rel="stylesheet" />
-Proudly powered by <a style="cursor:help;">Typecho </a><span class="shaky">(´・ω・`)</span>
+<?php getBuildTime(); ?><span class="shaky">(´・ω・`)</span>
 加载耗时：<?php echo timer_stop(); ?>
 <!--here-->
 </p>
@@ -36,5 +36,8 @@ Proudly powered by <a style="cursor:help;">Typecho </a><span class="shaky">(´�
 <script src = "<?php $this->options->themeUrl('js/headerCanvas.js'); ?>"></script>
 <script src = "<?php $this->options->themeUrl('js/home.js'); ?>"></script>
 <?php $this->footer(); ?>
+
+<!--welcome-->
+<!--welcome-->
 </body>
 </html>
