@@ -45,7 +45,7 @@
     <?php if(true): ?>
     <aside>
         <div class="panel panel-green hidden-xs">
-            <div class="panel-heading"><i class="fa fa-book fa-fw"></i> 文章分类</div>
+            <div class="panel-heading"><i class="fa fa-book fa-fw"></i> 文章分类：目前总计 <?php Typecho_Widget::widget('Widget_Stat')->to($stat); ?><?php $stat->publishedPostsNum() ?> 篇</div>
             <div class="list-group category">
                 <?php $this->widget('Widget_Metas_Category_List')->listCategories('wrapClass=widget-list'); ?>
             </div>
@@ -64,8 +64,24 @@
             </div>
         </div>
     </aside>
+<!--网站统计，待优化。如果需要请取消注释-->
+<!--
+<aside >
+        <div class="panel panel-green hidden-xs">
+            <div class="panel-heading"><i class="fa fa-tags fa-fw"></i> 网站统计</div>
+            <div id="meta-cloud">
+<?php Typecho_Widget::widget('Widget_Stat')->to($stat); ?>
+<p><?php _e('奔跑的蜗牛壳自 <strong>2016</strong> 年末建立以来，截至 %s 在已设定的 <strong>%s</strong> 个分类
+和 <strong>%s</strong> 个页面中，
+共发布了 <strong>%s</strong> 篇文章，并收到了 <strong>%s</strong> 条相关评论。
+', date('Y年n月j日G时i分'), $stat->categoriesNum, $stat->publishedPagesNum, $stat->publishedPostsNum, $stat->publishedCommentsNum); ?></p>
 
-<!--here, need to show it-->
+            </div>
+        </div>
+    </aside>
+-->
+<!--网站统计-->
+<!--here, admin-->
 <div id="fixed"></div>
 <aside class="fixsidebar">
         <div class="panel panel-green hidden-xs">
