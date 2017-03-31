@@ -64,7 +64,7 @@
 </div>
 <!--like--></div>
 <script>
-new needShareDropdown(document.getElementById('i-share'));
+new needShareButton(document.getElementById('i-share'));
 </script>
 </body>
 <!--here-->
