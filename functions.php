@@ -68,30 +68,25 @@ function get_post_view($archive)
  * return img头像url，一定会获得头像url
 **/
 function avatar($email){
-//先gravatar、再QQ、最后是默认的
-$hash = md5(strtolower(trim($email)));
-$uri = 'http://gravatar.duoshuo.com//avatar/' . $hash . '?d=404';
-$headers = @get_headers($uri);
-if (!preg_match("|200|", $headers[0])) {
-	$has_valid_avatar = FALSE;//没有gravatar，试图获取QQ
-	if(strpos($email,"@qq.com")){
-		$geturl = 'http://ptlogin2.qq.com/getface?&imgtype=1&uin='.$email;
-		$qquser = file_get_contents($geturl);
-		$str1 = explode('qq&k=', $qquser);
-		$str2 = explode('&s=', $str1[1]);
-		$k = $str2[0];
-		$qqimg = 'https://q1.qlogo.cn/g?b=qq&k='.$k.'&s=100';
-		return '<img class="avatar" src="'.$qqimg.'" />';}
-	else
-		return '<img class="avatar" src="https://www.mingyueli.com/usr/themes/GreenGrapes/img/default.jpg'.'"/>';
+//先QQ、再gravatar、最后是默认的
+//0b4a1361fbfd046d94a9ca314a3a1124.jpg
+ if(strpos($email,"@qq.com")){
+                $geturl = 'http://ptlogin2.qq.com/getface?&imgtype=1&uin='.$email;
+                $qquser = file_get_contents($geturl);
+                $str1 = explode('qq&k=', $qquser);
+                $str2 = explode('&s=', $str1[1]);
+                $k = $str2[0];
+                $qqimg = 'https://q1.qlogo.cn/g?b=qq&k='.$k.'&s=100';
+                return '<img class="avatar" src="'.$qqimg.'" />';}
+        else//返回默认头像
+         {       
+
+$uri=GravatarCache::getGravatarCache($email);
+return  '<img class="avatar" src="'.$uri.'"/>';
+#return '<img class="avatar" src="https://www.mingyueli.com/usr/themes/GreenGrapes/img/default.jpg"/>';}
+//QQ
+
 } 
-else {	//有gravatar
-	$has_valid_avatar = TRUE;
-	return  '<img class="avatar" src="'.$uri.'"/>';
-	}
-return $has_valid_avatar;
-
-
 }
 
 
@@ -168,11 +163,11 @@ echo $commentClass;
 ?>">
 
     <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
-<!--too slow, need to speed up-->
-<!--
-<span itemprop="image"><?php //$imgurl=avatar($comments->mail);echo $imgurl;?></span>-->
+<!--A little bit slow, 100ms per avatar,QQ->Gravatar->default, need gravatarCache-->
+
+<span itemprop="image"><?php $imgurl=avatar($comments->mail);echo $imgurl;?></span>
 <!--new avatar system-->
-<span itemprop="image"><?php $comments->gravatar($singleCommentOptions->avatarSize, $singleCommentOptions->defaultAvatar); ?></span>
+<!--<span itemprop="image"><?php //$comments->gravatar($singleCommentOptions->avatarSize, $singleCommentOptions->defaultAvatar); ?></span>-->
     </div>
     <div class="comment-body">
         <cite class="fn" itemprop="name"><?php $singleCommentOptions->beforeAuthor();

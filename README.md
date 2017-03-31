@@ -4,8 +4,7 @@ typecho 绿色主题
 
 ## 改动 ##
 
-* 增加了分享功能
-插件来自于[river](https://github.com/revir/need-more-share2)
+* 增加了分享功能（插件来自于[river](https://github.com/revir/need-more-share2)）
 * 页面和文章访问量统计（不需要插件）
 * 改变协议为CC-BY-NC-SA4.0
 * 去除页面最下方的备案信息、改成动态的颜文字
@@ -19,9 +18,12 @@ typecho 绿色主题
 * 增加最后更新时间
 * 增加文章数量统计
 * 增加评论框特效
+* 评论头像QQ邮箱和Gravatar同时启用
+优先QQ头像，然后是Gravatar，再之后是默认
 
 ## To do ##
-* 评论头像QQ邮箱和Gravatar同时启用（已经完成，但是效率略低……有待改进）
+* 评论QQ头像的缓存策略，目前遇到填写QQ邮箱的评论，每个头像需要大概100~150ms
+* 不是QQ邮箱、没有Gravatar应当显示自定义的头像而不是默认的……（需要更改插件或者Typecho？这样恐怕不太好）
 
 
 原始说明
