@@ -21,8 +21,9 @@ typecho 绿色主题
 * 增加文章数量统计
 * 增加评论框特效
 * 评论头像QQ邮箱和Gravatar同时启用
+
 优先QQ头像，然后是Gravatar，再之后是默认。已经启用了gravatar和QQ头像的缓存策略，所以基本上不会对网站速度有太大影响。
-由于技术限制，需要大家修改`functions.php`中第73行`$yourUrl='https://www.mingyueli.com/';`为你的域名，不要忘记了最后的`/`
+
 
 ## To do ##
 - [ ]移除对插件`GravatarCache`的依赖

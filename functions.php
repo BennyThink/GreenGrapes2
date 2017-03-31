@@ -70,7 +70,7 @@ function get_post_view($archive)
 function avatar($email){
 if(strpos($email,"@qq.com")){
     //如果是QQ邮箱的话，测试缓存策略
-	$yourUrl='https://www.mingyueli.com/';
+	$yourUrl=Helper::options()->siteUrl;
 	$saveName='usr/uploads/avatarCache/'.md5($email).'.jpg';
 	//echo 'QQ头像的地址显示在这里'.$yourUrl.$saveName;
 	$lastModifyTime=filemtime($saveName);
