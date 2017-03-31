@@ -10,9 +10,10 @@
         </p>
 
 <!--here-->
-<link href="https://www.mingyueli.com/usr/themes/GreenGrapes/css/shaky.css" rel="stylesheet" />
+<link href="<?php $this->options->themeUrl('css/shaky.css'); ?>" rel="stylesheet" />
 <?php getBuildTime(); ?><span class="shaky">(´・ω・`)</span>
 加载耗时：<?php echo timer_stop(); ?>
+
     </div>
 </footer>
 <script src = "<?php $this->options->themeUrl('js/jquery2.14.min.js'); ?>"></script>
@@ -23,7 +24,7 @@
 <script src = "<?php $this->options->themeUrl('js/headerCanvas.js'); ?>"></script>
 <script src = "<?php $this->options->themeUrl('js/home.js'); ?>"></script>
 <?php $this->footer(); ?>
-<script src="https://www.mingyueli.com/usr/themes/GreenGrapes/js/typing.js"></script>
+<script src="<?php $this->options->themeUrl('js/typing.js'); ?>"></script>
 <script>
 POWERMODE.colorful = true; // make power mode colorful
 POWERMODE.shake = false; // turn off shake

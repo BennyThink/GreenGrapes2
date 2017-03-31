@@ -55,9 +55,9 @@
 	}
 </style>
 <!-- needPopup Javascript file -->
-<script src="https://www.mingyueli.com/usr/themes/GreenGrapes/js/needsharebutton.min.js"></script>
+<script src="<?php $this->options->themeUrl('js/needsharebutton.min.js'); ?>"></script>
 <!-- needPopup CSS file -->
-<link href="https://www.mingyueli.com/usr/themes/GreenGrapes/css/needsharebutton.min.css" rel="stylesheet" />
+<link href="<?php $this->options->themeUrl('css/needsharebutton.min.css'); ?>" rel="stylesheet" />
 <body><div class="wrapper">
 <div id="i-share" data-share-position="bottomCenter" class="need-share-button-default" data-share-icon-style="box" data-share-networks="Weibo,Wechat,Twitter,Facebook,GooglePlus,Reddit,Evernote">
 	<i class="i-share icon-share" aria-hidden="true"></i>
