@@ -2,8 +2,10 @@
 typecho 绿色主题
 修改自[https://github.com/hongweipeng/GreenGrapes](https://github.com/hongweipeng/GreenGrapes "https://github.com/hongweipeng/GreenGrapes")
 
-## 改动 ##
+## 使用条件 ##
+需要`GravatarCache`插件，在`extra`目录下，请移动到`plugins`目录并启用。
 
+## 改动 ##
 * 增加了分享功能（插件来自于[river](https://github.com/revir/need-more-share2)）
 * 页面和文章访问量统计（不需要插件）
 * 改变协议为CC-BY-NC-SA4.0
@@ -19,11 +21,27 @@ typecho 绿色主题
 * 增加文章数量统计
 * 增加评论框特效
 * 评论头像QQ邮箱和Gravatar同时启用
-优先QQ头像，然后是Gravatar，再之后是默认
+优先QQ头像，然后是Gravatar，再之后是默认。已经启用了gravatar和QQ头像的缓存策略，所以基本上不会对网站速度有太大影响。
+由于技术限制，需要大家修改`functions.php`中第73行`$yourUrl='https://www.mingyueli.com/';`为你的域名，不要忘记了最后的`/`
 
 ## To do ##
-* 评论QQ头像的缓存策略，目前遇到填写QQ邮箱的评论，每个头像需要大概100~150ms
-* 不是QQ邮箱、没有Gravatar应当显示自定义的头像而不是默认的……（需要更改插件或者Typecho？这样恐怕不太好）
+- [ ]移除对插件`GravatarCache`的依赖
+
+## 演示 ##
+[奔跑的蜗牛壳](https://www.mingyueli.com)
+
+## 使用的插件 ##
+* CommentToMail		评论邮件提醒插件
+* GravatarCache		Gravatar 头像缓存插件
+* HighSlide		无缝集成HighSlide双核版实现自动化弹窗与页面相册功能
+* Links		友情链接插件
+* Sitemap		Google Sitemap 生成器
+* Smilies		为博客添加图片表情功能
+* Snow		3D效果的飘雪插件
+* Syntax Highlighter		语法高亮插件（特效移植于WordPress Git主题，更多请[参见这里](https://github.com/BennyThink/Git-SyntaxHighlighter-For-Typecho)）
+* cPlayer		网易云、上传本地音乐插件
+* kiana		琪亚娜小挂件
+* notice		判断来路地址输出欢迎消息。
 
 
 原始说明

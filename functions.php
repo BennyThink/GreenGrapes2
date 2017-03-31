@@ -64,29 +64,39 @@ function get_post_view($archive)
     echo $row['views'];
 }
 /**
- * 判断头像
+ * 头像：先QQ、再gravatar、最后是默认的
  * return img头像url，一定会获得头像url
 **/
 function avatar($email){
-//先QQ、再gravatar、最后是默认的
-//0b4a1361fbfd046d94a9ca314a3a1124.jpg
- if(strpos($email,"@qq.com")){
-                $geturl = 'http://ptlogin2.qq.com/getface?&imgtype=1&uin='.$email;
-                $qquser = file_get_contents($geturl);
-                $str1 = explode('qq&k=', $qquser);
-                $str2 = explode('&s=', $str1[1]);
-                $k = $str2[0];
-                $qqimg = 'https://q1.qlogo.cn/g?b=qq&k='.$k.'&s=100';
-                return '<img class="avatar" src="'.$qqimg.'" />';}
-        else//返回默认头像
-         {       
+if(strpos($email,"@qq.com")){
+    //如果是QQ邮箱的话，测试缓存策略
+	$yourUrl='https://www.mingyueli.com/';
+	$saveName='usr/uploads/avatarCache/'.md5($email).'.jpg';
+	//echo 'QQ头像的地址显示在这里'.$yourUrl.$saveName;
+	$lastModifyTime=filemtime($saveName);
+	clearstatcache();
+	if(file_exists($saveName) && (time()-$lastModifyTime)<604800)
+		return '<img class="avatar" src="'.$yourUrl.$saveName.'" />';
+	else
+	{
+		//echo '文件不存在或者过期，重新获取';
+        $geturl = 'http://ptlogin2.qq.com/getface?&imgtype=1&uin='.$email;
+        $qquser = file_get_contents($geturl);
+		$str1 = explode('qq&k=', $qquser);
+        $str2 = explode('&s=', $str1[1]);
+        $k = $str2[0];
+        $qqimg = 'https://q1.qlogo.cn/g?b=qq&k='.$k.'&s=100';
+		//保存图片
+		copy($qqimg,$saveName);
+        return '<img class="avatar" src="'.$yourUrl.$saveName.'" />';
+	}
+}
+else{
+	//返回默认Gravatar头像  
+	$uri=GravatarCache::getGravatarCache($email);
+	return  '<img class="avatar" src="'.$uri.'"/>';
+}
 
-$uri=GravatarCache::getGravatarCache($email);
-return  '<img class="avatar" src="'.$uri.'"/>';
-#return '<img class="avatar" src="https://www.mingyueli.com/usr/themes/GreenGrapes/img/default.jpg"/>';}
-//QQ
-
-} 
 }
 
 
