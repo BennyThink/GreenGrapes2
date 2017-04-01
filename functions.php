@@ -68,14 +68,12 @@ function get_post_view($archive)
  * return img头像url，一定会获得头像url
 **/
 function avatar($email){
+$yourUrl=Helper::options()->siteUrl;
+$saveName='usr/uploads/avatarCache/'.md5(strtolower(trim($email))).'.jpg';
+clearstatcache();
 if(strpos($email,"@qq.com")){
     //如果是QQ邮箱的话，测试缓存策略
-	$yourUrl=Helper::options()->siteUrl;
-	$saveName='usr/uploads/avatarCache/'.md5($email).'.jpg';
-	//echo 'QQ头像的地址显示在这里'.$yourUrl.$saveName;
-	$lastModifyTime=filemtime($saveName);
-	clearstatcache();
-	if(file_exists($saveName) && (time()-$lastModifyTime)<604800)
+	if(file_exists($saveName) && (time()-filemtime($saveName))<604800)
 		return '<img class="avatar" src="'.$yourUrl.$saveName.'" />';
 	else
 	{
@@ -91,13 +89,29 @@ if(strpos($email,"@qq.com")){
         return '<img class="avatar" src="'.$yourUrl.$saveName.'" />';
 	}
 }
-else{
-	//返回默认Gravatar头像  
-	$uri=GravatarCache::getGravatarCache($email);
-	return  '<img class="avatar" src="'.$uri.'"/>';
-}
+elseif(file_exists($saveName) && (time()-filemtime($saveName))<604800){
+	//返回未超时的gravatar
+		//已有缓存
+		return '<img class="avatar" src="'.$yourUrl.$saveName.'" />';
+	}
+else{	
+		//获取新的gravatar，并判断
+		$headers = @get_headers('https://www.gravatar.com/avatar/'.md5(strtolower(trim($email))).'?d=404');		
+		if (preg_match("/404/", $headers[0])) { 
+		//无头像，应该拷贝头像
+		copy($yourUrl.'usr/themes/GreenGrapes/img/default.jpg',$saveName);
+		return '<img class="avatar" src="'.$yourUrl.'usr/themes/GreenGrapes/img/default.jpg" />'; 	
+		} else {
+		//有gravatar
+		copy('https://www.gravatar.com/avatar/'.md5(strtolower(trim($email))),$saveName);
+        return '<img class="avatar" src="'.$yourUrl.$saveName.'" />'; 
+		}
+	
+	}
 
 }
+
+
 
 
 /**
