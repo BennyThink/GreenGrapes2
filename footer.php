@@ -25,10 +25,26 @@
 <script src = "<?php $this->options->themeUrl('js/home.js'); ?>"></script>
 <?php $this->footer(); ?>
 <script src="<?php $this->options->themeUrl('js/typing.js'); ?>"></script>
-<script>
+<script type="text/javascript">
 POWERMODE.colorful = true; // make power mode colorful
 POWERMODE.shake = false; // turn off shake
 document.body.addEventListener('input', POWERMODE);
+//dynamic title
+window.onblur = function() {
+    document.title = "喵 (●'◡'●)~快回来";
+$("#web-icon").attr('href',"<?php $this->options->themeUrl('loss.ico'); ?>");
+window.onfocus = function() {
+    document.title = "<?php $this->archiveTitle(array(
+'category'=>_t('分类 %s 下的文章'),
+'search'=>_t('包含关键字 %s 的文章'),
+'tag' =>_t('标签 %s 下的文章'),
+'author'=>_t('%s 发布的文章')
+), '', ' - '); ?><?php $this->options->title(); ?>";
+$("#web-icon").attr('href',"<?php $this->options->siteUrl(); ?>favicon.ico");
+
+}
+};
+
 </script>
 </body>
 </html>
