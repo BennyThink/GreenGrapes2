@@ -1,5 +1,5 @@
-# GreenGrapes
-typecho 绿色主题
+# GreenGrapes2
+一款有科技感颗粒、自定义头像的、功能丰富的、好看的标签云的typecho绿色主题
 修改自[https://github.com/hongweipeng/GreenGrapes](https://github.com/hongweipeng/GreenGrapes "https://github.com/hongweipeng/GreenGrapes")
 
 ## 使用方法 ##
