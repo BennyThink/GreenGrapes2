@@ -59,7 +59,7 @@
 <!-- needPopup CSS file -->
 <link href="<?php $this->options->themeUrl('css/needsharebutton.min.css'); ?>" rel="stylesheet" />
 <body><div class="wrapper">
-<div id="i-share" data-share-position="bottomCenter" class="need-share-button-default" data-share-icon-style="box" data-share-networks="Weibo,Wechat,Twitter,Facebook,GooglePlus,Reddit,Evernote">
+<div id="i-share" data-share-position="bottomCenter" class="need-share-button-default" data-share-icon-style="box" data-share-networks="QQZone,Wechat,Weibo,Douban,Twitter,Facebook,Evernote">
 	<i class="i-share icon-share" aria-hidden="true"></i>
 </div>
 <!--like--></div>
