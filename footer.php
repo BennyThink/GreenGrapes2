@@ -32,4 +32,4 @@ document.body.addEventListener('input', POWERMODE);
 </script>
 </body>
 </html>
-<!--I love you *Benny* -->
+<!--I'm always here ❤Benny❤ -->
