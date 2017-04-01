@@ -34,7 +34,7 @@
 
 
 ## To do ##
-- [ ]点赞
+- [ ] 点赞
 
 ## 演示 ##
 [奔跑的蜗牛壳](https://www.mingyueli.com)
