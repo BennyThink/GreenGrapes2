@@ -39,15 +39,3 @@
 ## 演示 ##
 [奔跑的蜗牛壳](https://www.mingyueli.com)
 
-## 使用的插件 ##
-* CommentToMail		评论邮件提醒插件
-* GravatarCache		Gravatar 头像缓存插件
-* HighSlide		无缝集成HighSlide双核版实现自动化弹窗与页面相册功能
-* Links		友情链接插件
-* Sitemap		Google Sitemap 生成器
-* Smilies		为博客添加图片表情功能
-* Snow		3D效果的飘雪插件
-* Syntax Highlighter		语法高亮插件（特效移植于WordPress Git主题，更多请[参见这里](https://github.com/BennyThink/Git-SyntaxHighlighter-For-Typecho)）
-* cPlayer		网易云、上传本地音乐插件
-* kiana		琪亚娜小挂件
-* notice		判断来路地址输出欢迎消息。
