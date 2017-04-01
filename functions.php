@@ -40,7 +40,11 @@ function  art_count ($cid){
 
 function getBuildTime(){
 // 在下面按格式输入本站创建的时间
-$site_create_time = strtotime('2016-12-23 13:14:52');
+if(empty(Helper::options()->createTime))
+	$ct='2016-12-23 13:14:52';
+else
+	$ct=Helper::options()->createTime;
+$site_create_time = strtotime($ct);
 $time = time() - $site_create_time; 
 $time=floor($time/86400);
 echo '<span class="time">'.'本站已经建立'.$time.'天啦!'.'</span>';
@@ -71,9 +75,14 @@ function avatar($email){
 $yourUrl=Helper::options()->siteUrl;
 $saveName='usr/uploads/avatarCache/'.md5(strtolower(trim($email))).'.jpg';
 clearstatcache();
+if(empty(Helper::options()->cacheTime))
+	$ct=1209600;
+else
+	$ct=Helper::options()->cacheTime;
+//echo 'current cacheTime is '.$ct;
 if(strpos($email,"@qq.com")){
     //如果是QQ邮箱的话，测试缓存策略
-	if(file_exists($saveName) && (time()-filemtime($saveName))<604800)
+	if(file_exists($saveName) && (time()-filemtime($saveName))<$ct)
 		return '<img class="avatar" src="'.$yourUrl.$saveName.'" />';
 	else
 	{
@@ -89,7 +98,7 @@ if(strpos($email,"@qq.com")){
         return '<img class="avatar" src="'.$yourUrl.$saveName.'" />';
 	}
 }
-elseif(file_exists($saveName) && (time()-filemtime($saveName))<604800){
+elseif(file_exists($saveName) && (time()-filemtime($saveName))<$ct){
 	//返回未超时的gravatar
 		//已有缓存
 		return '<img class="avatar" src="'.$yourUrl.$saveName.'" />';
@@ -148,10 +157,16 @@ function themeConfig($form) {
 
     $headIcon = new Typecho_Widget_Helper_Form_Element_Text('headerIcon', null, $options->themeUrl('img/head.jpg', 'GreenGrapes'), _t('首页头像地址'), _t('在这里填入一个图片URL地址, 作为首页头像, 默认使用images下的head.png'));
     $form->addInput($headIcon);
-
+	
     $siteIcon = new Typecho_Widget_Helper_Form_Element_Text('sideName', null, null, _t('侧栏用户名'), _t('在这里填入一个左侧显示的用户名, 默认不显示'));
     $form->addInput($siteIcon);
-
+	
+	$siteCache = new Typecho_Widget_Helper_Form_Element_Text('cacheTime', null, null, _t('缓存时间'), _t('头像缓存时间，默认1209600即14天'));
+    $form->addInput($siteCache);
+	
+	$siteCreate = new Typecho_Widget_Helper_Form_Element_Text('createTime', null, null, _t('建站时间'), _t('填入形如2016-12-23 13:14:52，时间可以省略。如不填写，则默认为2016-12-23'));
+    $form->addInput($siteCreate);
+	
     $showBlock = new Typecho_Widget_Helper_Form_Element_Checkbox('ShowBlock', array(
         'ShowPostBottomBar' => _t('文章页显示上一篇和下一篇')),
         array('ShowPostBottomBar'), _t('显示设置'));
