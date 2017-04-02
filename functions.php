@@ -108,8 +108,8 @@ else{
 		$headers = @get_headers('https://www.gravatar.com/avatar/'.md5(strtolower(trim($email))).'?d=404');		
 		if (preg_match("/404/", $headers[0])) { 
 		//无头像，应该拷贝头像
-		copy($yourUrl.'usr/themes/GreenGrapes/img/default.jpg',$saveName);
-		return '<img class="avatar" src="'.$yourUrl.'usr/themes/GreenGrapes/img/default.jpg" />'; 	
+		copy($yourUrl.'usr/themes/GreenGrapes2/img/default.jpg',$saveName);
+		return '<img class="avatar" src="'.$yourUrl.'usr/themes/GreenGrapes2/img/default.jpg" />'; 	
 		} else {
 		//有gravatar
 		copy('https://www.gravatar.com/avatar/'.md5(strtolower(trim($email))),$saveName);
@@ -152,10 +152,10 @@ function theme_random_posts(){
 }
 function themeConfig($form) {
     $options = Typecho_Widget::widget('Widget_Options');
-    $bgImg = new Typecho_Widget_Helper_Form_Element_Text('bgImg', null, $options->themeUrl('img/bg.jpg', 'GreenGrapes'), _t('首页背景图片地址'), _t('在这里填入一个图片URL地址, 作为首页背景图片, 默认使用img下的header.png'));
+    $bgImg = new Typecho_Widget_Helper_Form_Element_Text('bgImg', null, $options->themeUrl('img/bg.jpg', 'GreenGrapes2'), _t('首页背景图片地址'), _t('在这里填入一个图片URL地址, 作为首页背景图片, 默认使用img下的header.png'));
     $form->addInput($bgImg);
 
-    $headIcon = new Typecho_Widget_Helper_Form_Element_Text('headerIcon', null, $options->themeUrl('img/head.jpg', 'GreenGrapes'), _t('首页头像地址'), _t('在这里填入一个图片URL地址, 作为首页头像, 默认使用images下的head.png'));
+    $headIcon = new Typecho_Widget_Helper_Form_Element_Text('headerIcon', null, $options->themeUrl('img/head.jpg', 'GreenGrapes2'), _t('首页头像地址'), _t('在这里填入一个图片URL地址, 作为首页头像, 默认使用images下的head.png'));
     $form->addInput($headIcon);
 	
     $siteIcon = new Typecho_Widget_Helper_Form_Element_Text('sideName', null, null, _t('侧栏用户名'), _t('在这里填入一个左侧显示的用户名, 默认不显示'));
