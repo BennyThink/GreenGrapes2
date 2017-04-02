@@ -25,7 +25,7 @@ echo '<br><embed width="560" height="270" src="https://okwbu9s8e.qnssl.com/canva
 elseif (Helper::options()->notFoundGame==1)
 {
 echo '<p>'._e('哎呦卧槽~404了！搜索试试？或者玩玩我们的小恐龙？').'</p>';
-echo '<br><embed width="400" height="280" src="https://okwbu9s8e.qnssl.com/t-rex-runner/index.html" />';
+echo '<br><embed width="330" height="280" src="https://okwbu9s8e.qnssl.com/t-rex-runner/index.html" />';
 }	
 elseif (Helper::options()->notFoundGame==2)
 	{
