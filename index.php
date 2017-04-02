@@ -25,7 +25,8 @@ $this->need('header.php');
                     <hr>
                     <div class="row">
                         <div class="col-md-12 article-content">
-                            <?php $this->content(); ?>
+                            <?php echo thumb($this->cid); ?><?php $this->content();
+//$this->excerpt(180, '...'); ?>
                         </div>
                     </div>
                     <hr>
