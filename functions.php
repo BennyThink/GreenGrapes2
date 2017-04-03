@@ -256,7 +256,8 @@ echo $commentClass;
         </div>
         <div class="comment-footer">
             <time itemprop="commentTime" datetime="<?php $comments->date('c'); ?>"><?php $singleCommentOptions->beforeDate();
-                $comments->date($singleCommentOptions->dateFormat);
+                //$comments->date($singleCommentOptions->dateFormat);Y-m-d H:i:s
+				$comments->date('Y-m-d H:i:s');
                     $singleCommentOptions->afterDate(); ?></time>
             <?php $comments->reply($singleCommentOptions->replyWord); ?>
         </div>
