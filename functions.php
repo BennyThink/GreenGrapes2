@@ -75,7 +75,7 @@ function  art_count ($cid){
 function getBuildTime(){
 // 在下面按格式输入本站创建的时间
 if(empty(Helper::options()->createTime))
-	$ct='2016-12-23 13:14:52';
+	$ct='2016-12-23 13:59:00';
 else
 	$ct=Helper::options()->createTime;
 $site_create_time = strtotime($ct);
@@ -195,10 +195,10 @@ function themeConfig($form) {
     $siteIcon = new Typecho_Widget_Helper_Form_Element_Text('sideName', null, null, _t('侧栏用户名'), _t('在这里填入一个左侧显示的用户名, 默认不显示'));
     $form->addInput($siteIcon);
 	
-	$siteCache = new Typecho_Widget_Helper_Form_Element_Text('cacheTime', null, null, _t('缓存时间'), _t('头像缓存时间，默认1209600即14天'));
+	$siteCache = new Typecho_Widget_Helper_Form_Element_Text('cacheTime', null, '1209600', _t('缓存时间'), _t('头像缓存时间，默认1209600即14天'));
     $form->addInput($siteCache);
 	
-	$siteCreate = new Typecho_Widget_Helper_Form_Element_Text('createTime', null, null, _t('建站时间'), _t('填入形如2016-12-23 13:14:52，时间可以省略。如不填写，则默认为2016-12-23'));
+	$siteCreate = new Typecho_Widget_Helper_Form_Element_Text('createTime', null, '2016-12-23 13:59:00', _t('建站时间'), _t('填入形如2016-12-23 13:59:00，时间可以省略。如不填写，则默认为2016-12-23'));
     $form->addInput($siteCreate);
 	
 	$notFound = new Typecho_Widget_Helper_Form_Element_Radio(
