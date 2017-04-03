@@ -44,8 +44,15 @@ $("#web-icon").attr('href',"<?php $this->options->siteUrl(); ?>favicon.ico");
 
 }
 };
-
 </script>
+<script>
+jQuery(window).load(function() {
+    jQuery("#loading").fadeOut(500);
+});
+</script>
+
+
+
 </body>
 </html>
 <!--I'm always here ❤Benny❤ -->

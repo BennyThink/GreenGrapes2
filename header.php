@@ -20,10 +20,18 @@ Some of us get dipped in flat, some in satin, some in gloss. But every once in a
     <link rel="stylesheet" href="<?php $this->options->themeUrl('css/bootstrap.min.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('css/font-awesome.min.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('css/main.css'); ?>">
+	<link rel="stylesheet" href="<?php $this->options->themeUrl('css/loading.css'); ?>">
     <!-- 通过自有函数输出HTML头部信息 -->
     <?php $this->header(); ?>
 </head>
 <body>
+<div id="loading">
+<div id="loading-one"></div>
+<div class="spinner">
+  <div class="dot1"></div>
+  <div class="dot2"></div>
+</div>
+</div>
 <header id="l-header" class="l-header" style="background-image:url(<?php $this->options->bgImg(); ?>">
     <div class="hdbg"></div>
     <div class="hdbg2"></div>
