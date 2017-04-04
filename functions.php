@@ -22,7 +22,7 @@ $rs = $db->fetchRow($db->select('table.contents.text')
 $img = unserialize($rs['text']);
 if (empty($img)){
 //这个效果不好，不带class吧echo '<img class="col-md-3" src="'.$imgurl.'" />';
-echo '<img " src="'.$imgurl.'" />';
+echo '<img  src="'.$imgurl.'" />';
 }
 else{
 //echo str_replace('/','',Helper::options()->siteUrl).$img['path'];//有图
@@ -310,15 +310,15 @@ function themeConfig($form) {
 	
 	$showBlogger = new Typecho_Widget_Helper_Form_Element_Checkbox('showBlogger', array(
         'ShowBloggerCheckBox' => _t('隐藏侧边栏博主回复')),
-        array('ShowBloggerExp'), _t('侧边博主回复'));
+        array(''), _t('侧边博主回复'));
     $form->addInput($showBlogger->multiMode());
-	
 	
 	$showTypeFX = new Typecho_Widget_Helper_Form_Element_Checkbox('showTypeFX', array(
 	'showTypeColorful' => _t('显示彩虹特效'),
 	'showTypeShake' => _t('显示震动特效')),
     array('showTypeColorful'), _t('打字特效设置'));
     $form->addInput($showTypeFX->multiMode());
+
 }
 
 /**
