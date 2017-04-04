@@ -25,10 +25,30 @@
 <script src = "<?php $this->options->themeUrl('js/home.js'); ?>"></script>
 <?php $this->footer(); ?>
 <script src="<?php $this->options->themeUrl('js/typing.js'); ?>"></script>
+<!--打字特效-->
+<?php if(!empty($this->options->showTypeFX) && 
+in_array('showTypeColorful',$this->options->showTypeFX)&& 
+in_array('showTypeShake',$this->options->showTypeFX)):
+?>
+<script type="text/javascript">
+POWERMODE.colorful = true; // make power mode colorful
+POWERMODE.shake = true; // turn off shake
+document.body.addEventListener('input', POWERMODE);
+</script>
+<?php elseif(!empty($this->options->showTypeFX) && in_array('showTypeColorful',$this->options->showTypeFX)):?>
 <script type="text/javascript">
 POWERMODE.colorful = true; // make power mode colorful
 POWERMODE.shake = false; // turn off shake
 document.body.addEventListener('input', POWERMODE);
+</script>
+<?php elseif(!empty($this->options->showTypeFX) && in_array('showTypeShake',$this->options->showTypeFX)):?>
+<script type="text/javascript">
+POWERMODE.colorful = false; // make power mode colorful
+POWERMODE.shake = true; // turn off shake
+document.body.addEventListener('input', POWERMODE);
+</script>
+<?php endif; ?>
+<script type="text/javascript">
 //dynamic title
 window.onblur = function() {
     document.title = "喵 (●'◡'●)~快回来";
@@ -41,7 +61,6 @@ window.onfocus = function() {
 'author'=>_t('%s 发布的文章')
 ), '', ' - '); ?><?php $this->options->title(); ?>";
 $("#web-icon").attr('href',"<?php $this->options->siteUrl(); ?>favicon.ico");
-
 }
 };
 </script>
