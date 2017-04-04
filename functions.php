@@ -305,10 +305,15 @@ function themeConfig($form) {
         array('ShowPostBottomBar'), _t('显示设置'));
     $form->addInput($showBlock->multiMode());
 	
-	$showUA = new Typecho_Widget_Helper_Form_Element_Checkbox('ShowUA', array(
-        'ShowUACheckBox' => _t('显示评论UA')),
-        array('ShowUAExp'), _t('UA选项'));
+	$showUA = new Typecho_Widget_Helper_Form_Element_Select('showUA', array(
+        'dontShow'=>'不显示UA',    
+        'ShowUA' => '显示UA',
+		'ShowUAPic' => '显示UA与图片',
+    ), 'dontShow',
+    _t('UA选项'), _t('默认不显示UA'));
     $form->addInput($showUA->multiMode());
+	
+	//up here
 	
 	$showBlogger = new Typecho_Widget_Helper_Form_Element_Checkbox('showBlogger', array(
         'ShowBloggerCheckBox' => _t('隐藏侧边栏博主回复')),
@@ -370,10 +375,18 @@ echo $commentClass;
                 //$comments->date($singleCommentOptions->dateFormat);Y-m-d H:i:s
 				$comments->date('Y-m-d H:i:s');
                     $singleCommentOptions->afterDate(); ?></time>
-					<!--UA加在这里-->
+					<!--UA设置的判定-->
 <?php
-if (!empty(Helper::options()->ShowUA))
+
+if('dontShow'==Helper::options()->showUA)
+	echo '';
+elseif('ShowUA'==Helper::options()->showUA)
 	echo '<font  color=#ff6600>'.getUA($comments->agent).'</font>';
+elseif('ShowUAPic'==Helper::options()->showUA)
+	echo '显示评论UA与图片';
+else
+	echo '出错了';
+
 ?>
 
             <?php $comments->reply($singleCommentOptions->replyWord); ?>
