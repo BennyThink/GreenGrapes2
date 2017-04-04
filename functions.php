@@ -198,6 +198,8 @@ function getUA($ua){
 			$os = 'Linux';
 		elseif(preg_match('/X11; SunOS/i',$ua))
 			$os = 'SunOS';
+		elseif(preg_match('/BlackBerry/i',$ua))
+			$os = 'BlackBerry';
         else 
             $os = '未知操作系统';
         
