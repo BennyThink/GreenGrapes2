@@ -305,8 +305,13 @@ function themeConfig($form) {
 	
 	$showUA = new Typecho_Widget_Helper_Form_Element_Checkbox('ShowUA', array(
         'ShowUACheckBox' => _t('显示评论UA')),
-        array('ShowUAExp'), _t('UA选项，默认不显示'));
+        array('ShowUAExp'), _t('UA选项'));
     $form->addInput($showUA->multiMode());
+	
+	$showBlogger = new Typecho_Widget_Helper_Form_Element_Checkbox('showBlogger', array(
+        'ShowBloggerCheckBox' => _t('隐藏侧边栏博主回复')),
+        array('ShowBloggerExp'), _t('侧边博主回复'));
+    $form->addInput($showBlogger->multiMode());
 	
 	
 }

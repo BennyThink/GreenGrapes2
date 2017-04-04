@@ -20,7 +20,11 @@
                     </ul>
                 </div>
                 <div class="tab-pane fade" id="sidebar-comment">
-                    <?php $this->widget('Widget_Comments_Recent')->to($comments); ?>
+                    <?php 
+					if (!empty(Helper::options()->showBlogger))
+						$this->widget('Widget_Comments_Recent','ignoreAuthor=true')->to($comments);
+					else
+						$this->widget('Widget_Comments_Recent')->to($comments); ?>
                     <?php while($comments->next()): ?>
                         <li class="list-group-item clearfix"><?php $comments->author(false); ?>：<a href="<?php $comments->permalink(); ?>" target="_blank"><?php $comments->excerpt(35, '...'); ?></a></li>
                     <?php endwhile; ?>
