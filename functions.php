@@ -302,6 +302,13 @@ function themeConfig($form) {
         'ShowPostBottomBar' => _t('文章页显示上一篇和下一篇')),
         array('ShowPostBottomBar'), _t('显示设置'));
     $form->addInput($showBlock->multiMode());
+	
+	$showUA = new Typecho_Widget_Helper_Form_Element_Checkbox('ShowUA', array(
+        'ShowUACheckBox' => _t('显示评论UA')),
+        array('ShowUAExp'), _t('UA选项，默认不显示'));
+    $form->addInput($showUA->multiMode());
+	
+	
 }
 
 /**
@@ -352,7 +359,11 @@ echo $commentClass;
 				$comments->date('Y-m-d H:i:s');
                     $singleCommentOptions->afterDate(); ?></time>
 					<!--UA加在这里-->
-					<?php echo '<font  color=#ff6600>'.getUA($comments->agent).'</font>'; ?>
+<?php
+if (!empty(Helper::options()->ShowUA))
+	echo '<font  color=#ff6600>'.getUA($comments->agent).'</font>';
+?>
+
             <?php $comments->reply($singleCommentOptions->replyWord); ?>
         </div>
     </div>
