@@ -154,19 +154,19 @@ else{
 
 }
 
-function getUA($ua){
+function getUA($ua,$isPic){
 	 
         //开始解析操作系统
         $os = null;
-        if (preg_match('/Windows NT 6.0/i', $ua)) 
+        if (preg_match('/Windows NT 6.0/i', $ua))
             $os = "Windows Vista";
-        elseif (preg_match('/Windows NT 6.1/i', $ua)) 
+        elseif (preg_match('/Windows NT 6.1/i', $ua))
             $os = "Windows 7";
-        elseif (preg_match('/Windows NT 6.2/i', $ua)) 
+        elseif (preg_match('/Windows NT 6.2/i', $ua))
             $os = "Windows 8";
-        elseif (preg_match('/Windows NT 6.3/i', $ua)) 
+        elseif (preg_match('/Windows NT 6.3/i', $ua))
             $os = "Windows 8.1";
-        elseif (preg_match('/Windows NT 10.0/i', $ua)) 
+        elseif (preg_match('/Windows NT 10.0/i', $ua))
             $os = "Windows 10";
         elseif (preg_match('/Windows NT 5.1/i', $ua)) 
             $os = "Windows XP";
@@ -196,7 +196,7 @@ function getUA($ua){
 			$os = 'FreeBSD';
 		elseif(preg_match('/X11; Linux/i',$ua))
 			$os = 'Linux';
-		elseif(preg_match('/X11; SunOS/i',$ua))
+		elseif(preg_match('/X11; SunOS/i',$ua)||preg_match('/Solaris/i',$ua))
 			$os = 'SunOS';
 		elseif(preg_match('/BlackBerry/i',$ua))
 			$os = 'BlackBerry';
@@ -214,10 +214,14 @@ function getUA($ua){
 			$browser = 'Maxthon ' . $matches[2];
 		elseif (preg_match('#Edge( |\/)([a-zA-Z0-9.]+)#i', $ua, $matches)) 
             $browser = 'Edge ' . $matches[2];
-		elseif (preg_match('#MicroMessenger/([a-zA-Z0-9.]+)#i', $ua, $matches) || preg_match('#Mobile MQQBrowser#i', $ua, $matches)) 
-            $browser = '手机QQ 或 微信  ' . $matches[1];	
+		elseif (preg_match('#MicroMessenger/([a-zA-Z0-9.]+)#i', $ua, $matches)) 
+			$browser = '微信 ' . $matches[1];
+		elseif (preg_match('#Mobile MQQBrowser#i', $ua, $matches)) 
+            $browser = '手机QQ ' . $matches[1];	
 		elseif (preg_match('#Chrome/([a-zA-Z0-9.]+)#i', $ua, $matches)) 
             $browser = 'Chrome ' . $matches[1];
+		elseif (preg_match('#Chromium/([a-zA-Z0-9.]+)#i', $ua, $matches)) 
+            $browser = 'Chromium ' . $matches[1];
         elseif (preg_match('#XiaoMi/MiuiBrowser/([0-9.]+)#i', $ua, $matches)) 
             $browser = '小米浏览器 ' . $matches[1];
         elseif (preg_match('#Safari/([a-zA-Z0-9.]+)#i', $ua, $matches)) 
@@ -229,6 +233,8 @@ function getUA($ua){
             $browser = 'Opera ' . $matches[1];
         elseif (preg_match('#TencentTraveler ([a-zA-Z0-9.]+)#i', $ua, $matches)) 
             $browser = '腾讯TT浏览器 ' . $matches[1];
+		elseif (preg_match('#QQBrowser ([a-zA-Z0-9.]+)#i', $ua, $matches)) 
+            $browser = 'QQ浏览器 ' . $matches[1];
         elseif (preg_match('#UCWEB([a-zA-Z0-9.]+)#i', $ua, $matches)) 
             $browser = 'UCWEB ' . $matches[1];
         elseif (preg_match('#wp-(iphone|android)/([a-zA-Z0-9.]+)#i', $ua, $matches)) 
@@ -236,9 +242,7 @@ function getUA($ua){
         elseif (preg_match('#MSIE ([a-zA-Z0-9.]+)#i', $ua, $matches)) 
             $browser = 'Internet Explorer ' . $matches[1];         
 		elseif (preg_match('#Trident/([a-zA-Z0-9.]+)#i', $ua, $matches)) 
-            $browser = 'Internet Explorer 11' ;
-		elseif (preg_match('#Outlook Mail ([a-zA-Z0-9.]+)#i', $ua, $matches)) 
-            $browser = 'Windows 10 邮件应用'. $matches[1] ;       		
+            $browser = 'Internet Explorer 11';       		
 		elseif (preg_match('#(Firefox|Phoenix|Firebird|BonEcho|GranParadiso|Minefield|Iceweasel)/([a-zA-Z0-9.]+)#i', $ua, $matches)) 
             $browser = 'Firefox ' . $matches[2];
         elseif(preg_match('/curl/i',$ua))
@@ -246,7 +250,61 @@ function getUA($ua){
 		else 
             $browser = '未知浏览器';	
 		
-        return $os . "  |  " . $browser;
+		//return $os . "  |  " . $browser;
+		$prePath1=Helper::options()->themeUrl.'/img/ua/';
+		$prePath2=$prePath1;
+		$test1=$prePath1;
+		$test2=$prePath2;
+		//确定UA图片		
+		if(strstr($os,'Vista')) 			$prePath1.='Vista'.'.png';
+		elseif(strstr($os,'Windows 7')) 	$prePath1.= 'Windows7'.'.png';
+		elseif(strstr($os,'Windows 8')) 	$prePath1.= 'Windows8'.'.png';
+		elseif(strstr($os,'Windows 8.1'))	$prePath1.= 'Windows8.1'.'.png';
+		elseif(strstr($os,'Windows 10'))	$prePath1.= 'Windows10'.'.png';
+		elseif(strstr($os,'Windows XP'))	$prePath1.= 'WindowsXP'.'.png';
+		elseif(strstr($os,'Windows 2000'))	$prePath1.= 'Windows2000'.'.png';
+		elseif(strstr($os,'Android'))	$prePath1.= 'Android'.'.png';
+		elseif(strstr($os,'iPhone'))	$prePath1.= 'ios'.'.png';
+		elseif(strstr($os,'iPad'))	$prePath1.= 'ios'.'.png';
+		elseif(strstr($os,'Mac'))	$prePath1.= 'Mac'.'.png';
+		elseif(strstr($os,'Windows Phone'))	$prePath1.= 'WindowsPhone'.'.png';
+		elseif(strstr($os,'Gentoo'))	$prePath1.= 'Gentoo'.'.png';
+		elseif(strstr($os,'Ubuntu'))	$prePath1.= 'Ubuntu'.'.png';
+		elseif(strstr($os,'Debian'))	$prePath1.= 'Debian'.'.png';
+		elseif(strstr($os,'FreeBSD'))	$prePath1.= 'FreeBSD'.'.png';
+		elseif(strstr($os,'SunOS')||strstr($os,'Solaris'))	$prePath1.= 'Sun'.'.png';
+		elseif(strstr($os,'BlackBerry'))	$prePath1.= 'BlackBerry'.'.png';
+		elseif(strstr($os,'Linux'))	$prePath1.= 'Linux'.'.png';
+		else	$prePath1.= 'unknowOS'.'.png';
+		//浏览器图片
+		if(strstr($browser,'Camino')) 	$prePath2.= 'Camino'.'.png';
+		elseif(strstr($browser,'搜狗浏览器')) 	$prePath2.= 'sogou'.'.png';
+		elseif(strstr($browser,'360浏览器')) 	$prePath2.= '360'.'.png';
+		elseif(strstr($browser,'Maxthon'))	$prePath2.= 'Maxthon'.'.png';
+		elseif(strstr($browser,'Edge'))	$prePath2.= 'Edge'.'.png';
+		elseif(strstr($browser,'微信'))	$prePath2.= 'weixin'.'.png';
+		elseif(strstr($browser,'QQ'))	$prePath2.= 'QQ'.'.png';
+		elseif(strstr($browser,'Chrome'))	$prePath2.= 'Chrome'.'.png';
+		elseif(strstr($browser,'Chromium'))	$prePath2.= 'Chromium'.'.png';
+		elseif(strstr($browser,'小米'))	$prePath2.= 'xiaomi'.'.png';
+		elseif(strstr($browser,'Safari'))	$prePath2.= 'Safari'.'.png';
+		elseif(strstr($browser,'Opera'))	$prePath2.= 'Opera'.'.png';
+		elseif(strstr($browser,'腾讯TT浏览器'))	$prePath2.= 'tt'.'.png';
+		elseif(strstr($browser,'QQ浏览器'))	$prePath2.= 'qqbrowser'.'.png';
+		elseif(strstr($browser,'UCWEB'))	$prePath2.= 'ucweb'.'.png';
+		elseif(strstr($browser,'Internet Explorer'))	$prePath2.= 'ie'.'.png';
+		elseif(strstr($browser,'WordPress客户端'))	$prePath2.= 'wordpress'.'.png';
+		elseif(strstr($browser,'Firefox'))	$prePath2.= 'firefox'.'.png';
+		else	$prePath2.= 'unknowBrowser'.'.png';		
+		//end
+		if($isPic==0)
+			return $os . "  |  " . $browser;
+		elseif($isPic==1)
+			//echo $prePath1.'  '.$prePath2;
+			return '<img src="'.$prePath1.'"/>'.'<font  color=#ff6600>'.$os. "  |  " .'</font>'. 
+				   '<img src="'.$prePath2.'"/>'.'<font  color=#ff6600>'.$browser.'</font>';
+		else
+			echo '出错了';
 
 }
 
@@ -280,8 +338,10 @@ function theme_random_posts(){
 }
 function themeConfig($form) {
     $options = Typecho_Widget::widget('Widget_Options');
+    $bgImg = new Typecho_Widget_Helper_Form_Element_Text('bgImg', null, $options->themeUrl('img/bg.jpg', 'GreenGrapes2'), _t('首页背景图片地址'), _t('在这里填入一个图片URL地址, 作为首页背景图片, 默认使用img下的header.png'));
     $form->addInput($bgImg);
 
+    $headIcon = new Typecho_Widget_Helper_Form_Element_Text('headerIcon', null, $options->themeUrl('img/head.jpg', 'GreenGrapes2'), _t('首页头像地址'), _t('在这里填入一个图片URL地址, 作为首页头像, 默认使用images下的head.png'));
     $form->addInput($headIcon);
 	
     $siteIcon = new Typecho_Widget_Helper_Form_Element_Text('sideName', null, null, _t('侧栏用户名'), _t('在这里填入一个左侧显示的用户名, 默认不显示'));
@@ -379,9 +439,10 @@ echo $commentClass;
 if('dontShow'==Helper::options()->showUA)
 	echo '';
 elseif('ShowUA'==Helper::options()->showUA)
-	echo '<font  color=#ff6600>'.getUA($comments->agent).'</font>';
+	echo '<font  color=#ff6600>'.getUA($comments->agent,0).'</font>';
 elseif('ShowUAPic'==Helper::options()->showUA)
-	echo '显示评论UA与图片';
+	//echo '<font  color=#ff6600>'.getUA($comments->agent,1).'</font>';
+	echo getUA($comments->agent,1);
 else
 	echo '出错了';
 
