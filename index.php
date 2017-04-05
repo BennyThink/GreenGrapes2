@@ -25,8 +25,13 @@ $this->need('header.php');
                     <hr>
                     <div class="row">
                         <div class="col-md-12 article-content">
-                            <?php echo thumb($this->cid); ?><?php $this->content();
-//$this->excerpt(180, '...'); ?>
+						<!--缩略图设置-->
+<?php //empty(Helper::options()->showBlogger)
+if(!empty($this->options->showThumb))
+	echo thumb($this->cid);?>
+
+							
+<?php $this->content();//$this->excerpt(180, '...'); ?>
                         </div>
                     </div>
                     <hr>

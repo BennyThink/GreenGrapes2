@@ -378,6 +378,11 @@ function themeConfig($form) {
         array(''), _t('侧边博主回复'));
     $form->addInput($showBlogger->multiMode());
 	
+	$showThumb = new Typecho_Widget_Helper_Form_Element_Checkbox('showThumb', array(
+        'ShowThumbPic' => _t('显示博文缩略图')),
+        array('ShowThumbPic'), _t('主页博文缩略图设置'));
+    $form->addInput($showThumb->multiMode());
+	
 	$showTypeFX = new Typecho_Widget_Helper_Form_Element_Checkbox('showTypeFX', array(
 	'showTypeColorful' => _t('显示彩虹特效'),
 	'showTypeShake' => _t('显示震动特效')),
@@ -415,7 +420,6 @@ echo $commentClass;
 ?>">
 
     <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
-<!--A little bit slow, 100ms per avatar,QQ->Gravatar->default, need gravatarCache-->
 
 <span itemprop="image"><?php $imgurl=avatar($comments->mail);echo $imgurl;?></span>
 <!--new avatar system-->
