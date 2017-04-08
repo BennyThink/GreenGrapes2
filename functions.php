@@ -367,8 +367,9 @@ function themeConfig($form) {
         'dontShow'=>'不显示UA',    
         'ShowUA' => '显示UA',
 		'ShowUAPic' => '显示UA与图片',
-    ), 'dontShow',
-    _t('UA选项'), _t('默认不显示UA'));
+		'ShowOwner' => '为博主显示UA与图片',
+    ), 'ShowOwner',
+    _t('UA选项'), _t('为博主显示UA与图片'));
     $form->addInput($showUA->multiMode());
 	
 	//up here
@@ -395,6 +396,8 @@ function themeConfig($form) {
  * 重写评论显示函数
  */
 function threadedComments($comments, $options){
+	//Helper::options()->logoutUrl();
+	Typecho_Widget::widget('Widget_User')->to($user);
     $singleCommentOptions = $options;
     $commentClass = '';
     if ($comments->authorId) {
@@ -447,9 +450,11 @@ elseif('ShowUA'==Helper::options()->showUA)
 elseif('ShowUAPic'==Helper::options()->showUA)
 	//echo '<font  color=#ff6600>'.getUA($comments->agent,1).'</font>';
 	echo getUA($comments->agent,1);
+elseif('ShowOwner'==Helper::options()->showUA && $user->hasLogin())
+	//echo getUA($comments->agent,1);
+	echo getUA($comments->agent,1);
 else
-	echo '出错了';
-
+	echo '';
 ?>
 
             <?php $comments->reply($singleCommentOptions->replyWord); ?>
