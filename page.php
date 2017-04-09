@@ -4,6 +4,18 @@
         <div id="article-list">
             <article class="post-article clearfix">
                 <div>
+<?php if(!empty(Helper::options()->breadCrumb)):?>
+<div class="breadcrumb">
+	<a href="<?php $this->options->siteUrl(); ?>">主页</a> &raquo;</li>
+	<?php if ($this->is('index')): ?><!-- 页面为首页时 -->
+		Latest Post
+	<?php elseif ($this->is('post')): ?><!-- 页面为文章单页时 -->
+		<?php $this->category(); ?> &raquo; <?php $this->title() ?>
+	<?php else: ?><!-- 页面为其他页时 -->
+		<?php $this->archiveTitle(' &raquo; ','',''); ?>
+	<?php endif; ?>
+</div>				
+<?php endif;?>
                     <h2 class="title"><a href="<?php $this->permalink() ?>"><?php $this->title() ?></a></h2>
                     <p class="post-big-info">
                         <span class="label label-green"><i class="fa fa-user"></i> <a href="<?php $this->author->permalink(); ?>" rel="author"><?php $this->author(); ?></a></span>

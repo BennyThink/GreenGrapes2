@@ -389,6 +389,12 @@ function themeConfig($form) {
 	'showTypeShake' => _t('显示震动特效')),
     array('showTypeColorful'), _t('打字特效设置'));
     $form->addInput($showTypeFX->multiMode());
+	
+	$breadCrumb = new Typecho_Widget_Helper_Form_Element_Checkbox('breadCrumb', array(
+        'ShowBreadCrumb' => _t('显示面包屑')),
+        array('ShowBreadCrumb'), _t('面包屑设置'));
+    $form->addInput($breadCrumb->multiMode());
+	
 
 }
 
