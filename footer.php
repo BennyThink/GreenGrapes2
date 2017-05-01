@@ -65,7 +65,7 @@ $("#web-icon").attr('href',"<?php $this->options->siteUrl(); ?>favicon.ico");
 };
 </script>
 <script>
-jQuery(window).load(function() {
+jQuery(window).ready(function() {
     jQuery("#loading").fadeOut(500);
 });
 </script>
@@ -74,4 +74,4 @@ jQuery(window).load(function() {
 
 </body>
 </html>
-<!--I'm always here ❤Benny❤ -->
+<!--I'm here as always. By Benny 2017-->
