@@ -75,6 +75,19 @@ function themeConfig($form) {
 	
 	$tongJi = new Typecho_Widget_Helper_Form_Element_Textarea('tongJi', NULL, NULL, _t('站点统计代码'), NULL);
     $form->addInput($tongJi);
+	
+	$switch = new Typecho_Widget_Helper_Form_Element_Checkbox('switch',
+        array(
+            'SmoothScroll' => _t('平滑滚动效果'),
+            'atargetblank' => _t('链接以新标签页形式打开'),
+            'Pangu' => _t('引用 Pangu.js 实现中英文间自动添加空格'),
+        ),
+
+        //Default choose
+        array('Pangu'), _t('杂项功能开关')
+    );
+    $form->addInput($switch->multiMode());
+	
 }
 
 

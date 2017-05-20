@@ -69,8 +69,29 @@ jQuery(window).ready(function() {
     jQuery("#loading").fadeOut(500);
 });
 </script>
+<?php if (!empty($this->options->switch) && in_array('SmoothScroll', $this->options->switch)): ?>
+<script src="<?php $this->options->themeUrl('js/smoothscroll.js'); ?>" async></script>
+<?php endif; ?>
+<?php if (!empty($this->options->switch) && in_array('atargetblank', $this->options->switch)): ?>
+<script>
+    //Add target="_blank" to a tags
+    $(document).bind('DOMNodeInserted', function(event) {
+        $('a[href^="http"]').each(
+            function() {
+                if (!$(this).attr('target')) {
+                    $(this).attr('target', '_blank')
+                }
+            }
+        );
+    });
+</script>
 
-
+<?php endif; ?>
+<!-- Pangu js -->
+<?php if (!empty($this->options->switch) && in_array('Pangu', $this->options->switch)): ?>
+<script src="<?php $this->options->themeUrl('js/pangu.min.js'); ?>"></script>
+<script> pangu.spacingPage(); </script>
+<?php endif; ?>
 
 </body>
 </html>
