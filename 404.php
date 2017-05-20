@@ -15,6 +15,7 @@
     <div class="wrapper">
         <div class="error-page">
             <h2 class="post-title">404 - <?php _e('页面没找到'); ?></h2>
+			<?php $this->options->tongJi(); ?>
 
 <?php
 if(empty(Helper::options()->notFoundGame))

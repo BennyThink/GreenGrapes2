@@ -25,6 +25,11 @@ and when you do, nothing will ever compare.
 	<link rel="stylesheet" href="<?php $this->options->themeUrl('css/loading.css'); ?>">
     <!-- 通过自有函数输出HTML头部信息 -->
     <?php $this->header(); ?>
+	<!--统计代码-->
+	<?php if (!$this->user->hasLogin()): ?>
+    <?php $this->options->tongJi();
+    echo "\n"; ?>
+	<?php endif ?>
 </head>
 <body>
 <div id="loading">

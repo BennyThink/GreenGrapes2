@@ -1,5 +1,83 @@
 <?php
 date_default_timezone_set('Asia/Shanghai');
+
+function themeConfig($form) {
+    $options = Typecho_Widget::widget('Widget_Options');
+    $bgImg = new Typecho_Widget_Helper_Form_Element_Text('bgImg', null, $options->themeUrl('img/bg.jpg', 'GreenGrapes2'), _t('首页背景图片地址'), _t('在这里填入一个图片URL地址, 作为首页背景图片, 默认使用img下的header.png'));
+    $form->addInput($bgImg);
+
+    $headIcon = new Typecho_Widget_Helper_Form_Element_Text('headerIcon', null, $options->themeUrl('img/head.jpg', 'GreenGrapes2'), _t('首页头像地址'), _t('在这里填入一个图片URL地址, 作为首页头像, 默认使用images下的head.png'));
+    $form->addInput($headIcon);
+	
+    $siteIcon = new Typecho_Widget_Helper_Form_Element_Text('sideName', null, null, _t('侧栏用户名'), _t('在这里填入一个左侧显示的用户名, 默认不显示'));
+    $form->addInput($siteIcon);
+	
+	$siteCache = new Typecho_Widget_Helper_Form_Element_Text('cacheTime', null, '1209600', _t('缓存时间'), _t('头像缓存时间，默认1209600即14天'));
+    $form->addInput($siteCache);
+	
+	$siteCreate = new Typecho_Widget_Helper_Form_Element_Text('createTime', null, '2016-12-23 13:59:00', _t('建站时间'), _t('填入形如2016-12-23 13:59:00，时间可以省略。如不填写，则默认为2016-12-23'));
+    $form->addInput($siteCreate);
+	
+	$notFound = new Typecho_Widget_Helper_Form_Element_Radio(
+        'notFoundGame', array ('1' => 'Chrome小恐龙', '2' => '小仓鼠'), '',
+        '404游戏', '用于在404的时候展示的一款HTML5游戏！如不选择，则为默认动画');
+    $form->addInput($notFound);
+	
+    $showBlock = new Typecho_Widget_Helper_Form_Element_Checkbox('ShowBlock', array(
+        'ShowPostBottomBar' => _t('文章页显示上一篇和下一篇')),
+        array('ShowPostBottomBar'), _t('显示设置'));
+    $form->addInput($showBlock->multiMode());
+	
+	$showUA = new Typecho_Widget_Helper_Form_Element_Select('showUA', array(
+        'dontShow'=>'不显示UA',    
+        'ShowUA' => '显示UA',
+		'ShowUAPic' => '显示UA与图片',
+		'ShowOwner' => '为博主显示UA与图片',
+    ), 'ShowOwner',
+    _t('UA选项'), _t('为博主显示UA与图片'));
+    $form->addInput($showUA->multiMode());
+	
+	//up here
+	
+	$showBlogger = new Typecho_Widget_Helper_Form_Element_Checkbox('showBlogger', array(
+        'ShowBloggerCheckBox' => _t('隐藏侧边栏博主回复')),
+        array(''), _t('侧边博主回复'));
+    $form->addInput($showBlogger->multiMode());
+	
+	$showThumb = new Typecho_Widget_Helper_Form_Element_Checkbox('showThumb', array(
+        'ShowThumbPic' => _t('显示博文缩略图')),
+        array(), _t('主页博文缩略图设置'));
+    $form->addInput($showThumb->multiMode());
+	
+	$showTypeFX = new Typecho_Widget_Helper_Form_Element_Checkbox('showTypeFX', array(
+	'showTypeColorful' => _t('显示彩虹特效'),
+	'showTypeShake' => _t('显示震动特效')),
+    array('showTypeColorful'), _t('打字特效设置'));
+    $form->addInput($showTypeFX->multiMode());
+	
+	$breadCrumb = new Typecho_Widget_Helper_Form_Element_Checkbox('breadCrumb', array(
+        'ShowBreadCrumb' => _t('显示面包屑')),
+        array('ShowBreadCrumb'), _t('面包屑设置'));
+    $form->addInput($breadCrumb->multiMode());
+	
+	$disableAutoNightTheme = new Typecho_Widget_Helper_Form_Element_Radio('disableAutoNightTheme', array(
+	'0'=>_t('开启'), '1'=>_t('关闭')), '0', _t('自动夜间模式（尚未开发）'),_t('默认为开启'));
+    $form->addInput($disableAutoNightTheme);
+
+	$markdownExtendBlock = new Typecho_Widget_Helper_Form_Element_Checkbox('markdownExtend',
+        array(
+            'enablePhonetic' => _t("添加 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>{{拼音 : pin yin}}</code> 语法解析注音"),
+            'enableDeleteLine' => _t("添加 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>~~要加删除线的内容~~</code> 语法解析删除线, 你可以在必要的时候使用 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>\~</code> 转义以输出字符 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>~</code>"),
+            'enableHighlightText' => _t("添加 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>==要高亮显示的内容==</code> 语法解析高亮 (荧光笔效果), 你可以在必要的时候使用 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>\=</code> 转义以输出字符 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>=</code>"),
+        ),
+        array('enablePhonetic','enableHighlightText'), _t('Markdown 语法扩展'));
+    $form->addInput($markdownExtendBlock->multiMode());
+	
+	$tongJi = new Typecho_Widget_Helper_Form_Element_Textarea('tongJi', NULL, NULL, _t('站点统计代码'), NULL);
+    $form->addInput($tongJi);
+}
+
+
 //预览图Helper::options()->themeUrl('img/bg/', 'GreenGrapes2')
 function thumb($cid) {
 if (empty($imgurl)) {
@@ -576,81 +654,6 @@ function _renderCards($content) {
 
 
 //custom render for markdownExtend
-
-
-function themeConfig($form) {
-    $options = Typecho_Widget::widget('Widget_Options');
-    $bgImg = new Typecho_Widget_Helper_Form_Element_Text('bgImg', null, $options->themeUrl('img/bg.jpg', 'GreenGrapes2'), _t('首页背景图片地址'), _t('在这里填入一个图片URL地址, 作为首页背景图片, 默认使用img下的header.png'));
-    $form->addInput($bgImg);
-
-    $headIcon = new Typecho_Widget_Helper_Form_Element_Text('headerIcon', null, $options->themeUrl('img/head.jpg', 'GreenGrapes2'), _t('首页头像地址'), _t('在这里填入一个图片URL地址, 作为首页头像, 默认使用images下的head.png'));
-    $form->addInput($headIcon);
-	
-    $siteIcon = new Typecho_Widget_Helper_Form_Element_Text('sideName', null, null, _t('侧栏用户名'), _t('在这里填入一个左侧显示的用户名, 默认不显示'));
-    $form->addInput($siteIcon);
-	
-	$siteCache = new Typecho_Widget_Helper_Form_Element_Text('cacheTime', null, '1209600', _t('缓存时间'), _t('头像缓存时间，默认1209600即14天'));
-    $form->addInput($siteCache);
-	
-	$siteCreate = new Typecho_Widget_Helper_Form_Element_Text('createTime', null, '2016-12-23 13:59:00', _t('建站时间'), _t('填入形如2016-12-23 13:59:00，时间可以省略。如不填写，则默认为2016-12-23'));
-    $form->addInput($siteCreate);
-	
-	$notFound = new Typecho_Widget_Helper_Form_Element_Radio(
-        'notFoundGame', array ('1' => 'Chrome小恐龙', '2' => '小仓鼠'), '',
-        '404游戏', '用于在404的时候展示的一款HTML5游戏！如不选择，则为默认动画');
-    $form->addInput($notFound);
-	
-    $showBlock = new Typecho_Widget_Helper_Form_Element_Checkbox('ShowBlock', array(
-        'ShowPostBottomBar' => _t('文章页显示上一篇和下一篇')),
-        array('ShowPostBottomBar'), _t('显示设置'));
-    $form->addInput($showBlock->multiMode());
-	
-	$showUA = new Typecho_Widget_Helper_Form_Element_Select('showUA', array(
-        'dontShow'=>'不显示UA',    
-        'ShowUA' => '显示UA',
-		'ShowUAPic' => '显示UA与图片',
-		'ShowOwner' => '为博主显示UA与图片',
-    ), 'ShowOwner',
-    _t('UA选项'), _t('为博主显示UA与图片'));
-    $form->addInput($showUA->multiMode());
-	
-	//up here
-	
-	$showBlogger = new Typecho_Widget_Helper_Form_Element_Checkbox('showBlogger', array(
-        'ShowBloggerCheckBox' => _t('隐藏侧边栏博主回复')),
-        array(''), _t('侧边博主回复'));
-    $form->addInput($showBlogger->multiMode());
-	
-	$showThumb = new Typecho_Widget_Helper_Form_Element_Checkbox('showThumb', array(
-        'ShowThumbPic' => _t('显示博文缩略图')),
-        array(), _t('主页博文缩略图设置'));
-    $form->addInput($showThumb->multiMode());
-	
-	$showTypeFX = new Typecho_Widget_Helper_Form_Element_Checkbox('showTypeFX', array(
-	'showTypeColorful' => _t('显示彩虹特效'),
-	'showTypeShake' => _t('显示震动特效')),
-    array('showTypeColorful'), _t('打字特效设置'));
-    $form->addInput($showTypeFX->multiMode());
-	
-	$breadCrumb = new Typecho_Widget_Helper_Form_Element_Checkbox('breadCrumb', array(
-        'ShowBreadCrumb' => _t('显示面包屑')),
-        array('ShowBreadCrumb'), _t('面包屑设置'));
-    $form->addInput($breadCrumb->multiMode());
-	
-	$disableAutoNightTheme = new Typecho_Widget_Helper_Form_Element_Radio('disableAutoNightTheme', array(
-	'0'=>_t('开启'), '1'=>_t('关闭')), '0', _t('自动夜间模式（尚未开发）'),_t('默认为开启'));
-    $form->addInput($disableAutoNightTheme);
-
-	$markdownExtendBlock = new Typecho_Widget_Helper_Form_Element_Checkbox('markdownExtend',
-        array(
-            'enablePhonetic' => _t("添加 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>{{拼音 : pin yin}}</code> 语法解析注音"),
-            'enableDeleteLine' => _t("添加 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>~~要加删除线的内容~~</code> 语法解析删除线, 你可以在必要的时候使用 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>\~</code> 转义以输出字符 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>~</code>"),
-            'enableHighlightText' => _t("添加 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>==要高亮显示的内容==</code> 语法解析高亮 (荧光笔效果), 你可以在必要的时候使用 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>\=</code> 转义以输出字符 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>=</code>"),
-        ),
-        array('enablePhonetic','enableHighlightText'), _t('Markdown 语法扩展'));
-    $form->addInput($markdownExtendBlock->multiMode());
-	
-}
 
 /**
  * 重写评论显示函数
