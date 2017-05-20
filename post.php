@@ -29,7 +29,8 @@
                     </p>
                 </div>
                 <div class="article-content clearfix">
-                    <?php $this->content(); ?>
+                    <?php //$this->content(); 
+					echo render($this->content);?>
                 </div>
                 <?php if($this->allow('ping')): ?>
                     <div class="article-copyright">

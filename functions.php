@@ -336,6 +336,248 @@ function theme_random_posts(){
     }
     echo $defaults['after'];
 }
+
+//custom render
+
+function render($content) {
+    $replaceStartIndex = array();
+    $replaceEndIndex = array();
+    $currentReplaceId = 0;
+    $replaceIndex = 0;
+    $searchIndex = 0;
+    $searchCloseTag = false;
+    $contentLength = strlen($content);
+    while (true) {
+        if ($searchCloseTag) {
+            $tagName = substr($content, $searchIndex, 4);
+            if ($tagName == "<cod") {
+                $searchIndex = strpos($content, '</code>', $searchIndex);
+                if (!$searchIndex) {
+                    break;
+                }
+                $searchIndex += 7;
+            } elseif ($tagName == "<pre") {
+                $searchIndex = strpos($content, '</pre>', $searchIndex);
+                if (!$searchIndex) {
+                    break;
+                }
+                $searchIndex += 6;
+            } elseif ($tagName == "<kbd") {
+                $searchIndex = strpos($content, '</kbd>', $searchIndex);
+                if (!$searchIndex) {
+                    break;
+                }
+                $searchIndex += 6;
+            } elseif ($tagName == "<scr") {
+                $searchIndex = strpos($content, '</script>', $searchIndex);
+                if (!$searchIndex) {
+                    break;
+                }
+                $searchIndex += 9;
+            } elseif ($tagName == "<sty") {
+                $searchIndex = strpos($content, '</style>', $searchIndex);
+                if (!$searchIndex) {
+                    break;
+                }
+                $searchIndex += 8;
+            } else {
+                break;
+            }
+
+            if (!$searchIndex) {
+                break;
+            }
+            $replaceIndex = $searchIndex;
+            $searchCloseTag = false;
+            continue;
+        } else {
+            $searchCodeIndex = strpos($content, '<code', $searchIndex);
+            $searchPreIndex = strpos($content, '<pre', $searchIndex);
+            $searchKbdIndex = strpos($content, '<kbd', $searchIndex);
+            $searchScriptIndex = strpos($content, '<script', $searchIndex);
+            $searchStyleIndex = strpos($content, '<style', $searchIndex);
+            if (!$searchCodeIndex) {
+                $searchCodeIndex = $contentLength;
+            }
+            if (!$searchPreIndex) {
+                $searchPreIndex = $contentLength;
+            }
+            if (!$searchKbdIndex) {
+                $searchKbdIndex = $contentLength;
+            }
+            if (!$searchScriptIndex) {
+                $searchScriptIndex = $contentLength;
+            }
+            if (!$searchStyleIndex) {
+                $searchStyleIndex = $contentLength;
+            }
+            $searchIndex = min($searchCodeIndex, $searchPreIndex, $searchKbdIndex, $searchScriptIndex, $searchStyleIndex);
+            $searchCloseTag = true;
+        }
+        $replaceStartIndex[$currentReplaceId] = $replaceIndex;
+        $replaceEndIndex[$currentReplaceId] = $searchIndex;
+        $currentReplaceId++;
+        $replaceIndex = $searchIndex;
+    }
+
+    $output = "";
+    $output .= substr($content, 0, $replaceStartIndex[0]);
+    for ($i = 0; $i < count($replaceStartIndex); $i++) {
+        $part = substr($content, $replaceStartIndex[$i], $replaceEndIndex[$i] - $replaceStartIndex[$i]);
+        $renderedPart = _renderPart($part);
+        $output.= $renderedPart;
+        if ($i < count($replaceStartIndex) - 1) {
+            $output.= substr($content, $replaceEndIndex[$i], $replaceStartIndex[$i + 1] - $replaceEndIndex[$i]);
+        }
+    }
+    $output .= substr($content, $replaceEndIndex[count($replaceStartIndex) - 1]);
+    return $output;
+}
+
+function _renderPart($content) {
+    $options = Typecho_Widget::widget('Widget_Options');
+    if ((!empty($options->markdownExtend) && in_array('enablePhonetic', $options->markdownExtend))) {
+        $content = _renderPhonetic($content);
+    }
+    if ((!empty($options->markdownExtend) && in_array('enableDeleteLine', $options->markdownExtend))) {
+        $content = _renderDeleteTag($content);
+    }
+    if ((!empty($options->markdownExtend) && in_array('enableHighlightText', $options->markdownExtend))) {
+        $content = _renderHighlight($content);
+    }
+    $content = _escapeCharacter($content);
+    $content = _renderCards($content);
+    return $content;
+}
+
+function _renderPhonetic($content) {
+    $content = preg_replace('/\{\{\s*([^\:]+?)\s*\:\s*([^}]+?)\s*\}\}/is',
+        "<ruby>$1<rp> (</rp><rt>$2</rt><rp>) </rp></ruby>", $content);
+    return $content;
+}
+
+function _renderDeleteTag($content) {
+    $content = preg_replace('/\~\~(.+?)\~\~/i', "<del>$1</del>", $content);
+    return $content;
+}
+
+function _renderHighlight($content) {
+    $content = preg_replace('/\=\=(.+?)\=\=/i', "<span class=\"highlight-text\">$1</span>", $content);
+    return $content;
+}
+
+function _escapeCharacter($content) {
+    $content = str_replace('\~', '~', $content);
+    $content = str_replace('\=', '=', $content);
+    $content = str_replace('\$', '<span>$</span>', $content);
+    return $content;
+}
+
+function _renderCards($content) {
+    $currentGroupId = 0;
+    $lastFindIndex = 0;
+    $lastFindLength = 0;
+    $linkGroup = array();
+    $linkGroupStartIndex = array();
+    $linkGroupEndIndex = array();
+    $first = true;
+
+    $totalCount = preg_match_all('/(<p>)*<a\s+href=\"([^\"]+?)\"[^<>]*>([^<>]+?)<\/a>\+\(<a\s+href=\"([^\"]+?)\">([^<>]+?)<\/a>\)(<\/p>)*(<\s*br\s*\/\s*>)*(<\s*\/\s*br\s*>)*/ixs', $content, $matches);
+
+    if ($totalCount <= 0) {
+        $totalCount = preg_match_all('/(<p>)*<a\s+href=\"([^\"]+?)\"[^<>]*>([^<>]+?)<\/a>\+\(<a\s+href=\"([^\"]+?)\)\">([^<>]+?)\)<\/a>(<\/p>)*(<\s*br\s*\/\s*>)*(<\s*\/\s*br\s*>)*/ixs', $content, $matches);
+    }
+
+    if ($totalCount <= 0) {
+        $totalCount = preg_match_all('/(<p>)*<a\s+href=\"([^\"]+?)\"[^<>]*>([^<>]+?)<\/a>\+\(([^<>]+?)\)(<\/p>)*(<\s*br\s*\/\s*>)*(<\s*\/\s*br\s*>)*/ixs', $content, $matches);
+    }
+
+    for ($i = 0; $i < $totalCount; $i++) {
+        if ($first) {
+            $first = false;
+            $useNewGroup = true;
+            $currentFindIndex = strpos($content, $matches[0][$i]);
+            $currentFindLength = strlen($matches[0][$i]);
+        } else {
+            $lastEndIndex = $lastFindIndex + $lastFindLength;
+            $currentFindIndex = strpos($content, $matches[0][$i], $lastEndIndex - 1);
+            $currentFindLength = strlen($matches[0][$i]);
+            if ($currentFindIndex - $lastEndIndex >= 0) {
+                $splitContent = substr($content, $lastEndIndex, $currentFindIndex - $lastEndIndex);
+                if (strlen($splitContent) > 0 && preg_match('/\w+/xs', $splitContent)) {
+                    $trimSplitContent = preg_replace('/<\s*br\s*\/\s*>/ixs', '', $splitContent);
+                    $trimSplitContent = preg_replace('/<\s*\/\s*br\s*>/ixs', '', $trimSplitContent);
+                    $trimSplitContent = preg_replace('/<\s*br\s*>/ixs', '', $trimSplitContent);
+                    if (strlen($trimSplitContent) > 0 && preg_match('/\w+/xs', $trimSplitContent)) {
+                        $useNewGroup = true;
+                    } else {
+                        $useNewGroup = false;
+                    }
+                } else {
+                    $useNewGroup = false;
+                }
+            } else {
+                $useNewGroup = false;
+            }
+        }
+
+        if ($useNewGroup) {
+            $currentGroupId ++;
+        }
+        if (!isset($linkGroup[$currentGroupId])) {
+            $linkGroup[$currentGroupId] = array();
+        }
+        if ($useNewGroup) {
+            $linkGroupStartIndex[$currentGroupId] = $currentFindIndex;
+        }
+        $linkGroupEndIndex[$currentGroupId] = $currentFindIndex + $currentFindLength;
+        $match = array();
+        $match[2] = $matches[2][$i];
+        $match[3] = $matches[3][$i];
+        $match[4] = $matches[4][$i];
+        $linkGroup[$currentGroupId][] = $match;
+        $lastFindIndex = $currentFindIndex;
+        $lastFindLength = $currentFindLength;
+    }
+
+    $output = "";
+    for ($i = 1; $i <= $currentGroupId; $i++) {
+        $start = $linkGroupStartIndex[$i];
+
+        if ($i > 1){
+            $lastId = $i - 1;
+            $lastEnd = $linkGroupEndIndex[$lastId];
+            $output .= substr($content, $lastEnd, $start - $lastEnd);
+        } else {
+            $output .= substr($content, 0, $start);
+        }
+        $matches = $linkGroup[$i];
+        $linkGroupHtml = "<div class=\"link-box\">\n";
+
+        foreach ($matches as $match) {
+            $linkGroupHtml .= "<a href=\"{$match[2]}\" target=\"_blank\">";
+            $linkGroupHtml .= "<div class=\"thumb\">";
+            $linkGroupHtml .= "<img width=\"200\" height=\"200\" src=\"{$match[4]}\" alt=\"{$match[3]}\"></div>";
+            $linkGroupHtml .= "<div class=\"content\">";
+            $linkGroupHtml .= "<div class=\"title\"><h3>{$match[3]}</h3></div>";
+            $linkGroupHtml .= "</div></a>\n";
+        }
+        $linkGroupHtml .= '</div>';
+        $output .= $linkGroupHtml;
+    }
+
+    if ($currentGroupId < 1) {
+        return $content;
+    }
+
+    $output .= substr($content, $linkGroupEndIndex[$currentGroupId]);
+    return $output;
+}
+
+
+//custom render for markdownExtend
+
+
 function themeConfig($form) {
     $options = Typecho_Widget::widget('Widget_Options');
     $bgImg = new Typecho_Widget_Helper_Form_Element_Text('bgImg', null, $options->themeUrl('img/bg.jpg', 'GreenGrapes2'), _t('首页背景图片地址'), _t('在这里填入一个图片URL地址, 作为首页背景图片, 默认使用img下的header.png'));
@@ -381,7 +623,7 @@ function themeConfig($form) {
 	
 	$showThumb = new Typecho_Widget_Helper_Form_Element_Checkbox('showThumb', array(
         'ShowThumbPic' => _t('显示博文缩略图')),
-        array('ShowThumbPic'), _t('主页博文缩略图设置'));
+        array(), _t('主页博文缩略图设置'));
     $form->addInput($showThumb->multiMode());
 	
 	$showTypeFX = new Typecho_Widget_Helper_Form_Element_Checkbox('showTypeFX', array(
@@ -395,7 +637,19 @@ function themeConfig($form) {
         array('ShowBreadCrumb'), _t('面包屑设置'));
     $form->addInput($breadCrumb->multiMode());
 	
+	$disableAutoNightTheme = new Typecho_Widget_Helper_Form_Element_Radio('disableAutoNightTheme', array(
+	'0'=>_t('开启'), '1'=>_t('关闭')), '0', _t('自动夜间模式（尚未开发）'),_t('默认为开启'));
+    $form->addInput($disableAutoNightTheme);
 
+	$markdownExtendBlock = new Typecho_Widget_Helper_Form_Element_Checkbox('markdownExtend',
+        array(
+            'enablePhonetic' => _t("添加 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>{{拼音 : pin yin}}</code> 语法解析注音"),
+            'enableDeleteLine' => _t("添加 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>~~要加删除线的内容~~</code> 语法解析删除线, 你可以在必要的时候使用 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>\~</code> 转义以输出字符 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>~</code>"),
+            'enableHighlightText' => _t("添加 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>==要高亮显示的内容==</code> 语法解析高亮 (荧光笔效果), 你可以在必要的时候使用 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>\=</code> 转义以输出字符 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>=</code>"),
+        ),
+        array('enablePhonetic','enableHighlightText'), _t('Markdown 语法扩展'));
+    $form->addInput($markdownExtendBlock->multiMode());
+	
 }
 
 /**

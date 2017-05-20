@@ -127,6 +127,13 @@ blockquote{overflow:hidden;border:0;padding:8px 12px;margin:5px 0 15px;backgroun
 .article-content pre {
 	max-height: 400px;
 }
+
+.article-content .highlight-text {
+    background-color: #ff0 !important;
+    color: #333 !important;
+}
+
+
 .article-copyright {
 	margin: 15px 0;
 }
