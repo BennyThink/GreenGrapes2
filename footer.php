@@ -68,6 +68,7 @@ $("#web-icon").attr('href',"<?php $this->options->siteUrl(); ?>favicon.ico");
 jQuery(window).ready(function() {
     jQuery("#loading").fadeOut(500);
 });
+console.info('%c The tiniest possibility of seeing you again excites me.', "background: white; color: #16a085; padding-left:10px;");
 </script>
 <?php if (!empty($this->options->switch) && in_array('SmoothScroll', $this->options->switch)): ?>
 <script src="<?php $this->options->themeUrl('js/smoothscroll.js'); ?>" async></script>
