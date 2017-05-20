@@ -215,8 +215,8 @@ function getUA($ua,$isPic){
 		elseif (preg_match('#Edge( |\/)([a-zA-Z0-9.]+)#i', $ua, $matches)) 
             $browser = 'Edge ' . $matches[2];
 		elseif (preg_match('#MicroMessenger/([a-zA-Z0-9.]+)#i', $ua, $matches)) 
-			$browser = '微信 ' . $matches[1];
-		elseif (preg_match('#Mobile MQQBrowser#i', $ua, $matches)) 
+			$browser = '微信 ' . $matches[1]; 
+		elseif (preg_match('#QQ/([a-zA-Z0-9.]+)#i', $ua, $matches)) 
             $browser = '手机QQ ' . $matches[1];	
 		elseif (preg_match('#Chrome/([a-zA-Z0-9.]+)#i', $ua, $matches)) 
             $browser = 'Chrome ' . $matches[1];
