@@ -4,11 +4,9 @@
         <p class="ui <?php $this->options->singleColor() ?> ribbon label comments"><?php $this->commentsNum(_t('还不快抢沙发'), _t('只有地板了'), _t('<span class="comment-highlight">%d</span> 条评论')); ?></p>
         
 		<?php $comments->listComments(); ?>
-<!--评论在这里输出完成-->
-        
+<!--评论输出-->   
 <?php $comments->pageNav('&laquo; 前一页', '后一页 &raquo;'); ?>
     </div>
-
 <?php if($this->allow('comment')): ?>
 
     <div class="comments-block new-comment" id="<?php $this->respondId(); ?>">
@@ -46,7 +44,6 @@
     </div>
     </div>
 <?php else: ?>
-
     <div class="comments-block">
         <p class="ui ribbon label <?php $this->options->singleColor() ?>"><?php _e('楼主残忍的关闭了评论'); ?></p>
     </div>

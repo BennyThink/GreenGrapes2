@@ -84,8 +84,7 @@
         </div>
     </aside>
 -->
-<!--网站统计-->
-<!--here, admin-->
+
 <div id="fixed"></div>
 <aside class="fixsidebar">
         <div class="panel panel-green hidden-xs">
@@ -99,9 +98,4 @@
 <?php endif; ?>
 <li><a href="<?php $this->options->feedUrl(); ?>">RSS 订阅</a></li>
 </div></div>
-</aside>
-
-<!--here-->
-
-
-</aside>
+</aside></aside>

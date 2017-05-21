@@ -6,7 +6,7 @@
 
  * @package GreenGrapes2
  * @author Benny
- * @version 2.2.1
+ * @version 2.2.2
  * @link https://github.com/BennyThink/GreenGrapes
  */
 $this->need('header.php');
@@ -25,7 +25,6 @@ $this->need('header.php');
                     <hr>
                     <div class="row">
                         <div class="col-md-12 article-content">
-						<!--缩略图设置-->
 <?php 
 if(!empty($this->options->switch) && in_array('ShowThumbPic', $this->options->switch))
 	echo thumb($this->cid);
