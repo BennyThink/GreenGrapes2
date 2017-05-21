@@ -64,27 +64,9 @@ function themeConfig($form) {
 			'ShowBreadCrumb' => _t('显示面包屑'),
 			'ShowPostBottomBar' => _t('文章页显示上一篇和下一篇'),
         ),
-
-        //Default choose
         array('Pangu','ShowBreadCrumb','ShowPostBottomBar'), _t('杂项功能开关')
     );
     $form->addInput($switch->multiMode());
-	/*
-	$footersns = new Typecho_Widget_Helper_Form_Element_Checkbox('footersns',
-        array(
-            'ShowTwitter' => _t('显示 Twitter 图标 &emsp;'),
-            'ShowFacebook' => _t('显示 Facebook 图标 &emsp;'),
-            'ShowGooglePlus' => _t('显示 Google+ 图标 &emsp;'),
-            'ShowWeibo' => _t('显示新浪微博图标 &emsp;'),
-            'ShowInstagram' => _t('显示 Instagram 图标 &emsp;'),
-            'ShowGithub' => _t('显示 Github 图标 &emsp;'),
-            'ShowTelegram' => _t('显示 Telegram 图标 &emsp;'),
-            'ShowZhihu' => _t('显示 Zhihu 图标 &emsp;'),
-        ),
-
-        array('ShowTwitter','ShowGithub','ShowGooglePlus'), _t('页脚 SNS 图标按钮显示设置'), _t('开启后, 按钮显示于博客页脚位置')
-    );
-    $form->addInput($footersns);*/
 	
 	$TwitterURL = new Typecho_Widget_Helper_Form_Element_Text('TwitterURL', null, null, _t('Twitter 地址 SNS显示暂时不建议开启'), null);
     $form->addInput($TwitterURL);
@@ -110,10 +92,74 @@ function themeConfig($form) {
     $ZhihuURL = new Typecho_Widget_Helper_Form_Element_Text('ZhihuURL', null, null, _t('Zhihu 地址'), null);
     $form->addInput($ZhihuURL);
     
-
+	
+	$themeUpdate = new Typecho_Widget_Helper_Form_Element_Checkbox('themeUpdate', array( 
+        'themeAutoUpdate' => _t('开启自动更新检查')), 
+        array(''), _t('主题自动更新检查(beta)'),_t('当您进入设置的时候，主题将会自动查询新版本')); 
+    $form->addInput($themeUpdate->multiMode()); 
 	
 }
 
+
+if(!empty(Helper::options()->themeUpdate) && in_array('themeAutoUpdate', Helper::options()->themeUpdate))
+	autoUpdate();
+
+function autoUpdate(){
+	define('UPDATE_SERVER','https://github.com/BennyThink/GreenGrapes2/archive/master.zip');
+	define('UPDATE_VERSION','https://raw.githubusercontent.com/BennyThink/GreenGrapes2/master/version.txt');
+	define('UPDATE_CACHE',dirname(__FILE__).'/update_cache/');
+	define('UPDATE_FILE',UPDATE_CACHE.'master.zip');
+	define('THEME_ROOT',dirname(dirname(__FILE__)).'/');
+	
+	$localVersion = fopen(Helper::options()->themeUrl('version.txt', 'GreenGrapes2'), "r");
+	$localVersionNum=fgets($localVersion);
+	fclose($localVersion);	
+	$remoteVersion = fopen(UPDATE_VERSION, "r");
+	$remoteVersionNum=fgets($remoteVersion);
+	fclose($remoteVersion);
+	
+	if($localVersionNum<$remoteVersionNum /*&& !file_exists(UPDATE_FILE)*/){
+		echo "<code style='background-color: rgba(22, 160, 133, 0.071);color: #666;'>当前版本$localVersionNum".
+		"，最新版本$remoteVersionNum<br>".
+		"请<a href='https://github.com/BennyThink/GreenGrapes2'>戳我</a>获得最新更新</code>";
+		/*
+		mkdir(UPDATE_CACHE,0777);
+		$handle=fopen(UPDATE_CACHE.'master.zip','wb');
+		fwrite($handle,file_get_contents(UPDATE_SERVER));
+		fclose($handle);
+		
+		$zip = new ZipArchive; 
+		$res = $zip->open(UPDATE_CACHE.'master.zip'); 
+		if ($res === TRUE)  
+			$zip->extractTo(UPDATE_CACHE); 
+		$zip->close(); 
+		//移动文件....额-f
+		rename(UPDATE_CACHE.'GreenGrapes2-master',THEME_ROOT.'GreenGrapes2');
+		//删除cache目录中的全部内容
+		del_dir(UPDATE_CACHE);*/
+		
+	}
+	
+}
+
+function del_dir($dir){
+    if(is_dir($dir)){
+        foreach(scandir($dir) as $row){
+            if($row == '.' || $row == '..'){
+                continue;
+            }
+            $path = $dir .'/'. $row;
+            if(filetype($path) == 'dir'){
+                del_dir($path);
+            }else{
+                unlink($path);
+            }
+        }
+        rmdir($dir);
+    }else{
+        return false;
+    }
+}
 
 //预览图Helper::options()->themeUrl('img/bg/', 'GreenGrapes2')
 function thumb($cid) {
