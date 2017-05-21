@@ -4,7 +4,7 @@
         <div id="article-list">
             <article class="post-article clearfix">
                 <div>
-<?php if(!empty(Helper::options()->breadCrumb)):?>
+<?php if(!empty($this->options->switch) && in_array('ShowBreadCrumb', $this->options->switch)):?>
 <div class="breadcrumb">
 	<a href="<?php $this->options->siteUrl(); ?>">主页</a> &raquo;</li>
 	<?php if ($this->is('index')): ?><!-- 页面为首页时 -->

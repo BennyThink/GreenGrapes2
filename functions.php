@@ -23,11 +23,6 @@ function themeConfig($form) {
         '404游戏', '用于在404的时候展示的一款HTML5游戏！如不选择，则为默认动画');
     $form->addInput($notFound);
 	
-    $showBlock = new Typecho_Widget_Helper_Form_Element_Checkbox('ShowBlock', array(
-        'ShowPostBottomBar' => _t('文章页显示上一篇和下一篇')),
-        array('ShowPostBottomBar'), _t('显示设置'));
-    $form->addInput($showBlock->multiMode());
-	
 	$showUA = new Typecho_Widget_Helper_Form_Element_Select('showUA', array(
         'dontShow'=>'不显示UA',    
         'ShowUA' => '显示UA',
@@ -37,29 +32,12 @@ function themeConfig($form) {
     _t('UA选项'), _t('为博主显示UA与图片'));
     $form->addInput($showUA->multiMode());
 	
-	//up here
-	
-	$showBlogger = new Typecho_Widget_Helper_Form_Element_Checkbox('showBlogger', array(
-        'ShowBloggerCheckBox' => _t('隐藏侧边栏博主回复')),
-        array(''), _t('侧边博主回复'));
-    $form->addInput($showBlogger->multiMode());
-	
-	$showThumb = new Typecho_Widget_Helper_Form_Element_Checkbox('showThumb', array(
-        'ShowThumbPic' => _t('显示博文缩略图')),
-        array(), _t('主页博文缩略图设置'));
-    $form->addInput($showThumb->multiMode());
-	
 	$showTypeFX = new Typecho_Widget_Helper_Form_Element_Checkbox('showTypeFX', array(
 	'showTypeColorful' => _t('显示彩虹特效'),
 	'showTypeShake' => _t('显示震动特效')),
     array('showTypeColorful'), _t('打字特效设置'));
     $form->addInput($showTypeFX->multiMode());
-	
-	$breadCrumb = new Typecho_Widget_Helper_Form_Element_Checkbox('breadCrumb', array(
-        'ShowBreadCrumb' => _t('显示面包屑')),
-        array('ShowBreadCrumb'), _t('面包屑设置'));
-    $form->addInput($breadCrumb->multiMode());
-	
+		
 	$disableAutoNightTheme = new Typecho_Widget_Helper_Form_Element_Radio('disableAutoNightTheme', array(
 	'0'=>_t('开启'), '1'=>_t('关闭')), '0', _t('自动夜间模式（尚未开发）'),_t('默认为开启'));
     $form->addInput($disableAutoNightTheme);
@@ -81,10 +59,14 @@ function themeConfig($form) {
             'SmoothScroll' => _t('平滑滚动效果'),
             'atargetblank' => _t('链接以新标签页形式打开'),
             'Pangu' => _t('引用 Pangu.js 实现中英文间自动添加空格'),
+			'ShowBloggerCheckBox' => _t('隐藏侧边栏博主回复'),
+			'ShowThumbPic' => _t('显示博文缩略图'),
+			'ShowBreadCrumb' => _t('显示面包屑'),
+			'ShowPostBottomBar' => _t('文章页显示上一篇和下一篇'),
         ),
 
         //Default choose
-        array('Pangu'), _t('杂项功能开关')
+        array('Pangu','ShowBreadCrumb','ShowPostBottomBar'), _t('杂项功能开关')
     );
     $form->addInput($switch->multiMode());
 	/*

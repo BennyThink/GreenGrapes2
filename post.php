@@ -4,7 +4,7 @@
         <div id="article-list">
             <article class="post-article clearfix">
                 <div>
-<?php if(!empty(Helper::options()->breadCrumb)):?>
+<?php if(!empty($this->options->switch) && in_array('ShowBreadCrumb', $this->options->switch)):?>
 <div class="breadcrumb">
 	<a href="<?php $this->options->siteUrl(); ?>">主页</a> &raquo;</li>
 	<?php if ($this->is('index')): ?><!-- 页面为首页时 -->
@@ -82,7 +82,7 @@ new needShareButton(document.getElementById('i-share'));
 </body>
 <!--here-->
 
-    <?php if (!empty($this->options->ShowBlock) && in_array('ShowPostBottomBar', $this->options->ShowBlock)): ?>
+    <?php if (!empty($this->options->switch) && in_array('ShowPostBottomBar', $this->options->switch)): ?>
         <div class="block">
             <ul class="post-near">
                 <li>上一篇: <?php $this->thePrev('%s','没有了'); ?></li>

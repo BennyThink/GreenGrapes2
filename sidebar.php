@@ -21,7 +21,7 @@
                 </div>
                 <div class="tab-pane fade" id="sidebar-comment">
                     <?php 
-					if (!empty(Helper::options()->showBlogger))
+					if (!empty($this->options->switch) && in_array('ShowBloggerCheckBox', $this->options->switch))
 						$this->widget('Widget_Comments_Recent','ignoreAuthor=true')->to($comments);
 					else
 						$this->widget('Widget_Comments_Recent')->to($comments); ?>
