@@ -87,6 +87,48 @@ function themeConfig($form) {
         array('Pangu'), _t('杂项功能开关')
     );
     $form->addInput($switch->multiMode());
+	/*
+	$footersns = new Typecho_Widget_Helper_Form_Element_Checkbox('footersns',
+        array(
+            'ShowTwitter' => _t('显示 Twitter 图标 &emsp;'),
+            'ShowFacebook' => _t('显示 Facebook 图标 &emsp;'),
+            'ShowGooglePlus' => _t('显示 Google+ 图标 &emsp;'),
+            'ShowWeibo' => _t('显示新浪微博图标 &emsp;'),
+            'ShowInstagram' => _t('显示 Instagram 图标 &emsp;'),
+            'ShowGithub' => _t('显示 Github 图标 &emsp;'),
+            'ShowTelegram' => _t('显示 Telegram 图标 &emsp;'),
+            'ShowZhihu' => _t('显示 Zhihu 图标 &emsp;'),
+        ),
+
+        array('ShowTwitter','ShowGithub','ShowGooglePlus'), _t('页脚 SNS 图标按钮显示设置'), _t('开启后, 按钮显示于博客页脚位置')
+    );
+    $form->addInput($footersns);*/
+	
+	$TwitterURL = new Typecho_Widget_Helper_Form_Element_Text('TwitterURL', null, null, _t('Twitter 地址 SNS显示暂时不建议开启'), null);
+    $form->addInput($TwitterURL);
+
+    $FacebookURL = new Typecho_Widget_Helper_Form_Element_Text('FacebookURL', null, null, _t('Facebook 地址'), null);
+    $form->addInput($FacebookURL);
+
+    $GooglePlusURL = new Typecho_Widget_Helper_Form_Element_Text('GooglePlusURL', null,null, _t('Google+ 地址'), null);
+    $form->addInput($GooglePlusURL);
+
+    $WeiboURL = new Typecho_Widget_Helper_Form_Element_Text('WeiboURL', null, null, _t('新浪微博地址'), null);
+    $form->addInput($WeiboURL);
+    
+    $InstagramURL = new Typecho_Widget_Helper_Form_Element_Text('InstagramURL', null, null, _t('Instagram 地址'), null);
+    $form->addInput($InstagramURL);
+    
+    $GithubURL = new Typecho_Widget_Helper_Form_Element_Text('GithubURL', null, null, _t('Github 地址'), null);
+    $form->addInput($GithubURL);
+    
+    $TelegramURL = new Typecho_Widget_Helper_Form_Element_Text('TelegramURL', null, null, _t('Telegram 地址'), null);
+    $form->addInput($TelegramURL);
+    
+    $ZhihuURL = new Typecho_Widget_Helper_Form_Element_Text('ZhihuURL', null, null, _t('Zhihu 地址'), null);
+    $form->addInput($ZhihuURL);
+    
+
 	
 }
 

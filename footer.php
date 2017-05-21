@@ -6,7 +6,7 @@
 <footer id="m-footer">
     <div class="Copyright">
         <p>&copy; <?php echo date('Y'); ?> <a href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a>.
-        <?php _e('All Rights Reserved. 版权所有.'); ?>
+        <?php _e('All Rights Reserved.'); ?>
         </p>
 
 <!--here-->
@@ -93,6 +93,42 @@ console.info('%c The tiniest possibility of seeing you again excites me.', "back
 <script src="<?php $this->options->themeUrl('js/pangu.min.js'); ?>"></script>
 <script> pangu.spacingPage(); </script>
 <?php endif; ?>
+
+<!--SNS-->
+<?php if (!empty($this->options->TwitterURL)) : ?>
+<a class="ui ribbon label" href="<?php $this->options->TwitterURL() ?>" target="view_window">Twitter</a>
+<?php endif;?>
+         
+<?php if (!empty($this->options->FacebookURL)) : ?>
+<a class="ui ribbon label" href="<?php $this->options->FacebookURL() ?>" target="view_window">Facebook</a>
+<?php endif;?>
+
+<?php if (!empty($this->options->GooglePlusURL)) : ?>
+<a class="ui ribbon label" href="<?php $this->options->GooglePlusURL() ?>" target="view_window">GooglePlus</a>
+
+<?php endif;?>
+
+<?php if (!empty($this->options->WeiboURL)) : ?>
+<a class="ui ribbon label" href="<?php $this->options->WeiboURL() ?>" target="view_window">Weibo</a>
+<?php endif;?>
+                                                       
+<?php if (!empty($this->options->InstagramURL)) : ?>
+<a class="ui ribbon label" href="<?php $this->options->InstagramURL() ?>" target="view_window">Instagram</a>
+<?php endif;?>
+
+<?php if (!empty($this->options->GithubURL)) : ?>
+<a class="ui ribbon label" href="<?php $this->options->GithubURL() ?>" target="view_window">Github</a>
+<?php endif;?>
+
+<?php if (!empty($this->options->TelegramURL)) : ?>
+<a class="ui ribbon label" href="<?php $this->options->TelegramURL() ?>" target="view_window">Telegram</a>
+<?php endif;?>
+                
+<?php if (!empty($this->options->ZhihuURL)) : ?>
+<a class="ui ribbon label" href="<?php $this->options->ZhihuURL() ?>" target="view_window">Zhihu</a>
+<?php endif;?>
+                
+<!--SNS-->
 
 </body>
 </html>
