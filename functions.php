@@ -70,29 +70,21 @@ function themeConfig($form) {
 	
 	$TwitterURL = new Typecho_Widget_Helper_Form_Element_Text('TwitterURL', null, null, _t('Twitter 地址 SNS显示暂时不建议开启'), null);
     $form->addInput($TwitterURL);
-
     $FacebookURL = new Typecho_Widget_Helper_Form_Element_Text('FacebookURL', null, null, _t('Facebook 地址'), null);
     $form->addInput($FacebookURL);
-
     $GooglePlusURL = new Typecho_Widget_Helper_Form_Element_Text('GooglePlusURL', null,null, _t('Google+ 地址'), null);
     $form->addInput($GooglePlusURL);
-
     $WeiboURL = new Typecho_Widget_Helper_Form_Element_Text('WeiboURL', null, null, _t('新浪微博地址'), null);
     $form->addInput($WeiboURL);
-    
     $InstagramURL = new Typecho_Widget_Helper_Form_Element_Text('InstagramURL', null, null, _t('Instagram 地址'), null);
     $form->addInput($InstagramURL);
-    
     $GithubURL = new Typecho_Widget_Helper_Form_Element_Text('GithubURL', null, null, _t('Github 地址'), null);
     $form->addInput($GithubURL);
-    
     $TelegramURL = new Typecho_Widget_Helper_Form_Element_Text('TelegramURL', null, null, _t('Telegram 地址'), null);
     $form->addInput($TelegramURL);
-    
     $ZhihuURL = new Typecho_Widget_Helper_Form_Element_Text('ZhihuURL', null, null, _t('Zhihu 地址'), null);
     $form->addInput($ZhihuURL);
     
-	
 	$themeUpdate = new Typecho_Widget_Helper_Form_Element_Checkbox('themeUpdate', array( 
         'themeAutoUpdate' => _t('开启自动更新检查')), 
         array(''), _t('主题自动更新检查(beta)'),_t('当您进入设置的时候，主题将会自动查询新版本')); 
@@ -167,7 +159,7 @@ if (empty($imgurl)) {
 $rand_num = 12; //随机图片数量，根据图片目录中图片实际数量设置
 if ($rand_num == 0) {
 $imgurl = Helper::options()->themeUrl('img/bg/', 'GreenGrapes2').'0.jpg';
-//如果$rand_num = 0,则显示默认图片，须命名为"0.jpg"，注意是绝对地址
+//如果$rand_num = 0,则显示默认图片，命名为"0.jpg"，注意是绝对地址
 }else{
 $imgurl = Helper::options()->themeUrl('img/bg/', 'GreenGrapes2').rand(1,$rand_num).".jpg";
 //随机图片，须按"1.jpg","2.jpg","3.jpg"...的顺序命名，注意是绝对地址
