@@ -164,7 +164,7 @@ function del_dir($dir){
 //预览图Helper::options()->themeUrl('img/bg/', 'GreenGrapes2')
 function thumb($cid) {
 if (empty($imgurl)) {
-$rand_num = 15; //随机图片数量，根据图片目录中图片实际数量设置
+$rand_num = 12; //随机图片数量，根据图片目录中图片实际数量设置
 if ($rand_num == 0) {
 $imgurl = Helper::options()->themeUrl('img/bg/', 'GreenGrapes2').'0.jpg';
 //如果$rand_num = 0,则显示默认图片，须命名为"0.jpg"，注意是绝对地址
