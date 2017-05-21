@@ -37,8 +37,21 @@
                         <div class="article-license">
                             <img height="24" src="<?php $this->options->themeUrl('img/creativecommons-cc.png'); ?>" class="mb5"><br>
                             <div class="license-item text-muted">
-                                本文由 <a href="<?php $this->author->permalink(); ?>"><?php $this->author(); ?></a> 创作，采用 <a class="alert-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a>授权，可自由转载、引用、不可商用，但需署名作者且注明文章出处。
-                            </div>
+<?php if(empty($this->options->copyright)):?>
+本文由 <a href="<?php $this->author->permalink(); ?>"><?php $this->author(); ?></a> 创作，
+采用 <a class="alert-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a>授权，
+可自由转载、引用、不可商用，但需署名作者且注明文章出处。
+<?php else:
+$newInfo=$this->options->copyright;
+$newInfo=str_replace("{{title}}", $this->title, $newInfo);
+$newInfo=str_replace("{{link}}", $this->permalink, $newInfo);
+$newInfo=str_replace("{{name}}", $this->author->screenName, $newInfo);
+$newInfo=str_replace("{{homepage}}", $this->author->url, $newInfo);
+echo $newInfo;
+?>
+<?php endif; ?>
+
+</div>
 
                         </div>
                     </div>

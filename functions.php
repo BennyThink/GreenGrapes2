@@ -84,12 +84,19 @@ function themeConfig($form) {
     $form->addInput($TelegramURL);
     $ZhihuURL = new Typecho_Widget_Helper_Form_Element_Text('ZhihuURL', null, null, _t('Zhihu 地址'), null);
     $form->addInput($ZhihuURL);
-    
+    	
 	$themeUpdate = new Typecho_Widget_Helper_Form_Element_Checkbox('themeUpdate', array( 
         'themeAutoUpdate' => _t('开启自动更新检查')), 
         array(''), _t('主题自动更新检查(beta)'),_t('当您进入设置的时候，主题将会自动查询新版本')); 
     $form->addInput($themeUpdate->multiMode()); 
 	
+	$copyright = new Typecho_Widget_Helper_Form_Element_Textarea('copyright', NULL,NULL, 
+	_t('文章底部版权信息设置'), 
+	_t('此处输入的文字将出现在每篇文章最底部.<br>
+	{{title}}表示文章标题，{{link}}表示文章链接,
+	{{name}}表示作者名字，{{homepage}}表示作者主页<br>
+	使用HTML语法，如不填写则为默认样式'));
+    $form->addInput($copyright);
 }
 
 
