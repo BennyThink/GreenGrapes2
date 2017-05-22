@@ -2,6 +2,19 @@
 date_default_timezone_set('Asia/Shanghai');
 
 function themeConfig($form) {
+	
+	echo '<p style="font-size:14px;" id="use-intro">
+    <span style="display: block;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-size: 16px;">感谢您使用 GreenGrapes2 主题</span>
+    <span style="margin-bottom:10px;display:block">请关注 <a href="https://github.com/BennyThink/GreenGrapes2" target="_blank" 
+	style="color:#3384da;font-weight:bold;text-decoration:underline">Github-GreenGrapes2</a> 以获得
+	<span style="color:#df3827;font-weight:bold;">最新版本支持</span></span>
+    <a href="mailto:benny@bennythink.com" >帮助&支持</a> &nbsp;
+    <a href="https://github.com/BennyThink/GreenGrapes2/issues" target="_blank">建议&反馈</a>
+    </p>';
+	
     $options = Typecho_Widget::widget('Widget_Options');
     $bgImg = new Typecho_Widget_Helper_Form_Element_Text('bgImg', null, $options->themeUrl('img/bg.jpg', 'GreenGrapes2'), _t('首页背景图片地址'), _t('在这里填入一个图片URL地址, 作为首页背景图片, 默认使用img下的header.png'));
     $form->addInput($bgImg);
@@ -68,7 +81,7 @@ function themeConfig($form) {
     );
     $form->addInput($switch->multiMode());
 	
-	$TwitterURL = new Typecho_Widget_Helper_Form_Element_Text('TwitterURL', null, null, _t('Twitter 地址 SNS显示暂时不建议开启'), null);
+	$TwitterURL = new Typecho_Widget_Helper_Form_Element_Text('TwitterURL', null, null, _t('Twitter 地址，留空则不显示'), null);
     $form->addInput($TwitterURL);
     $FacebookURL = new Typecho_Widget_Helper_Form_Element_Text('FacebookURL', null, null, _t('Facebook 地址'), null);
     $form->addInput($FacebookURL);
@@ -82,8 +95,6 @@ function themeConfig($form) {
     $form->addInput($GithubURL);
     $TelegramURL = new Typecho_Widget_Helper_Form_Element_Text('TelegramURL', null, null, _t('Telegram 地址'), null);
     $form->addInput($TelegramURL);
-    $ZhihuURL = new Typecho_Widget_Helper_Form_Element_Text('ZhihuURL', null, null, _t('Zhihu 地址'), null);
-    $form->addInput($ZhihuURL);
     	
 	$themeUpdate = new Typecho_Widget_Helper_Form_Element_Checkbox('themeUpdate', array( 
         'themeAutoUpdate' => _t('开启自动更新检查')), 
@@ -95,7 +106,7 @@ function themeConfig($form) {
 	_t('此处输入的文字将出现在每篇文章最底部.<br>
 	{{title}}表示文章标题，{{link}}表示文章链接,
 	{{name}}表示作者名字，{{homepage}}表示作者主页<br>
-	使用HTML语法，如不填写则为默认样式'));
+	使用HTML语法，如不填写则为默认样式，使用帮助<a href="https://github.com/BennyThink/GreenGrapes2">请戳我</a>'));
     $form->addInput($copyright);
 }
 
