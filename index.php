@@ -20,7 +20,7 @@ $this->need('header.php');
                 <section class="">
                     <div class="category-cloud"><?php $this->category(''); ?></div>
                     <h3 class="title">
-                        <a href="<?php $this->permalink() ?>"><?php if(timeZone($this->date->timeStamp))_e('<font color="#16a085">[New]</font>'); $this->sticky(); $this->title(); ?></a>
+                        <a href="<?php $this->permalink() ?>"><?php if(timeZone($this->date->timeStamp))_e('<font color="#16a085" class="fa fa-magic"></font>'); $this->sticky(); $this->title(); ?></a>
                     </h3>
                     <hr>
                     <div class="row">
@@ -29,9 +29,8 @@ $this->need('header.php');
 if(!empty($this->options->switch) && in_array('ShowThumbPic', $this->options->switch))
 	echo thumb($this->cid);
 
-?>
-							
-<?php $this->content();//$this->excerpt(180, '...'); ?>
+?>				
+<?php $this->content(); ?>
                         </div>
                     </div>
                     <hr>
@@ -41,8 +40,9 @@ if(!empty($this->options->switch) && in_array('ShowThumbPic', $this->options->sw
                     <div class="pull-right post-info">
                         <span><i class="fa fa-calendar"></i> <?php $this->date('Y-m-d'); ?></span>
                         <span><i class="fa fa-user"></i> <a href="<?php $this->author->permalink(); ?>" rel="author"><?php $this->author(); ?></a></span>
-                        <span><i class="fa fa-comment"></i> <a href="<?php $this->permalink() ?>#comments"><span class="ds-thread-count" data-thread-key="<?php echo $this->cid;?>"></span></a></span>
-                    </div>
+                        <span><i class="fa fa-comment"></i> <a href="<?php $this->permalink() ?>#comments"><?php echo $this->commentsNum.'评论';?><span class="ds-thread-count" data-thread-key="<?php echo $this->cid;?>"></span></a></span>
+						
+					</div>
                 </section>
             </article>
             <?php endwhile; ?>

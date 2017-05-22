@@ -95,6 +95,10 @@ function themeConfig($form) {
     $form->addInput($GithubURL);
     $TelegramURL = new Typecho_Widget_Helper_Form_Element_Text('TelegramURL', null, null, _t('Telegram 地址'), null);
     $form->addInput($TelegramURL);
+	$QQURL = new Typecho_Widget_Helper_Form_Element_Text('QQURL', null, null, _t('QQ号'), null);
+    $form->addInput($QQURL);
+	$weixinURL = new Typecho_Widget_Helper_Form_Element_Text('weixinURL', null, null, _t('微信号（目前仅支持公众号）'), null);
+    $form->addInput($weixinURL);
     	
 	$themeUpdate = new Typecho_Widget_Helper_Form_Element_Checkbox('themeUpdate', array( 
         'themeAutoUpdate' => _t('开启自动更新检查')), 

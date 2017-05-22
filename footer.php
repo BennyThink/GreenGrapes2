@@ -33,7 +33,13 @@
 </span><?php endif;?>
 <?php if (!empty($this->options->TelegramURL)) : ?><span class="fa-stack fa-lg">
 <a class="fa fa-telegram fa-stack-1x" href="<?php $this->options->TelegramURL() ?>" target="view_window"></a>
-</span><?php endif;?>  
+</span><?php endif;?>
+<?php if (!empty($this->options->QQURL)) : ?><span class="fa-stack fa-lg">
+<a class="fa fa-qq fa-stack-1x" href="http://wpa.qq.com/msgrd?v=3&uin=<?php $this->options->QQURL() ?>&site=qq&menu=yes" target="view_window"></a>
+</span><?php endif;?>
+<?php if (!empty($this->options->weixinURL)) : ?><span class="fa-stack fa-lg">
+<a class="fa fa-weixin fa-stack-1x" href="https://open.weixin.qq.com/qr/code/?username=<?php $this->options->weixinURL() ?>" target="view_window"></a>
+</span><?php endif;?>
 </footer>
 <script src = "<?php $this->options->themeUrl('js/jquery2.14.min.js'); ?>"></script>
 <script src = "<?php $this->options->themeUrl('js/bootstrap.min.js'); ?>"></script>

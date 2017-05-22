@@ -50,8 +50,8 @@
     <aside>
         <div class="panel panel-green hidden-xs">
             <div class="panel-heading"><i class="fa fa-book fa-fw"></i> 文章分类：目前总计 <?php Typecho_Widget::widget('Widget_Stat')->to($stat); ?><?php $stat->publishedPostsNum() ?> 篇</div>
-            <div class="list-group category">
-                <?php $this->widget('Widget_Metas_Category_List')->listCategories('wrapClass=widget-list'); ?>
+            <div class="list-group category">			
+                <?php $this->widget('Widget_Metas_Category_List')->listCategories('wrapClass=widget-list'); ?>			
             </div>
         </div>
     </aside>
@@ -68,22 +68,17 @@
             </div>
         </div>
     </aside>
-<!--网站统计，待优化。如果需要请取消注释-->
-<!--
 <aside >
         <div class="panel panel-green hidden-xs">
-            <div class="panel-heading"><i class="fa fa-tags fa-fw"></i> 网站统计</div>
-            <div id="meta-cloud">
+            <div class="panel-heading"><i class="fa fa-yelp"></i> 网站统计</div>
 <?php Typecho_Widget::widget('Widget_Stat')->to($stat); ?>
-<p><?php _e('奔跑的蜗牛壳自 <strong>2016</strong> 年末建立以来，截至 %s 在已设定的 <strong>%s</strong> 个分类
-和 <strong>%s</strong> 个页面中，
-共发布了 <strong>%s</strong> 篇文章，并收到了 <strong>%s</strong> 条相关评论。
-', date('Y年n月j日G时i分'), $stat->categoriesNum, $stat->publishedPagesNum, $stat->publishedPostsNum, $stat->publishedCommentsNum); ?></p>
-
-            </div>
-        </div>
+<ul class="fa-ul">
+<li><i class="fa-li fa fa-file-text-o "></i>文章总数：<?php $stat->publishedPostsNum() ?>篇</li>
+<li><i class="fa-li fa fa-file-zip-o "></i>页面总数：<?php $stat->publishedPagesNum() ?>个</li>
+<li><i class="fa-li fa fa-folder-o "></i>分类总数：<?php $stat->categoriesNum() ?>个</li>
+<li><i class="fa-li fa fa-comment-o "></i>评论总数：<?php $stat->publishedCommentsNum() ?>条</li>
+</ul></div>
     </aside>
--->
 
 <div id="fixed"></div>
 <aside class="fixsidebar">
