@@ -82,3 +82,5 @@ and when you do, nothing will ever compare.
     <h1><a href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a></h1>
     <div id="search-trigger" style="font-size: 18px;" class="right m-header-search"></div>
 </div>
+<link rel="stylesheet" href="<?php $this->options->themeUrl('css/OwO.min.css'); ?>" >
+<script src="<?php $this->options->themeUrl('js/OwO.min.js'); ?>"></script>

@@ -4,7 +4,7 @@
         <p class="ui <?php $this->options->singleColor() ?> ribbon label comments"><?php $this->commentsNum(_t('还不快抢沙发'), _t('只有地板了'), _t('<span class="comment-highlight">%d</span> 条评论')); ?></p>
         
 		<?php $comments->listComments(); ?>
-<!--评论输出-->   
+<!--评论输出-->  
 <?php $comments->pageNav('&laquo; 前一页', '后一页 &raquo;'); ?>
     </div>
 <?php if($this->allow('comment')): ?>
@@ -47,7 +47,16 @@ Smilies_Plugin::output();?>
     <div class="comments-block">
         <p class="ui ribbon label <?php $this->options->singleColor() ?>"><?php _e('博主残忍的关闭了评论'); ?></p>
     </div>
-
 <?php endif; ?>
-
+<script>
+        var OwO_demo = new OwO({
+            logo: 'OωO表情',
+            container: document.getElementsByClassName('OwO')[0],
+            target: document.getElementsByClassName('OwO-textarea')[0],
+            api: '<?$this->options->themeUrl('/js/OwO.json')?>',
+            position: 'down',
+            width: '100%',
+            maxHeight: '250px'
+        });
+</script>
 

@@ -51,19 +51,6 @@
 <script src="<?php $this->options->themeUrl('js/typing.js'); ?>"></script>
 <script src="<?php $this->options->themeUrl('js/zoom.min.js'); ?>"></script>
 <link rel="stylesheet" href="<?php $this->options->themeUrl('css/zoom.css'); ?>" >
-<link rel="stylesheet" href="<?php $this->options->themeUrl('css/OwO.min.css'); ?>" >
-<script src="<?php $this->options->themeUrl('js/OwO.min.js'); ?>"></script>
-<script>
-        var OwO_demo = new OwO({
-            logo: 'OωO表情',
-            container: document.getElementsByClassName('OwO')[0],
-            target: document.getElementsByClassName('OwO-textarea')[0],
-            api: '<?$this->options->themeUrl('/js/OwO.json')?>',
-            position: 'down',
-            width: '100%',
-            maxHeight: '250px'
-        });
-</script>
 <?php $this->footer(); ?>
 <!--打字特效-->
 <?php if(!empty($this->options->showTypeFX) && 

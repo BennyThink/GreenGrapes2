@@ -95,5 +95,4 @@ new needShareButton(document.getElementById('i-share'));
         <?php $this->need('sidebar.php'); ?>
     </div>
 </div>
-<?php $this->need('footer.php');
-
+<?php $this->need('footer.php');?>
