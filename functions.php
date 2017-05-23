@@ -67,25 +67,6 @@ function themeConfig($form) {
 	$tongJi = new Typecho_Widget_Helper_Form_Element_Textarea('tongJi', NULL, NULL, _t('站点统计代码'), NULL);
     $form->addInput($tongJi);
 	
-	$switch = new Typecho_Widget_Helper_Form_Element_Checkbox('switch',
-        array(
-            'SmoothScroll' => _t('平滑滚动效果'),
-            'atargetblank' => _t('链接以新标签页形式打开'),
-            'Pangu' => _t('引用 Pangu.js 实现中英文间自动添加空格'),
-			'ShowBloggerCheckBox' => _t('隐藏侧边栏博主回复'),
-			'ShowThumbPic' => _t('显示博文缩略图'),
-			'ShowBreadCrumb' => _t('显示面包屑'),
-			'ShowPostBottomBar' => _t('文章页显示上一篇和下一篇'),
-			'ShowEmotions' => _t('显示主题自带表情（本功能将会与similies插件共存）'),
-        ),
-        array('Pangu','ShowBreadCrumb','ShowPostBottomBar','ShowEmotions'), _t('杂项功能开关'),
-    _t('如果开启自带表情，建议到“设置-评论-允许使用的HTML标签和属性”中允许img标签，推荐如下：<br>%s','	
-	&lt;blockquote&gt;&lt;pre&gt;&lt;code&gt;&lt;strong&gt;&lt;em&gt;&lt;h5&gt;&lt;h6&gt;&lt;a href title
-	&gt;&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;&lt;tbody&gt;&lt;td&gt;&lt;img src=&quot;&quot;&gt;
-	')
-	);
-    $form->addInput($switch->multiMode());
-	
 	$TwitterURL = new Typecho_Widget_Helper_Form_Element_Text('TwitterURL', null, null, _t('Twitter 地址，留空则不显示'), null);
     $form->addInput($TwitterURL);
     $FacebookURL = new Typecho_Widget_Helper_Form_Element_Text('FacebookURL', null, null, _t('Facebook 地址'), null);
@@ -102,7 +83,7 @@ function themeConfig($form) {
     $form->addInput($TelegramURL);
 	$QQURL = new Typecho_Widget_Helper_Form_Element_Text('QQURL', null, null, _t('QQ号'), null);
     $form->addInput($QQURL);
-	$weixinSAURL = new Typecho_Widget_Helper_Form_Element_Text('weixinSAURL', null, null, _t('微信公众号'), null);
+	$weixinSAURL = new Typecho_Widget_Helper_Form_Element_Text('weixinSAURL', null, null, _t('微信公众号（暂只支持公众号）'), null);
     $form->addInput($weixinSAURL);
     	
 	$themeUpdate = new Typecho_Widget_Helper_Form_Element_Checkbox('themeUpdate', array( 
@@ -118,11 +99,32 @@ function themeConfig($form) {
 	使用HTML语法，如不填写则为默认样式，使用帮助<a href="https://github.com/BennyThink/GreenGrapes2">请戳我</a>'));
     $form->addInput($copyright);
 	
-	//TODO
+	$switch = new Typecho_Widget_Helper_Form_Element_Checkbox('switch',
+        array(
+            'SmoothScroll' => _t('平滑滚动效果'),
+            'atargetblank' => _t('链接以新标签页形式打开'),
+            'Pangu' => _t('引用 Pangu.js 实现中英文间自动添加空格'),
+			'ShowBloggerCheckBox' => _t('隐藏侧边栏博主回复'),
+			'ShowThumbPic' => _t('显示博文缩略图'),
+			'ShowBreadCrumb' => _t('显示面包屑'),
+			'ShowPostBottomBar' => _t('文章页显示上一篇和下一篇'),
+			'ShowLinksIcon' => _t('友情链接显示favicon（此功能有时会获取失败，比如说防盗链的网站）'),
+			'ShowEmotions' => _t('显示主题自带表情（本功能将会与similies插件共存）'),
+        ),
+        array('Pangu','ShowBreadCrumb','ShowPostBottomBar','ShowLinksIcon','ShowEmotions'), _t('杂项功能开关'),
+    _t('如果开启自带表情，建议到“设置-评论-允许使用的HTML标签和属性”中允许img标签，推荐如下：<br>%s','	
+	&lt;blockquote&gt;&lt;pre&gt;&lt;code&gt;&lt;strong&gt;&lt;em&gt;&lt;h5&gt;&lt;h6&gt;&lt;a href title
+	&gt;&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;&lt;tbody&gt;&lt;td&gt;&lt;img src=&quot;&quot;&gt;
+	')
+	);
+    $form->addInput($switch->multiMode());
+	
 	$links = new Typecho_Widget_Helper_Form_Element_Textarea('links',NULL,NULL, 
-	_t('友链样式的HTML代码'), _t('填入你的HTML代码，A标签即可，每行使用回车结尾。示例：<br>
-	&lt;a href="https://www.bennythink.com"&gt;土豆不好吃&lt;/a&gt;<br>
-	如果您安装了Links插件，此项将不会生效。<br>
+	_t('友链样式的HTML代码'), _t('填入你的HTML代码，A标签即可，每行使用回车结尾，<strong>url结尾请不要带/</strong>。示例：<br>
+	1. &lt;a href="https://www.bennythink.com"&gt;土豆不好吃&lt;/a&gt;<br>
+	2. &lt;a href="https://www.bennythink.com"&gt;&lt;img src="https://www.bennythink.com/favicon.ico" width="16"/&gt;土豆不好吃&lt;/a&gt;<br>
+	<strong>仅在上面“友情链接显示favicon”关闭之后可以使用语法2</strong><br>
+	如果安装了Links插件，此项将不会生效<br>
 	请注意，<strong>切换主题之后此项将会被清空</strong>，请谨慎操作'));
 	$form->addInput($links);
 	

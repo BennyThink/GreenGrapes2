@@ -50,11 +50,28 @@
         <div class="panel panel-green hidden-xs">
             <div class="panel-heading"><i class="fa fa-link fa-fw"></i> 友情链接</div>
             <ul class="list-group">
-	<?php $s=$this->options->links; //<i class="fa fa-sliders">&nbsp;</i>
-	echo str_replace(array('<a href','</a>'),
-	array('<li class="list-group-item"><a target="_blank" href','</a></li>'),
-	$this->options->links);
-	?>
+	<?php  
+	if (!empty($this->options->switch) && in_array('ShowLinksIcon', $this->options->switch))
+	{	
+		preg_match_all("/(http|https):\/\/([\w\d\-_]+[\.\w\d\-_]+)[:\d+]?([\/]?[\w\/\.]+)/i", $this->options->links,$matches);
+		$arrCode=explode("\n", $this->options->links);
+		for($i=0;$i<sizeof($matches[0]);$i++)
+		{
+			$favicon=$matches[0][$i].'/'.'favicon.ico';
+			$loss=$this->options->themeUrl.'/loss.ico';
+			$icon='<img src="'.$favicon.'"'." onerror=".'"javascript:this.src=\''.$loss.'\';"'.' alt="pic" width="16"/>';
+			echo str_replace(array('<a href','</a>'),
+			array('<li class="list-group-item">'.$icon.'&nbsp;&nbsp;<a target="_blank" href',
+			'</a></li>'),$arrCode[$i]);	
+		}	
+	}
+	else{
+		echo str_replace(array('<a href','</a>'),
+		array('<li class="list-group-item"><a target="_blank" href',
+		'</a></li>'),$this->options->links);
+	}
+?>
+	
             </ul>
         </div>
     </aside>
