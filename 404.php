@@ -8,7 +8,6 @@
 	}
 
 	.wrapper {
-	
 	text-align: center;
 	}
 </style>

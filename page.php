@@ -6,7 +6,7 @@
                 <div>
 <?php if(!empty($this->options->switch) && in_array('ShowBreadCrumb', $this->options->switch)):?>
 <div class="breadcrumb">
-	<a href="<?php $this->options->siteUrl(); ?>">主页</a> &raquo;</li>
+	<a href="<?php $this->options->siteUrl(); ?>">主页</a> &raquo;
 	<?php if ($this->is('index')): ?><!-- 页面为首页时 -->
 		Latest Post
 	<?php elseif ($this->is('post')): ?><!-- 页面为文章单页时 -->
@@ -40,6 +40,5 @@
     <div class="col-md-4">
         <?php $this->need('sidebar.php'); ?>
     </div>
-
 </div>
 <?php $this->need('footer.php');

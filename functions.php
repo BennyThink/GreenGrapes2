@@ -811,12 +811,10 @@ echo $commentClass;
         </div>
         <div class="comment-footer">
             <time itemprop="commentTime" datetime="<?php $comments->date('c'); ?>"><?php $singleCommentOptions->beforeDate();
-                //$comments->date($singleCommentOptions->dateFormat);Y-m-d H:i:s
 				$comments->date('Y-m-d H:i:s');
                     $singleCommentOptions->afterDate(); ?></time>
 					<!--UA设置的判定-->
 <?php
-
 if('dontShow'==Helper::options()->showUA)
 	echo '';
 elseif('ShowUA'==Helper::options()->showUA)
@@ -830,8 +828,7 @@ elseif('ShowOwner'==Helper::options()->showUA && $user->hasLogin())
 else
 	echo '';
 ?>
-
-            <?php $comments->reply($singleCommentOptions->replyWord); ?>
+<?php $comments->reply($singleCommentOptions->replyWord); ?>
         </div>
     </div>
     <?php if ($comments->children) { ?>

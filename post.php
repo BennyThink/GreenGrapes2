@@ -6,7 +6,7 @@
                 <div>
 <?php if(!empty($this->options->switch) && in_array('ShowBreadCrumb', $this->options->switch)):?>
 <div class="breadcrumb">
-	<a href="<?php $this->options->siteUrl(); ?>">主页</a> &raquo;</li>
+	<a href="<?php $this->options->siteUrl(); ?>">主页</a> &raquo;
 	<?php if ($this->is('index')): ?><!-- 页面为首页时 -->
 		Latest Post
 	<?php elseif ($this->is('post')): ?><!-- 页面为文章单页时 -->
@@ -16,7 +16,6 @@
 	<?php endif; ?>
 </div>				
 <?php endif;?>
-
                     <h2 class="title"><a href="<?php $this->permalink() ?>"><?php $this->title() ?></a></h2>
                     <p class="post-big-info">
                         <span class="label label-green"><i class="fa fa-user"></i> <a href="<?php $this->author->permalink(); ?>" rel="author"><?php $this->author(); ?></a></span>
@@ -50,23 +49,14 @@ $newInfo=str_replace("{{homepage}}", $this->author->url, $newInfo);
 echo $newInfo;
 ?>
 <?php endif; ?>
-
-</div>
-
-                        </div>
-                    </div>
+</div></div></div>
                 <?php endif; ?>
                 <?php if(class_exists('Reward_Plugin') && isset($this->options->plugins['activated']['Reward'])): ?>
                     <?php Reward_Plugin::show_reward(); ?>
                     <?php Reward_Plugin::show_modal(); ?>
                 <?php endif; ?>
             </article>
-
         </div>
-
-<!--here-->
-
-<!-- Styles just for demo -->
 <style>
 	body {
 	font: 14px/1 "Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -76,7 +66,6 @@ echo $newInfo;
 	}
 
 	.wrapper {
-	
 	text-align: center;
 	}
 </style>
@@ -84,7 +73,7 @@ echo $newInfo;
 <script src="<?php $this->options->themeUrl('js/needsharebutton.min.js'); ?>"></script>
 <!-- needPopup CSS file -->
 <link href="<?php $this->options->themeUrl('css/needsharebutton.min.css'); ?>" rel="stylesheet" />
-<body><div class="wrapper">
+<div class="wrapper">
 <div id="i-share" data-share-position="bottomCenter" class="need-share-button-default" data-share-icon-style="box" data-share-networks="QQZone,Wechat,Weibo,Douban,Twitter,Facebook,Evernote">
 	<i class="i-share icon-share" aria-hidden="true"></i>
 </div>
@@ -92,10 +81,7 @@ echo $newInfo;
 <script>
 new needShareButton(document.getElementById('i-share'));
 </script>
-</body>
-<!--here-->
-
-    <?php if (!empty($this->options->switch) && in_array('ShowPostBottomBar', $this->options->switch)): ?>
+<?php if (!empty($this->options->switch) && in_array('ShowPostBottomBar', $this->options->switch)): ?>
         <div class="block">
             <ul class="post-near">
                 <li>上一篇: <?php $this->thePrev('%s','没有了'); ?></li>
@@ -104,12 +90,10 @@ new needShareButton(document.getElementById('i-share'));
         </div>
     <?php endif; ?>
         <?php $this->need('comments.php'); ?>
-
     </div>
     <div class="col-md-4">
         <?php $this->need('sidebar.php'); ?>
     </div>
-
 </div>
 <?php $this->need('footer.php');
 

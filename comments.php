@@ -45,7 +45,7 @@ Smilies_Plugin::output();?>
     </div>
 <?php else: ?>
     <div class="comments-block">
-        <p class="ui ribbon label <?php $this->options->singleColor() ?>"><?php _e('楼主残忍的关闭了评论'); ?></p>
+        <p class="ui ribbon label <?php $this->options->singleColor() ?>"><?php _e('博主残忍的关闭了评论'); ?></p>
     </div>
 
 <?php endif; ?>
