@@ -41,7 +41,20 @@
         <div class="panel panel-green hidden-xs">
             <div class="panel-heading"><i class="fa fa-link fa-fw"></i> 友情链接</div>
             <ul class="list-group">
-                <?php Links_Plugin::output('<li class="list-group-item"><a href="{url}" target="_blank">{name}</a></li>', 10, NULL, true); ?>
+	<?php Links_Plugin::output('<li class="list-group-item"><a href="{url}" target="_blank">{name}</a></li>', 10, NULL, true); ?>
+            </ul>
+        </div>
+    </aside>
+	<?php elseif(!empty($this->options->links)):?>
+	    <aside>
+        <div class="panel panel-green hidden-xs">
+            <div class="panel-heading"><i class="fa fa-link fa-fw"></i> 友情链接</div>
+            <ul class="list-group">
+	<?php $s=$this->options->links; //<i class="fa fa-sliders">&nbsp;</i>
+	echo str_replace(array('<a href','</a>'),
+	array('<li class="list-group-item"><a target="_blank" href','</a></li>'),
+	$this->options->links);
+	?>
             </ul>
         </div>
     </aside>
@@ -73,13 +86,13 @@
             <div class="panel-heading"><i class="fa fa-yelp"></i> 网站统计</div>
 <?php Typecho_Widget::widget('Widget_Stat')->to($stat); ?>
 <ul class="fa-ul">
+<li><i class="fa-li fa fa-flag-checkered "></i>建站日期：<?php echo substr($this->options->createTime,0,10) ?></li>
 <li><i class="fa-li fa fa-file-text-o "></i>文章总数：<?php $stat->publishedPostsNum() ?>篇</li>
 <li><i class="fa-li fa fa-file-zip-o "></i>页面总数：<?php $stat->publishedPagesNum() ?>个</li>
 <li><i class="fa-li fa fa-folder-o "></i>分类总数：<?php $stat->categoriesNum() ?>个</li>
 <li><i class="fa-li fa fa-comment-o "></i>评论总数：<?php $stat->publishedCommentsNum() ?>条</li>
 </ul></div>
     </aside>
-
 <div id="fixed"></div>
 <aside class="fixsidebar">
         <div class="panel panel-green hidden-xs">

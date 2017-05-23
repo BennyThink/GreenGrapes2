@@ -48,8 +48,23 @@
 <script src = "<?php $this->options->themeUrl('js/particles.min.js'); ?>"></script>
 <script src = "<?php $this->options->themeUrl('js/headerCanvas.js'); ?>"></script>
 <script src = "<?php $this->options->themeUrl('js/home.js'); ?>"></script>
-<?php $this->footer(); ?>
 <script src="<?php $this->options->themeUrl('js/typing.js'); ?>"></script>
+<script src="<?php $this->options->themeUrl('js/zoom.min.js'); ?>"></script>
+<link rel="stylesheet" href="<?php $this->options->themeUrl('css/zoom.css'); ?>" >
+<link rel="stylesheet" href="<?php $this->options->themeUrl('css/OwO.min.css'); ?>" >
+<script src="<?php $this->options->themeUrl('js/OwO.min.js'); ?>"></script>
+<script>
+        var OwO_demo = new OwO({
+            logo: 'OωO表情',
+            container: document.getElementsByClassName('OwO')[0],
+            target: document.getElementsByClassName('OwO-textarea')[0],
+            api: '<?$this->options->themeUrl('/js/OwO.json')?>',
+            position: 'down',
+            width: '100%',
+            maxHeight: '250px'
+        });
+</script>
+<?php $this->footer(); ?>
 <!--打字特效-->
 <?php if(!empty($this->options->showTypeFX) && 
 in_array('showTypeColorful',$this->options->showTypeFX)&& 
@@ -117,5 +132,15 @@ console.info('%c The tiniest possibility of seeing you again excites me.', "back
 <script src="<?php $this->options->themeUrl('js/pangu.min.js'); ?>"></script>
 <script> pangu.spacingPage(); </script>
 <?php endif; ?>
+<!--灯箱-->
+<script type="text/javascript">
+        var setupContents = function () {
+            $(".article-content img").each(function() {
+                $(this).attr('data-action', 'zoom');
+            });
+          
+        };
+ setupContents();
+</script>
 </body></html>
 <!--I'm here as always. By Benny 2017-->
