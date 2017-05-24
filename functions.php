@@ -52,12 +52,6 @@ function themeConfig($form) {
     ), 'ShowMonth',
     _t('侧栏文章归设置'), _t('默认为显示按月归档'));
     $form->addInput($showArchive->multiMode());
-	
-	$showTypeFX = new Typecho_Widget_Helper_Form_Element_Checkbox('showTypeFX', array(
-	'showTypeColorful' => _t('显示彩虹特效'),
-	'showTypeShake' => _t('显示震动特效')),
-    array('showTypeColorful'), _t('打字特效设置'));
-    $form->addInput($showTypeFX->multiMode());
 		
 	$disableAutoNightTheme = new Typecho_Widget_Helper_Form_Element_Radio('disableAutoNightTheme', array(
 	'0'=>_t('开启'), '1'=>_t('关闭')), '0', _t('自动夜间模式（尚未开发）'),_t('默认为开启'));
@@ -93,11 +87,6 @@ function themeConfig($form) {
     $form->addInput($QQURL);
 	$weixinSAURL = new Typecho_Widget_Helper_Form_Element_Text('weixinSAURL', null, null, _t('微信公众号（暂只支持公众号）'), null);
     $form->addInput($weixinSAURL);
-    	
-	$themeUpdate = new Typecho_Widget_Helper_Form_Element_Checkbox('themeUpdate', array( 
-        'themeAutoUpdate' => _t('开启自动更新检查')), 
-        array(''), _t('主题自动更新检查(beta)'),_t('当您进入设置的时候，主题将会自动查询新版本')); 
-    $form->addInput($themeUpdate->multiMode()); 
 	
 	$copyright = new Typecho_Widget_Helper_Form_Element_Textarea('copyright', NULL,NULL, 
 	_t('文章底部版权信息设置'), 
@@ -117,9 +106,11 @@ function themeConfig($form) {
 			'ShowBreadCrumb' => _t('显示面包屑'),
 			'ShowPostBottomBar' => _t('文章页显示上一篇和下一篇'),
 			'ShowLinksIcon' => _t('友情链接显示favicon（此功能有时会获取失败，比如说防盗链的网站）'),
+			'showTypeColorful' => _t('显示打字彩虹特效'),
+			'showTypeShake' => _t('显示打字震动特效'),
 			'ShowEmotions' => _t('显示主题自带表情（本功能将会与similies插件共存）'),
         ),
-        array('Pangu','ShowBreadCrumb','ShowPostBottomBar','ShowLinksIcon','ShowEmotions'), _t('杂项功能开关'),
+        array('Pangu','ShowBreadCrumb','ShowPostBottomBar','ShowLinksIcon','ShowEmotions','showTypeColorful'), _t('杂项功能开关'),
     _t('如果开启自带表情，建议到“设置-评论-允许使用的HTML标签和属性”中允许img标签，推荐如下：<br>%s','	
 	&lt;blockquote&gt;&lt;pre&gt;&lt;code&gt;&lt;strong&gt;&lt;em&gt;&lt;h5&gt;&lt;h6&gt;&lt;a href title
 	&gt;&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;&lt;tbody&gt;&lt;td&gt;&lt;img src=&quot;&quot;&gt;
@@ -136,6 +127,10 @@ function themeConfig($form) {
 	请注意，<strong>切换主题之后此项将会被清空</strong>，请谨慎操作'));
 	$form->addInput($links);
 	
+	$themeUpdate = new Typecho_Widget_Helper_Form_Element_Checkbox('themeUpdate', array( 
+        'themeAutoUpdate' => _t('开启自动更新检查')), 
+        array(''), _t('主题自动更新检查(beta)'),_t('当您进入设置的时候，主题将会自动查询新版本')); 
+    $form->addInput($themeUpdate->multiMode()); 
 }
 
 
