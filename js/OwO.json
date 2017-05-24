@@ -116,7 +116,549 @@
                 }
         ]
     },
-    "斗图": {
+    "贴吧": {
+        "type": "image",
+        "container": [
+            {
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/01.png\">",
+                "text": "呵呵"
+            },
+            {
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/02.png\">",
+                "text": "哈哈"
+            },
+            {
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/03.png\">",
+                "text": "吐舌"
+            },
+            {
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/04.png\">",
+                "text": "吃惊"
+            },
+            {
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/05.png\">",
+                "text": "酷"
+            },
+            {
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/06.png\">",
+                "text": "怒"
+            },
+            {
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/07.png\">",
+                "text": "皱眉"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/08.png\">",
+                "text": "汗"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/09.png\">",
+                "text": "大哭"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/10.png\">",
+                "text": "黑线"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/11.png\">",
+                "text": "鄙视"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/12.png\">",
+                "text": "不高兴"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/13.png\">",
+                "text": "牛"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/14.png\">",
+                "text": "酸爽"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/15.png\">",
+                "text": "疑问"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/16.png\">",
+                "text": "阴险"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/17.png\">",
+                "text": "吐"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/18.png\">",
+                "text": "小乖"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/19.png\">",
+                "text": "委屈"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/20.png\">",
+                "text": "花心"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/21.png\">",
+                "text": "what"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/22.png\">",
+                "text": "笑眼"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/23.png\">",
+                "text": "不想理你"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/24.png\">",
+                "text": "太开心"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/25.png\">",
+                "text": "滑稽"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/26.png\">",
+                "text": "乖~"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/27.png\">",
+                "text": "捂嘴"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/28.png\">",
+                "text": "可怕"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/29.png\">",
+                "text": "大汗"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/30.png\">",
+                "text": "惊哭"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/31.png\">",
+                "text": "惊讶"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/32.png\">",
+                "text": "喷"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/33.png\">",
+                "text": "抠鼻"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/34.png\">",
+                "text": "抓狂"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/35.png\">",
+                "text": "勉强"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/36.png\">",
+                "text": "睡"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/37.png\">",
+                "text": "I'm always here."
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/38.png\">",
+                "text": "I never leave."
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/39.png\">",
+                "text": "咖啡"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/40.png\">",
+                "text": "药丸"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/41.png\">",
+                "text": "爱你"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/42.png\">",
+                "text": "粑粑"
+            }
+        ]
+    },
+	"QQ": {
+		
+        "type": "image",
+        "container": [
+            {
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e100.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e101.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e102.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e103.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e104.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e105.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e106.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e107.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e108.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e109.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e110.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e111.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e112.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e113.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e114.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e115.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e116.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e117.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e118.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e119.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e120.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e121.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e122.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e123.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e124.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e125.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e126.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e127.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e128.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e129.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e130.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e131.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e132.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e133.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e134.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e135.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e136.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e137.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e138.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e139.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e140.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e141.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e142.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e143.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e144.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e145.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e146.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e147.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e148.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e149.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e150.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e151.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e152.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e153.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e154.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e155.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e156.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e157.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e158.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e159.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e160.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e161.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e162.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e163.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e164.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e165.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e166.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e167.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e168.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e169.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e170.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e171.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e172.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e173.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e174.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e175.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e176.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e177.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e178.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e179.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e180.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e181.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e182.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e183.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e184.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e185.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e186.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e187.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e188.gif\">",
+                "text": "呵呵"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e189.gif\">",
+                "text": "呵呵"
+            }
+			
+     
+        ]
+    },
+	"斗图": {
+		
         "type": "image",
         "container": [
             {
@@ -169,4 +711,5 @@
             }
         ]
     }
+	
 }
