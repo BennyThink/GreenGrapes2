@@ -98,6 +98,28 @@
             </div>
         </div>
     </aside>
+
+<?php if('ShowAll'==$this->options->showArchive):?>
+	<aside>
+        <div class="panel panel-green hidden-xs">
+            <div class="panel-heading"><i class="fa fa-archive fa-fw"></i> 文章存档</div>
+            <div class="list-group category">			
+                <?php 
+					$this->widget('Widget_Contents_Post_Recent', 'pageSize=10000')->parse('
+				<ul class="fa-ul"><li><i class="fa-li fa fa-calendar-o"></i>{year}-{month}-{day} : 
+				<a href="{permalink}" class="fa fa-file-archive-o">&nbsp;&nbsp;{title}</a>
+				</li></ul>');?>
+</div></div></aside>
+<?php elseif('ShowMonth'==$this->options->showArchive):?>
+	<aside>
+        <div class="panel panel-green hidden-xs">
+            <div class="panel-heading"><i class="fa fa-archive fa-fw"></i> 文章存档</div>
+            <div class="list-group category">			
+<?php $this->widget('Widget_Contents_Post_Date', 'type=month&format=Y年m月')
+->parse('<ul class="fa-ul"><li><a href="{permalink}" class="fa fa-calendar-o">&nbsp;&nbsp;{date}</a></li></ul>'); ?>
+</div></div></aside>
+<?php endif;?>
+
 <aside >
         <div class="panel panel-green hidden-xs">
             <div class="panel-heading"><i class="fa fa-yelp"></i> 网站统计</div>

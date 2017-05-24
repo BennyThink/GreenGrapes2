@@ -42,8 +42,16 @@ function themeConfig($form) {
 		'ShowUAPic' => '显示UA与图片',
 		'ShowOwner' => '为博主显示UA与图片',
     ), 'ShowOwner',
-    _t('UA选项'), _t('为博主显示UA与图片'));
+    _t('UA选项'), _t('默认为博主显示UA与图片'));
     $form->addInput($showUA->multiMode());
+	
+	$showArchive = new Typecho_Widget_Helper_Form_Element_Select('showArchive', array(
+        'dontShow'=>'不显示归档',    
+        'ShowAll' => '显示全部文章列表',
+		'ShowMonth' => '显示按月归档',
+    ), 'ShowMonth',
+    _t('侧栏文章归设置'), _t('默认为显示按月归档'));
+    $form->addInput($showArchive->multiMode());
 	
 	$showTypeFX = new Typecho_Widget_Helper_Form_Element_Checkbox('showTypeFX', array(
 	'showTypeColorful' => _t('显示彩虹特效'),
