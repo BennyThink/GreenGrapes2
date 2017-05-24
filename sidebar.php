@@ -1,7 +1,11 @@
 <aside id="sidebar">
     <aside>
         <form method="get" id="searchform" class="form-inline clearfix" action="./">
-            <input class="form-control" name="s" id="s" placeholder="搜索关键词..." type="text">
+		<?php if("搜点什么呗"==$this->options->searchWord):?>
+            <input class="form-control" name="s" id="s" placeholder="搜点什么呗" type="text">
+		<?php else:?>
+			<input class="form-control" name="s" id="s" placeholder="<?php $this->options->searchWord();?>" type="text">
+		<?php endif;?>
             <button class="btn btn-green btn-small"><i class="fa fa-search"></i> 查找</button>
         </form>
     </aside>

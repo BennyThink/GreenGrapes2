@@ -31,6 +31,9 @@ function themeConfig($form) {
 	$siteCreate = new Typecho_Widget_Helper_Form_Element_Text('createTime', null, '2016-12-23 13:59:00', _t('建站时间'), _t('填入形如2016-12-23 13:59:00，时间可以省略。如不填写，则默认为2016-12-23'));
     $form->addInput($siteCreate);
 	
+	$searchWord = new Typecho_Widget_Helper_Form_Element_Text('searchWord', null, '搜点什么呗', _t('搜索框预留词'), _t('搜索框预留内容'));
+    $form->addInput($searchWord);
+	
 	$notFound = new Typecho_Widget_Helper_Form_Element_Radio(
         'notFoundGame', array ('1' => 'Chrome小恐龙', '2' => '小仓鼠'), '',
         '404游戏', '用于在404的时候展示的一款HTML5游戏！如不选择，则为默认动画');
