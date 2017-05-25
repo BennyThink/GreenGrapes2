@@ -53,22 +53,22 @@
 <link rel="stylesheet" href="<?php $this->options->themeUrl('css/zoom.css'); ?>" >
 <?php $this->footer(); ?>
 <!--打字特效-->
-<?php if(!empty($this->options->switch) && 
+<?php if(!empty($this->options->switch ) && 
 in_array('showTypeColorful',$this->options->switch)&& 
-in_array('showTypeShake',$this->options->switch)):
+in_array('showTypeShake',$this->options->switch)&&!isMobile()):
 ?>
 <script type="text/javascript">
 POWERMODE.colorful = true; // make power mode colorful
 POWERMODE.shake = true; // turn off shake
 document.body.addEventListener('input', POWERMODE);
 </script>
-<?php elseif(!empty($this->options->switch) && in_array('showTypeColorful',$this->options->switch)):?>
+<?php elseif(!empty($this->options->switch) && in_array('showTypeColorful',$this->options->switch)&&!isMobile()):?>
 <script type="text/javascript">
 POWERMODE.colorful = true; // make power mode colorful
 POWERMODE.shake = false; // turn off shake
 document.body.addEventListener('input', POWERMODE);
 </script>
-<?php elseif(!empty($this->options->switch) && in_array('showTypeShake',$this->options->switch)):?>
+<?php elseif(!empty($this->options->switch) && in_array('showTypeShake',$this->options->switch)&&!isMobile()):?>
 <script type="text/javascript">
 POWERMODE.colorful = false; // make power mode colorful
 POWERMODE.shake = true; // turn off shake

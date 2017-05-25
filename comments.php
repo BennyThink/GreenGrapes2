@@ -32,7 +32,7 @@
             <?php endif; ?>
 
             <div class="comments-field">
-                <textarea class="textarea form-control OwO-textarea" rows="8" cols="50" id="comment-content" placeholder="<?php _e('回复内容'); ?><?php _e(' (必填)')?>" name="text"><?php $this->remember('text'); ?></textarea>
+                <textarea class="textarea form-control OwO-textarea" rows="8" cols="50" id="comment-content" placeholder="<?php _e('回复内容，必填'); ?><?php _e(' (可以使用markdown、emoji和部分HTML语法哦)')?>" name="text"><?php $this->remember('text'); ?></textarea>
 <?php if(!empty($this->options->switch) && in_array('ShowEmotions', $this->options->switch)):?>
 <div class="OwO"></div>
 <?php endif;?>

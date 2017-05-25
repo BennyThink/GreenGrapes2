@@ -109,8 +109,8 @@ function themeConfig($form) {
 			'ShowBreadCrumb' => _t('显示面包屑'),
 			'ShowPostBottomBar' => _t('文章页显示上一篇和下一篇'),
 			'ShowLinksIcon' => _t('友情链接显示favicon（此功能有时会获取失败，比如说防盗链的网站）'),
-			'showTypeColorful' => _t('显示打字彩虹特效'),
-			'showTypeShake' => _t('显示打字震动特效'),
+			'showTypeColorful' => _t('显示打字彩虹特效（移动设备会自动关闭此特效）'),
+			'showTypeShake' => _t('显示打字震动特效（移动设备会自动关闭此特效）'),
 			'ShowEmotions' => _t('显示主题自带表情（本功能将会与similies插件共存）'),
         ),
         array('Pangu','ShowBreadCrumb','ShowPostBottomBar','ShowLinksIcon','ShowEmotions','showTypeColorful'), _t('杂项功能开关'),
@@ -196,6 +196,29 @@ function del_dir($dir){
     }else{
         return false;
     }
+}
+
+/**
+ * Test if the current browser runs on a mobile device (smart phone, tablet, etc.)
+ *
+ * @return bool
+ */
+function isMobile() {
+	if ( empty($_SERVER['HTTP_USER_AGENT']) ) {
+		$is_mobile = false;
+	} elseif ( strpos($_SERVER['HTTP_USER_AGENT'], 'Mobile') !== false // many mobile devices (all iPhone, iPad, etc.)
+		|| strpos($_SERVER['HTTP_USER_AGENT'], 'Android') !== false
+		|| strpos($_SERVER['HTTP_USER_AGENT'], 'Silk/') !== false
+		|| strpos($_SERVER['HTTP_USER_AGENT'], 'Kindle') !== false
+		|| strpos($_SERVER['HTTP_USER_AGENT'], 'BlackBerry') !== false
+		|| strpos($_SERVER['HTTP_USER_AGENT'], 'Opera Mini') !== false
+		|| strpos($_SERVER['HTTP_USER_AGENT'], 'Opera Mobi') !== false ) {
+			$is_mobile = true;
+	} else {
+		$is_mobile = false;
+	}
+
+	return $is_mobile;
 }
 
 //预览图Helper::options()->themeUrl('img/bg/', 'GreenGrapes2')
