@@ -128,6 +128,7 @@ console.info('%c The tiniest possibility of seeing you again excites me.', "back
           
         };
  setupContents();
+ $('#loading').remove();
 </script>
 </body></html>
 <!--I'm here as always. By Benny 2017-->
