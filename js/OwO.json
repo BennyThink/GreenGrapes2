@@ -295,368 +295,603 @@
         "container": [
             {
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e100.gif\">",
-                "text": "呵呵"
+                "text": "微笑"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e101.gif\">",
-                "text": "呵呵"
+                "text": "撇嘴"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e102.gif\">",
-                "text": "呵呵"
+                "text": "色"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e103.gif\">",
-                "text": "呵呵"
+                "text": "发呆"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e104.gif\">",
-                "text": "呵呵"
+                "text": "得意"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e105.gif\">",
-                "text": "呵呵"
+                "text": "流泪"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e106.gif\">",
-                "text": "呵呵"
+                "text": "害羞"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e107.gif\">",
-                "text": "呵呵"
+                "text": "闭嘴"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e108.gif\">",
-                "text": "呵呵"
+                "text": "睡"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e109.gif\">",
-                "text": "呵呵"
+                "text": "大哭"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e110.gif\">",
-                "text": "呵呵"
+                "text": "尴尬"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e111.gif\">",
-                "text": "呵呵"
+                "text": "发怒"
             },
 			{
-                "icon": "<img src=\"//qzs.qq.com/qzone/em/e112.gif\">",
-                "text": "呵呵"
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e242.gif\">",
+                "text": "调皮"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e113.gif\">",
-                "text": "呵呵"
+                "text": "呲牙"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e114.gif\">",
-                "text": "呵呵"
+                "text": "惊讶"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e115.gif\">",
-                "text": "呵呵"
+                "text": "难过"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e116.gif\">",
-                "text": "呵呵"
+                "text": "酷"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e117.gif\">",
-                "text": "呵呵"
+                "text": "冷汗"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e118.gif\">",
-                "text": "呵呵"
+                "text": "抓狂"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e119.gif\">",
-                "text": "呵呵"
+                "text": "吐"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e120.gif\">",
-                "text": "呵呵"
+                "text": "偷笑"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e121.gif\">",
-                "text": "呵呵"
+                "text": "可爱"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e122.gif\">",
-                "text": "呵呵"
+                "text": "白眼"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e123.gif\">",
-                "text": "呵呵"
+                "text": "傲慢"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e124.gif\">",
-                "text": "呵呵"
+                "text": "饥饿"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e125.gif\">",
-                "text": "呵呵"
+                "text": "困"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e126.gif\">",
-                "text": "呵呵"
+                "text": "恐慌"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e127.gif\">",
-                "text": "呵呵"
+                "text": "流汗"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e128.gif\">",
-                "text": "呵呵"
+                "text": "憨笑"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e129.gif\">",
-                "text": "呵呵"
+                "text": "大兵"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e130.gif\">",
-                "text": "呵呵"
+                "text": "奋斗"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e131.gif\">",
-                "text": "呵呵"
+                "text": "咒骂"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e132.gif\">",
-                "text": "呵呵"
+                "text": "疑问"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e133.gif\">",
-                "text": "呵呵"
+                "text": "嘘"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e134.gif\">",
-                "text": "呵呵"
+                "text": "晕"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e135.gif\">",
-                "text": "呵呵"
+                "text": "折磨"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e136.gif\">",
-                "text": "呵呵"
+                "text": "衰"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e137.gif\">",
-                "text": "呵呵"
+                "text": "骷髅"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e138.gif\">",
-                "text": "呵呵"
+                "text": "敲打"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e139.gif\">",
-                "text": "呵呵"
+                "text": "再见"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e140.gif\">",
-                "text": "呵呵"
+                "text": "擦汗"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e141.gif\">",
-                "text": "呵呵"
+                "text": "抠鼻"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e142.gif\">",
-                "text": "呵呵"
+                "text": "鼓掌"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e143.gif\">",
-                "text": "呵呵"
+                "text": "糗大了"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e144.gif\">",
-                "text": "呵呵"
+                "text": "坏笑"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e145.gif\">",
-                "text": "呵呵"
+                "text": "左哼哼"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e146.gif\">",
-                "text": "呵呵"
+                "text": "右哼哼"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e147.gif\">",
-                "text": "呵呵"
+                "text": "哈欠"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e148.gif\">",
-                "text": "呵呵"
+                "text": "鄙视"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e149.gif\">",
-                "text": "呵呵"
+                "text": "委屈"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e150.gif\">",
-                "text": "呵呵"
+                "text": "快哭了"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e151.gif\">",
-                "text": "呵呵"
+                "text": "阴险"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e152.gif\">",
-                "text": "呵呵"
+                "text": "亲亲"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e153.gif\">",
-                "text": "呵呵"
+                "text": "吓"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e154.gif\">",
-                "text": "呵呵"
+                "text": "可怜"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e112.gif\">",
+                "text": "吐舌"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e249.gif\">",
+                "text": "doge"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e243.gif\">",
+                "text": "泪奔"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e244.gif\">",
+                "text": "无奈"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e282.gif\">",
+                "text": "耸肩"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e245.gif\">",
+                "text": "卖萌"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e248.gif\">",
+                "text": "滑稽"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e247.gif\">",
+                "text": "喷血"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e250.gif\">",
+                "text": "惊喜"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e251.gif\">",
+                "text": "戳脸"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e246.gif\">",
+                "text": "小纠结"
+            },
+			{
+                "icon": "<img src=\"//qzs.qq.com/qzone/em/e253.gif\">",
+                "text": "调戏"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e155.gif\">",
-                "text": "呵呵"
+                "text": "菜刀"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e156.gif\">",
-                "text": "呵呵"
+                "text": "西瓜"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e157.gif\">",
-                "text": "呵呵"
+                "text": "啤酒"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e158.gif\">",
-                "text": "呵呵"
+                "text": "篮球"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e159.gif\">",
-                "text": "呵呵"
+                "text": "乒乓球"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e160.gif\">",
-                "text": "呵呵"
+                "text": "咖啡"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e161.gif\">",
-                "text": "呵呵"
+                "text": "米饭"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e162.gif\">",
-                "text": "呵呵"
+                "text": "猪"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e163.gif\">",
-                "text": "呵呵"
+                "text": "吻"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e164.gif\">",
-                "text": "呵呵"
+                "text": "玫瑰"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e165.gif\">",
-                "text": "呵呵"
+                "text": "凋谢"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e166.gif\">",
-                "text": "呵呵"
+                "text": "爱心"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e167.gif\">",
-                "text": "呵呵"
+                "text": "心碎"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e168.gif\">",
-                "text": "呵呵"
+                "text": "蛋糕"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e169.gif\">",
-                "text": "呵呵"
+                "text": "闪电"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e170.gif\">",
-                "text": "呵呵"
+                "text": "炸弹"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e171.gif\">",
-                "text": "呵呵"
+                "text": "匕首"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e172.gif\">",
-                "text": "呵呵"
+                "text": "足球"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e173.gif\">",
-                "text": "呵呵"
+                "text": "瓢虫"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e174.gif\">",
-                "text": "呵呵"
+                "text": "大便"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e175.gif\">",
-                "text": "呵呵"
+                "text": "月亮"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e176.gif\">",
-                "text": "呵呵"
+                "text": "太阳"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e177.gif\">",
-                "text": "呵呵"
+                "text": "礼物"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e178.gif\">",
-                "text": "呵呵"
+                "text": "拥抱"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e179.gif\">",
-                "text": "呵呵"
+                "text": "赞"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e180.gif\">",
-                "text": "呵呵"
+                "text": "弱"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e181.gif\">",
-                "text": "呵呵"
+                "text": "握手"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e182.gif\">",
-                "text": "呵呵"
+                "text": "胜利"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e183.gif\">",
-                "text": "呵呵"
+                "text": "拜托"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e184.gif\">",
-                "text": "呵呵"
+                "text": "勾引"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e185.gif\">",
-                "text": "呵呵"
+                "text": "握拳"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e186.gif\">",
-                "text": "呵呵"
+                "text": "拉钩"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e187.gif\">",
-                "text": "呵呵"
+                "text": "爱你"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e188.gif\">",
-                "text": "呵呵"
+                "text": "NO"
             },
 			{
                 "icon": "<img src=\"//qzs.qq.com/qzone/em/e189.gif\">",
-                "text": "呵呵"
+                "text": "OK"
             }
-			
-     
+
         ]
     },
+	
+	"颜团子": {
+		
+        "type": "image",
+        "container": [
+            {
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz1.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz2.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz3.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz4.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz5.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz6.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz7.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz8.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz9.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz10.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz11.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz12.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz13.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz14.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz15.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz16.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz17.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz18.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz19.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz20.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz21.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz22.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz23.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz24.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz25.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz26.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz27.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz28.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz29.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz30.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz31.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz32.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz33.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz34.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz35.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz36.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz37.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz38.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz39.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz40.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz41.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz42.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz43.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz44.gif\" />",
+                "text": "长草啦"
+            },
+			{
+                "icon": "<img src=\"//okwbu9s8e.qnssl.com/ytz45.gif\" />",
+                "text": "长草啦"
+            }
+     ]
+    },
+	
 	"斗图": {
 		
         "type": "image",

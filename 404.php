@@ -16,7 +16,9 @@
             <h2 class="post-title">404 - <?php _e('页面没找到'); ?></h2>
 			<?php $this->options->tongJi(); ?>
 
+
 <?php
+$this->need('functions.php');//wondering....
 if(empty(Helper::options()->notFoundGame))
 {
 echo '<p>'._e('哎呦卧槽~404了！搜索试试？要不画画吧！').'</p>';
