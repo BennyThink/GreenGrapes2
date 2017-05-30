@@ -98,3 +98,6 @@ A：这个问题曾经让我一度头疼，在我本地Apache+PHP+MySQL的环境
 ## 更多说明 ##
 
 [戳我](https://www.bennythink.com/greengrapes2.html)来获得更多说明
+
+## 许可证 ##
+已与原作者沟通确认使用 Apache License 2.0
