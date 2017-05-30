@@ -11,6 +11,8 @@
 <link href="<?php $this->options->themeUrl('css/shaky.css'); ?>" rel="stylesheet" />
 <?php getBuildTime(); ?><span class="shaky">(´・ω・`)</span>
 加载耗时：<?php echo timer_stop(); ?> 
+<?php if(!empty($this->options->footer))
+echo '<br>'.$this->options->footer;?>
 </div>
 <!--SNS-->
 <?php if (!empty($this->options->TwitterURL)) : ?><span class="fa-stack fa-lg">

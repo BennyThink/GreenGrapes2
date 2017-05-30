@@ -131,6 +131,9 @@ function themeConfig($form) {
 	请注意，<strong>切换主题之后此项将会被清空</strong>，请谨慎操作'));
 	$form->addInput($links);
 	
+	$footer = new Typecho_Widget_Helper_Form_Element_Textarea('footer',NULL,NULL, 
+	_t('页脚footer代码'), _t('填入页脚footer，支持HTML，比如说备案号。如不需要则留空'));
+	$form->addInput($footer);
 	$themeUpdate = new Typecho_Widget_Helper_Form_Element_Checkbox('themeUpdate', array( 
         'themeAutoUpdate' => _t('开启自动更新检查')), 
         array(''), _t('主题自动更新检查(beta)'),_t('当您进入设置的时候，主题将会自动查询新版本')); 
