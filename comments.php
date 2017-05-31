@@ -48,6 +48,7 @@ Smilies_Plugin::output();?>
         <p class="ui ribbon label <?php $this->options->singleColor() ?>"><?php _e('博主残忍的关闭了评论'); ?></p>
     </div>
 <?php endif; ?>
+<?php if (!empty($this->options->switch) && in_array('ShowEmotions', $this->options->switch)): ?>
 <script>
         var OwO_demo = new OwO({
             logo: 'OωO表情',
@@ -59,4 +60,5 @@ Smilies_Plugin::output();?>
             maxHeight: '250px'
         });
 </script>
+<?php endif; ?>
 

@@ -23,9 +23,13 @@ and when you do, nothing will ever compare.
     <link rel="stylesheet" href="<?php $this->options->themeUrl('css/font-awesome.min.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('css/main.css'); ?>">
 	<link rel="stylesheet" href="<?php $this->options->themeUrl('css/loading.css'); ?>">
-	<?php if (!empty($this->options->switch) && in_array('EnableNotice', $this->options->switch)): ?>
+<?php if (!empty($this->options->switch) && in_array('EnableNotice', $this->options->switch)): ?>
 	<script src="<?php $this->options->themeUrl('js/notice.js'); ?>"></script>
-	<?php endif; ?>	
+<?php endif; ?>	
+<?php if (!empty($this->options->switch) && in_array('ShowEmotions', $this->options->switch)): ?>
+	<link rel="stylesheet" href="<?php $this->options->themeUrl('css/OwO.min.css'); ?>" >
+	<script src="<?php $this->options->themeUrl('js/OwO.min.js'); ?>"></script>
+<?php endif;?>
     <!-- 通过自有函数输出HTML头部信息 -->
     <?php $this->header(); ?>
 	<!--统计代码-->
@@ -33,7 +37,6 @@ and when you do, nothing will ever compare.
     <?php $this->options->tongJi();
     echo "\n"; ?>
 	<?php endif ?>
-
 </head>
 <body>
 <div id="loading">
@@ -90,5 +93,3 @@ and when you do, nothing will ever compare.
     <h1><a href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a></h1>
     <div id="search-trigger" style="font-size: 18px;" class="right m-header-search"></div>
 </div>
-<link rel="stylesheet" href="<?php $this->options->themeUrl('css/OwO.min.css'); ?>" >
-<script src="<?php $this->options->themeUrl('js/OwO.min.js'); ?>"></script>
