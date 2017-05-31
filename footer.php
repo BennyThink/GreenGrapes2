@@ -44,40 +44,39 @@ echo '<br>'.$this->options->footer;?>
 </span><?php endif;?>
 </footer>
 <script src = "<?php $this->options->themeUrl('js/jquery2.14.min.js'); ?>"></script>
-<script src = "<?php $this->options->themeUrl('js/bootstrap.min.js'); ?>"></script>
-<script src = "<?php $this->options->themeUrl('js/functionall.js'); ?>"></script>
+<script src = "<?php $this->options->themeUrl('js/bootstrap.min.js'); ?>" async></script>
+<script src = "<?php $this->options->themeUrl('js/functionall.js'); ?>" async></script>
 <script src = "<?php $this->options->themeUrl('js/tagcanvas.min.js'); ?>"></script>
 <script src = "<?php $this->options->themeUrl('js/particles.min.js'); ?>"></script>
-<script src = "<?php $this->options->themeUrl('js/headerCanvas.js'); ?>"></script>
-<script src = "<?php $this->options->themeUrl('js/home.js'); ?>"></script>
-<script src="<?php $this->options->themeUrl('js/typing.js'); ?>"></script>
-<script src="<?php $this->options->themeUrl('js/zoom.min.js'); ?>"></script>
+<script src = "<?php $this->options->themeUrl('js/headerCanvas.js'); ?>" async></script>
+<script src = "<?php $this->options->themeUrl('js/home.js'); ?>" async></script>
+<script src="<?php $this->options->themeUrl('js/zoom.min.js'); ?>" async></script>
 <link rel="stylesheet" href="<?php $this->options->themeUrl('css/zoom.css'); ?>" >
 <?php $this->footer(); ?>
-<!--Unnecessary scripts goes here-->
+<!--Typing effect-->
 <?php if(!empty($this->options->switch ) && 
-in_array('showTypeColorful',$this->options->switch)&& 
-in_array('showTypeShake',$this->options->switch)&&!isMobile()):
-?>
+in_array('showTypeColorful',$this->options->switch)&& in_array('showTypeShake',$this->options->switch)&&!isMobile()):?>
+<script src="<?php $this->options->themeUrl('js/typing.js'); ?>" ></script>
 <script type="text/javascript">
 POWERMODE.colorful = true; // make power mode colorful
 POWERMODE.shake = true; // turn off shake
 document.body.addEventListener('input', POWERMODE);
 </script>
 <?php elseif(!empty($this->options->switch) && in_array('showTypeColorful',$this->options->switch)&&!isMobile()):?>
+<script src="<?php $this->options->themeUrl('js/typing.js'); ?>" ></script>
 <script type="text/javascript">
 POWERMODE.colorful = true; // make power mode colorful
 POWERMODE.shake = false; // turn off shake
 document.body.addEventListener('input', POWERMODE);
 </script>
 <?php elseif(!empty($this->options->switch) && in_array('showTypeShake',$this->options->switch)&&!isMobile()):?>
+<script src="<?php $this->options->themeUrl('js/typing.js'); ?>" ></script>
 <script type="text/javascript">
 POWERMODE.colorful = false; // make power mode colorful
 POWERMODE.shake = true; // turn off shake
 document.body.addEventListener('input', POWERMODE);
 </script>
 <?php endif; ?>
-
 <script type="text/javascript">
 //dynamic title
 window.onblur = function() {
@@ -91,18 +90,19 @@ window.onfocus = function() {
 'author'=>_t('%s 发布的文章')
 ), '', ' - '); ?><?php $this->options->title(); ?>";
 $("#web-icon").attr('href',"<?php $this->options->siteUrl(); ?>favicon.ico");
-}
-};
-</script>
-<script>
+}};
 jQuery(window).ready(function() {
     jQuery("#loading").fadeOut(500);
 });
 console.info('%c The tiniest possibility of seeing you again excites me.', "background: white; color: #16a085; padding-left:10px;");
+var setupContents = function () {
+            $(".article-content img").each(function() {
+                $(this).attr('data-action', 'zoom');
+            });         
+        };
+ setupContents();
+ $('#loading').remove();
 </script>
-<?php if (!empty($this->options->switch) && in_array('SmoothScroll', $this->options->switch)): ?>
-<script src="<?php $this->options->themeUrl('js/smoothscroll.js'); ?>" async></script>
-<?php endif; ?>
 <?php if (!empty($this->options->switch) && in_array('atargetblank', $this->options->switch)): ?>
 <script>
     //Add target="_blank" to a tags
@@ -117,25 +117,15 @@ console.info('%c The tiniest possibility of seeing you again excites me.', "back
     });
 </script>
 <?php endif; ?>
-<!-- Pangu js -->
 <?php if (!empty($this->options->switch) && in_array('Pangu', $this->options->switch)): ?>
-<script src="<?php $this->options->themeUrl('js/pangu.min.js'); ?>"></script>
+<script src="<?php $this->options->themeUrl('js/pangu.min.js'); ?>" ></script>
 <script> pangu.spacingPage(); </script>
 <?php endif; ?>
-<!--kiana-->
 <?php if (!empty($this->options->switch) && in_array('EnableKiana', $this->options->switch)): ?>
-<script src="<?php $this->options->themeUrl('kiana/bga.min.js'); ?>"></script>
+<script src="<?php $this->options->themeUrl('kiana/bga.min.js'); ?>" async></script>
 <?php endif; ?>
-<!--灯箱-->
-<script type="text/javascript">
-        var setupContents = function () {
-            $(".article-content img").each(function() {
-                $(this).attr('data-action', 'zoom');
-            });
-          
-        };
- setupContents();
- $('#loading').remove();
-</script>
+<?php if (!empty($this->options->switch) && in_array('SmoothScroll', $this->options->switch)): ?>
+<script src="<?php $this->options->themeUrl('js/smoothscroll.js'); ?>" async></script>
+<?php endif; ?>
 </body></html>
 <!--I'm here as always. By Benny 2017-->

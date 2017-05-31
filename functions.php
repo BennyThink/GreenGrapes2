@@ -143,6 +143,8 @@ function themeConfig($form) {
         'themeAutoUpdate' => _t('开启自动更新检查')), 
         array(''), _t('主题自动更新检查(beta)'),_t('当您进入设置的时候，主题将会自动查询新版本')); 
     $form->addInput($themeUpdate->multiMode()); 
+	
+	
 }
 
 //welcome
