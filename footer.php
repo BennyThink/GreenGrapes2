@@ -10,7 +10,7 @@
         </p>
 <link href="<?php $this->options->themeUrl('css/shaky.css'); ?>" rel="stylesheet" />
 <?php getBuildTime(); ?><span class="shaky">(´・ω・`)</span>
-加载耗时：<?php echo timer_stop(); ?> 
+加载耗时：<?php echo timer_stop(); welcome_hello();?> 
 <?php if(!empty($this->options->footer))
 echo '<br>'.$this->options->footer;?>
 </div>
@@ -54,7 +54,7 @@ echo '<br>'.$this->options->footer;?>
 <script src="<?php $this->options->themeUrl('js/zoom.min.js'); ?>"></script>
 <link rel="stylesheet" href="<?php $this->options->themeUrl('css/zoom.css'); ?>" >
 <?php $this->footer(); ?>
-<!--打字特效-->
+<!--Unnecessary scripts goes here-->
 <?php if(!empty($this->options->switch ) && 
 in_array('showTypeColorful',$this->options->switch)&& 
 in_array('showTypeShake',$this->options->switch)&&!isMobile()):
@@ -77,6 +77,7 @@ POWERMODE.shake = true; // turn off shake
 document.body.addEventListener('input', POWERMODE);
 </script>
 <?php endif; ?>
+
 <script type="text/javascript">
 //dynamic title
 window.onblur = function() {
@@ -120,6 +121,10 @@ console.info('%c The tiniest possibility of seeing you again excites me.', "back
 <?php if (!empty($this->options->switch) && in_array('Pangu', $this->options->switch)): ?>
 <script src="<?php $this->options->themeUrl('js/pangu.min.js'); ?>"></script>
 <script> pangu.spacingPage(); </script>
+<?php endif; ?>
+<!--kiana-->
+<?php if (!empty($this->options->switch) && in_array('EnableKiana', $this->options->switch)): ?>
+<script src="<?php $this->options->themeUrl('kiana/bga.min.js'); ?>"></script>
 <?php endif; ?>
 <!--灯箱-->
 <script type="text/javascript">

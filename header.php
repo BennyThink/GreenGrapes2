@@ -23,6 +23,9 @@ and when you do, nothing will ever compare.
     <link rel="stylesheet" href="<?php $this->options->themeUrl('css/font-awesome.min.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('css/main.css'); ?>">
 	<link rel="stylesheet" href="<?php $this->options->themeUrl('css/loading.css'); ?>">
+	<?php if (!empty($this->options->switch) && in_array('EnableNotice', $this->options->switch)): ?>
+	<script src="<?php $this->options->themeUrl('js/notice.js'); ?>"></script>
+	<?php endif; ?>	
     <!-- 通过自有函数输出HTML头部信息 -->
     <?php $this->header(); ?>
 	<!--统计代码-->
@@ -30,6 +33,7 @@ and when you do, nothing will ever compare.
     <?php $this->options->tongJi();
     echo "\n"; ?>
 	<?php endif ?>
+
 </head>
 <body>
 <div id="loading">

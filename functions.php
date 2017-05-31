@@ -107,13 +107,18 @@ function themeConfig($form) {
 			'ShowBloggerCheckBox' => _t('隐藏侧边栏博主回复'),
 			'ShowThumbPic' => _t('显示博文缩略图'),
 			'ShowBreadCrumb' => _t('显示面包屑'),
-			'ShowPostBottomBar' => _t('文章页显示上一篇和下一篇'),
-			'ShowLinksIcon' => _t('友情链接显示favicon（此功能有时会获取失败，比如说防盗链的网站）'),
+			'ShowPostBottomBar' => _t('文章页显示上一篇和下一篇'),		
 			'showTypeColorful' => _t('显示打字彩虹特效（移动设备会自动关闭此特效）'),
 			'showTypeShake' => _t('显示打字震动特效（移动设备会自动关闭此特效）'),
+			'ShowLinksIcon' => _t('友情链接显示favicon（此功能有时会获取失败，比如说防盗链的网站、被墙网站）'),
+			'EnableNetease' => _t('开启网易云音乐支持，在文章中使用{{音乐id}}添加音乐'),
+			'EnableNotice' => _t('开启来路提示功能'),
+			'EnableKiana' => _t('开启kiana挂件'),
 			'ShowEmotions' => _t('显示主题自带表情（本功能将会与similies插件共存）'),
         ),
-        array('Pangu','ShowBreadCrumb','ShowPostBottomBar','ShowLinksIcon','ShowEmotions','showTypeColorful'), _t('杂项功能开关'),
+        array('Pangu','ShowBreadCrumb','ShowPostBottomBar','ShowLinksIcon','ShowEmotions',
+		'showTypeColorful','EnableNetease','EnableNotice','EnableKiana'),
+		_t('杂项功能开关'),
     _t('如果开启自带表情，建议到“设置-评论-允许使用的HTML标签和属性”中允许img标签，推荐如下：<br>%s','	
 	&lt;blockquote&gt;&lt;pre&gt;&lt;code&gt;&lt;strong&gt;&lt;em&gt;&lt;h5&gt;&lt;h6&gt;&lt;a href title
 	&gt;&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;&lt;tbody&gt;&lt;td&gt;&lt;img src=&quot;&quot;&gt;<br>
@@ -123,7 +128,7 @@ function themeConfig($form) {
     $form->addInput($switch->multiMode());
 	
 	$links = new Typecho_Widget_Helper_Form_Element_Textarea('links',NULL,NULL, 
-	_t('友链样式的HTML代码'), _t('填入你的HTML代码，A标签即可，每行使用回车结尾，<strong>url结尾请不要带/</strong>。示例：<br>
+	_t('友链样式的HTML代码）'), _t('填入你的HTML代码，A标签即可，每行使用回车结尾，<strong>url结尾请不要带/</strong>。示例：<br>
 	1. &lt;a href="https://www.bennythink.com"&gt;土豆不好吃&lt;/a&gt;<br>
 	2. &lt;a href="https://www.bennythink.com"&gt;&lt;img src="https://www.bennythink.com/favicon.ico" width="16"/&gt;土豆不好吃&lt;/a&gt;<br>
 	<strong>仅在上面“友情链接显示favicon”关闭之后可以使用语法2</strong><br>
@@ -139,6 +144,69 @@ function themeConfig($form) {
         array(''), _t('主题自动更新检查(beta)'),_t('当您进入设置的时候，主题将会自动查询新版本')); 
     $form->addInput($themeUpdate->multiMode()); 
 }
+
+//welcome
+function welcome_hello(){
+$referer = $_SERVER["HTTP_REFERER"]; 
+$refererhost = parse_url($referer);
+$host = strtolower($refererhost['host']);
+$ben=$_SERVER['HTTP_HOST'];    
+$callback = "HELLO！欢迎来自<strong>".$host."</strong>的朋友！";
+
+if ($referer == ""||$referer == null) {
+if (!Typecho_Cookie::get('firstView')) {
+Typecho_Cookie::set('firstView', '1', 0, Helper::options()->siteUrl);
+            $callback = "欢迎您访问我的博客~  我倍感荣幸啊 嘿嘿";
+        }else{
+            $callback = "您直接访问了本站!  莫非您记住了我的<strong>域名</strong>.厉害~  我倍感荣幸啊 嘿嘿";
+}
+}
+
+elseif(strstr($ben,$host)){ 
+ $callback ="host"; 
+} 
+elseif (preg_match('/baiducontent.*/i', $host)) {
+        $callback = '您通过 <strong>百度快照</strong> 找到了我，厉害！';
+}
+elseif (preg_match('/baidu.*/i', $host)) {
+        $callback = '您通过 <strong>百度</strong> 找到了我，厉害！';
+
+        //360
+    } elseif (preg_match('/so.*/i', $host)) {
+        $callback = '您通过 <strong>好搜</strong> 找到了我，厉害！';
+        //google
+    } elseif (!preg_match('/www\.google\.com\/reader/i', $referer) && preg_match('/google\./i', $referer)) {
+        $callback = '您居然通过 <strong>Google</strong> 找到了我! 一定是个技术宅吧!';
+        //yahoo
+    } elseif (preg_match('/search\.yahoo.*/i', $referer) || preg_match('/yahoo.cn/i', $referer)) {
+        $callback = '您通过 <strong>Yahoo</strong> 找到了我! 厉害！'; 
+    }
+
+elseif (preg_match('/cn\.bing\.com\.*/i', $referer) || preg_match('/yahoo.cn/i', $referer)) {
+        $callback = '您通过 <strong>Bing</strong> 找到了我! 厉害！';
+        //阅读器
+        //google
+    } 
+ elseif (preg_match('/google\.com\/reader/i', $referer)) {
+        $callback = "感谢你通过 <strong>Google</strong> 订阅我!  既然过来读原文了. 欢迎留言指导啊.嘿嘿 ^_^";
+        //xianguo
+    } elseif (preg_match('/xianguo\.com\/reader/i', $referer)) {
+        $callback = "感谢你通过 <strong>鲜果</strong> 订阅我!  既然过来读原文了. 欢迎留言指导啊.嘿嘿 ^_^";
+        //zhuaxia
+    } elseif (preg_match('/zhuaxia\.com/i', $referer)) {
+        $callback = "感谢你通过 <strong>抓虾</strong> 订阅我!  既然过来读原文了. 欢迎留言指导啊.嘿嘿 ^_^";
+        //哪吒
+    } elseif (preg_match('/inezha\.com/i', $referer)) {
+        $callback = "感谢你通过 <strong>哪吒</strong> 订阅我!  既然过来读原文了. 欢迎留言指导啊.嘿嘿 ^_^";
+        //有道
+    } elseif (preg_match('/reader\.youdao/i', $referer)) {
+        $callback = "感谢你通过 <strong>有道</strong> 订阅我!  既然过来读原文了. 欢迎留言指导啊.嘿嘿 ^_^";
+        //自己  
+    } 
+if( $callback!="host")//排除本地访问
+echo "<script>notie('info', '$callback', true);</script>";
+}
+//welcome_hello();
 
 
 if(!empty(Helper::options()->themeUpdate) && in_array('themeAutoUpdate', Helper::options()->themeUpdate))
@@ -669,6 +737,10 @@ function _renderPart($content) {
     if ((!empty($options->markdownExtend) && in_array('enableHighlightText', $options->markdownExtend))) {
         $content = _renderHighlight($content);
     }
+	if ((!empty($options->switch) && in_array('EnableNetease', $options->switch))) {
+        $content = _renderNetease($content);
+    }
+	
     $content = _escapeCharacter($content);
     $content = _renderCards($content);
     return $content;
@@ -685,6 +757,12 @@ function _renderDeleteTag($content) {
     return $content;
 }
 
+function _renderNetease($content) {
+    $content = preg_replace('/\{\{(.+?)\}\}/i',     
+		'<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 
+		src="//music.163.com/outchain/player?type=2&id='.'$1'.'&auto=0&height=66"></iframe>', $content);
+    return $content;
+}
 function _renderHighlight($content) {
     $content = preg_replace('/\=\=(.+?)\=\=/i', "<span class=\"highlight-text\">$1</span>", $content);
     return $content;
@@ -693,6 +771,7 @@ function _renderHighlight($content) {
 function _escapeCharacter($content) {
     $content = str_replace('\~', '~', $content);
     $content = str_replace('\=', '=', $content);
+	//$content = str_replace('\{', '{', $content);
     $content = str_replace('\$', '<span>$</span>', $content);
     return $content;
 }
