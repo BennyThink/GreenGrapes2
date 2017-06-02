@@ -18,6 +18,8 @@ and when you do, nothing will ever compare.
             'author'    =>  _t('%s 发布的文章')
         ), '', ' - '); ?><?php $this->options->title(); ?></title>
     <link href="<?php $this->options->themeUrl('favicon.ico'); ?>" rel="shortcut icon"  type="image/x-icon">
+    <?php if ($this->is('post')): ?><link rel="canonical" href="<?php $this->permalink() ?>" />
+    <?php endif; ?>
     <!-- css -->
     <link rel="stylesheet" href="<?php $this->options->themeUrl('css/bootstrap.min.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('css/font-awesome.min.css'); ?>">
