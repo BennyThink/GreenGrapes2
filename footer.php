@@ -127,5 +127,10 @@ var setupContents = function () {
 <?php if (!empty($this->options->switch) && in_array('SmoothScroll', $this->options->switch)): ?>
 <script src="<?php $this->options->themeUrl('js/smoothscroll.js'); ?>" async></script>
 <?php endif; ?>
+<?php if('ShowAll'==$this->options->Snow)
+    snow_display();
+elseif('ShowPC'==$this->options->Snow && !isMobile())
+    snow_display();
+?>
 </body></html>
 <!--I'm here as always. By Benny 2017-->
