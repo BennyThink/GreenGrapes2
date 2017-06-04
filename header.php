@@ -20,6 +20,16 @@ and when you do, nothing will ever compare.
     <link href="<?php $this->options->themeUrl('favicon.ico'); ?>" rel="shortcut icon"  type="image/x-icon">
     <?php if ($this->is('post')): ?><link rel="canonical" href="<?php $this->permalink() ?>" />
     <?php endif; ?>
+<?php if(in_array('EnableJune4th', $this->options->switch)
+    && '06-04'==date('m-d',time())):?>
+<style type="text/css">
+<!--
+html {
+filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
+-webkit-filter: grayscale(100%);}
+-->
+</style>
+<?php endif;?>
     <!-- css -->
     <link rel="stylesheet" href="<?php $this->options->themeUrl('css/bootstrap.min.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('css/font-awesome.min.css'); ?>">

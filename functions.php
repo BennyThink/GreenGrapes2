@@ -122,6 +122,7 @@ function themeConfig($form) {
 			'EnableNetease' => _t('开启网易云音乐支持，在文章中使用{{音乐id}}添加音乐'),
 			'EnableNotice' => _t('开启来路提示功能'),
 			'EnableKiana' => _t('开启kiana挂件'),
+            'EnableJune4th' => _t('开启纪念日🕯❤🕯'),
 			'ShowEmotions' => _t('显示主题自带表情（本功能将会与similies插件共存）'),
         ),
         array('Pangu','ShowBreadCrumb','ShowPostBottomBar','ShowLinksIcon','ShowEmotions',
