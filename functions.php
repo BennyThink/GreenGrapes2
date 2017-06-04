@@ -11,10 +11,10 @@ function themeConfig($form) {
     <span style="margin-bottom:10px;display:block">请关注 <a href="https://github.com/BennyThink/GreenGrapes2" target="_blank" 
 	style="color:#3384da;font-weight:bold;text-decoration:underline">GreenGrapes2</a> 以获得
 	<span style="color:#df3827;font-weight:bold;">最新版本支持</span></span>
-    <a href="mailto:benny@bennythink.com" >帮助&支持</a> &nbsp;
-    <a href="https://github.com/BennyThink/GreenGrapes2/issues" target="_blank">建议&反馈</a>
+    <a href="mailto:benny@bennythink.com" >帮助&amp;支持</a> &nbsp;
+    <a href="https://github.com/BennyThink/GreenGrapes2/issues" target="_blank">建议&amp;反馈</a>
     </p>';
-	
+
     $options = Typecho_Widget::widget('Widget_Options');
     $bgImg = new Typecho_Widget_Helper_Form_Element_Text('bgImg', null, $options->themeUrl('img/bg.jpg', 'GreenGrapes2'), _t('首页背景图片地址'), _t('在这里填入一个图片URL地址, 作为首页背景图片, 默认使用img下的header.png'));
     $form->addInput($bgImg);
@@ -149,7 +149,7 @@ function themeConfig($form) {
 	_t('页脚footer代码'), _t('填入页脚footer，支持HTML，比如说备案号。如不需要则留空'));
 	$form->addInput($footer);
 	$themeUpdate = new Typecho_Widget_Helper_Form_Element_Checkbox('themeUpdate', array( 
-        'themeAutoUpdate' => _t('开启自动更新检查（使用git）')),
+        'themeAutoUpdate' => _t('开启自动更新检查（使用git、需要启用proc_open函数）')),
         array(''), _t('主题自动更新检查(beta)'),_t('当您进入设置的时候，主题将会自动查询新版本')); 
     $form->addInput($themeUpdate->multiMode()); 
 
@@ -283,19 +283,32 @@ function gitUpdate(){
     $remoteVersionNum=fgets($remoteVersion);
     fclose($remoteVersion);
 
-    if($localVersionNum<$remoteVersionNum /*&& !file_exists(UPDATE_FILE)*/){
-        echo "<code style='background-color: rgba(22, 160, 133, 0.071);color: #666;'>当前版本$localVersionNum".
-            "，最新版本$remoteVersionNum<br>".
+    if ($localVersionNum < $remoteVersionNum /*&& !file_exists(UPDATE_FILE)*/) {
+        echo "<code style='background-color: rgba(22, 160, 133, 0.071);color: #666;'>当前版本$localVersionNum" .
+            "，最新版本$remoteVersionNum<br>" .
             "正在从<a href='https://github.com/BennyThink/GreenGrapes2'>git仓库</a>获得更新</code><br>";
         require_once('Git.php');
 
-        $repo = Git::open(THEME_ROOT.'GreenGrapes2');  // -or- Git::create('/path/to/repo')
-        try{
-        echo '<pre>'.$repo->pull().'</pre>';}
-        catch (Exception $e){
+        $repo = Git::open(THEME_ROOT . 'GreenGrapes2');  // -or- Git::create('/path/to/repo')
+        try {
+            echo '<pre>' . $repo->pull() . '</pre>';
+        } catch (Exception $e) {
             print $e->getMessage();
         }
 
+        if (function_exists('curl_init')) {
+            $url = "https://raw.githubusercontent.com/BennyThink/GreenGrapes2/master/notice.txt";
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+            $dxycontent = curl_exec($ch);
+            echo ' <style>.catlist{border:2px solid #FFB6C1;padding:5px;margin-top: 12px;text-align: center;color:#000;}.yunluotips{border: 2px solid #FFCC33;padding: 15px}.panel{display:none}.panel h3{margin:0;font-size:1.2em}#panel_update ul{list-style-type:disc}.nav-tab-wrapper{clear:both}.nav-tab{position:relative}.nav-tab i:before{position:absolute;top:-10px;right:-8px;display:inline-block;padding:2px;border-radius:50%;background:#e14d43;color:#fff;content:"\f463";vertical-align:text-bottom;font:400 18px/1 dashicons;speak:none}#theme-options-search{display:none;float:right;margin-top:-34px;width:280px;font-weight:300;font-size:16px;line-height:1.5}.updated+#theme-options-search{margin-top:-91px}.wrap.searching .nav-tab-wrapper a,.wrap.searching .panel tr,#attrselector{display:none}.wrap.searching .panel{display:block !important}#attrselector[attrselector*=ok]{display:block}</style>
+ ';
+            echo '<div class="yunluotips">' . $dxycontent . '</div>';
+        } else {
+            echo '汗！貌似您的服务器尚未开启curl扩展，无法收到来自土豆的通知，请联系您的主机商开启，本地调试请无视';
+        }
 }
 }
 
