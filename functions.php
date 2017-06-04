@@ -151,9 +151,43 @@ function themeConfig($form) {
         'themeAutoUpdate' => _t('开启自动更新检查（使用git）')),
         array(''), _t('主题自动更新检查(beta)'),_t('当您进入设置的时候，主题将会自动查询新版本')); 
     $form->addInput($themeUpdate->multiMode()); 
-	
+
+    //代码高亮设置
+    $SHTheme = new Typecho_Widget_Helper_Form_Element_Select('SHTheme', array(
+        'Close' => '关闭代码高亮',
+        'Default' => 'Default',
+        'Django' => 'Django',
+        'Eclipse' => 'Eclipse',
+        'Emacs' => 'Emacs',
+        'Benny' => 'Benny',
+        'Moon' => 'Moon',
+        'FadeToGrey' => 'FadeToGrey',
+        'MDUltra' => 'MDUltra',
+        'Midnight' => 'Midnight',
+        'RDark' => 'RDark'), 'Default', _t('高亮主题:'),
+        _t('选择一个你喜欢的高亮主题，如果关闭代码高亮，下面的设置都不会生效'));
+    $form->addInput($SHTheme->multiMode());
+
+    $collapse = new Typecho_Widget_Helper_Form_Element_Checkbox('collapse', array('collapse' => '折叠代码'), NULL, _t('代码折叠'), _t('是否自动折叠代码，点击时展开（开启时，请同时开启显示工具栏，不然代码无法显示）'));
+    $form->addInput($collapse);
+
+    $codeFormat = new Typecho_Widget_Helper_Form_Element_Checkbox('codeFormat', array('gutter' => '显示行号',
+        'auto-links' => '链接关键字文档',
+        'smart-tabs' => '智能缩进'
+    ), array('gutter',
+        'auto-links'
+    ), _t('格式设置'), _t('默认显示行号、自动链接关键字文档、关闭智能缩进。'));
+    $form->addInput($codeFormat->multiMode());
+
+    $tabSize = new Typecho_Widget_Helper_Form_Element_Text('tabSize', NULL, 4, _t('<TAB>缩进宽度'), _t('输入代码<TAB>缩进时占几个空格的宽度，建议2、4、8等值，默认占4个空格。'));
+    $form->addInput($tabSize);
+
+    $toolbar = new Typecho_Widget_Helper_Form_Element_Checkbox('toolbar', array('toolbar' => '显示工具栏'), NULL, _t('工具栏设置'), _t('设置是否显示代码块右上角的工具栏，默认不显示。'));
+    $form->addInput($toolbar);
+    //代码高亮
 	
 }
+
 //snow
 function snow_display(){
 

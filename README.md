@@ -50,10 +50,16 @@
 * 集成notice（来路判断）插件
 * 集成kiana插件（如果你是用的是二级目录，那么请到`bga.min.js`中修改为自己的路径）
 * 集成snow插件
+* 集成代码高亮SyntaxHighlighter插件，使用方法
+```
+```php
+<?php echo 'helloworld';?>
+```
+```
 
 ## To do ##
 - [ ] 点赞
-- [x] 集成各种插件：目前已经集成或实现kiana、notice、Links、similies、Snow灯箱
+- [x] 集成各种插件：目前已经集成或实现kiana、notice、Links、similies、Snow灯箱、SyntaxHighlighter
 - [ ] 夜间模式
 - [x] 404页面的加载动图问题：已修复
 - [ ] 多语言支持：暂时不打算添加

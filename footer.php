@@ -132,5 +132,87 @@ var setupContents = function () {
 elseif('ShowPC'==$this->options->Snow && !isMobile())
     snow_display();
 ?>
+<?php //代码高亮
+if ('Close' != $this->options->SHTheme) {
+    $settings = $this->options;
+    $collapse = 'false';
+    if ($settings->collapse && in_array('collapse', $settings->collapse))
+        $collapse = 'true';
+    $gutter = 'false';
+    if ($settings->codeFormat && in_array('gutter', $settings->codeFormat))
+        $gutter = 'true';
+    $autoLinks = 'false';
+    if ($settings->codeFormat && in_array('auto-links', $settings->codeFormat))
+        $autoLinks = 'true';
+    $smartTabs = 'false';
+    if ($settings->codeFormat && in_array('smart-tabs', $settings->codeFormat))
+        $smartTabs = 'true';
+    $toolbar = 'false';
+    if ($settings->toolbar && in_array('toolbar', $settings->toolbar))
+        $toolbar = 'true';
+    $tabSize = $settings->tabSize;
+    $currentPath = $this->options->themeUrl . '/SyntaxHighlighter/';
+
+    echo <<<EOF
+        <script type="text/javascript">
+            if (typeof(SyntaxHighlighter) !== undefined) {
+                var preList = document.getElementsByTagName('pre');
+                for (var i = 0; i < preList.length; i ++) {
+                    var children = preList[i].getElementsByTagName('code');
+                    if (children.length > 0) {
+                        var language = 'plain';
+                        var code = children[0], className = code.className;
+                        if (!!className) {
+                            var match = XRegExp.exec(className, XRegExp('^(lang|language)-(?<language>.*)$'));
+                            if (match && match.language) {
+                                language = match.language;
+                            }
+                        }
+                        preList[i].className = 'brush: ' + language;
+                        preList[i].innerHTML = code.innerHTML;
+                    }
+                }
+                SyntaxHighlighter.autoloader(
+                        'applescript           {$currentPath}scripts/shBrushAppleScript.js',
+                        'ahk autohotkey        {$currentPath}scripts/shBrushAhk.js',
+                        'actionscript3 as3     {$currentPath}scripts/shBrushAS3.js',
+                        'bash shell            {$currentPath}scripts/shBrushBash.js',
+                        'bat cmd batch         {$currentPath}scripts/shBrushBat.js',
+                        'coldfusion cf         {$currentPath}scripts/shBrushColdFusion.js',
+                        'cpp c                 {$currentPath}scripts/shBrushCpp.js',
+                        'c# c-sharp csharp     {$currentPath}scripts/shBrushCSharp.js',
+                        'css                   {$currentPath}scripts/shBrushCss.js',
+                        'delphi pascal pas     {$currentPath}scripts/shBrushDelphi.js',
+                        'diff patch            {$currentPath}scripts/shBrushDiff.js',
+                        'erl erlang            {$currentPath}scripts/shBrushErlang.js',
+                        'groovy                {$currentPath}scripts/shBrushGroovy.js',
+                        'java                  {$currentPath}scripts/shBrushJava.js',
+                        'jfx javafx            {$currentPath}scripts/shBrushJavaFX.js',
+                        'js jscript javascript {$currentPath}scripts/shBrushJScript.js',
+                        'perl pl               {$currentPath}scripts/shBrushPerl.js',
+                        'php                   {$currentPath}scripts/shBrushPhp.js',
+                        'text plain            {$currentPath}scripts/shBrushPlain.js',
+                        'powershell ps         {$currentPath}scripts/shBrushPowerShell.js',
+                        'py python             {$currentPath}scripts/shBrushPython.js',
+                        'ruby rails ror rb     {$currentPath}scripts/shBrushRuby.js',
+                        'sass scss             {$currentPath}scripts/shBrushSass.js',
+                        'scala                 {$currentPath}scripts/shBrushScala.js',
+                        'sql                   {$currentPath}scripts/shBrushSql.js',
+                        'vb vbnet              {$currentPath}scripts/shBrushVb.js',
+                        'xml xhtml xslt html   {$currentPath}scripts/shBrushXml.js'
+                        );
+                SyntaxHighlighter.defaults['auto-links'] = $autoLinks;
+                SyntaxHighlighter.defaults['collapse'] = $collapse;
+                SyntaxHighlighter.defaults['gutter'] = $gutter;
+                SyntaxHighlighter.defaults['smart-tabs'] = $smartTabs;
+                SyntaxHighlighter.defaults['tab-size'] = $tabSize;
+                SyntaxHighlighter.defaults['toolbar'] = $toolbar;
+                SyntaxHighlighter.all();
+            }
+        </script>
+EOF;
+    echo "\n";
+}
+?>
 </body></html>
 <!--I'm here as always. By Benny 2017-->
