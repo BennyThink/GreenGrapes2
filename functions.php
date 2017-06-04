@@ -9,7 +9,7 @@ function themeConfig($form) {
     margin-top: 10px;
     font-size: 16px;">感谢您使用 GreenGrapes2 主题</span>
     <span style="margin-bottom:10px;display:block">请关注 <a href="https://github.com/BennyThink/GreenGrapes2" target="_blank" 
-	style="color:#3384da;font-weight:bold;text-decoration:underline">Github-GreenGrapes2</a> 以获得
+	style="color:#3384da;font-weight:bold;text-decoration:underline">GreenGrapes2</a> 以获得
 	<span style="color:#df3827;font-weight:bold;">最新版本支持</span></span>
     <a href="mailto:benny@bennythink.com" >帮助&支持</a> &nbsp;
     <a href="https://github.com/BennyThink/GreenGrapes2/issues" target="_blank">建议&反馈</a>
@@ -148,7 +148,7 @@ function themeConfig($form) {
 	_t('页脚footer代码'), _t('填入页脚footer，支持HTML，比如说备案号。如不需要则留空'));
 	$form->addInput($footer);
 	$themeUpdate = new Typecho_Widget_Helper_Form_Element_Checkbox('themeUpdate', array( 
-        'themeAutoUpdate' => _t('开启自动更新检查')), 
+        'themeAutoUpdate' => _t('开启自动更新检查（使用git）')),
         array(''), _t('主题自动更新检查(beta)'),_t('当您进入设置的时候，主题将会自动查询新版本')); 
     $form->addInput($themeUpdate->multiMode()); 
 	
@@ -234,7 +234,35 @@ echo "<script>notie('info', '$callback', true);</script>";
 
 
 if(!empty(Helper::options()->themeUpdate) && in_array('themeAutoUpdate', Helper::options()->themeUpdate))
-	autoUpdate();
+	//autoUpdate();
+    gitUpdate();
+
+function gitUpdate(){
+    define('UPDATE_SERVER','https://github.com/BennyThink/GreenGrapes2/archive/master.zip');
+    define('UPDATE_VERSION','https://raw.githubusercontent.com/BennyThink/GreenGrapes2/master/version.txt');
+    define('THEME_ROOT',dirname(dirname(__FILE__)).'/');
+    $localVersion = fopen(Helper::options()->themeUrl('version.txt', 'GreenGrapes2'), "r");
+    $localVersionNum=fgets($localVersion);
+    fclose($localVersion);
+    $remoteVersion = fopen(UPDATE_VERSION, "r");
+    $remoteVersionNum=fgets($remoteVersion);
+    fclose($remoteVersion);
+
+    if($localVersionNum<$remoteVersionNum /*&& !file_exists(UPDATE_FILE)*/){
+        echo "<code style='background-color: rgba(22, 160, 133, 0.071);color: #666;'>当前版本$localVersionNum".
+            "，最新版本$remoteVersionNum<br>".
+            "正在从<a href='https://github.com/BennyThink/GreenGrapes2'>git仓库</a>获得更新</code><br>";
+        require_once('Git.php');
+
+        $repo = Git::open(THEME_ROOT.'GreenGrapes2');  // -or- Git::create('/path/to/repo')
+        try{
+        echo '<pre>'.$repo->pull().'</pre>';}
+        catch (Exception $e){
+            print $e->getMessage();
+        }
+
+}
+}
 
 function autoUpdate(){
 	define('UPDATE_SERVER','https://github.com/BennyThink/GreenGrapes2/archive/master.zip');
