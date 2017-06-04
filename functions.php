@@ -98,7 +98,14 @@ function themeConfig($form) {
     $form->addInput($QQURL);
 	$weixinSAURL = new Typecho_Widget_Helper_Form_Element_Text('weixinSAURL', null, null, _t('微信公众号（暂只支持公众号）'), null);
     $form->addInput($weixinSAURL);
-	
+
+    $motto = new Typecho_Widget_Helper_Form_Element_Textarea('motto', NULL,NULL,
+        _t('个性签名设置'),
+        _t('此处输入的文字将出现版权信息的上面，作为个性签名。如不填写则不显示。
+如果在此处直接填入纯文本，那么将以默认的样式显示；如果使用自定的CSS，那么将以自定的模式显示。
+请注意，如果使用自定CSS，需要将整个代码用!@包围，如<strong>!@CSS&HTML!@</strong>'));
+    $form->addInput($motto);
+
 	$copyright = new Typecho_Widget_Helper_Form_Element_Textarea('copyright', NULL,NULL, 
 	_t('文章底部版权信息设置'), 
 	_t('此处输入的文字将出现在每篇文章最底部.<br>
@@ -106,7 +113,7 @@ function themeConfig($form) {
 	{{name}}表示作者名字，{{homepage}}表示作者主页<br>
 	使用HTML语法，如不填写则为默认样式，使用帮助<a href="https://github.com/BennyThink/GreenGrapes2">请戳我</a>'));
     $form->addInput($copyright);
-	
+
 	$switch = new Typecho_Widget_Helper_Form_Element_Checkbox('switch',
         array(
             'SmoothScroll' => _t('平滑滚动效果'),
@@ -165,7 +172,7 @@ function themeConfig($form) {
         'FadeToGrey' => 'FadeToGrey',
         'MDUltra' => 'MDUltra',
         'Midnight' => 'Midnight',
-        'RDark' => 'RDark'), 'Default', _t('高亮主题:'),
+        'RDark' => 'RDark'), 'Default', _t('代码高亮主题'),
         _t('选择一个你喜欢的高亮主题，如果关闭代码高亮，下面的设置都不会生效'));
     $form->addInput($SHTheme->multiMode());
 
