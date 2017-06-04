@@ -34,6 +34,7 @@ and when you do, nothing will ever compare.
 <?php endif;?>
 <?php if('ShowAll'==$this->options->Snow or 'ShowPC'==$this->options->Snow):?>
     <link rel="stylesheet" href="<?php $this->options->themeUrl('css/Snow.css'); ?>">
+<?php endif;?>
  <?php
     if('Close'!=$this->options->SHTheme){
     $settings = $this->options->SHTheme;
@@ -43,7 +44,7 @@ and when you do, nothing will ever compare.
     echo '<link rel="stylesheet" type="text/css" href="' . $currentPath . 'styles/shCore' . $settings . '.css" />' . "\n";
     }
 ?>
-<?php endif;?>
+
     <!-- 通过自有函数输出HTML头部信息 -->
     <?php $this->header(); ?>
 	<!--统计代码-->
