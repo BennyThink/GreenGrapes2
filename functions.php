@@ -506,7 +506,7 @@ function get_post_view($archive)
 **/
 function avatar($email){
 $yourUrl=Helper::options()->siteUrl;
-$saveName='usr/uploads/avatarCache/'.md5(strtolower(trim($email))).'.jpg';
+$saveName='usr/themes/GreenGrapes2/avatarCache/'.md5(strtolower(trim($email))).'.jpg';
 clearstatcache();
 if(empty(Helper::options()->cacheTime))
 	$ct=1209600;
