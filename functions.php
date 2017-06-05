@@ -1021,7 +1021,6 @@ echo $commentClass;
 
 <span itemprop="image"><?php $imgurl=avatar($comments->mail);echo $imgurl;?></span>
 <!--new avatar system-->
-<!--<span itemprop="image"><?php //$comments->gravatar($singleCommentOptions->avatarSize, $singleCommentOptions->defaultAvatar); ?></span>-->
     </div>
     <div class="comment-body">
         <cite class="fn" itemprop="name"><?php $singleCommentOptions->beforeAuthor();
