@@ -38,8 +38,23 @@
     && strpos($this->options->motto, '!@') !== false):
 echo preg_replace('/\!\@(.+?)\!\@/i', "$1", $this->options->motto).'<br>'; ?>
 <?php elseif(!empty($this->options->motto)):?>
-    <style>.catlist{border:2px solid #FFB6C1;padding:5px;margin-top: 12px;text-align: center;color:#000;}.yunluotips{border: 2px solid #FFCC33;padding: 15px}.panel{display:none}.panel h3{margin:0;font-size:1.2em}#panel_update ul{list-style-type:disc}.nav-tab-wrapper{clear:both}.nav-tab{position:relative}.nav-tab i:before{position:absolute;top:-10px;right:-8px;display:inline-block;padding:2px;border-radius:50%;background:#e14d43;color:#fff;content:"\f463";vertical-align:text-bottom;font:400 18px/1 dashicons;speak:none}#theme-options-search{display:none;float:right;margin-top:-34px;width:280px;font-weight:300;font-size:16px;line-height:1.5}.updated+#theme-options-search{margin-top:-91px}.wrap.searching .nav-tab-wrapper a,.wrap.searching .panel tr,#attrselector{display:none}.wrap.searching .panel{display:block !important}#attrselector[attrselector*=ok]{display:block}</style>
-    <div class="yunluotips"><?php echo $this->options->motto;?></div><br>
+    <style>.catlist {
+            border: 2px solid #FFB6C1;
+            padding: 5px;
+            margin-top: 12px;
+            text-align: center;
+            color: #000;
+        }
+
+        .yunluotips {
+            border: 2px solid #FFCC33;
+            padding: 15px
+        }
+    </style>
+<?php $url=$this->author->url;$name=$this->author->screenName.' 说：';
+    echo avatar($this->author->mail);
+    echo "<a href='$url'>$name</a>";?>
+<div class="yunluotips"><?php echo $this->options->motto;?></div><br>
 <?php endif;?>
                         <img height="24" src="<?php $this->options->themeUrl('img/creativecommons-cc.png'); ?>" class="mb5"><br>
                         <div class="license-item text-muted">
