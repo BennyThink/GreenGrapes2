@@ -59,15 +59,18 @@
 	{	
 		preg_match_all("/(http|https):\/\/([\w\d\-_]+[\.\w\d\-_]+)[:\d+]?([\/]?[\w\/\.]+)/i", $this->options->links,$matches);
 		$arrCode=explode("\n", $this->options->links);
-		for($i=0;$i<sizeof($matches[0]);$i++)
-		{
-			$favicon=$matches[0][$i].'/'.'favicon.ico';
-			$loss=$this->options->themeUrl.'/loss.ico';
-			$icon='<img src="'.$favicon.'"'." onerror=".'"javascript:this.src=\''.$loss.'\';"'.' alt="pic" width="16"/>';
-			echo str_replace(array('<a href','</a>'),
-			array('<li class="list-group-item">'.$icon.'&nbsp;&nbsp;<a target="_blank" href',
-			'</a></li>'),$arrCode[$i]);	
-		}	
+
+        for($i=0;$i<sizeof($matches[0]);$i++)
+        {   //自动获取favicon（盗链）
+            //$favicon=$matches[0][$i].'/'.'favicon.ico';
+            //f.ydr.me获取favicon
+            $favicon='https://f.ydr.me/'.$matches[0][$i];
+            $loss=$this->options->themeUrl.'/loss.ico';
+            $icon='<img src="'.$favicon.'"'." onerror=".'"javascript:this.src=\''.$loss.'\';"'.' alt="pic" width="16"/>';
+            echo str_replace(array('<a href','</a>'),
+            array('<li class="list-group-item">'.$icon.'&nbsp;&nbsp;<a target="_blank" href',
+            '</a></li>'),$arrCode[$i]);
+        }
 	}
 	else{
 		echo str_replace(array('<a href','</a>'),
