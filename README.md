@@ -10,7 +10,7 @@
 3. 登陆自己的博客后台，在“控制台”的下拉菜单中选择“外观”选项进入已安装主题列表
 4. 在相应的主题点击“启用”即可使用
 
-**注意：请在/usr/uploads新建一个权限足够的名为`avatarCache`的目录用来存放头像缓存。
+**注意：在主题目录下请注意一个权限足够的名为`avatarCache`的目录，用来存放头像缓存。
 所谓权限足够就是PHP有足够的权限写入文件，一般也就是www:www/755或者干脆777**
 
 ## 增加的功能与特色 ##
@@ -50,15 +50,16 @@
 * 集成notice（来路判断）插件
 * 集成kiana插件（如果你是用的是二级目录，那么请到`bga.min.js`中修改为自己的路径）
 * 集成snow插件
-* 集成代码高亮SyntaxHighlighter插件，使用方法
+* 集成代码高亮SyntaxHighlighter插件，使用方法，其中PHP可以替换成Bash、Python、CPP等，如不填写脚本则使用`plain text`模式渲染高亮。
 ```
 ```php
-<?php echo 'helloworld';?>
-```
+<?php echo 'helloworld';?>```
 ```
 
+
+
 ## To do ##
-- [ ] 点赞
+- [ ] 点赞：暂时不打算添加
 - [x] 集成各种插件：目前已经集成或实现kiana、notice、Links、similies、Snow灯箱、SyntaxHighlighter
 - [ ] 夜间模式
 - [x] 404页面的加载动图问题：已修复
@@ -93,7 +94,7 @@ A：这个问题曾经让我一度头疼，在我本地Apache+PHP+MySQL的环境
 A:建议`git clone`本仓库，每次收到更新只要切换到对应的主题目录，运行`git pull`就会是最新版本了。
 
 8.Q:开启自动更新之后设置界面报错
-A: 这是因为php没有权限读取git文件，进入到主题目录，`chown www:www -R .git`即可
+A: 首先，**不建议开启自动更新**。这是因为php没有权限读取git文件，进入到主题目录，`chown www:www -R .git`即可
 ## 更新历史 ##
 我可没工夫写这玩意，直接看Git就得了。
 
@@ -106,4 +107,4 @@ A: 这是因为php没有权限读取git文件，进入到主题目录，`chown w
 [戳我](https://www.bennythink.com/greengrapes2.html)来获得更多说明
 
 ## 许可证 ##
-已与原作者沟通确认使用 Apache License 2.0
+已与原作者沟通确认使用 Apache License 2.0，感谢[原作者](https://github.com/hongweipeng/GreenGrapes) 的设计！
