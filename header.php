@@ -108,31 +108,31 @@ and when you do, nothing will ever compare.
 <?php if($this->options->SNSPos!='showFooter'):?>
     <div class="text-center"><br>
         <?php if (!empty($this->options->TwitterURL)) : ?><span class="fa-stack fa-lg">
-            <a class="fa fa-twitter fa-stack-2x" href="<?php $this->options->TwitterURL() ?>" target="view_window"></a>
+            <a class="fa fa-twitter fa-stack-1x" href="<?php $this->options->TwitterURL() ?>" target="view_window"></a>
             </span><?php endif;?>
         <?php if (!empty($this->options->FacebookURL)) : ?><span class="fa-stack fa-lg">
-            <a class="fa fa-facebook fa-stack-2x" href="<?php $this->options->FacebookURL() ?>" target="view_window"></a>
+            <a class="fa fa-facebook fa-stack-1x" href="<?php $this->options->FacebookURL() ?>" target="view_window"></a>
             </span><?php endif;?>
         <?php if (!empty($this->options->GooglePlusURL)) : ?><span class="fa-stack fa-lg">
-            <a class="fa fa-google-plus fa-stack-2x" href="<?php $this->options->GooglePlusURL() ?>" target="view_window"></a>
+            <a class="fa fa-google-plus fa-stack-1x" href="<?php $this->options->GooglePlusURL() ?>" target="view_window"></a>
             </span><?php endif;?>
         <?php if (!empty($this->options->WeiboURL)) : ?><span class="fa-stack fa-lg">
-            <a class="fa fa-weibo fa-stack-2x" href="<?php $this->options->WeiboURL() ?>" target="view_window"></a>
+            <a class="fa fa-weibo fa-stack-1x" href="<?php $this->options->WeiboURL() ?>" target="view_window"></a>
             </span><?php endif;?>
         <?php if (!empty($this->options->InstagramURL)) : ?><span class="fa-stack fa-lg">
-            <a class="fa fa-instagram fa-stack-2x" href="<?php $this->options->InstagramURL() ?>" target="view_window"></a>
+            <a class="fa fa-instagram fa-stack-1x" href="<?php $this->options->InstagramURL() ?>" target="view_window"></a>
             </span><?php endif;?>
         <?php if (!empty($this->options->GithubURL)) : ?><span class="fa-stack fa-lg">
-            <a class="fa fa-github fa-stack-2x" href="<?php $this->options->GithubURL() ?>" target="view_window"></a>
+            <a class="fa fa-github fa-stack-1x" href="<?php $this->options->GithubURL() ?>" target="view_window"></a>
             </span><?php endif;?>
         <?php if (!empty($this->options->TelegramURL)) : ?><span class="fa-stack fa-lg">
-            <a class="fa fa-telegram fa-stack-2x" href="<?php $this->options->TelegramURL() ?>" target="view_window"></a>
+            <a class="fa fa-telegram fa-stack-1x" href="<?php $this->options->TelegramURL() ?>" target="view_window"></a>
             </span><?php endif;?>
         <?php if (!empty($this->options->QQURL)) : ?><span class="fa-stack fa-lg">
-            <a class="fa fa-qq fa-stack-2x" href="http://wpa.qq.com/msgrd?v=3&uin=<?php $this->options->QQURL() ?>&site=qq&menu=yes" target="view_window"></a>
+            <a class="fa fa-qq fa-stack-1x" href="http://wpa.qq.com/msgrd?v=3&uin=<?php $this->options->QQURL() ?>&site=qq&menu=yes" target="view_window"></a>
             </span><?php endif;?>
         <?php if (!empty($this->options->weixinURL)) : ?><span class="fa-stack fa-lg">
-            <a class="fa fa-weixin fa-stack-2x" href="https://open.weixin.qq.com/qr/code/?username=<?php $this->options->weixinURL() ?>" target="view_window"></a>
+            <a class="fa fa-weixin fa-stack-1x" href="https://open.weixin.qq.com/qr/code/?username=<?php $this->options->weixinURL() ?>" target="view_window"></a>
             </span><?php endif;?>
     </div>
 <?php endif;?>
