@@ -105,7 +105,7 @@ and when you do, nothing will ever compare.
             <?php endwhile; ?>
         </ul>
     </div>
-<?php if($this->options->SNSPos!='showFooter'):?>
+<?php if($this->options->SNSPos!='showFooter' && isMobile()):?>
     <div class="text-center"><br>
         <?php if (!empty($this->options->TwitterURL)) : ?><span class="fa-stack fa-lg">
             <a class="fa fa-twitter fa-stack-1x" href="<?php $this->options->TwitterURL() ?>" target="view_window"></a>
