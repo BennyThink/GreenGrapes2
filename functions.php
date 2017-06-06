@@ -76,11 +76,7 @@ function themeConfig($form) {
         ),
         array('enablePhonetic','enableHighlightText'), _t('Markdown 语法扩展'));
     $form->addInput($markdownExtendBlock->multiMode());
-	
-	$tongJi = new Typecho_Widget_Helper_Form_Element_Textarea('tongJi', NULL, NULL, _t('站点统计代码'), NULL);
-    $form->addInput($tongJi);
-	
-	$TwitterURL = new Typecho_Widget_Helper_Form_Element_Text('TwitterURL', null, null, _t('Twitter 地址，留空则不显示'), null);
+	$TwitterURL = new Typecho_Widget_Helper_Form_Element_Text('TwitterURL', null, null, _t('Twitter 地址，留空则不显示,下同'), null);
     $form->addInput($TwitterURL);
     $FacebookURL = new Typecho_Widget_Helper_Form_Element_Text('FacebookURL', null, null, _t('Facebook 地址'), null);
     $form->addInput($FacebookURL);
@@ -103,7 +99,7 @@ function themeConfig($form) {
         _t('个性签名设置'),
         _t('此处输入的文字将出现版权信息的上面，作为个性签名。如不填写则不显示。
 如果在此处直接填入纯文本，那么将以默认的样式显示；如果使用自定的CSS，那么将以自定的模式显示。
-请注意，如果使用自定CSS，需要将整个代码用!@包围，如<strong>!@CSS&HTML!@</strong>'));
+请注意，如果使用自定CSS，需要将整个代码用!@包围，如<code>!@&lt;strong&gt;粗体&lt;strong&gt;!@</code>'));
     $form->addInput($motto);
 
 	$copyright = new Typecho_Widget_Helper_Form_Element_Textarea('copyright', NULL,NULL, 
@@ -113,6 +109,14 @@ function themeConfig($form) {
 	{{name}}表示作者名字，{{homepage}}表示作者主页<br>
 	使用HTML语法，如不填写则为默认样式，使用帮助<a href="https://github.com/BennyThink/GreenGrapes2">请戳我</a>'));
     $form->addInput($copyright);
+
+	$footer = new Typecho_Widget_Helper_Form_Element_Textarea('footer',NULL,NULL, 
+	_t('页脚footer代码'), _t('填入页脚footer，支持HTML，比如说备案号。如不需要则留空'));
+	$form->addInput($footer);
+
+    $tongJi = new Typecho_Widget_Helper_Form_Element_Textarea('tongJi', NULL, NULL, _t('站点统计代码'), 
+	_t('在这里可以填入百度统计、cnzz、Google Analytics等统计代码'));
+    $form->addInput($tongJi);
 
 	$switch = new Typecho_Widget_Helper_Form_Element_Checkbox('switch',
         array(
@@ -152,14 +156,6 @@ function themeConfig($form) {
 	请注意，<strong>切换主题之后此项将会被清空</strong>，请谨慎操作'));
 	$form->addInput($links);
 	
-	$footer = new Typecho_Widget_Helper_Form_Element_Textarea('footer',NULL,NULL, 
-	_t('页脚footer代码'), _t('填入页脚footer，支持HTML，比如说备案号。如不需要则留空'));
-	$form->addInput($footer);
-	$themeUpdate = new Typecho_Widget_Helper_Form_Element_Checkbox('themeUpdate', array( 
-        'themeAutoUpdate' => _t('开启自动更新检查（使用git、需要启用proc_open函数）')),
-        array(''), _t('主题自动更新检查(beta)'),_t('当您进入设置的时候，主题将会自动查询新版本')); 
-    $form->addInput($themeUpdate->multiMode()); 
-
     //代码高亮设置
     $SHTheme = new Typecho_Widget_Helper_Form_Element_Select('SHTheme', array(
         'Close' => '关闭代码高亮',
@@ -192,8 +188,12 @@ function themeConfig($form) {
 
     $toolbar = new Typecho_Widget_Helper_Form_Element_Checkbox('toolbar', array('toolbar' => '显示工具栏'), NULL, _t('工具栏设置'), _t('设置是否显示代码块右上角的工具栏，默认不显示。'));
     $form->addInput($toolbar);
-    //代码高亮
-	
+
+    $themeUpdate = new Typecho_Widget_Helper_Form_Element_Checkbox('themeUpdate', array(
+        'themeAutoUpdate' => _t('开启自动更新检查（使用git、需要启用proc_open函数）')),
+        array(''), _t('主题自动更新检查(beta)'),_t('当您进入设置的时候，主题将会自动查询新版本'));
+    $form->addInput($themeUpdate->multiMode());
+
 }
 
 //snow
