@@ -76,6 +76,15 @@ function themeConfig($form) {
         ),
         array('enablePhonetic','enableHighlightText'), _t('Markdown 语法扩展'));
     $form->addInput($markdownExtendBlock->multiMode());
+
+    $SNSPos = new Typecho_Widget_Helper_Form_Element_Select('SNSPos', array(
+        'showFooter'=>'仅页脚显示',
+        'showSideBar' => '仅侧边显示',
+        'showAll' => '侧边和页脚都显示',
+    ), 'showAll',
+        _t('SNS显示位置'), _t('默认侧边和页脚均显示'));
+    $form->addInput($SNSPos->multiMode());
+
 	$TwitterURL = new Typecho_Widget_Helper_Form_Element_Text('TwitterURL', null, null, _t('Twitter 地址，留空则不显示,下同'), null);
     $form->addInput($TwitterURL);
     $FacebookURL = new Typecho_Widget_Helper_Form_Element_Text('FacebookURL', null, null, _t('Facebook 地址'), null);

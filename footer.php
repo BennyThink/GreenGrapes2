@@ -15,6 +15,7 @@
 echo '<br>'.$this->options->footer;?>
 </div>
 <!--SNS-->
+<?php if($this->options->SNSPos!='showSideBar'):?>
 <?php if (!empty($this->options->TwitterURL)) : ?><span class="fa-stack fa-lg">
 <a class="fa fa-twitter fa-stack-1x" href="<?php $this->options->TwitterURL() ?>" target="view_window"></a>
 </span><?php endif;?>
@@ -42,6 +43,7 @@ echo '<br>'.$this->options->footer;?>
 <?php if (!empty($this->options->weixinURL)) : ?><span class="fa-stack fa-lg">
 <a class="fa fa-weixin fa-stack-1x" href="https://open.weixin.qq.com/qr/code/?username=<?php $this->options->weixinURL() ?>" target="view_window"></a>
 </span><?php endif;?>
+<?php endif;?>
 </footer>
 <script src = "<?php $this->options->themeUrl('js/jquery2.14.min.js'); ?>"></script>
 <script src = "<?php $this->options->themeUrl('js/bootstrap.min.js'); ?>" async></script>
