@@ -34,7 +34,7 @@ function themeConfig($form) {
 	$searchWord = new Typecho_Widget_Helper_Form_Element_Text('searchWord', null, '搜点什么呗', _t('搜索框预留词'), _t('搜索框预留内容'));
     $form->addInput($searchWord);
 
-    $dynamicTitle = new Typecho_Widget_Helper_Form_Element_Text('dynamicTitle', null, '喵 (●\'◡\'●)~快回来', _t('动态标题'), _t('动态标题预留词语，留空则禁用此功能'));
+    $dynamicTitle = new Typecho_Widget_Helper_Form_Element_Text('dynamicTitle', null, '喵 (●\'◡\'●)~快回来', _t('动态标题'), _t('动态标题预留词语，留空则禁用此功能，默认为喵 (●\'◡\'●)~快回来'));
     $form->addInput($dynamicTitle);
 	
 	$notFound = new Typecho_Widget_Helper_Form_Element_Radio(
@@ -234,6 +234,7 @@ function weather(){
     }
 
     //$realip = '123.206.87.223';
+    //在线IP库
     $url = "http://ip.taobao.com/service/getIpInfo.php?ip=" . $realip;
     $ip = json_decode(file_get_contents($url));
     if ((string)$ip->code == '1') {
@@ -241,7 +242,9 @@ function weather(){
     }
     $data = str_split($ip->data->city, strlen($ip->data->city) - 3)[0];
 //echo 'city '.$data;
-
+    if(empty($data))
+        return '对不起，未能查询到天气';
+    else{
     $cityUrl = Helper::options()->themeUrl('city.json','GreenGrapes2');
     $web = json_decode(file_get_contents($cityUrl));
 
@@ -255,7 +258,9 @@ function weather(){
     $url = "http://wthrcdn.etouch.cn/weather_mini?citykey=" . $arr[$data];
     $weather = json_decode(file_get_contents("compress.zlib://" . $url), true);
 
-    echo '城市：' . $weather['data']['city'] . '<br>' .
+
+
+    return '城市：' . $weather['data']['city'] . '<br>' .
         ' 今日天气：' . $weather['data']['forecast'][0]['type'] . '  ' .
         $weather['data']['forecast'][0]['high'] . '  ' .
         $weather['data']['forecast'][0]['low'] . '  ' .
@@ -270,7 +275,7 @@ function weather(){
         $weather['data']['forecast'][2]['high'] . '  ' .
         $weather['data']['forecast'][2]['low'] . '  ' .
         $weather['data']['forecast'][2]['fengxiang'] . $weather['data']['forecast'][1]['fengli'];
-
+    }
 }
 //snow
 function snow_display(){
