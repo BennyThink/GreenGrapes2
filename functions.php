@@ -33,6 +33,9 @@ function themeConfig($form) {
 	
 	$searchWord = new Typecho_Widget_Helper_Form_Element_Text('searchWord', null, '搜点什么呗', _t('搜索框预留词'), _t('搜索框预留内容'));
     $form->addInput($searchWord);
+
+    $dynamicTitle = new Typecho_Widget_Helper_Form_Element_Text('dynamicTitle', null, '喵 (●\'◡\'●)~快回来', _t('动态标题'), _t('动态标题预留词语，留空则禁用此功能'));
+    $form->addInput($dynamicTitle);
 	
 	$notFound = new Typecho_Widget_Helper_Form_Element_Radio(
         'notFoundGame', array ('1' => 'Chrome小恐龙', '2' => '小仓鼠'), '',

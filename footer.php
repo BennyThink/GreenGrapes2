@@ -79,10 +79,25 @@ POWERMODE.shake = true; // turn off shake
 document.body.addEventListener('input', POWERMODE);
 </script>
 <?php endif; ?>
+<?php if(empty($this->options->dynamicTitle)):?>
+<script type="text/javascript">
+    jQuery(window).ready(function() {
+        jQuery("#loading").fadeOut(500);
+    });
+    console.info('%c The tiniest possibility of seeing you again excites me.', "background: white; color: #16a085; padding-left:10px;");
+    var setupContents = function () {
+        $(".article-content img").each(function() {
+            $(this).attr('data-action', 'zoom');
+        });
+    };
+    setupContents();
+    $('#loading').remove();
+</script>
+<?php else:?>
 <script type="text/javascript">
 //dynamic title
 window.onblur = function() {
-    document.title = "喵 (●'◡'●)~快回来";
+    document.title = "<?=$this->options->dynamicTitle?>";
 $("#web-icon").attr('href',"<?php $this->options->themeUrl('loss.ico'); ?>");
 window.onfocus = function() {
     document.title = "<?php $this->archiveTitle(array(
@@ -105,6 +120,7 @@ var setupContents = function () {
  setupContents();
  $('#loading').remove();
 </script>
+<?php endif;?>
 <?php if (!empty($this->options->switch) && in_array('atargetblank', $this->options->switch)): ?>
 <script>
     //Add target="_blank" to a tags
