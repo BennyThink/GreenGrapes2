@@ -6,7 +6,7 @@
 <footer id="m-footer">
 <div class="Copyright">
         <p>&copy; <?php echo date('Y'); ?> <a href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a>.
-        <?php _e('All Rights Reserved.'); ?>
+        <?php _e('All Rights Reserved.');?>
         </p>
 <link href="<?php $this->options->themeUrl('css/shaky.css'); ?>" rel="stylesheet" />
 <?php getBuildTime(); ?><span class="shaky">(´・ω・`)</span>

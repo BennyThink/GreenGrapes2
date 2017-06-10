@@ -40,6 +40,19 @@
             </div>
         </div>
     </aside>
+<?php    if(!empty($this->options->switch ) &&
+    in_array('ShowWeather',$this->options->switch)&&!isMobile()):?>
+    <aside>
+        <div class="panel panel-green hidden-xs">
+            <div class="panel-heading"><i class="fa fa-cloud fa-fw"></i> 天气预报</div>
+            <div class="list-group category">
+
+<?php echo weather();?>
+
+            </div>
+        </div>
+    </aside>
+<?php endif;?>
     <?php if(class_exists('Links_Plugin') && isset($this->options->plugins['activated']['Links'])): ?>
     <aside>
         <div class="panel panel-green hidden-xs">

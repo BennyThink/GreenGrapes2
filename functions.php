@@ -145,11 +145,13 @@ function themeConfig($form) {
 			'EnableNetease' => _t('开启网易云音乐支持，在文章中使用{{音乐id}}添加音乐'),
 			'EnableNotice' => _t('开启来路提示功能'),
 			'EnableKiana' => _t('开启kiana挂件'),
-            'EnableJune4th' => _t('开启纪念日🕯❤🕯'),
+            'EnableJune4th' => _t('开启纪念日'),
+            'ShowWeather' => _t('侧边栏开启访客天气预报（根据访客IP显示），此功能会增加100ms-800ms不等PHP运行时间'),
 			'ShowEmotions' => _t('显示主题自带表情（本功能将会与similies插件共存）'),
+
         ),
         array('Pangu','ShowBreadCrumb','ShowPostBottomBar','ShowLinksIcon','ShowEmotions',
-		'showTypeColorful','EnableNetease','EnableNotice','EnableKiana'),
+		'showTypeColorful','EnableNetease','EnableNotice','EnableKiana','ShowWeather'),
 		_t('杂项功能开关'),
     _t('如果开启自带表情，建议到“设置-评论-允许使用的HTML标签和属性”中允许img标签，推荐如下：<br>%s','	
 	&lt;blockquote&gt;&lt;pre&gt;&lt;code&gt;&lt;strong&gt;&lt;em&gt;&lt;h5&gt;&lt;h6&gt;&lt;a href title
@@ -208,6 +210,68 @@ function themeConfig($form) {
 
 }
 
+//天气预报
+
+function weather(){
+
+    if (isset($_SERVER)) {
+        if (isset($_SERVER["HTTP_X_FORWARDED_FOR"])) {
+            $realip = $_SERVER["HTTP_X_FORWARDED_FOR"];
+        } else if (isset($_SERVER["HTTP_CLIENT_IP"])) {
+            $realip = $_SERVER["HTTP_CLIENT_IP"];
+        } else {
+            $realip = $_SERVER["REMOTE_ADDR"];
+        }
+
+    } else {
+        if (getenv("HTTP_X_FORWARDED_FOR")) {
+            $realip = getenv("HTTP_X_FORWARDED_FOR");
+        } else if (getenv("HTTP_CLIENT_IP")) {
+            $realip = getenv("HTTP_CLIENT_IP");
+        } else {
+            $realip = getenv("REMOTE_ADDR");
+        }
+    }
+
+    //$realip = '123.206.87.223';
+    $url = "http://ip.taobao.com/service/getIpInfo.php?ip=" . $realip;
+    $ip = json_decode(file_get_contents($url));
+    if ((string)$ip->code == '1') {
+        return false;
+    }
+    $data = str_split($ip->data->city, strlen($ip->data->city) - 3)[0];
+//echo 'city '.$data;
+
+    $cityUrl = Helper::options()->themeUrl('city.json','GreenGrapes2');
+    $web = json_decode(file_get_contents($cityUrl));
+
+    $arr = array();
+    foreach ($web as $k => $w) {
+        if (is_object($w)) $arr[$k] = json_to_array($w); //判断类型是不是object
+        else $arr[$k] = $w;
+    }
+
+
+    $url = "http://wthrcdn.etouch.cn/weather_mini?citykey=" . $arr[$data];
+    $weather = json_decode(file_get_contents("compress.zlib://" . $url), true);
+
+    echo '城市：' . $weather['data']['city'] . '<br>' .
+        ' 今日天气：' . $weather['data']['forecast'][0]['type'] . '  ' .
+        $weather['data']['forecast'][0]['high'] . '  ' .
+        $weather['data']['forecast'][0]['low'] . '  ' .
+        $weather['data']['forecast'][0]['fengxiang'] . $weather['data']['forecast'][0]['fengli'] .
+        '<br>' .
+        '明日天气：' . $weather['data']['forecast'][1]['type'] . '  ' .
+        $weather['data']['forecast'][1]['high'] . '  ' .
+        $weather['data']['forecast'][1]['low'] . '  ' .
+        $weather['data']['forecast'][1]['fengxiang'] . $weather['data']['forecast'][1]['fengli'] .
+        '<br>' .
+        '后天天气：' . $weather['data']['forecast'][2]['type'] . '  ' .
+        $weather['data']['forecast'][2]['high'] . '  ' .
+        $weather['data']['forecast'][2]['low'] . '  ' .
+        $weather['data']['forecast'][2]['fengxiang'] . $weather['data']['forecast'][1]['fengli'];
+
+}
 //snow
 function snow_display(){
 
