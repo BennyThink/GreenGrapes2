@@ -139,7 +139,8 @@ var setupContents = function () {
 <script src="<?php $this->options->themeUrl('js/pangu.min.js'); ?>" ></script>
 <script> pangu.spacingPage(); </script>
 <?php endif; ?>
-<?php if (!empty($this->options->switch) && in_array('EnableKiana', $this->options->switch)): ?>
+<?php if (!empty($this->options->switch)
+    && in_array('EnableKiana', $this->options->switch)&&!isMobile()): ?>
 <script src="<?php $this->options->themeUrl('kiana/bga.min.js'); ?>" async></script>
 <?php endif; ?>
 <?php if (!empty($this->options->switch) && in_array('SmoothScroll', $this->options->switch)): ?>
