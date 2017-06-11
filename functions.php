@@ -216,10 +216,10 @@ function themeConfig($form) {
 function isNew()
 {
 
-    if (!Typecho_Cookie::get('firstView')) {
+    if (!Typecho_Cookie::get('View')) {
         $weatherInfo = weather();
-        Typecho_Cookie::set('firstView', '1', 0, Helper::options()->siteUrl);
-        Typecho_Cookie::set('weather', $weatherInfo, 0, Helper::options()->siteUrl);
+        Typecho_Cookie::set('View', '1',time()+3600, Helper::options()->siteUrl);
+        Typecho_Cookie::set('weather', $weatherInfo, time()+3600, Helper::options()->siteUrl);
         return $weatherInfo;
     } else
         return Typecho_Cookie::get('weather');
