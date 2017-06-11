@@ -47,7 +47,7 @@
             <div class="panel-heading"><i class="fa fa-cloud fa-fw"></i> 天气预报</div>
             <div class="list-group category">
 
-<?php echo weather();?>
+<?php echo isNew();?>
 
             </div>
         </div>

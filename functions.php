@@ -212,6 +212,19 @@ function themeConfig($form) {
 
 
 //天气预报
+
+function isNew()
+{
+
+    if (!Typecho_Cookie::get('refresh')) {
+        $weatherInfo = weather();
+        Typecho_Cookie::set('refresh', '1', 0, Helper::options()->siteUrl);
+        Typecho_Cookie::set('weather', $weatherInfo, 0, Helper::options()->siteUrl);
+        return $weatherInfo;
+    } else
+        return Typecho_Cookie::get('weather');
+}
+
 function weather(){
 
     if (isset($_SERVER)) {
@@ -254,7 +267,6 @@ function weather(){
 
     $url = "http://wthrcdn.etouch.cn/weather_mini?citykey=" . $arr[$data];
     $weather = json_decode(file_get_contents("compress.zlib://" . $url), true);
-
     return '城市：' . $weather['data']['city'] . '<br>' .
         ' 今日天气：' . $weather['data']['forecast'][0]['type'] . '  ' .
         $weather['data']['forecast'][0]['high'] . '  ' .
@@ -270,6 +282,7 @@ function weather(){
         $weather['data']['forecast'][2]['high'] . '  ' .
         $weather['data']['forecast'][2]['low'] . '  ' .
         $weather['data']['forecast'][2]['fengxiang'] . $weather['data']['forecast'][1]['fengli'];
+    //return $weatherInfo;
     }
 }
 
