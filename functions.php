@@ -216,9 +216,9 @@ function themeConfig($form) {
 function isNew()
 {
 
-    if (!Typecho_Cookie::get('refresh')) {
+    if (!Typecho_Cookie::get('firstView')) {
         $weatherInfo = weather();
-        Typecho_Cookie::set('refresh', '1', 0, Helper::options()->siteUrl);
+        Typecho_Cookie::set('firstView', '1', 0, Helper::options()->siteUrl);
         Typecho_Cookie::set('weather', $weatherInfo, 0, Helper::options()->siteUrl);
         return $weatherInfo;
     } else
