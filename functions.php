@@ -308,12 +308,9 @@ $callback = "HELLO！欢迎来自<strong>".$host."</strong>的朋友！";
 if ($referer == ""||$referer == null) {
 if (!Typecho_Cookie::get('firstView')) {
 Typecho_Cookie::set('firstView', '1', 0, Helper::options()->siteUrl);
-            //$callback = "欢迎您访问我的博客~  我倍感荣幸啊 嘿嘿";
-    $callback = "您直接访问了本站!  莫非您记住了我的<strong>域名</strong>.厉害~  我倍感荣幸啊 嘿嘿";
-
-}else{
-    //每次刷新都会提示这句话
-    $callback = "哎呦喂，这么喜欢刷新呀，欢迎欢迎啊 嘿嘿";
+            $callback = "欢迎您访问我的博客~  我倍感荣幸啊 嘿嘿";
+        }else{
+            $callback = "您直接访问了本站!  莫非您记住了我的<strong>域名</strong>.厉害~  我倍感荣幸啊 嘿嘿";
 }
 }
 
