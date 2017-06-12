@@ -36,12 +36,17 @@ function themeConfig($form) {
 
     $dynamicTitle = new Typecho_Widget_Helper_Form_Element_Text('dynamicTitle', null, '喵 (●\'◡\'●)~快回来', _t('动态标题'), _t('动态标题预留词语，留空则禁用此功能，默认为喵 (●\'◡\'●)~快回来'));
     $form->addInput($dynamicTitle);
-	
+
+    $ShowWeather = new Typecho_Widget_Helper_Form_Element_Text('ShowWeather', null, '3600', _t('天气预报缓存时间设置'), _t('天气预报缓存时间，设置为0、负数或留空则禁用此功能；默认为3600秒，推荐……不好意思没有推荐'));
+    $form->addInput($ShowWeather);
+
 	$notFound = new Typecho_Widget_Helper_Form_Element_Radio(
         'notFoundGame', array ('1' => 'Chrome小恐龙', '2' => '小仓鼠'), '',
         '404游戏', '用于在404的时候展示的一款HTML5游戏！如不选择，则为默认动画');
     $form->addInput($notFound);
-	
+
+
+
 	$showUA = new Typecho_Widget_Helper_Form_Element_Select('showUA', array(
         'dontShow'=>'不显示UA',    
         'ShowUA' => '显示UA',
@@ -146,12 +151,11 @@ function themeConfig($form) {
 			'EnableNotice' => _t('开启来路提示功能'),
 			'EnableKiana' => _t('开启kiana挂件'),
             'EnableJune4th' => _t('开启纪念日'),
-            'ShowWeather' => _t('侧边栏开启访客天气预报（根据访客IP显示），此功能会增加100ms-800ms不等PHP运行时间'),
-			'ShowEmotions' => _t('显示主题自带表情（本功能将会与similies插件共存）'),
+            'ShowEmotions' => _t('显示主题自带表情（本功能将会与similies插件共存）'),
 
         ),
         array('Pangu','ShowBreadCrumb','ShowPostBottomBar','ShowLinksIcon','ShowEmotions',
-		'showTypeColorful','EnableNetease','EnableNotice','EnableKiana','ShowWeather'),
+		'showTypeColorful','EnableNetease','EnableNotice','EnableKiana'),
 		_t('杂项功能开关'),
     _t('如果开启自带表情，建议到“设置-评论-允许使用的HTML标签和属性”中允许img标签，推荐如下：<br>%s','	
 	&lt;blockquote&gt;&lt;pre&gt;&lt;code&gt;&lt;strong&gt;&lt;em&gt;&lt;h5&gt;&lt;h6&gt;&lt;a href title
@@ -216,10 +220,10 @@ function themeConfig($form) {
 function isNew()
 {
 
-    if (!Typecho_Cookie::get('View')) {
+    if (!Typecho_Cookie::get('view')) {
         $weatherInfo = weather();
-        Typecho_Cookie::set('View', '1',time()+3600, Helper::options()->siteUrl);
-        Typecho_Cookie::set('weather', $weatherInfo, time()+3600, Helper::options()->siteUrl);
+        Typecho_Cookie::set('view', '1',time()+Helper::options()->ShowWeather, Helper::options()->siteUrl);
+        Typecho_Cookie::set('weather', $weatherInfo, time()+Helper::options()->ShowWeather, Helper::options()->siteUrl);
         return $weatherInfo;
     } else
         return Typecho_Cookie::get('weather');

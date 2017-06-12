@@ -40,15 +40,13 @@
             </div>
         </div>
     </aside>
-<?php    if(!empty($this->options->switch ) &&
-    in_array('ShowWeather',$this->options->switch)&&!isMobile()):?>
+    <?php if (!empty($this->options->ShowWeather) &&
+        $this->options->ShowWeather > 0 && !isMobile()): ?>
     <aside>
         <div class="panel panel-green hidden-xs">
             <div class="panel-heading"><i class="fa fa-cloud fa-fw"></i> 天气预报</div>
             <div class="list-group category">
-
 <?php echo isNew();?>
-
             </div>
         </div>
     </aside>
