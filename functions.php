@@ -37,7 +37,7 @@ function themeConfig($form) {
     $dynamicTitle = new Typecho_Widget_Helper_Form_Element_Text('dynamicTitle', null, '喵 (●\'◡\'●)~快回来', _t('动态标题'), _t('动态标题预留词语，留空则禁用此功能，默认为喵 (●\'◡\'●)~快回来'));
     $form->addInput($dynamicTitle);
 
-    $ShowWeather = new Typecho_Widget_Helper_Form_Element_Text('ShowWeather', null, '3600', _t('天气预报缓存时间设置'), _t('天气预报缓存时间，设置为0、负数或留空则禁用此功能；默认为3600秒，推荐……不好意思没有推荐'));
+    $ShowWeather = new Typecho_Widget_Helper_Form_Element_Text('ShowWeather', null, '14400', _t('天气预报缓存时间设置'), _t('天气预报缓存时间，设置为0、负数或留空则禁用此功能；默认为3600秒，推荐……不好意思没有推荐'));
     $form->addInput($ShowWeather);
 
     $EmailFeed = new Typecho_Widget_Helper_Form_Element_Text('EmailFeed', null, null, _t('邮件订阅设置'), _t('邮件订阅地址，推荐使用<a href="https://www.feedburner.com/">Feed Burner</a>；留空则禁用'));
