@@ -40,12 +40,12 @@ function themeConfig($form) {
     $ShowWeather = new Typecho_Widget_Helper_Form_Element_Text('ShowWeather', null, '3600', _t('天气预报缓存时间设置'), _t('天气预报缓存时间，设置为0、负数或留空则禁用此功能；默认为3600秒，推荐……不好意思没有推荐'));
     $form->addInput($ShowWeather);
 
+    $EmailFeed = new Typecho_Widget_Helper_Form_Element_Text('EmailFeed', null, null, _t('邮件订阅设置'), _t('邮件订阅地址，推荐使用<a href="https://www.feedburner.com/">Feed Burner</a>；留空则禁用'));
+    $form->addInput($EmailFeed);
 	$notFound = new Typecho_Widget_Helper_Form_Element_Radio(
         'notFoundGame', array ('1' => 'Chrome小恐龙', '2' => '小仓鼠'), '',
         '404游戏', '用于在404的时候展示的一款HTML5游戏！如不选择，则为默认动画');
     $form->addInput($notFound);
-
-
 
 	$showUA = new Typecho_Widget_Helper_Form_Element_Select('showUA', array(
         'dontShow'=>'不显示UA',    

@@ -156,12 +156,15 @@
             <div class="panel-heading"><i class="fa fa-terminal"></i> 欢迎主人来到这里(=￣ω￣=)</div>
             <div id="meta-cloud">
 <ul class="fa-ul">
-<?php if($this->user->hasLogin()): ?>
+    <?php if($this->user->hasLogin()): ?>
 <li><i class="fa-li fa fa-spinner fa-spin"></i><a href="<?php $this->options->adminUrl(); ?>"><?php $this->user->screenName(); ?></a></li>
 <li><i class="fa-li fa fa-spinner fa-spin"></i><a href="<?php $this->options->logoutUrl(); ?>">登出</a></li>
-<?php else: ?>
+    <?php else: ?>
 <li><i class="fa-li fa fa-user fa-fw"></i><a href="<?php $this->options->adminUrl('login.php'); ?>">登录</a></li>
-<?php endif; ?>
+    <?php endif; ?>
 <li><i class="fa-li fa fa-rss "></i><a href="<?php $this->options->feedUrl(); ?>">RSS 订阅</a></li>
+    <?php if(!empty($this->options->EmailFeed)): ?>
+<li><i class="fa-li fa fa-envelope "></i><a href="<?php echo $this->options->EmailFeed; ?>">邮件 订阅</a></li>
+    <?php endif;?>
 </ul></div></div>
 </aside></aside>
