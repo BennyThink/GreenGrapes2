@@ -261,7 +261,7 @@ function weather(){
     if(empty($data))
         return '对不起，未能查询到天气';
     else{
-    $cityUrl = Helper::options()->themeUrl('city.json','GreenGrapes2');
+    $cityUrl = Helper::options()->themeUrl('js/city.json','GreenGrapes2');
     $web = json_decode(file_get_contents($cityUrl));
     $arr = array();
     foreach ($web as $k => $w) {
