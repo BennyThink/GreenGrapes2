@@ -150,7 +150,6 @@ function themeConfig($form) {
 			'EnableNetease' => _t('开启网易云音乐支持，在文章中使用{{音乐id}}添加音乐'),
 			'EnableNotice' => _t('开启来路提示功能'),
 			'EnableKiana' => _t('开启kiana挂件'),
-            'EnableJune4th' => _t('开启纪念日'),
             'ShowEmotions' => _t('显示主题自带表情（本功能将会与similies插件共存）'),
 
         ),
@@ -164,6 +163,13 @@ function themeConfig($form) {
 	')
 	);
     $form->addInput($switch->multiMode());
+
+    $MemorialDay = new Typecho_Widget_Helper_Form_Element_Textarea('MemorialDay',NULL,
+    '06-04
+07-13',
+        _t('纪念日设置'), _t('在这里填入将网站变成黑白的纪念日信息，形如07-13，默认开启06-04和07-13<br>
+        如不需要，将其清空即可禁用此功能'));
+    $form->addInput($MemorialDay);
 
 	$links = new Typecho_Widget_Helper_Form_Element_Textarea('links',NULL,NULL, 
 	_t('友链样式的HTML代码）'), _t('填入你的HTML代码，A标签即可，每行使用回车结尾，<strong>url结尾请不要带/</strong>。示例：<br>

@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="renderer" content="webkit">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<?php if (in_array('EnableJune4th', $this->options->switch)
-        && '06-04' == date('m-d', time())): ?>
+<?php if (!empty($this->options->MemorialDay)&&
+        strpos($this->options->MemorialDay, date('m-d', time()))): ?>
     <meta name="theme-color" content="#808080">
     <style type="text/css">
         <!--
@@ -15,7 +15,6 @@
             filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
             -webkit-filter: grayscale(100%);
         }
-
         -->
     </style>
 <?php else: ?>
