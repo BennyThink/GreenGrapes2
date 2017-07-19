@@ -35,7 +35,7 @@ echo '<br>'.$this->options->footer;?>
 <a class="fa fa-github fa-stack-1x" href="<?php $this->options->GithubURL() ?>" target="view_window"></a>
 </span><?php endif;?>
 <?php if (!empty($this->options->TelegramURL)) : ?><span class="fa-stack fa-lg">
-<a class="fa fa-telegram fa-stack-1x" href="<?php $this->options->TelegramURL() ?>" target="view_window"></a>
+<a class="fa fa-telegram fa-stack-1x" href="<?php echo 'https://t.me/'.$this->options->TelegramURL ?>" target="view_window"></a>
 </span><?php endif;?>
 <?php if (!empty($this->options->QQURL)) : ?><span class="fa-stack fa-lg">
 <a class="fa fa-qq fa-stack-1x" href="http://wpa.qq.com/msgrd?v=3&uin=<?php $this->options->QQURL() ?>&site=qq&menu=yes" target="view_window"></a>
