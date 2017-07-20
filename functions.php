@@ -82,7 +82,8 @@ function themeConfig($form) {
             'enableDeleteLine' => _t("添加 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>~~要加删除线的内容~~</code> 语法解析删除线, 你可以在必要的时候使用 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>\~</code> 转义以输出字符 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>~</code>"),
             'enableHighlightText' => _t("添加 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>==要高亮显示的内容==</code> 语法解析高亮 (荧光笔效果), 你可以在必要的时候使用 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>\=</code> 转义以输出字符 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>=</code>"),
         ),
-        array('enablePhonetic','enableHighlightText'), _t('Markdown 语法扩展'));
+        array('enablePhonetic','enableHighlightText'), _t('Markdown 语法扩展'),
+        _t('扩展markdown语法'));
     $form->addInput($markdownExtendBlock->multiMode());
 
     $SNSPos = new Typecho_Widget_Helper_Form_Element_Select('SNSPos', array(
@@ -147,7 +148,7 @@ function themeConfig($form) {
 			'showTypeColorful' => _t('显示打字彩虹特效（移动设备会自动关闭此特效）'),
 			'showTypeShake' => _t('显示打字震动特效（移动设备会自动关闭此特效）'),
 			'ShowLinksIcon' => _t('友情链接显示favicon（此功能有时会获取失败，比如说防盗链的网站、被墙网站）'),
-			'EnableNetease' => _t('开启网易云音乐支持，在文章中使用{{音乐id}}添加音乐'),
+			'EnableNetease' => _t('开启网易云音乐支持，在文章中使用<code>{{音乐id}}</code>添加音乐（不自动播放）'),
 			'EnableNotice' => _t('开启来路提示功能'),
 			'EnableKiana' => _t('开启kiana挂件'),
             'ShowEmotions' => _t('显示主题自带表情（本功能将会与similies插件共存）'),
@@ -159,7 +160,8 @@ function themeConfig($form) {
     _t('如果开启自带表情，建议到“设置-评论-允许使用的HTML标签和属性”中允许img标签，推荐如下：<br>%s','	
 	&lt;blockquote&gt;&lt;pre&gt;&lt;code&gt;&lt;strong&gt;&lt;em&gt;&lt;h5&gt;&lt;h6&gt;&lt;a href title
 	&gt;&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;&lt;tbody&gt;&lt;td&gt;&lt;img src=&quot;&quot;&gt;<br>
-	如果表情显示为img标签，请尝试重装或者是升级Typecho到开发版
+	如果表情显示为img标签，请尝试重装或者是升级Typecho到开发版；<br>
+	插入视频请使用iframe语法
 	')
 	);
     $form->addInput($switch->multiMode());
@@ -172,7 +174,7 @@ function themeConfig($form) {
     $form->addInput($MemorialDay);
 
 	$links = new Typecho_Widget_Helper_Form_Element_Textarea('links',NULL,NULL, 
-	_t('友链样式的HTML代码）'), _t('填入你的HTML代码，A标签即可，每行使用回车结尾，<strong>url结尾请不要带/</strong>。示例：<br>
+	_t('友链样式的HTML代码'), _t('填入你的HTML代码，A标签即可，每行使用回车结尾，<strong>url结尾请不要带/</strong>。示例：<br>
 	1. &lt;a href="https://www.bennythink.com"&gt;土豆不好吃&lt;/a&gt;<br>
 	2. &lt;a href="https://www.bennythink.com"&gt;&lt;img src="https://www.bennythink.com/favicon.ico" width="16"/&gt;土豆不好吃&lt;/a&gt;<br>
 	<strong>仅在上面“友情链接显示favicon”关闭之后可以使用语法2</strong><br>
@@ -969,6 +971,8 @@ function _renderNetease($content) {
 		src="//music.163.com/outchain/player?type=2&id='.'$1'.'&auto=0&height=66"></iframe>', $content);
     return $content;
 }
+
+
 function _renderHighlight($content) {
     $content = preg_replace('/\=\=(.+?)\=\=/i', "<span class=\"highlight-text\">$1</span>", $content);
     return $content;
