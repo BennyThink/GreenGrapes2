@@ -146,9 +146,9 @@ var setupContents = function () {
 <?php if (!empty($this->options->switch) && in_array('SmoothScroll', $this->options->switch)): ?>
 <script src="<?php $this->options->themeUrl('js/smoothscroll.js'); ?>" async></script>
 <?php endif; ?>
-<?php if('ShowAll'==$this->options->Snow)
+<?php if('ShowAll'==$this->options->Snow && !strpos($this->content,'iframe'))
     snow_display();
-elseif('ShowPC'==$this->options->Snow && !isMobile())
+elseif('ShowPC'==$this->options->Snow && !isMobile()&& !strpos($this->content,'iframe'))
     snow_display();
 ?>
 <?php //代码高亮
