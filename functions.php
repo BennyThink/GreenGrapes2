@@ -501,35 +501,33 @@ function isMobile() {
 	return $is_mobile;
 }
 
-//预览图Helper::options()->themeUrl('img/bg/', 'GreenGrapes2')
-function thumb($cid) {
-if (empty($imgurl)) {
-$rand_num = 12; //随机图片数量，根据图片目录中图片实际数量设置
-if ($rand_num == 0) {
-$imgurl = Helper::options()->themeUrl('img/bg/', 'GreenGrapes2').'0.jpg';
-//如果$rand_num = 0,则显示默认图片，命名为"0.jpg"，注意是绝对地址
-}else{
-$imgurl = Helper::options()->themeUrl('img/bg/', 'GreenGrapes2').rand(1,$rand_num).".jpg";
-//随机图片，须按"1.jpg","2.jpg","3.jpg"...的顺序命名，注意是绝对地址
-}
-}
-$db = Typecho_Db::get();
-$rs = $db->fetchRow($db->select('table.contents.text')
-->from('table.contents')
-->where('table.contents.type = ?', 'attachment')
-->where('table.contents.parent= ?', $cid)
-->order('table.contents.cid', Typecho_Db::SORT_ASC)
-->limit(1));
-$img = unserialize($rs['text']);
-if (empty($img)){
-//这个效果不好，不带class吧echo '<img class="col-md-3" src="'.$imgurl.'" />';
-echo '<img  src="'.$imgurl.'" />';
-}
-else{
-//echo str_replace('/','',Helper::options()->siteUrl).$img['path'];//有图
-$imgPath=substr(Helper::options()->siteUrl,0,strlen(Helper::options()->siteUrl)-1).$img['path'];//有图
-echo '<img src="'.$imgPath.'" width="300" />';
-}
+//预览图 return url
+function thumb( $cid ) {
+	if ( empty( $imgurl ) ) {
+		$rand_num = 12; //随机图片数量，根据图片目录中图片实际数量设置
+		if ( $rand_num == 0 ) {
+			$imgurl = Helper::options()->themeUrl( 'img/bg/', 'GreenGrapes2' ) . '0.jpg';
+		} else {
+			$imgurl = Helper::options()->themeUrl( 'img/bg/', 'GreenGrapes2' ) . rand( 1, $rand_num ) . ".jpg";
+		}
+	}
+	$db  = Typecho_Db::get();
+	$rs  = $db->fetchRow( $db->select( 'table.contents.text' )
+	                         ->from( 'table.contents' )
+	                         ->where( 'table.contents.type = ?', 'attachment' )
+	                         ->where( 'table.contents.parent= ?', $cid )
+	                         ->order( 'table.contents.cid', Typecho_Db::SORT_ASC )
+	                         ->limit( 1 ) );
+	//echo '<img  src="' . $imgurl . '" />';
+	if ( empty( $rs ) ) {
+		return $imgurl;
+	} else {
+//有图
+		$img     = unserialize( $rs['text'] );
+		$imgPath = substr( Helper::options()->siteUrl, 0, strlen( Helper::options()->siteUrl ) - 1 ) . $img['path'];//有图
+		//echo '<img src="' . $imgPath . '" width="300" />';
+		return $imgPath;
+	}
 }
 
 

@@ -27,8 +27,7 @@ $this->need('header.php');
                         <div class="col-md-12 article-content">
 <?php 
 if(!empty($this->options->switch) && in_array('ShowThumbPic', $this->options->switch))
-	echo thumb($this->cid);
-
+	echo '<img src="' . thumb($this->cid) . '" width="300" />';
 ?>				
 <?php $this->content(); ?>
                         </div>

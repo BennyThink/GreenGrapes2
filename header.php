@@ -56,6 +56,15 @@
 
     <!-- 通过自有函数输出HTML头部信息 -->
     <?php $this->header(); ?>
+	<?php if($this->is('post')||$this->is('page')): ?>
+        <meta property="og:type" content="blog"/>
+        <meta property="og:image" content="<?php  echo thumb($this->cid)?>"/>
+        <meta property="og:release_date" content="<?php $this->date('Y-m-j'); ?>"/>
+        <meta property="og:title" content="<?php $this->options->title(); ?>"/>
+        <meta property="og:description" content="<?php $this->description() ?>" />
+        <meta property="og:author" content="<?php $this->author(); ?>"/>
+	<?php endif; ?>
+
 	<!--统计代码-->
 	<?php if (!$this->user->hasLogin()): ?>
     <?php $this->options->tongJi();
