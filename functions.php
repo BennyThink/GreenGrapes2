@@ -72,6 +72,22 @@ function themeConfig($form) {
         _t('下雪特效设置'), _t('默认为仅移动设备关闭下雪特效'));
     $form->addInput($Snow->multiMode());
 
+	$cursor = new Typecho_Widget_Helper_Form_Element_Select('cursor', array(
+		'default'=>'默认鼠标指针',
+		'cursor1' => '样式1',
+		'cursor2' => '样式2',
+	), 'cursor1',
+		_t('鼠标指针设置'), _t('
+<strong>样式1</strong>
+    <img src="'.Helper::options()->themeUrl('cursor/default1.cur','GreenGrapes2').'">
+    <img src="'.Helper::options()->themeUrl('cursor/pointer1.cur','GreenGrapes2').'">
+<strong>样式2</strong>
+    <img src="'.Helper::options()->themeUrl('cursor/default2.cur','GreenGrapes2').'">
+    <img src="'.Helper::options()->themeUrl('cursor/pointer2.cur','GreenGrapes2').'">
+
+' ));
+	$form->addInput($cursor->multiMode());
+
 	$disableAutoNightTheme = new Typecho_Widget_Helper_Form_Element_Radio('disableAutoNightTheme', array(
 	'0'=>_t('开启'), '1'=>_t('关闭')), '0', _t('自动夜间模式（尚未开发）'),_t('默认为开启'));
     $form->addInput($disableAutoNightTheme);

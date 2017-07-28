@@ -64,7 +64,20 @@
         <meta property="og:description" content="<?php $this->description() ?>" />
         <meta property="og:author" content="<?php $this->author(); ?>"/>
 	<?php endif; ?>
-
+    <!--cursor-->
+    <?php if('cursor1'==$this->options->cursor):?>
+<style type="text/css">
+    html {  cursor: url(<?php $this->options->themeUrl('cursor/default1.cur'); ?>), default;  }
+    a {  cursor: url(<?php $this->options->themeUrl('cursor/pointer1.cur'); ?>), pointer;  }
+    .btn,.icon-share {  cursor: url(<?php $this->options->themeUrl('cursor/pointer1.cur'); ?>), pointer;  }
+</style>
+    <?php elseif ('cursor2'==$this->options->cursor):?>
+ <style type="text/css">
+     html {  cursor: url(<?php $this->options->themeUrl('cursor/default2.cur'); ?>), default;  }
+     a {  cursor: url(<?php $this->options->themeUrl('cursor/pointer2.cur'); ?>), pointer;  }
+     .btn,.icon-share {  cursor: url(<?php $this->options->themeUrl('cursor/pointer2.cur'); ?>), pointer;  }
+</style>
+    <?php endif;?>
 	<!--统计代码-->
 	<?php if (!$this->user->hasLogin()): ?>
     <?php $this->options->tongJi();
