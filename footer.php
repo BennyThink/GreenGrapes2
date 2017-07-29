@@ -81,8 +81,7 @@
         document.body.addEventListener('input', POWERMODE);
     </script>
 <?php endif; ?>
-
-<?php if(empty($this->options->dynamicTitle)):?>
+<!--loading-->
 <script type="text/javascript">
     jQuery(window).ready(function() {
         jQuery("#loading").fadeOut(500);
@@ -94,36 +93,26 @@
         });
     };
     setupContents();
-    $('#loading').remove();
+    //$('#loading').remove(); this is the key to issue #2
 </script>
-<?php else:?>
-<script type="text/javascript">
-//dynamic title
-window.onblur = function() {
-    document.title = "<?=$this->options->dynamicTitle?>";
-$("#web-icon").attr('href',"<?php $this->options->themeUrl('loss.ico'); ?>");
-window.onfocus = function() {
-    document.title = "<?php $this->archiveTitle(array(
-'category'=>_t('分类 %s 下的文章'),
-'search'=>_t('包含关键字 %s 的文章'),
-'tag' =>_t('标签 %s 下的文章'),
-'author'=>_t('%s 发布的文章')
-), '', ' - '); ?><?php $this->options->title(); ?>";
-$("#web-icon").attr('href',"<?php $this->options->siteUrl(); ?>favicon.ico");
-}};
-jQuery(window).ready(function() {
-    jQuery("#loading").fadeOut(500);
-});
-console.info('%c The tiniest possibility of seeing you again excites me.', "background: white; color: #16a085; padding-left:10px;");
-var setupContents = function () {
-            $(".article-content img").each(function() {
-                $(this).attr('data-action', 'zoom');
-            });         
+<!--dynamic title-->
+<?php if ( ! empty( $this->options->dynamicTitle ) ): ?>
+    <script type="text/javascript">
+        window.onblur = function () {
+            document.title = "<?=$this->options->dynamicTitle?>";
+            $("#web-icon").attr('href', "<?php $this->options->themeUrl( 'loss.ico' ); ?>");
+            window.onfocus = function () {
+                document.title = "<?php $this->archiveTitle( array(
+					'category' => _t( '分类 %s 下的文章' ),
+					'search'   => _t( '包含关键字 %s 的文章' ),
+					'tag'      => _t( '标签 %s 下的文章' ),
+					'author'   => _t( '%s 发布的文章' )
+				), '', ' - ' ); ?><?php $this->options->title(); ?>";
+                $("#web-icon").attr('href', "<?php $this->options->siteUrl(); ?>favicon.ico");
+            }
         };
- setupContents();
- $('#loading').remove();
-</script>
-<?php endif;?>
+    </script>
+<?php endif; ?>
 
 <?php if (!empty($this->options->switch) && in_array('atargetblank', $this->options->switch)): ?>
 <script>
