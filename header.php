@@ -53,7 +53,6 @@
     echo '<link rel="stylesheet" type="text/css" href="' . $currentPath . 'styles/shCore' . $settings . '.css" />' . "\n";
     }
 ?>
-
     <!-- 通过自有函数输出HTML头部信息 -->
     <?php $this->header(); ?>
 	<?php if($this->is('post')||$this->is('page')): ?>
@@ -65,13 +64,13 @@
         <meta property="og:author" content="<?php $this->author(); ?>"/>
 	<?php endif; ?>
     <!--cursor-->
-    <?php if('cursor1'==$this->options->cursor):?>
+    <?php if('cursor1'==$this->options->cursor && !isMobile()):?>
 <style type="text/css">
     html {  cursor: url(<?php $this->options->themeUrl('cursor/default1.cur'); ?>), default;  }
     a {  cursor: url(<?php $this->options->themeUrl('cursor/pointer1.cur'); ?>), pointer;  }
     .btn,.icon-share {  cursor: url(<?php $this->options->themeUrl('cursor/pointer1.cur'); ?>), pointer;  }
 </style>
-    <?php elseif ('cursor2'==$this->options->cursor):?>
+    <?php elseif ('cursor2'==$this->options->cursor && !isMobile()):?>
  <style type="text/css">
      html {  cursor: url(<?php $this->options->themeUrl('cursor/default2.cur'); ?>), default;  }
      a {  cursor: url(<?php $this->options->themeUrl('cursor/pointer2.cur'); ?>), pointer;  }

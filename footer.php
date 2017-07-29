@@ -9,10 +9,12 @@
         <?php _e('All Rights Reserved.');?>
         </p>
 <link href="<?php $this->options->themeUrl('css/shaky.css'); ?>" rel="stylesheet" />
-<?php getBuildTime(); ?><span class="shaky">(´・ω・`)</span>
-加载耗时：<?php echo timer_stop(); welcome_hello();?> 
-<?php if(!empty($this->options->footer))
-echo '<br>'.$this->options->footer;?>
+	<?php getBuildTime(); ?><span class="shaky">(´・ω・`)</span>
+    加载耗时：<?php echo timer_stop();
+	welcome_hello();
+	if ( ! empty( $this->options->footer ) )
+		echo '<br>' . $this->options->footer;
+	?>
 </div>
 <!--SNS-->
 <?php if($this->options->SNSPos!='showSideBar'):?>
@@ -56,29 +58,30 @@ echo '<br>'.$this->options->footer;?>
 <link rel="stylesheet" href="<?php $this->options->themeUrl('css/zoom.css'); ?>" >
 <?php $this->footer(); ?>
 <!--Typing effect-->
-<?php if(!empty($this->options->switch ) && 
-in_array('showTypeColorful',$this->options->switch)&& in_array('showTypeShake',$this->options->switch)&&!isMobile()):?>
-<script src="<?php $this->options->themeUrl('js/typing.js'); ?>" ></script>
-<script type="text/javascript">
-POWERMODE.colorful = true; // make power mode colorful
-POWERMODE.shake = true; // turn off shake
-document.body.addEventListener('input', POWERMODE);
-</script>
-<?php elseif(!empty($this->options->switch) && in_array('showTypeColorful',$this->options->switch)&&!isMobile()):?>
-<script src="<?php $this->options->themeUrl('js/typing.js'); ?>" ></script>
-<script type="text/javascript">
-POWERMODE.colorful = true; // make power mode colorful
-POWERMODE.shake = false; // turn off shake
-document.body.addEventListener('input', POWERMODE);
-</script>
-<?php elseif(!empty($this->options->switch) && in_array('showTypeShake',$this->options->switch)&&!isMobile()):?>
-<script src="<?php $this->options->themeUrl('js/typing.js'); ?>" ></script>
-<script type="text/javascript">
-POWERMODE.colorful = false; // make power mode colorful
-POWERMODE.shake = true; // turn off shake
-document.body.addEventListener('input', POWERMODE);
-</script>
+<?php if ( ! empty( $this->options->switch ) &&
+           in_array( 'showTypeColorful', $this->options->switch ) && in_array( 'showTypeShake', $this->options->switch ) && ! isMobile() ): ?>
+    <script src="<?php $this->options->themeUrl( 'js/typing.js' ); ?>"></script>
+    <script type="text/javascript">
+        POWERMODE.colorful = true;
+        POWERMODE.shake = true;
+        document.body.addEventListener('input', POWERMODE);
+    </script>
+<?php elseif ( ! empty( $this->options->switch ) && in_array( 'showTypeColorful', $this->options->switch ) && ! isMobile() ): ?>
+    <script src="<?php $this->options->themeUrl( 'js/typing.js' ); ?>"></script>
+    <script type="text/javascript">
+        POWERMODE.colorful = true;
+        POWERMODE.shake = false;
+        document.body.addEventListener('input', POWERMODE);
+    </script>
+<?php elseif ( ! empty( $this->options->switch ) && in_array( 'showTypeShake', $this->options->switch ) && ! isMobile() ): ?>
+    <script src="<?php $this->options->themeUrl( 'js/typing.js' ); ?>"></script>
+    <script type="text/javascript">
+        POWERMODE.colorful = false;
+        POWERMODE.shake = true;
+        document.body.addEventListener('input', POWERMODE);
+    </script>
 <?php endif; ?>
+
 <?php if(empty($this->options->dynamicTitle)):?>
 <script type="text/javascript">
     jQuery(window).ready(function() {
@@ -121,6 +124,7 @@ var setupContents = function () {
  $('#loading').remove();
 </script>
 <?php endif;?>
+
 <?php if (!empty($this->options->switch) && in_array('atargetblank', $this->options->switch)): ?>
 <script>
     //Add target="_blank" to a tags
@@ -135,16 +139,12 @@ var setupContents = function () {
     });
 </script>
 <?php endif; ?>
-<?php if (!empty($this->options->switch) && in_array('Pangu', $this->options->switch)): ?>
-<script src="<?php $this->options->themeUrl('js/pangu.min.js'); ?>" ></script>
-<script> pangu.spacingPage(); </script>
+<?php if ( ! empty( $this->options->switch )
+           && in_array( 'EnableKiana', $this->options->switch ) && ! isMobile() ): ?>
+    <script src="<?php $this->options->themeUrl( 'kiana/bga.min.js' ); ?>" async></script>
 <?php endif; ?>
-<?php if (!empty($this->options->switch)
-    && in_array('EnableKiana', $this->options->switch)&&!isMobile()): ?>
-<script src="<?php $this->options->themeUrl('kiana/bga.min.js'); ?>" async></script>
-<?php endif; ?>
-<?php if (!empty($this->options->switch) && in_array('SmoothScroll', $this->options->switch)): ?>
-<script src="<?php $this->options->themeUrl('js/smoothscroll.js'); ?>" async></script>
+<?php if ( ! empty( $this->options->switch ) && in_array( 'SmoothScroll', $this->options->switch ) ): ?>
+    <script src="<?php $this->options->themeUrl( 'js/smoothscroll.js' ); ?>" async></script>
 <?php endif; ?>
 <?php if('ShowAll'==$this->options->Snow && !strpos($this->content,'iframe'))
     snow_display();

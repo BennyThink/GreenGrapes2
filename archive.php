@@ -1,5 +1,4 @@
 <?php $this->need('header.php'); ?>
-
     <div id="m-container" class="container">
         <div class="col-md-8">
             <div class="alert alert-info">
@@ -55,6 +54,5 @@
         <div class="col-md-4">
             <?php $this->need('sidebar.php'); ?>
         </div>
-
     </div>
 <?php $this->need('footer.php');

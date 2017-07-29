@@ -36,14 +36,7 @@
     && strpos($this->options->motto, '!@') !== false):
 echo preg_replace('/\!\@(.+?)\!\@/i', "$1", $this->options->motto).'<br>'; ?>
 <?php elseif(!empty($this->options->motto)):?>
-    <style>.catlist {
-            border: 2px solid #FFB6C1;
-            padding: 5px;
-            margin-top: 12px;
-            text-align: center;
-            color: #000;
-        }
-
+    <style>
         .yunluotips {
             border: 2px solid #FFCC33;
             padding: 15px

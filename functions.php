@@ -240,10 +240,8 @@ function themeConfig($form) {
 
 
 //天气预报
-
 function isNew()
 {
-
     if (!Typecho_Cookie::get('view')) {
         $weatherInfo = weather();
         Typecho_Cookie::set('view', '1',time()+Helper::options()->ShowWeather, Helper::options()->siteUrl);
@@ -325,69 +323,54 @@ function snow_display(){
     echo '<div class="Snow"></div>' . "\n";
 
 }
+
 //welcome
-function welcome_hello(){
-$referer = $_SERVER["HTTP_REFERER"]; 
-$refererhost = parse_url($referer);
-$host = strtolower($refererhost['host']);
-$ben=$_SERVER['HTTP_HOST'];    
-$callback = "HELLO！欢迎来自<strong>".$host."</strong>的朋友！";
+function welcome_hello() {
+	$referer     = $_SERVER["HTTP_REFERER"];
+	$refererhost = parse_url( $referer );
+	$host        = strtolower( $refererhost['host'] );
+	$ben         = $_SERVER['HTTP_HOST'];
+	$callback    = "HELLO！欢迎来自<strong>" . $host . "</strong>的朋友！";
 
-if ($referer == ""||$referer == null) {
-if (!Typecho_Cookie::get('firstView')) {
-Typecho_Cookie::set('firstView', '1', 0, Helper::options()->siteUrl);
-            $callback = "欢迎您访问我的博客~  我倍感荣幸啊 嘿嘿";
-        }else{
-            $callback = "您直接访问了本站!  莫非您记住了我的<strong>域名</strong>.厉害~  我倍感荣幸啊 嘿嘿";
-}
-}
-
-elseif(strstr($ben,$host)){ 
- $callback ="host"; 
-}
-elseif (preg_match('/bennythink.*/i', $host)) {
-    $callback = '您通过 <strong>小土豆</strong> 找到了我，一定很不一般噢！';
-}
-elseif (preg_match('/baiducontent.*/i', $host)) {
-        $callback = '您通过 <strong>百度快照</strong> 找到了我，厉害！';
-}
-elseif (preg_match('/baidu.*/i', $host)) {
-        $callback = '您通过 <strong>百度</strong> 找到了我，厉害！';
-
-        //360
-    } elseif (preg_match('/so.*/i', $host)) {
-        $callback = '您通过 <strong>好搜</strong> 找到了我，厉害！';
-        //google
-    } elseif (!preg_match('/www\.google\.com\/reader/i', $referer) && preg_match('/google\./i', $referer)) {
-        $callback = '您居然通过 <strong>Google</strong> 找到了我! 一定是个技术宅吧!';
-        //yahoo
-    } elseif (preg_match('/search\.yahoo.*/i', $referer) || preg_match('/yahoo.cn/i', $referer)) {
-        $callback = '您通过 <strong>Yahoo</strong> 找到了我! 厉害！'; 
-    }
-
-elseif (preg_match('/cn\.bing\.com\.*/i', $referer) || preg_match('/yahoo.cn/i', $referer)) {
-        $callback = '您通过 <strong>Bing</strong> 找到了我! 厉害！';
-        //阅读器
-        //google
-    } 
- elseif (preg_match('/google\.com\/reader/i', $referer)) {
-        $callback = "感谢你通过 <strong>Google</strong> 订阅我!  既然过来读原文了. 欢迎留言指导啊.嘿嘿 ^_^";
-        //xianguo
-    } elseif (preg_match('/xianguo\.com\/reader/i', $referer)) {
-        $callback = "感谢你通过 <strong>鲜果</strong> 订阅我!  既然过来读原文了. 欢迎留言指导啊.嘿嘿 ^_^";
-        //zhuaxia
-    } elseif (preg_match('/zhuaxia\.com/i', $referer)) {
-        $callback = "感谢你通过 <strong>抓虾</strong> 订阅我!  既然过来读原文了. 欢迎留言指导啊.嘿嘿 ^_^";
-        //哪吒
-    } elseif (preg_match('/inezha\.com/i', $referer)) {
-        $callback = "感谢你通过 <strong>哪吒</strong> 订阅我!  既然过来读原文了. 欢迎留言指导啊.嘿嘿 ^_^";
-        //有道
-    } elseif (preg_match('/reader\.youdao/i', $referer)) {
-        $callback = "感谢你通过 <strong>有道</strong> 订阅我!  既然过来读原文了. 欢迎留言指导啊.嘿嘿 ^_^";
-        //自己  
-    } 
-if( $callback!="host")//排除本地访问
-echo "<script>notie('info', '$callback', true);</script>";
+	if ( $referer == "" || $referer == null ) {
+		if ( ! Typecho_Cookie::get( 'firstView' ) ) {
+			Typecho_Cookie::set( 'firstView', '1', 0, Helper::options()->siteUrl );
+			$callback = "欢迎您访问我的博客~  我倍感荣幸啊 嘿嘿";
+		} else {
+			$callback = "您直接访问了本站!  莫非您记住了我的<strong>域名</strong>.厉害~  我倍感荣幸啊 嘿嘿";
+		}
+	} elseif ( strstr( $ben, $host ) ) {
+		$callback = "host";
+	} elseif ( preg_match( '/bennythink.*/i', $host ) ) {
+		$callback = '您通过 <strong>小土豆</strong> 找到了我，一定很不一般噢！';
+	} elseif ( preg_match( '/baiducontent.*/i', $host ) ) {
+		$callback = '您通过 <strong>百度快照</strong> 找到了我，厉害！';
+	} elseif ( preg_match( '/baidu.*/i', $host ) ) {
+		$callback = '您通过 <strong>百度</strong> 找到了我，厉害！';
+	} elseif ( preg_match( '/so.*/i', $host ) ) {
+		$callback = '您通过 <strong>好搜</strong> 找到了我，厉害！';
+	} elseif ( ! preg_match( '/www\.google\.com\/reader/i', $referer ) && preg_match( '/google\./i', $referer ) ) {
+		$callback = '您居然通过 <strong>Google</strong> 找到了我! 一定是个技术宅吧!';
+	} elseif ( preg_match( '/search\.yahoo.*/i', $referer ) || preg_match( '/yahoo.cn/i', $referer ) ) {
+		$callback = '您通过 <strong>Yahoo</strong> 找到了我! 厉害！';
+	} elseif ( preg_match( '/cn\.bing\.com\.*/i', $referer ) || preg_match( '/yahoo.cn/i', $referer ) ) {
+		$callback = '您通过 <strong>Bing</strong> 找到了我! 厉害！';
+	} elseif ( preg_match( '/google\.com\/reader/i', $referer ) ) {
+		$callback = "感谢你通过 <strong>Google</strong> 订阅我!  既然过来读原文了. 欢迎留言指导啊.嘿嘿 ^_^";
+	} elseif ( preg_match( '/xianguo\.com\/reader/i', $referer ) ) {
+		$callback = "感谢你通过 <strong>鲜果</strong> 订阅我!  既然过来读原文了. 欢迎留言指导啊.嘿嘿 ^_^";
+	} elseif ( preg_match( '/zhuaxia\.com/i', $referer ) ) {
+		$callback = "感谢你通过 <strong>抓虾</strong> 订阅我!  既然过来读原文了. 欢迎留言指导啊.嘿嘿 ^_^";
+	} elseif ( preg_match( '/inezha\.com/i', $referer ) ) {
+		$callback = "感谢你通过 <strong>哪吒</strong> 订阅我!  既然过来读原文了. 欢迎留言指导啊.嘿嘿 ^_^";
+	} elseif ( preg_match( '/reader\.youdao/i', $referer ) ) {
+		$callback = "感谢你通过 <strong>有道</strong> 订阅我!  既然过来读原文了. 欢迎留言指导啊.嘿嘿 ^_^";
+		//自己
+	}
+	if ( $callback != "host" )//排除本地访问
+	{
+		echo "<script>notie('info', '$callback', true);</script>";
+	}
 }
 //welcome_hello();
 
@@ -474,23 +457,23 @@ function autoUpdate(){
 	
 }
 
-function del_dir($dir){
-    if(is_dir($dir)){
-        foreach(scandir($dir) as $row){
-            if($row == '.' || $row == '..'){
-                continue;
-            }
-            $path = $dir .'/'. $row;
-            if(filetype($path) == 'dir'){
-                del_dir($path);
-            }else{
-                unlink($path);
-            }
-        }
-        rmdir($dir);
-    }else{
-        return false;
-    }
+function del_dir( $dir ) {
+	if ( is_dir( $dir ) ) {
+		foreach ( scandir( $dir ) as $row ) {
+			if ( $row == '.' || $row == '..' ) {
+				continue;
+			}
+			$path = $dir . '/' . $row;
+			if ( filetype( $path ) == 'dir' ) {
+				del_dir( $path );
+			} else {
+				unlink( $path );
+			}
+		}
+		rmdir( $dir );
+	} else {
+		return false;
+	}
 }
 
 /**
@@ -519,14 +502,9 @@ function isMobile() {
 
 //预览图 return url
 function thumb( $cid ) {
-	if ( empty( $imgurl ) ) {
-		$rand_num = 12; //随机图片数量，根据图片目录中图片实际数量设置
-		if ( $rand_num == 0 ) {
-			$imgurl = Helper::options()->themeUrl( 'img/bg/', 'GreenGrapes2' ) . '0.jpg';
-		} else {
-			$imgurl = Helper::options()->themeUrl( 'img/bg/', 'GreenGrapes2' ) . rand( 1, $rand_num ) . ".jpg";
-		}
-	}
+
+	$rand_num = 12; //随机图片数量，根据图片目录中图片实际数量设置
+
 	$db  = Typecho_Db::get();
 	$rs  = $db->fetchRow( $db->select( 'table.contents.text' )
 	                         ->from( 'table.contents' )
@@ -536,37 +514,38 @@ function thumb( $cid ) {
 	                         ->limit( 1 ) );
 	//echo '<img  src="' . $imgurl . '" />';
 	if ( empty( $rs ) ) {
-		return $imgurl;
+		return Helper::options()->themeUrl( 'img/bg/', 'GreenGrapes2' ) . rand( 0, $rand_num - 1 ) . ".jpg";
 	} else {
-//有图
+        //有图
 		$img     = unserialize( $rs['text'] );
 		$imgPath = substr( Helper::options()->siteUrl, 0, strlen( Helper::options()->siteUrl ) - 1 ) . $img['path'];//有图
-		//echo '<img src="' . $imgPath . '" width="300" />';
 		return $imgPath;
 	}
 }
 
 
-
-
 //加载耗时
 function timer_start() {
-    global $timestart;
-    $mtime = explode( ' ', microtime() );
-    $timestart = $mtime[1] + $mtime[0];
-    return true;
+	global $timestart;
+	$mtime     = explode( ' ', microtime() );
+	$timestart = $mtime[1] + $mtime[0];
+
+	return true;
 }
+
 timer_start();
- 
+
 function timer_stop( $display = 0, $precision = 3 ) {
-    global $timestart, $timeend;
-    $mtime = explode( ' ', microtime() );
-    $timeend = $mtime[1] + $mtime[0];
-    $timetotal = number_format( $timeend - $timestart, $precision );
-    $r = $timetotal < 1 ? $timetotal * 1000 . " ms" : $timetotal . " s";
-    if ( $display )
-    echo $r;
-    return $r;
+	global $timestart, $timeend;
+	$mtime     = explode( ' ', microtime() );
+	$timeend   = $mtime[1] + $mtime[0];
+	$timetotal = number_format( $timeend - $timestart, $precision );
+	$r         = $timetotal < 1 ? $timetotal * 1000 . " ms" : $timetotal . " s";
+	if ( $display ) {
+		echo $r;
+	}
+
+	return $r;
 }
 
 /**
@@ -574,29 +553,31 @@ function timer_stop( $display = 0, $precision = 3 ) {
 * <?php if(timeZone($this->date->timeStamp)) echo ' new'; ?>
 * 使用方法  if(timeZone($this->date->timeStamp)) echo 'ok';
 */
-function timeZone($from){
-$now = new Typecho_Date(Typecho_Date::gmtTime());
-return $now->timeStamp - $from < 24*60*60 ? true : false;
+function timeZone( $from ) {
+	$now = new Typecho_Date( Typecho_Date::gmtTime() );
+
+	return $now->timeStamp - $from < 24 * 60 * 60 ? true : false;
 }
 
 //字数统计
-function  art_count ($cid){
-    $db=Typecho_Db::get ();
-    $rs=$db->fetchRow ($db->select ('table.contents.text')->from ('table.contents')->where ('table.contents.cid=?',$cid)->order ('table.contents.cid',Typecho_Db::SORT_ASC)->limit (1));
-    $text = preg_replace("/[^\x{4e00}-\x{9fa5}]/u", "", $rs['text']);
-    echo mb_strlen($text,'UTF-8');
+function art_count( $cid ) {
+	$db   = Typecho_Db::get();
+	$rs   = $db->fetchRow( $db->select( 'table.contents.text' )->from( 'table.contents' )->where( 'table.contents.cid=?', $cid )->order( 'table.contents.cid', Typecho_Db::SORT_ASC )->limit( 1 ) );
+	$text = preg_replace( "/[^\x{4e00}-\x{9fa5}]/u", "", $rs['text'] );
+	echo mb_strlen( $text, 'UTF-8' );
 }
 
-function getBuildTime(){
+function getBuildTime() {
 // 在下面按格式输入本站创建的时间
-if(empty(Helper::options()->createTime))
-	$ct='2016-12-23 13:59:00';
-else
-	$ct=Helper::options()->createTime;
-$site_create_time = strtotime($ct);
-$time = time() - $site_create_time; 
-$time=floor($time/86400);
-echo '<span class="time">'.'本站已经建立'.$time.'天啦!'.'</span>';
+	if ( empty( Helper::options()->createTime ) )
+		$ct = '2016-12-23 13:59:00';
+    else
+		$ct = Helper::options()->createTime;
+
+	$site_create_time = strtotime( $ct );
+	$time             = time() - $site_create_time;
+	$time             = floor( $time / 86400 );
+	echo '<span class="time">' . '本站已经建立' . $time . '天啦!' . '</span>';
 }
 //访问量
 
@@ -616,55 +597,57 @@ function get_post_view($archive)
     }
     echo $row['views'];
 }
+
 /**
  * 头像：先QQ、再gravatar、最后是默认的
  * return img头像url，一定会获得头像url
 **/
-function avatar($email){
-$yourUrl=Helper::options()->siteUrl;
-$saveName='usr/themes/GreenGrapes2/avatarCache/'.md5(strtolower(trim($email))).'.jpg';
-clearstatcache();
-if(empty(Helper::options()->cacheTime))
-	$ct=1209600;
-else
-	$ct=Helper::options()->cacheTime;
-//echo 'current cacheTime is '.$ct;
-if(strpos($email,"@qq.com")){
-    //如果是QQ邮箱的话，测试缓存策略
-	if(file_exists($saveName) && (time()-filemtime($saveName))<$ct)
-		return '<img class="avatar" src="'.$yourUrl.$saveName.'" />';
-	else
-	{
-		//echo '文件不存在或者过期，重新获取';
-        $geturl = 'http://ptlogin2.qq.com/getface?&imgtype=1&uin='.$email;
-        $qquser = file_get_contents($geturl);
-		$str1 = explode('qq&k=', $qquser);
-        $str2 = explode('&s=', $str1[1]);
-        $k = $str2[0];
-        $qqimg = 'https://q1.qlogo.cn/g?b=qq&k='.$k.'&s=100';
-		//保存图片
-		copy($qqimg,$saveName);
-        return '<img class="avatar" src="'.$yourUrl.$saveName.'" />';
+function avatar( $email ) {
+	$yourUrl  = Helper::options()->siteUrl;
+	$saveName = 'usr/themes/GreenGrapes2/avatarCache/' . md5( strtolower( trim( $email ) ) ) . '.jpg';
+	clearstatcache();
+	if ( empty( Helper::options()->cacheTime ) ) {
+		$ct = 1209600;
+	} else {
+		$ct = Helper::options()->cacheTime;
 	}
-}
-elseif(file_exists($saveName) && (time()-filemtime($saveName))<$ct){
-	//返回未超时的gravatar
-		//已有缓存
-		return '<img class="avatar" src="'.$yourUrl.$saveName.'" />';
-	}
-else{	
-		//获取新的gravatar，并判断
-		$headers = @get_headers('https://www.gravatar.com/avatar/'.md5(strtolower(trim($email))).'?d=404');		
-		if (preg_match("/404/", $headers[0])) { 
-		//无头像，应该拷贝头像
-		copy($yourUrl.'usr/themes/GreenGrapes2/img/default.jpg',$saveName);
-		return '<img class="avatar" src="'.$yourUrl.'usr/themes/GreenGrapes2/img/default.jpg" />'; 	
+
+	if ( strpos( $email, "@qq.com" ) ) {
+		//如果是QQ邮箱的话，测试缓存策略
+		if ( file_exists( $saveName ) && ( time() - filemtime( $saveName ) ) < $ct ) {
+			return '<img class="avatar" src="' . $yourUrl . $saveName . '" />';
 		} else {
-		//有gravatar
-		copy('https://www.gravatar.com/avatar/'.md5(strtolower(trim($email))),$saveName);
-        return '<img class="avatar" src="'.$yourUrl.$saveName.'" />'; 
+			//echo '文件不存在或者过期，重新获取';
+			$geturl = 'http://ptlogin2.qq.com/getface?&imgtype=1&uin=' . $email;
+			$qquser = file_get_contents( $geturl );
+			$str1   = explode( 'qq&k=', $qquser );
+			$str2   = explode( '&s=', $str1[1] );
+			$k      = $str2[0];
+			$qqimg  = 'https://q1.qlogo.cn/g?b=qq&k=' . $k . '&s=100';
+			//保存图片
+			copy( $qqimg, $saveName );
+
+			return '<img class="avatar" src="' . $yourUrl . $saveName . '" />';
 		}
-	
+	} elseif ( file_exists( $saveName ) && ( time() - filemtime( $saveName ) ) < $ct ) {
+		//返回未超时的gravatar
+		//已有缓存
+		return '<img class="avatar" src="' . $yourUrl . $saveName . '" />';
+	} else {
+		//获取新的gravatar，并判断
+		$headers = @get_headers( 'https://www.gravatar.com/avatar/' . md5( strtolower( trim( $email ) ) ) . '?d=404' );
+		if ( preg_match( "/404/", $headers[0] ) ) {
+			//无头像，应该拷贝头像
+			copy( $yourUrl . 'usr/themes/GreenGrapes2/img/default.jpg', $saveName );
+
+			return '<img class="avatar" src="' . $yourUrl . 'usr/themes/GreenGrapes2/img/default.jpg" />';
+		} else {
+			//有gravatar
+			copy( 'https://www.gravatar.com/avatar/' . md5( strtolower( trim( $email ) ) ), $saveName );
+
+			return '<img class="avatar" src="' . $yourUrl . $saveName . '" />';
+		}
+
 	}
 
 }
@@ -768,8 +751,8 @@ function getUA($ua,$isPic){
 		//return $os . "  |  " . $browser;
 		$prePath1=Helper::options()->themeUrl.'/img/ua/';
 		$prePath2=$prePath1;
-		$test1=$prePath1;
-		$test2=$prePath2;
+		//$test1=$prePath1;
+		//$test2=$prePath2;
 		//确定UA图片		
 		if(strstr($os,'Vista')) 			$prePath1.='Vista'.'.png';
 		elseif(strstr($os,'Windows 7')) 	$prePath1.= 'Windows7'.'.png';
@@ -853,7 +836,6 @@ function theme_random_posts(){
 }
 
 //custom render
-
 function render($content) {
     $replaceStartIndex = array();
     $replaceEndIndex = array();
@@ -1174,7 +1156,6 @@ else
             <?php $comments->threadedComments(); ?>
         </div>
     <?php } ?>
-    
     
 </li>
 <?php

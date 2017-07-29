@@ -40,7 +40,7 @@ if(!empty($this->options->switch) && in_array('ShowThumbPic', $this->options->sw
                         <span><i class="fa fa-calendar"></i> <?php $this->date('Y-m-d'); ?></span>
                         <span><i class="fa fa-user"></i> <a href="<?php $this->author->permalink(); ?>" rel="author"><?php $this->author(); ?></a></span>
                         <span><i class="fa fa-comment"></i> <a href="<?php $this->permalink() ?>#comments"><?php echo $this->commentsNum.'评论';?><span class="ds-thread-count" data-thread-key="<?php echo $this->cid;?>"></span></a></span>
-						
+
 					</div>
                 </section>
             </article>
@@ -64,6 +64,5 @@ if(!empty($this->options->switch) && in_array('ShowThumbPic', $this->options->sw
     <div class="col-md-4">
         <?php $this->need('sidebar.php'); ?>
     </div>
-
 </div>
 <?php $this->need('footer.php');

@@ -8,7 +8,6 @@
 <?php $comments->pageNav('&laquo; 前一页', '后一页 &raquo;'); ?>
     </div>
 <?php if($this->allow('comment')): ?>
-
     <div class="comments-block new-comment" id="<?php $this->respondId(); ?>">
         <div>
             <?php $comments->cancelReply(); ?>
@@ -48,17 +47,16 @@ Smilies_Plugin::output();?>
         <p class="ui ribbon label <?php $this->options->singleColor() ?>"><?php _e('博主残忍的关闭了评论'); ?></p>
     </div>
 <?php endif; ?>
-<?php if (!empty($this->options->switch) && in_array('ShowEmotions', $this->options->switch)): ?>
-<script>
+<?php if ( ! empty( $this->options->switch ) && in_array( 'ShowEmotions', $this->options->switch ) ): ?>
+    <script>
         var OwO_demo = new OwO({
             logo: 'OωO表情',
             container: document.getElementsByClassName('OwO')[0],
             target: document.getElementsByClassName('OwO-textarea')[0],
-            api: '<?$this->options->themeUrl('/js/OwO.json')?>',
+            api: '<?$this->options->themeUrl( '/js/OwO.json' )?>',
             position: 'down',
             width: '100%',
             maxHeight: '250px'
         });
-</script>
+    </script>
 <?php endif; ?>
-

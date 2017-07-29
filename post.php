@@ -40,14 +40,7 @@
     echo preg_replace('/\!\@(.+?)\!\@/i', "$1", $this->options->motto).'<br>';
 ?>
 <?php elseif(!empty($this->options->motto)):?>
-    <style>.catlist {
-            border: 2px solid #FFB6C1;
-            padding: 5px;
-            margin-top: 12px;
-            text-align: center;
-            color: #000;
-        }
-
+    <style>
         .yunluotips {
             border: 2px solid #FFCC33;
             padding: 15px
@@ -82,13 +75,6 @@ echo $newInfo;
             </article>
         </div>
 <style>
-	body {
-	font: 14px/1 "Helvetica Neue",Helvetica,Arial,sans-serif;
-	margin:0;
-	padding:0;
-	background: #DFF4FF;
-	}
-
 	.wrapper {
 	text-align: center;
 	}
