@@ -14,6 +14,15 @@ $this->need('header.php');
 
 <div id="m-container" class="container">
     <div class="col-md-8">
+        <?php if ( ! empty( $this->options->switch ) && in_array( 'ShowFortunes', $this->options->switch ) ): ?>
+            <div class="alert alert-success alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert"
+                        aria-hidden="true">
+                    &times;
+                </button>
+			    <?php echo randomFortunes() ?>
+            </div>
+	    <?php endif ?>
         <div id="article-list">
             <?php while($this->next()): ?>
             <article class="post-article clearfix">
