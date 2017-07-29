@@ -232,12 +232,11 @@ function themeConfig($form) {
     $form->addInput($toolbar);
 
     $themeUpdate = new Typecho_Widget_Helper_Form_Element_Checkbox('themeUpdate', array(
-        'themeAutoUpdate' => _t('开启自动更新检查（使用git、需要启用proc_open函数）')),
-        array(''), _t('主题自动更新检查(beta)'),_t('当您进入设置的时候，主题将会自动查询新版本'));
+        'themeAutoUpdate' => _t('开启自动更新检查')),
+        array('themeAutoUpdate'), _t('主题自动更新检查'),_t('当您进入设置的时候，主题将会自动查询新版本（但是不会更新）'));
     $form->addInput($themeUpdate->multiMode());
 
 }
-
 
 //天气预报
 function isNew()
@@ -376,105 +375,30 @@ function welcome_hello() {
 
 
 if(!empty(Helper::options()->themeUpdate) && in_array('themeAutoUpdate', Helper::options()->themeUpdate))
-	//autoUpdate();
-    gitUpdate();
+	autoUpdate();
 
-function gitUpdate(){
-    define('UPDATE_SERVER','https://github.com/BennyThink/GreenGrapes2/archive/master.zip');
-    define('UPDATE_VERSION','https://raw.githubusercontent.com/BennyThink/GreenGrapes2/master/version.txt');
-    define('THEME_ROOT',dirname(dirname(__FILE__)).'/');
-    $localVersion = fopen(Helper::options()->themeUrl('version.txt', 'GreenGrapes2'), "r");
-    $localVersionNum=fgets($localVersion);
-    fclose($localVersion);
-    $remoteVersion = fopen(UPDATE_VERSION, "r");
-    $remoteVersionNum=fgets($remoteVersion);
-    fclose($remoteVersion);
 
-    if ($localVersionNum < $remoteVersionNum /*&& !file_exists(UPDATE_FILE)*/) {
-        echo "<code style='background-color: rgba(22, 160, 133, 0.071);color: #666;'>当前版本$localVersionNum" .
-            "，最新版本$remoteVersionNum<br>" .
-            "正在从<a href='https://github.com/BennyThink/GreenGrapes2'>git仓库</a>获得更新</code><br>";
-        require_once('Git.php');
+function autoUpdate() {
+	define( 'UPDATE_VERSION', 'https://raw.githubusercontent.com/BennyThink/GreenGrapes2/master/version.txt' );
+	$localVersion    = fopen( Helper::options()->themeUrl( 'version.txt', 'GreenGrapes2' ), "r" );
+	$localVersionNum = fgets( $localVersion );
+	fclose( $localVersion );
+	$remoteVersion    = fopen( UPDATE_VERSION, "r" );
+	$remoteVersionNum = fgets( $remoteVersion );
+	fclose( $remoteVersion );
 
-        $repo = Git::open(THEME_ROOT . 'GreenGrapes2');  // -or- Git::create('/path/to/repo')
-        try {
-            echo '<pre>' . $repo->pull() . '</pre>';
-        } catch (Exception $e) {
-            print $e->getMessage();
-        }
-
-        if (function_exists('curl_init')) {
-            $url = "https://raw.githubusercontent.com/BennyThink/GreenGrapes2/master/notice.txt";
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $url);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
-            $dxycontent = curl_exec($ch);
-            echo ' <style>.catlist{border:2px solid #FFB6C1;padding:5px;margin-top: 12px;text-align: center;color:#000;}.yunluotips{border: 2px solid #FFCC33;padding: 15px}.panel{display:none}.panel h3{margin:0;font-size:1.2em}#panel_update ul{list-style-type:disc}.nav-tab-wrapper{clear:both}.nav-tab{position:relative}.nav-tab i:before{position:absolute;top:-10px;right:-8px;display:inline-block;padding:2px;border-radius:50%;background:#e14d43;color:#fff;content:"\f463";vertical-align:text-bottom;font:400 18px/1 dashicons;speak:none}#theme-options-search{display:none;float:right;margin-top:-34px;width:280px;font-weight:300;font-size:16px;line-height:1.5}.updated+#theme-options-search{margin-top:-91px}.wrap.searching .nav-tab-wrapper a,.wrap.searching .panel tr,#attrselector{display:none}.wrap.searching .panel{display:block !important}#attrselector[attrselector*=ok]{display:block}</style>
- ';
-            echo '<div class="yunluotips">' . $dxycontent . '</div>';
-        } else {
-            echo '汗！貌似您的服务器尚未开启curl扩展，无法收到来自土豆的通知，请联系您的主机商开启，本地调试请无视';
-        }
-}
-}
-
-function autoUpdate(){
-	define('UPDATE_SERVER','https://github.com/BennyThink/GreenGrapes2/archive/master.zip');
-	define('UPDATE_VERSION','https://raw.githubusercontent.com/BennyThink/GreenGrapes2/master/version.txt');
-	define('UPDATE_CACHE',dirname(__FILE__).'/update_cache/');
-	define('UPDATE_FILE',UPDATE_CACHE.'master.zip');
-	define('THEME_ROOT',dirname(dirname(__FILE__)).'/');
-	
-	$localVersion = fopen(Helper::options()->themeUrl('version.txt', 'GreenGrapes2'), "r");
-	$localVersionNum=fgets($localVersion);
-	fclose($localVersion);	
-	$remoteVersion = fopen(UPDATE_VERSION, "r");
-	$remoteVersionNum=fgets($remoteVersion);
-	fclose($remoteVersion);
-	
-	if($localVersionNum<$remoteVersionNum /*&& !file_exists(UPDATE_FILE)*/){
-		echo "<code style='background-color: rgba(22, 160, 133, 0.071);color: #666;'>当前版本$localVersionNum".
-		"，最新版本$remoteVersionNum<br>".
-		"请<a href='https://github.com/BennyThink/GreenGrapes2'>戳我</a>获得最新更新</code>";
-		/*
-		mkdir(UPDATE_CACHE,0777);
-		$handle=fopen(UPDATE_CACHE.'master.zip','wb');
-		fwrite($handle,file_get_contents(UPDATE_SERVER));
-		fclose($handle);
-		
-		$zip = new ZipArchive; 
-		$res = $zip->open(UPDATE_CACHE.'master.zip'); 
-		if ($res === TRUE)  
-			$zip->extractTo(UPDATE_CACHE); 
-		$zip->close(); 
-		//移动文件....额-f
-		rename(UPDATE_CACHE.'GreenGrapes2-master',THEME_ROOT.'GreenGrapes2');
-		//删除cache目录中的全部内容
-		del_dir(UPDATE_CACHE);*/
-		
+	if ( $localVersionNum < $remoteVersionNum && strpos( $_SERVER['PHP_SELF'], '/admin/options-theme.php' ) ) {
+		echo '<style>.yunluotips {
+            border: 2px solid #FFCC33;
+            padding: 15px
+        }</style>';
+		echo '<div class="yunluotips">' . "当前版本 $localVersionNum" .
+		     "，最新版本 $remoteVersionNum<br>" .
+		     "请<a href='https://github.com/BennyThink/GreenGrapes2'>戳我</a>获得最新更新" . '</div>';
 	}
-	
+
 }
 
-function del_dir( $dir ) {
-	if ( is_dir( $dir ) ) {
-		foreach ( scandir( $dir ) as $row ) {
-			if ( $row == '.' || $row == '..' ) {
-				continue;
-			}
-			$path = $dir . '/' . $row;
-			if ( filetype( $path ) == 'dir' ) {
-				del_dir( $path );
-			} else {
-				unlink( $path );
-			}
-		}
-		rmdir( $dir );
-	} else {
-		return false;
-	}
-}
 
 /**
  * Test if the current browser runs on a mobile device (smart phone, tablet, etc.)
