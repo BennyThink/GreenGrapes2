@@ -233,7 +233,7 @@ function themeConfig($form) {
 
     $themeUpdate = new Typecho_Widget_Helper_Form_Element_Checkbox('themeUpdate', array(
         'themeAutoUpdate' => _t('开启自动更新检查')),
-        array('themeAutoUpdate'), _t('主题自动更新检查'),_t('当您进入设置的时候，主题将会自动查询新版本（但是不会更新）'));
+        array(''), _t('主题自动更新检查'),_t('当您进入设置的时候，主题将会自动查询新版本（但是不会更新）'));
     $form->addInput($themeUpdate->multiMode());
 
 }
@@ -379,23 +379,27 @@ if(!empty(Helper::options()->themeUpdate) && in_array('themeAutoUpdate', Helper:
 
 
 function autoUpdate() {
-	define( 'UPDATE_VERSION', 'https://raw.githubusercontent.com/BennyThink/GreenGrapes2/master/version.txt' );
-	$localVersion    = fopen( Helper::options()->themeUrl( 'version.txt', 'GreenGrapes2' ), "r" );
-	$localVersionNum = fgets( $localVersion );
-	fclose( $localVersion );
-	$remoteVersion    = fopen( UPDATE_VERSION, "r" );
-	$remoteVersionNum = fgets( $remoteVersion );
-	fclose( $remoteVersion );
+    if(!strpos( $_SERVER['PHP_SELF'], '/admin/options-theme.php' ))
+        return;
+    else {
+	    define( 'UPDATE_VERSION', 'https://raw.githubusercontent.com/BennyThink/GreenGrapes2/master/version.txt' );
+	    $localVersion    = fopen( Helper::options()->themeUrl( 'version.txt', 'GreenGrapes2' ), "r" );
+	    $localVersionNum = fgets( $localVersion );
+	    fclose( $localVersion );
+	    $remoteVersion    = fopen( UPDATE_VERSION, "r" );
+	    $remoteVersionNum = fgets( $remoteVersion );
+	    fclose( $remoteVersion );
 
-	if ( $localVersionNum < $remoteVersionNum && strpos( $_SERVER['PHP_SELF'], '/admin/options-theme.php' ) ) {
-		echo '<style>.yunluotips {
+	    if ( $localVersionNum < $remoteVersionNum ) {
+		    echo '<style>.yunluotips {
             border: 2px solid #FFCC33;
             padding: 15px
         }</style>';
-		echo '<div class="yunluotips">' . "当前版本 $localVersionNum" .
-		     "，最新版本 $remoteVersionNum<br>" .
-		     "请<a href='https://github.com/BennyThink/GreenGrapes2'>戳我</a>获得最新更新" . '</div>';
-	}
+		    echo '<div class="yunluotips">' . "当前版本 $localVersionNum" .
+		         "，最新版本 $remoteVersionNum<br>" .
+		         "请<a href='https://github.com/BennyThink/GreenGrapes2'>戳我</a>获得最新更新" . '</div>';
+	    }
+    }
 
 }
 
