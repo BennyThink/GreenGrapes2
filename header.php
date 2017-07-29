@@ -169,3 +169,16 @@
     <h1><a href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a></h1>
     <div id="search-trigger" style="font-size: 18px;" class="right m-header-search"></div>
 </div>
+<?php if ( ! empty( $this->options->switch ) && in_array( 'ShowFortunes', $this->options->switch ) ): ?>
+<div id="m-container" class="container">
+    <div class="col-md-8">
+        <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert"
+                    aria-hidden="true">
+                &times;
+            </button>
+			<?php echo randomFortunes() ?>
+        </div>
+    </div>
+</div>
+<?php endif ?>

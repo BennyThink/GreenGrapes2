@@ -168,10 +168,11 @@ function themeConfig($form) {
 			'EnableNotice' => _t('开启来路提示功能'),
 			'EnableKiana' => _t('开启kiana挂件'),
             'ShowEmotions' => _t('显示主题自带表情（本功能将会与similies插件共存）'),
+            'ShowFortunes' => _t('显示动态格言'),
 
         ),
         array('Pangu','ShowBreadCrumb','ShowPostBottomBar','ShowLinksIcon','ShowEmotions',
-		'showTypeColorful','EnableNetease','EnableNotice','EnableKiana'),
+		'showTypeColorful','EnableNetease','EnableNotice','EnableKiana','ShowFortunes'),
 		_t('杂项功能开关'),
     _t('如果开启自带表情，建议到“设置-评论-允许使用的HTML标签和属性”中允许img标签，推荐如下：<br>%s','	
 	&lt;blockquote&gt;&lt;pre&gt;&lt;code&gt;&lt;strong&gt;&lt;em&gt;&lt;h5&gt;&lt;h6&gt;&lt;a href title
@@ -238,6 +239,15 @@ function themeConfig($form) {
 
 }
 
+//随机名言
+function randomFortunes() {
+
+    $data=json_decode(file_get_contents(Helper::options()->themeUrl( 'js/fortunes.json', 'GreenGrapes2' )),true);
+    //总计183行
+
+    return $data[rand( 0,182)]['content'];
+
+}
 //天气预报
 function isNew()
 {
