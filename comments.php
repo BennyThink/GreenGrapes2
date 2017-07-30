@@ -32,7 +32,7 @@
 
             <div class="comments-field">
                 <textarea class="textarea form-control OwO-textarea" rows="8" cols="50" id="comment-content" placeholder="<?php _e('回复内容，必填'); ?><?php _e(' (可以使用markdown、emoji和部分HTML语法哦)')?>" name="text"><?php $this->remember('text'); ?></textarea>
-<?php if(!empty($this->options->switch) && in_array('ShowEmotions', $this->options->switch)):?>
+<?php if ( 'CDNEmmotions' == $this->options->Emotions || 'LocalEmotions' == $this->options->Emotions ): ?>
 <div class="OwO"></div>
 <?php endif;?>
 <?php if(isset($this->options->plugins['activated']['Smilies']))
@@ -47,13 +47,25 @@ Smilies_Plugin::output();?>
         <p class="ui ribbon label <?php $this->options->singleColor() ?>"><?php _e('博主残忍的关闭了评论'); ?></p>
     </div>
 <?php endif; ?>
-<?php if ( ! empty( $this->options->switch ) && in_array( 'ShowEmotions', $this->options->switch ) ): ?>
+<?php if ( 'CDNEmmotions' == $this->options->Emotions ): ?>
     <script>
         var OwO_demo = new OwO({
             logo: 'OωO表情',
             container: document.getElementsByClassName('OwO')[0],
             target: document.getElementsByClassName('OwO-textarea')[0],
-            api: '<?$this->options->themeUrl( '/js/OwO.json' )?>',
+            api: '<?$this->options->themeUrl( '/js/OwO.CDN.json' )?>',
+            position: 'down',
+            width: '100%',
+            maxHeight: '250px'
+        });
+    </script>
+<?php elseif ( 'LocalEmotions' == $this->options->Emotions ): ?>
+    <script>
+        var OwO_demo = new OwO({
+            logo: 'OωO表情',
+            container: document.getElementsByClassName('OwO')[0],
+            target: document.getElementsByClassName('OwO-textarea')[0],
+            api: '<?$this->options->themeUrl( '/js/OwO.LOC.json' )?>',
             position: 'down',
             width: '100%',
             maxHeight: '250px'

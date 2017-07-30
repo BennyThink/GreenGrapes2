@@ -36,11 +36,11 @@
 	<link rel="stylesheet" href="<?php $this->options->themeUrl('css/loading.css'); ?>">
 <?php if (!empty($this->options->switch) && in_array('EnableNotice', $this->options->switch)): ?>
 	<script src="<?php $this->options->themeUrl('js/notice.js'); ?>"></script>
-<?php endif; ?>	
-<?php if (!empty($this->options->switch) && in_array('ShowEmotions', $this->options->switch)): ?>
-	<link rel="stylesheet" href="<?php $this->options->themeUrl('css/OwO.min.css'); ?>" >
-	<script src="<?php $this->options->themeUrl('js/OwO.min.js'); ?>"></script>
-<?php endif;?>
+<?php endif; ?>
+<?php if ( 'CDNEmmotions' == $this->options->Emotions || 'LocalEmotions' == $this->options->Emotions ): ?>
+    <link rel="stylesheet" href="<?php $this->options->themeUrl( 'css/OwO.min.css' ); ?>">
+    <script src="<?php $this->options->themeUrl( 'js/OwO.min.js' ); ?>"></script>
+<?php endif; ?>
 <?php if('ShowAll'==$this->options->Snow or 'ShowPC'==$this->options->Snow):?>
     <link rel="stylesheet" href="<?php $this->options->themeUrl('css/Snow.css'); ?>">
 <?php endif;?>

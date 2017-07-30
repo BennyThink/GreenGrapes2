@@ -15,33 +15,34 @@ function themeConfig($form) {
     <a href="https://github.com/BennyThink/GreenGrapes2/issues" target="_blank">建议&amp;反馈</a>
     </p>';
 
-    $options = Typecho_Widget::widget('Widget_Options');
-    $bgImg = new Typecho_Widget_Helper_Form_Element_Text('bgImg', null, $options->themeUrl('img/bg.jpg', 'GreenGrapes2'), _t('首页背景图片地址'), _t('在这里填入一个图片URL地址, 作为首页背景图片, 默认使用img下的header.png'));
-    $form->addInput($bgImg);
+	$options = Typecho_Widget::widget( 'Widget_Options' );
+	$bgImg   = new Typecho_Widget_Helper_Form_Element_Text( 'bgImg', null, $options->themeUrl( 'img/bg.jpg', 'GreenGrapes2' ), _t( '首页背景图片地址' ), _t( '在这里填入一个图片URL地址, 作为首页背景图片, 默认使用img下的header.png' ) );
+	$form->addInput( $bgImg );
 
-    $headIcon = new Typecho_Widget_Helper_Form_Element_Text('headerIcon', null, $options->themeUrl('img/head.jpg', 'GreenGrapes2'), _t('首页头像地址'), _t('在这里填入一个图片URL地址, 作为首页头像, 默认使用images下的head.png'));
-    $form->addInput($headIcon);
-	
-    $siteIcon = new Typecho_Widget_Helper_Form_Element_Text('sideName', null, null, _t('侧栏用户名'), _t('在这里填入一个左侧显示的用户名, 默认不显示'));
-    $form->addInput($siteIcon);
-	
-	$siteCache = new Typecho_Widget_Helper_Form_Element_Text('cacheTime', null, '1209600', _t('缓存时间'), _t('头像缓存时间，默认1209600即14天'));
-    $form->addInput($siteCache);
-	
-	$siteCreate = new Typecho_Widget_Helper_Form_Element_Text('createTime', null, '2016-12-23 13:59:00', _t('建站时间'), _t('填入形如2016-12-23 13:59:00，时间可以省略。如不填写，则默认为2016-12-23'));
-    $form->addInput($siteCreate);
-	
-	$searchWord = new Typecho_Widget_Helper_Form_Element_Text('searchWord', null, '搜点什么呗', _t('搜索框预留词'), _t('搜索框预留内容'));
-    $form->addInput($searchWord);
+	$headIcon = new Typecho_Widget_Helper_Form_Element_Text( 'headerIcon', null, $options->themeUrl( 'img/head.jpg', 'GreenGrapes2' ), _t( '首页头像地址' ), _t( '在这里填入一个图片URL地址, 作为首页头像, 默认使用images下的head.png' ) );
+	$form->addInput( $headIcon );
 
-    $dynamicTitle = new Typecho_Widget_Helper_Form_Element_Text('dynamicTitle', null, '喵 (●\'◡\'●)~快回来', _t('动态标题'), _t('动态标题预留词语，留空则禁用此功能，默认为喵 (●\'◡\'●)~快回来'));
-    $form->addInput($dynamicTitle);
+	$siteIcon = new Typecho_Widget_Helper_Form_Element_Text( 'sideName', null, null, _t( '侧栏用户名' ), _t( '在这里填入一个左侧显示的用户名, 默认不显示' ) );
+	$form->addInput( $siteIcon );
 
-    $ShowWeather = new Typecho_Widget_Helper_Form_Element_Text('ShowWeather', null, '14400', _t('天气预报缓存时间设置'), _t('天气预报缓存时间，设置为0、负数或留空则禁用此功能；默认为14400秒'));
-    $form->addInput($ShowWeather);
+	$siteCache = new Typecho_Widget_Helper_Form_Element_Text( 'cacheTime', null, '1209600', _t( '缓存时间' ), _t( '头像缓存时间，默认1209600即14天' ) );
+	$form->addInput( $siteCache );
 
-    $EmailFeed = new Typecho_Widget_Helper_Form_Element_Text('EmailFeed', null, null, _t('邮件订阅设置'), _t('邮件订阅地址，推荐使用<a href="https://www.feedburner.com/">Feed Burner</a>；留空则禁用'));
-    $form->addInput($EmailFeed);
+	$siteCreate = new Typecho_Widget_Helper_Form_Element_Text( 'createTime', null, '2016-12-23 13:59:00', _t( '建站时间' ), _t( '填入形如2016-12-23 13:59:00，时间可以省略。如不填写，则默认为2016-12-23' ) );
+	$form->addInput( $siteCreate );
+
+	$searchWord = new Typecho_Widget_Helper_Form_Element_Text( 'searchWord', null, '搜点什么呗', _t( '搜索框预留词' ), _t( '搜索框预留内容' ) );
+	$form->addInput( $searchWord );
+
+	$dynamicTitle = new Typecho_Widget_Helper_Form_Element_Text( 'dynamicTitle', null, '喵 (●\'◡\'●)~快回来', _t( '动态标题' ), _t( '动态标题预留词语，留空则禁用此功能，默认为喵 (●\'◡\'●)~快回来' ) );
+	$form->addInput( $dynamicTitle );
+
+	$ShowWeather = new Typecho_Widget_Helper_Form_Element_Text( 'ShowWeather', null, '18000', _t( '天气预报缓存时间设置' ), _t( '天气预报缓存时间，设置为0、负数或留空则禁用此功能；默认为18000秒（5小时）' ) );
+	$form->addInput( $ShowWeather );
+
+	$EmailFeed = new Typecho_Widget_Helper_Form_Element_Text( 'EmailFeed', null, null, _t( '邮件订阅设置' ), _t( '邮件订阅地址，推荐使用<a href="https://www.feedburner.com/">Feed Burner</a>；留空则禁用' ) );
+	$form->addInput( $EmailFeed );
+
 	$notFound = new Typecho_Widget_Helper_Form_Element_Radio(
         'notFoundGame', array ('1' => 'Chrome小恐龙', '2' => '小仓鼠'), '',
         '404游戏', '用于在404的时候展示的一款HTML5游戏！如不选择，则为默认动画');
@@ -88,9 +89,26 @@ function themeConfig($form) {
 ' ));
 	$form->addInput($cursor->multiMode());
 
-	$disableAutoNightTheme = new Typecho_Widget_Helper_Form_Element_Radio('disableAutoNightTheme', array(
-	'0'=>_t('开启'), '1'=>_t('关闭')), '0', _t('自动夜间模式（尚未开发）'),_t('默认为开启'));
-    $form->addInput($disableAutoNightTheme);
+	$SNSPos = new Typecho_Widget_Helper_Form_Element_Select('SNSPos', array(
+		'showFooter'=>'仅页脚显示',
+		'showSideBar' => '仅侧边显示',
+		'showAll' => '侧边和页脚都显示',
+	), 'showAll',
+		_t('SNS显示位置'), _t('默认侧边和页脚均显示'));
+	$form->addInput($SNSPos->multiMode());
+
+	$Emotions = new Typecho_Widget_Helper_Form_Element_Select('Emotions', array(
+		'offEmotions'=>'关闭表情',
+		'CDNEmmotions' => '使用CDN表情源',
+		'LocalEmotions' => '使用本地表情源',
+	), 'CDNEmmotions',
+		_t('主题表情设置'),
+		_t('本功能将会与similies插件共存。推荐使用CDN表情源，但是万一某一天我欠费了，那就换到本地表情源头吧。<br>
+    如果开启自带表情，建议到“设置-评论-允许使用的HTML标签和属性”中允许img标签，推荐如下：<br>	
+	&lt;blockquote&gt;&lt;pre&gt;&lt;code&gt;&lt;strong&gt;&lt;em&gt;&lt;h5&gt;&lt;h6&gt;&lt;a href title
+	&gt;&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;&lt;tbody&gt;&lt;td&gt;&lt;img src=&quot;&quot;&gt;<br>
+	如果表情显示为img标签，请尝试重装或者是升级Typecho到开发版'));
+	$form->addInput($Emotions->multiMode());
 
 	$markdownExtendBlock = new Typecho_Widget_Helper_Form_Element_Checkbox('markdownExtend',
         array(
@@ -102,13 +120,30 @@ function themeConfig($form) {
         _t('扩展markdown语法'));
     $form->addInput($markdownExtendBlock->multiMode());
 
-    $SNSPos = new Typecho_Widget_Helper_Form_Element_Select('SNSPos', array(
-        'showFooter'=>'仅页脚显示',
-        'showSideBar' => '仅侧边显示',
-        'showAll' => '侧边和页脚都显示',
-    ), 'showAll',
-        _t('SNS显示位置'), _t('默认侧边和页脚均显示'));
-    $form->addInput($SNSPos->multiMode());
+	$switch = new Typecho_Widget_Helper_Form_Element_Checkbox('switch',
+		array(
+			'SmoothScroll' => _t('平滑滚动效果'),
+			'atargetblank' => _t('链接以新标签页形式打开'),
+			'Pangu' => _t('引用 Pangu.js 实现中英文间自动添加空格'),
+			'ShowBloggerCheckBox' => _t('隐藏侧边栏博主回复'),
+			'ShowThumbPic' => _t('显示博文缩略图'),
+			'ShowBreadCrumb' => _t('显示面包屑'),
+			'ShowPostBottomBar' => _t('文章页显示上一篇和下一篇'),
+			'showTypeColorful' => _t('显示打字彩虹特效（移动设备会自动关闭此特效）'),
+			'showTypeShake' => _t('显示打字震动特效（移动设备会自动关闭此特效）'),
+			'ShowLinksIcon' => _t('友情链接显示favicon（此功能有时会获取失败，比如说防盗链的网站、被墙网站）'),
+			'EnableNetease' => _t('开启网易云音乐支持，在文章中使用<code>{{音乐id}}</code>添加音乐（不自动播放）'),
+			'EnableNotice' => _t('开启来路提示功能'),
+			'EnableKiana' => _t('开启kiana挂件'),
+			'ShowFortunes' => _t('显示动态格言'),
+
+		),
+		array('Pangu','ShowBreadCrumb','ShowPostBottomBar','ShowLinksIcon','ShowEmotions',
+			'showTypeColorful','EnableNetease','EnableNotice','EnableKiana','ShowFortunes'),
+		_t('杂项功能开关'),
+		_t('插入视频请使用iframe语法')
+	);
+	$form->addInput($switch->multiMode());
 
 	$TwitterURL = new Typecho_Widget_Helper_Form_Element_Text('TwitterURL', null, null, _t('Twitter 地址，留空则不显示,下同'), null);
     $form->addInput($TwitterURL);
@@ -152,37 +187,6 @@ function themeConfig($form) {
 	_t('在这里可以填入百度统计、cnzz、Google Analytics等统计代码'));
     $form->addInput($tongJi);
 
-	$switch = new Typecho_Widget_Helper_Form_Element_Checkbox('switch',
-        array(
-            'SmoothScroll' => _t('平滑滚动效果'),
-            'atargetblank' => _t('链接以新标签页形式打开'),
-            'Pangu' => _t('引用 Pangu.js 实现中英文间自动添加空格'),
-			'ShowBloggerCheckBox' => _t('隐藏侧边栏博主回复'),
-			'ShowThumbPic' => _t('显示博文缩略图'),
-			'ShowBreadCrumb' => _t('显示面包屑'),
-			'ShowPostBottomBar' => _t('文章页显示上一篇和下一篇'),		
-			'showTypeColorful' => _t('显示打字彩虹特效（移动设备会自动关闭此特效）'),
-			'showTypeShake' => _t('显示打字震动特效（移动设备会自动关闭此特效）'),
-			'ShowLinksIcon' => _t('友情链接显示favicon（此功能有时会获取失败，比如说防盗链的网站、被墙网站）'),
-			'EnableNetease' => _t('开启网易云音乐支持，在文章中使用<code>{{音乐id}}</code>添加音乐（不自动播放）'),
-			'EnableNotice' => _t('开启来路提示功能'),
-			'EnableKiana' => _t('开启kiana挂件'),
-            'ShowEmotions' => _t('显示主题自带表情（本功能将会与similies插件共存）'),
-            'ShowFortunes' => _t('显示动态格言'),
-
-        ),
-        array('Pangu','ShowBreadCrumb','ShowPostBottomBar','ShowLinksIcon','ShowEmotions',
-		'showTypeColorful','EnableNetease','EnableNotice','EnableKiana','ShowFortunes'),
-		_t('杂项功能开关'),
-    _t('如果开启自带表情，建议到“设置-评论-允许使用的HTML标签和属性”中允许img标签，推荐如下：<br>%s','	
-	&lt;blockquote&gt;&lt;pre&gt;&lt;code&gt;&lt;strong&gt;&lt;em&gt;&lt;h5&gt;&lt;h6&gt;&lt;a href title
-	&gt;&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;&lt;tbody&gt;&lt;td&gt;&lt;img src=&quot;&quot;&gt;<br>
-	如果表情显示为img标签，请尝试重装或者是升级Typecho到开发版；<br>
-	插入视频请使用iframe语法
-	')
-	);
-    $form->addInput($switch->multiMode());
-
     $MemorialDay = new Typecho_Widget_Helper_Form_Element_Textarea('MemorialDay',NULL,
     '06-04
 07-13',
@@ -211,7 +215,7 @@ function themeConfig($form) {
         'FadeToGrey' => 'FadeToGrey',
         'MDUltra' => 'MDUltra',
         'Midnight' => 'Midnight',
-        'RDark' => 'RDark'), 'Default', _t('代码高亮主题'),
+        'RDark' => 'RDark'), 'Default', _t('/**  代码高亮设置开始 **/<br>代码高亮主题'),
         _t('选择一个你喜欢的高亮主题，如果关闭代码高亮，下面的设置都不会生效'));
     $form->addInput($SHTheme->multiMode());
 
@@ -229,12 +233,14 @@ function themeConfig($form) {
     $tabSize = new Typecho_Widget_Helper_Form_Element_Text('tabSize', NULL, 4, _t('<TAB>缩进宽度'), _t('输入代码<TAB>缩进时占几个空格的宽度，建议2、4、8等值，默认占4个空格。'));
     $form->addInput($tabSize);
 
-    $toolbar = new Typecho_Widget_Helper_Form_Element_Checkbox('toolbar', array('toolbar' => '显示工具栏'), NULL, _t('工具栏设置'), _t('设置是否显示代码块右上角的工具栏，默认不显示。'));
+    $toolbar = new Typecho_Widget_Helper_Form_Element_Checkbox('toolbar', array('toolbar' => '显示工具栏'),
+        NULL, _t('工具栏设置'), _t('设置是否显示代码块右上角的工具栏，默认不显示。<br>/** 代码高亮设置结束 **/ '));
     $form->addInput($toolbar);
+
 
     $themeUpdate = new Typecho_Widget_Helper_Form_Element_Checkbox('themeUpdate', array(
         'themeAutoUpdate' => _t('开启自动更新检查')),
-        array(''), _t('主题自动更新检查'),_t('当您进入设置的时候，主题将会自动查询新版本（但是不会更新）'));
+        array('themeAutoUpdate'), _t('主题自动更新检查'),_t('当您进入设置的时候，主题将会自动查询新版本（但是不会更新）'));
     $form->addInput($themeUpdate->multiMode());
 
 }
