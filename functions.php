@@ -101,7 +101,7 @@ function themeConfig($form) {
 		'offEmotions'=>'关闭表情',
 		'CDNEmmotions' => '使用CDN表情源',
 		'LocalEmotions' => '使用本地表情源',
-	), 'CDNEmmotions',
+	), 'LocalEmotions',
 		_t('主题表情设置'),
 		_t('本功能将会与similies插件共存。推荐使用CDN表情源，但是万一某一天我欠费了，那就换到本地表情源头吧。<br>
     如果开启自带表情，建议到“设置-评论-允许使用的HTML标签和属性”中允许img标签，推荐如下：<br>	
