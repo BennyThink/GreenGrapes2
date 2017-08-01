@@ -43,6 +43,13 @@ function themeConfig($form) {
 	$EmailFeed = new Typecho_Widget_Helper_Form_Element_Text( 'EmailFeed', null, null, _t( '邮件订阅设置' ), _t( '邮件订阅地址，推荐使用<a href="https://www.feedburner.com/">Feed Burner</a>；留空则禁用' ) );
 	$form->addInput( $EmailFeed );
 
+	$wechatBR = new Typecho_Widget_Helper_Form_Element_Text( 'wechatBR', null, null, _t( '微信打赏设置' ),
+        _t( '微信收款二维码；留空则禁用' ) );
+	$form->addInput( $wechatBR );
+	$alipayBR = new Typecho_Widget_Helper_Form_Element_Text( 'alipayBR', null, null, _t( '支付宝打赏设置' ),
+        _t( '支付宝收款二维码；留空则禁用' ) );
+	$form->addInput( $alipayBR );
+
 	$notFound = new Typecho_Widget_Helper_Form_Element_Radio(
         'notFoundGame', array ('1' => 'Chrome小恐龙', '2' => '小仓鼠'), '',
         '404游戏', '用于在404的时候展示的一款HTML5游戏！如不选择，则为默认动画');

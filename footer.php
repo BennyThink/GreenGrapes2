@@ -47,7 +47,6 @@
 </span><?php endif;?>
 <?php endif;?>
 </footer>
-<script src = "<?php $this->options->themeUrl('js/jquery.min.js'); ?>"></script>
 <script src = "<?php $this->options->themeUrl('js/bootstrap.min.js'); ?>" async></script>
 <script src = "<?php $this->options->themeUrl('js/functionall.js'); ?>" async></script>
 <script src = "<?php $this->options->themeUrl('js/tagcanvas.min.js'); ?>"></script>

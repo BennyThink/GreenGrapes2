@@ -77,29 +77,71 @@ echo $newInfo;
 <?php endif; ?>
 </div></div></div>
                 <?php endif; ?>
-                <?php if(class_exists('Reward_Plugin') && isset($this->options->plugins['activated']['Reward'])): ?>
-                    <?php Reward_Plugin::show_reward(); ?>
-                    <?php Reward_Plugin::show_modal(); ?>
-                <?php endif; ?>
             </article>
         </div>
-<style>
-	.wrapper {
-	text-align: center;
-	}
-</style>
 <!-- needPopup Javascript file -->
 <script src="<?php $this->options->themeUrl('js/needsharebutton.min.js'); ?>"></script>
 <!-- needPopup CSS file -->
 <link href="<?php $this->options->themeUrl('css/needsharebutton.min.css'); ?>" rel="stylesheet" />
-<div class="wrapper">
+<div style="text-align:center;">
+    <!--reward-->
+	<?php if ( ! empty( $this->options->wechatBR ) || ! empty( $this->options->alipayBR ) ): ?>
+        <button class="need-share-button-default" type="button" data-toggle="modal" data-target="#pay-modal">
+            &nbsp;<i class="fa fa-rmb"></i>&nbsp;&nbsp;</button>
+        <div class="modal fade" id="pay-modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                                    class="sr-only">Close</span></button>
+                        <h4 class="modal-title">谢谢您的支持</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center">
+							<?php if ( ! empty( $this->options->wechatBR ) && ! empty( $this->options->alipayBR ) ): ?>
+                            <img id="brcode" src="<?php echo $this->options->alipayBR ?>" alt=""/><br><br>
+                                <button type="button" class="btn btn-default" id="alipay">
+                                    支付宝支付
+                                </button>
+                                <button type="button" class="btn btn-default" id="wechat">
+                                    微信支付
+                                </button>
+                                <script>
+                                    $('#alipay').on('click', function () {
+                                        var imgsrc = "<?php echo $this->options->alipayBR ?>";
+                                        $("#brcode").attr('src', imgsrc);
+                                    })
+                                    $('#wechat').on('click', function () {
+                                        var imgsrc = "<?php echo $this->options->wechatBR ?>";
+                                        $("#brcode").attr('src', imgsrc);
+                                    })
+                                </script>
+							<?php elseif ( $this->options->alipayBR ): ?>
+                            <img id="brcode" src="<?php echo $this->options->alipayBR ?>" alt=""/><br><br>
+                                <button type="button" class="btn btn-default" id="alipay">
+                                    支付宝支付
+                                </button>
+							<?php elseif ( $this->options->wechatBR ): ?>
+                            <img id="brcode" src="<?php echo $this->options->wechatBR ?>" alt=""/><br><br>
+                                <button type="button" class="btn btn-default" id="wechat">
+                                    微信支付
+                                </button>
+							<?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	<?php endif; ?>
+    <!--reward end-->
+
 <div id="i-share" data-share-position="bottomCenter" class="need-share-button-default" data-share-icon-style="box" data-share-networks="QQZone,Wechat,Weibo,Douban,Twitter,Facebook,Evernote">
 	<i class="i-share icon-share" aria-hidden="true"></i>
-</div>
-<!--like--></div>
+</div></div>
 <script>
 new needShareButton(document.getElementById('i-share'));
 </script>
+
 <?php if (!empty($this->options->switch) && in_array('ShowPostBottomBar', $this->options->switch)): ?>
         <div class="block">
             <ul class="post-near">

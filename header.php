@@ -1,5 +1,5 @@
-<!--Nothing will ever compare.-->
 <!doctype html>
+<!--Nothing will ever compare.-->
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="<?php $this->options->themeUrl('css/font-awesome.min.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('css/main.css'); ?>">
 	<link rel="stylesheet" href="<?php $this->options->themeUrl('css/loading.css'); ?>">
+    <script src = "<?php $this->options->themeUrl('js/jquery.min.js'); ?>"></script>
 <?php if (!empty($this->options->switch) && in_array('EnableNotice', $this->options->switch)): ?>
 	<script src="<?php $this->options->themeUrl('js/notice.js'); ?>"></script>
 <?php endif; ?>
