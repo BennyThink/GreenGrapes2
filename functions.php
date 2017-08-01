@@ -252,7 +252,10 @@ function themeConfig($form) {
 
 }
 
-//随机名言
+/**
+ * 随机名言
+ * @return string
+ */
 function randomFortunes() {
 
     $data=json_decode(file_get_contents(Helper::options()->themeUrl( 'js/fortunes.json', 'GreenGrapes2' )),true);
@@ -261,7 +264,11 @@ function randomFortunes() {
     return $data[rand( 0,182)]['content'];
 
 }
-//天气预报
+
+/**
+ * 设置cookies，返回天气预报
+ * @return string
+ */
 function isNew()
 {
     if (!Typecho_Cookie::get('view')) {
@@ -273,6 +280,10 @@ function isNew()
         return Typecho_Cookie::get('weather');
 }
 
+/**
+ * 查询天气预报
+ * @return bool|string
+ */
 function weather(){
 
     if (isset($_SERVER)) {
@@ -334,7 +345,9 @@ function weather(){
     }
 }
 
-//snow
+/**
+ * 下雪特效
+ */
 function snow_display(){
 
     $jsUrl = Helper::options()->themeUrl('js/three.js', 'GreenGrapes2');
@@ -346,7 +359,9 @@ function snow_display(){
 
 }
 
-//welcome
+/**
+ * 欢迎信息
+ */
 function welcome_hello() {
 	$referer     = $_SERVER["HTTP_REFERER"];
 	$refererhost = parse_url( $referer );
@@ -394,13 +409,14 @@ function welcome_hello() {
 		echo "<script>notie('info', '$callback', true);</script>";
 	}
 }
-//welcome_hello();
 
-
+//自动更新执行
 if(!empty(Helper::options()->themeUpdate) && in_array('themeAutoUpdate', Helper::options()->themeUpdate))
 	autoUpdate();
 
-
+/**
+ * 自动更新
+ */
 function autoUpdate() {
     if(!strpos( $_SERVER['PHP_SELF'], '/admin/options-theme.php' ))
         return;
@@ -451,7 +467,12 @@ function isMobile() {
 	return $is_mobile;
 }
 
-//预览图 return url
+/**
+ * 返回缩略图
+ * @param $cid 文章ID
+ *
+ * @return string 图片url
+ */
 function thumb( $cid ) {
 
 	$rand_num = 12; //随机图片数量，根据图片目录中图片实际数量设置
@@ -475,7 +496,10 @@ function thumb( $cid ) {
 }
 
 
-//加载耗时
+/**
+ * 加载时间
+ * @return bool
+ */
 function timer_start() {
 	global $timestart;
 	$mtime     = explode( ' ', microtime() );
@@ -510,7 +534,10 @@ function timeZone( $from ) {
 	return $now->timeStamp - $from < 24 * 60 * 60 ? true : false;
 }
 
-//字数统计
+/**
+ * 字数统计
+ * @param $cid 文章ID
+ */
 function art_count( $cid ) {
 	$db   = Typecho_Db::get();
 	$rs   = $db->fetchRow( $db->select( 'table.contents.text' )->from( 'table.contents' )->where( 'table.contents.cid=?', $cid )->order( 'table.contents.cid', Typecho_Db::SORT_ASC )->limit( 1 ) );
@@ -518,6 +545,9 @@ function art_count( $cid ) {
 	echo mb_strlen( $text, 'UTF-8' );
 }
 
+/**
+ * 建站时间
+ */
 function getBuildTime() {
 // 在下面按格式输入本站创建的时间
 	if ( empty( Helper::options()->createTime ) )
@@ -530,8 +560,11 @@ function getBuildTime() {
 	$time             = floor( $time / 86400 );
 	echo '<span class="time">' . '本站已经建立' . $time . '天啦!' . '</span>';
 }
-//访问量
 
+/**
+ * 访问量
+ * @param $archive 文章ID
+ */
 function get_post_view($archive)
 {
     $cid    = $archive->cid;
@@ -550,9 +583,11 @@ function get_post_view($archive)
 }
 
 /**
- * 头像：先QQ、再gravatar、最后是默认的
- * return img头像url，一定会获得头像url
-**/
+ * 头像系统：先QQ、再gravatar、最后是默认的
+ * @param $email 评论者邮箱
+ *
+ * @return string 头像的img标签
+ */
 function avatar( $email ) {
 	$yourUrl  = Helper::options()->siteUrl;
 	$saveName = 'usr/themes/GreenGrapes2/avatarCache/' . md5( strtolower( trim( $email ) ) ) . '.jpg';
@@ -603,6 +638,13 @@ function avatar( $email ) {
 
 }
 
+/**
+ * 根据UA解析操作系统与浏览器
+ * @param $ua 访客的UA
+ * @param $isPic 是否显示图片
+ *
+ * @return string img标签
+ */
 function getUA($ua,$isPic){
 	 
         //开始解析操作系统
@@ -786,7 +828,12 @@ function theme_random_posts(){
     echo $defaults['after'];
 }
 
-//custom render
+/**
+ * 自定义渲染替换
+ * @param $content 文章输出
+ *
+ * @return string 渲染替换之后的内容
+ */
 function render($content) {
     $replaceStartIndex = array();
     $replaceEndIndex = array();
@@ -1039,7 +1086,9 @@ function _renderCards($content) {
 //custom render for markdownExtend
 
 /**
- * 重写评论显示函数
+ * 重写的评论函数
+ * @param $comments 评论
+ * @param $options
  */
 function threadedComments($comments, $options){
 	//Helper::options()->logoutUrl();
