@@ -144,6 +144,7 @@ function themeConfig($form) {
 			'EnableKiana' => _t('开启kiana挂件'),
 			'ShowFortunes' => _t('显示动态格言'),
 			'EnableHide' => _t('开启回复可见功能，在文章中使用<code>[hide]隐藏内容[/hide]</code>'),
+			'EnableCompress' => _t('开启压缩HTML代码功能，对性能略有提升'),
 
 		),
 		array('Pangu','ShowBreadCrumb','ShowPostBottomBar','ShowLinksIcon','ShowEmotions',
@@ -252,6 +253,66 @@ function themeConfig($form) {
         array('themeAutoUpdate'), _t('主题自动更新检查'),_t('当您进入设置的时候，主题将会自动查询新版本（但是不会更新）'));
     $form->addInput($themeUpdate->multiMode());
 
+}
+
+/**
+ * 压缩HTML代码
+ * @param $html_source
+ *
+ * @return string
+ */
+function compressHtml( $html_source ) {
+	$chunks   = preg_split( '/(<!--<nocompress>-->.*?<!--<\/nocompress>-->|<nocompress>.*?<\/nocompress>|<pre.*?\/pre>|<textarea.*?\/textarea>|<script.*?\/script>)/msi', $html_source, - 1, PREG_SPLIT_DELIM_CAPTURE );
+	$compress = '';
+	foreach ( $chunks as $c ) {
+		if ( strtolower( substr( $c, 0, 19 ) ) == '<!--<nocompress>-->' ) {
+			$c        = substr( $c, 19, strlen( $c ) - 19 - 20 );
+			$compress .= $c;
+			continue;
+		} else if ( strtolower( substr( $c, 0, 12 ) ) == '<nocompress>' ) {
+			$c        = substr( $c, 12, strlen( $c ) - 12 - 13 );
+			$compress .= $c;
+			continue;
+		} else if ( strtolower( substr( $c, 0, 4 ) ) == '<pre' || strtolower( substr( $c, 0, 9 ) ) == '<textarea' ) {
+			$compress .= $c;
+			continue;
+		} else if ( strtolower( substr( $c, 0, 7 ) ) == '<script' && strpos( $c, '//' ) != false && ( strpos( $c, "\r" ) !== false || strpos( $c, "\n" ) !== false ) ) {
+			$tmps = preg_split( '/(\r|\n)/ms', $c, - 1, PREG_SPLIT_NO_EMPTY );
+			$c    = '';
+			foreach ( $tmps as $tmp ) {
+				if ( strpos( $tmp, '//' ) !== false ) {
+					if ( substr( trim( $tmp ), 0, 2 ) == '//' ) {
+						continue;
+					}
+					$chars   = preg_split( '//', $tmp, - 1, PREG_SPLIT_NO_EMPTY );
+					$is_quot = $is_apos = false;
+					foreach ( $chars as $key => $char ) {
+						if ( $char == '"' && $chars[ $key - 1 ] != '\\' && ! $is_apos ) {
+							$is_quot = ! $is_quot;
+						} else if ( $char == '\'' && $chars[ $key - 1 ] != '\\' && ! $is_quot ) {
+							$is_apos = ! $is_apos;
+						} else if ( $char == '/' && $chars[ $key + 1 ] == '/' && ! $is_quot && ! $is_apos ) {
+							$tmp = substr( $tmp, 0, $key );
+							break;
+						}
+					}
+				}
+				$c .= $tmp;
+			}
+		}
+		$c        = preg_replace( '/[\\n\\r\\t]+/', ' ', $c );
+		$c        = preg_replace( '/\\s{2,}/', ' ', $c );
+		$c        = preg_replace( '/>\\s</', '> <', $c );
+		$c        = preg_replace( '/\\/\\*.*?\\*\\//i', '', $c );
+		$c        = preg_replace( '/<!--[^!]*-->/', '', $c );
+		$compress .= $c;
+	}
+	$initial=strlen($html_source);
+	$final=strlen($compress);
+	$savings=($initial-$final)/$initial*100;
+	$savings=round($savings, 2);
+	$compress.="\n<!--压缩前的大小: $initial bytes; 压缩后的大小: $final bytes; 节约：$savings% -->\n";
+	return $compress;
 }
 
 /**

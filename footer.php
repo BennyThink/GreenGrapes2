@@ -222,4 +222,11 @@ EOF;
 }
 ?>
 </body></html>
-<!--I'm here as always. By Benny 2017-->
+<?php if ( ! empty( $this->options->switch ) &&
+           in_array( 'EnableCompress', $this->options->switch ) ) {
+	$html_source = ob_get_contents();
+	ob_clean();
+	print compressHtml( $html_source );
+	ob_end_flush();
+} ?>
+<!--I'm always here... By Benny 2017-->
