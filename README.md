@@ -50,15 +50,11 @@
 * 集成notice（来路判断）插件
 * 集成kiana插件（如果你是用的是二级目录，那么请到`bga.min.js`中修改为自己的路径）：移动版默认不加载
 * 集成snow插件（移动版和文章内容包含视频的时候将会默认禁用）
-* 集成代码高亮SyntaxHighlighter插件，使用方法，其中PHP可以替换成Bash、Python、CPP等，如不填写脚本则使用`plain text`模式渲染高亮。
-```
-```php
-<?php echo 'helloworld';?>``` ```
-
+* 集成代码高亮SyntaxHighlighter插件，使用方法，使用PHP、Bash、Python、CPP等指定渲染模式，如不填写则使用`plain text`模式渲染高亮。
 * 可以开启访客天气预报：根据访客IP获取，缓存时间内第一次运行性能上会增加100ms-800ms不等的PHP运行时间。
 * 支持动态格言
 * 增加打赏功能
-
+* 支持回复可见功能
 
 ## To do ##
 - [ ] 点赞：暂时不打算添加
