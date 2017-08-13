@@ -143,10 +143,12 @@ function themeConfig($form) {
 			'EnableNotice' => _t('开启来路提示功能'),
 			'EnableKiana' => _t('开启kiana挂件'),
 			'ShowFortunes' => _t('显示动态格言'),
+			'EnableHide' => _t('开启回复可见功能，在文章中使用<code>[hide]隐藏内容[/hide]</code>'),
 
 		),
 		array('Pangu','ShowBreadCrumb','ShowPostBottomBar','ShowLinksIcon','ShowEmotions',
-			'showTypeColorful','EnableNetease','EnableNotice','EnableKiana','ShowFortunes'),
+			'showTypeColorful','EnableNetease','EnableNotice','EnableKiana','ShowFortunes',
+			'EnableHide'),
 		_t('杂项功能开关'),
 		_t('插入视频请使用iframe语法')
 	);

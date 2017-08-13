@@ -37,8 +37,26 @@
                     </p>
                 </div>
                 <div class="article-content clearfix">
-                    <?php //$this->content(); 
-					echo render($this->content);?>
+	                <?php
+	                if ( ! empty( $this->options->switch ) &&
+	                     in_array( 'EnableHide', $this->options->switch ) ) {
+                        //$this->content();
+		                $db     = Typecho_Db::get();
+		                $sql    = $db->select()->from( 'table.comments' )
+		                             ->where( 'cid = ?', $this->cid )
+		                             ->where( 'mail = ?', $this->remember( 'mail', true ) )
+		                             ->limit( 1 );
+		                $result = $db->fetchAll( $sql );
+		                if ( $this->user->hasLogin() || $result ) {
+			                $content = preg_replace( "/\[hide\](.*?)\[\/hide\]/sm", '<div class="reply2view">$1</div>', $this->content );
+		                } else {
+			                $content = preg_replace( "/\[hide\](.*?)\[\/hide\]/sm", '<div class="reply2view">此处内容需要评论回复后方可阅读。</div>', $this->content );
+		                }
+		                echo render( $content );
+	                } else {
+		                echo render( $this->content );
+	                }
+	                ?>
                 </div>
                 <?php if($this->allow('ping')): ?>
                     <div class="article-copyright">
