@@ -667,12 +667,7 @@ function avatar( $email ) {
 			return '<img class="avatar" src="' . $yourUrl . $saveName . '" />';
 		} else {
 			//echo '文件不存在或者过期，重新获取';
-			$geturl = 'http://ptlogin2.qq.com/getface?&imgtype=1&uin=' . $email;
-			$qquser = file_get_contents( $geturl );
-			$str1   = explode( 'qq&k=', $qquser );
-			$str2   = explode( '&s=', $str1[1] );
-			$k      = $str2[0];
-			$qqimg  = 'https://q1.qlogo.cn/g?b=qq&k=' . $k . '&s=100';
+			$qqimg  = 'https://q.qlogo.cn/g?b=qq&nk='.$email.'&s=100';
 			//保存图片
 			copy( $qqimg, $saveName );
 
