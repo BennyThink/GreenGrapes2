@@ -145,6 +145,7 @@ function themeConfig($form) {
 			'ShowFortunes' => _t('显示动态格言'),
 			'EnableHide' => _t('开启回复可见功能，在文章中使用<code>[hide]隐藏内容[/hide]</code>'),
 			'EnableCompress' => _t('开启压缩HTML代码功能，对性能略有提升'),
+			'EnableCopyright' => _t('开启复制版权提示'),
 
 		),
 		array('Pangu','ShowBreadCrumb','ShowPostBottomBar','ShowLinksIcon','ShowEmotions',
