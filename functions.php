@@ -195,7 +195,8 @@ function themeConfig($form) {
 	$form->addInput($footer);
 
     $tongJi = new Typecho_Widget_Helper_Form_Element_Textarea('tongJi', NULL, NULL, _t('站点统计代码'), 
-	_t('在这里可以填入百度统计、cnzz、Google Analytics等统计代码'));
+	_t('在这里可以填入百度统计、cnzz、Google Analytics等统计代码，只对非登录用户起作用<br>
+某童鞋也许可以尝试<a href="https://comingon.top">使用我的piwik</a>，认证信息你懂的。'));
     $form->addInput($tongJi);
 
     $MemorialDay = new Typecho_Widget_Helper_Form_Element_Textarea('MemorialDay',NULL,

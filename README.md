@@ -56,7 +56,7 @@
 * 增加打赏功能
 * 支持回复可见功能
 * HTML代码压缩功能
-
+* 复制版权提示
 ## To do ##
 - [ ] 点赞：暂时不打算添加
 - [x] 集成各种插件：目前已经集成或实现kiana、notice、Links、similies、Snow灯箱、SyntaxHighlighter

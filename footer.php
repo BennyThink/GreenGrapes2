@@ -161,7 +161,7 @@
 <?php endif; ?>
 <?php if ( ! empty( $this->options->switch )
            && in_array( 'EnableKiana', $this->options->switch ) && ! isMobile() ): ?>
-    <script src="<?php $this->options->themeUrl( 'kiana/bga.min.js' ); ?>" async></script>
+    <script src="<?php $this->options->themeUrl( 'extra/kiana/bga.min.js' ); ?>" async></script>
 <?php endif; ?>
 <?php if ( ! empty( $this->options->switch ) && in_array( 'SmoothScroll', $this->options->switch ) ): ?>
     <script src="<?php $this->options->themeUrl( 'js/smoothscroll.js' ); ?>" async></script>
@@ -190,7 +190,7 @@ if ('Close' != $this->options->SHTheme) {
     if ($settings->toolbar && in_array('toolbar', $settings->toolbar))
         $toolbar = 'true';
     $tabSize = $settings->tabSize;
-    $currentPath = $this->options->themeUrl . '/SyntaxHighlighter/';
+    $currentPath = $this->options->themeUrl . '/extra/SyntaxHighlighter/';
 
     echo <<<EOF
         <script type="text/javascript">

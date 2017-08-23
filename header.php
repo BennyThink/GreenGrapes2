@@ -48,7 +48,7 @@
  <?php
     if('Close'!=$this->options->SHTheme){
     $settings = $this->options->SHTheme;
-    $currentPath = $this->options->themeUrl.'/SyntaxHighlighter/';
+    $currentPath = $this->options->themeUrl.'/extra/SyntaxHighlighter/';
     echo '<script type="text/javascript" src="' . $currentPath . 'scripts/shCore.min.js"></script>' . "\n";
     echo '<script type="text/javascript" src="' . $currentPath . 'scripts/shAutoloader.js"></script>' . "\n";
     echo '<link rel="stylesheet" type="text/css" href="' . $currentPath . 'styles/shCore' . $settings . '.css" />' . "\n";
@@ -67,15 +67,15 @@
     <!--cursor-->
     <?php if('cursor1'==$this->options->cursor && !isMobile()):?>
 <style type="text/css">
-    html {  cursor: url(<?php $this->options->themeUrl('cursor/default1.cur'); ?>), default;  }
-    a {  cursor: url(<?php $this->options->themeUrl('cursor/pointer1.cur'); ?>), pointer;  }
-    .btn,.icon-share {  cursor: url(<?php $this->options->themeUrl('cursor/pointer1.cur'); ?>), pointer;  }
+    html {  cursor: url(<?php $this->options->themeUrl('extra/cursor/default1.cur'); ?>), default;  }
+    a {  cursor: url(<?php $this->options->themeUrl('extra/cursor/pointer1.cur'); ?>), pointer;  }
+    .btn,.icon-share {  cursor: url(<?php $this->options->themeUrl('extra/cursor/pointer1.cur'); ?>), pointer;  }
 </style>
     <?php elseif ('cursor2'==$this->options->cursor && !isMobile()):?>
  <style type="text/css">
-     html {  cursor: url(<?php $this->options->themeUrl('cursor/default2.cur'); ?>), default;  }
-     a {  cursor: url(<?php $this->options->themeUrl('cursor/pointer2.cur'); ?>), pointer;  }
-     .btn,.icon-share {  cursor: url(<?php $this->options->themeUrl('cursor/pointer2.cur'); ?>), pointer;  }
+     html {  cursor: url(<?php $this->options->themeUrl('extra/cursor/default2.cur'); ?>), default;  }
+     a {  cursor: url(<?php $this->options->themeUrl('extra/cursor/pointer2.cur'); ?>), pointer;  }
+     .btn,.icon-share {  cursor: url(<?php $this->options->themeUrl('extra/cursor/pointer2.cur'); ?>), pointer;  }
 </style>
     <?php endif;?>
 	<!--统计代码-->
