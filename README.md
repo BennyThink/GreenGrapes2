@@ -61,8 +61,8 @@
 - [ ] 点赞：暂时不打算添加
 - [x] 集成各种插件：目前已经集成或实现kiana、notice、Links、similies、Snow灯箱、SyntaxHighlighter
 - [x] 404页面的加载动图问题：已修复
-- [ ] 多语言支持：暂时不打算添加
 - [x] 优化天气预报性能：使用cookies
+- [x] 评论区代码高亮无视语言指令，总是渲染成plain模式
 
 ## Q&A ##
 1. Q：文章底部版权信息的范例
@@ -88,8 +88,10 @@ A：嗯……以后可以考虑可以加上国内的微信、QQ什么的吧；�
 6. Q:OwO表情插入之后不显示啊，已经允许`img`标签了
 ![](http://i.imgur.com/8Ddj9BK.png)
 A：这个问题曾经让我一度头疼，在我本地Apache+PHP+MySQL的环境下，`Typecho 1.0 (14.10.10)`没有出现这个问题，但是在服务器上Nginx+PHP+MySQL就出现了这个问题。我的解决方法是升级到`Typecho开发版1.1 (17.4.24)`（2017年5月25日）或者重装Typecho，可能由于某些原因你修改了Typecho的代码、或者是稳定版中存在的bug导致这个问题。
-
-7. Q:最好的更新方式是什么？
+7. Q:评论如何设置允许markdown语法？
+A:设置-评论-在评论中使用markdown语法，允许使用的内容和标签，如下内容即可：
+`<blockquote><pre><code class=""><strong><em><h3><h4><h5><h6><a href title><table><thead><tr><th><tbody><td><img src="">`
+8. Q:最好的更新方式是什么？
 A:建议`git clone`本仓库，每次收到更新只要切换到对应的主题目录，运行`git pull`就会是最新版本了。
 
 ## 更新历史 ##
