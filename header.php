@@ -89,7 +89,8 @@
 		$quote                 = '#87CEEB';
 		$this->options->color1 = $color1;
 		$metaColor             = '#0c92ce';
-		echo '<meta name="theme-color" content="' . $metaColor . '">';
+		echo '<script> var metaThemeColor = document.querySelector("meta[name=theme-color]");
+    metaThemeColor.setAttribute("content", "' . $metaColor . '");</script>';
 	} elseif ( $this->options->themeColor == 'green' ) {
 		$color1                = '#16a085';
 		$color2                = '#009a61';
@@ -103,7 +104,7 @@
 		$color3 = $this->options->color3;
 		$quote  = $this->options->quote;;
 		echo '<script> var metaThemeColor = document.querySelector("meta[name=theme-color]");
-    metaThemeColor.setAttribute("content", "' . $metaColor . '");</script>';
+    metaThemeColor.setAttribute("content", "' . $color2 . '");</script>';
 	}
 	?>
     <?php if ($this->options->themeColor != 'green'):?>
