@@ -45,7 +45,7 @@
 		$this->options->color1 = $color1;//？？？
 		$metaColor             = '#b7392c';
 		echo '<script> var metaThemeColor = document.querySelector("meta[name=theme-color]");
-    metaThemeColor.setAttribute("content", ' . $metaColor . ');</script>';
+    metaThemeColor.setAttribute("content", "' . $metaColor . '");</script>';
 	} elseif ( $this->options->themeColor == 'blue' ) {
 		$color1                = '#0f3e9b';
 		$color2                = '#003399';
@@ -54,7 +54,7 @@
 		$this->options->color1 = $color1;
 		$metaColor             = '#072c77';
 		echo '<script> var metaThemeColor = document.querySelector("meta[name=theme-color]");
-    metaThemeColor.setAttribute("content", ' . $metaColor . ');</script>';
+    metaThemeColor.setAttribute("content", "' . $metaColor . '");</script>';
 	} elseif ( $this->options->themeColor == 'dark' ) {
 		$color1                = '#4f4b4b';
 		$color2                = '#616161';
@@ -63,7 +63,7 @@
 		$this->options->color1 = $color1;
 		$metaColor             = '#474242';
 		echo '<script> var metaThemeColor = document.querySelector("meta[name=theme-color]");
-    metaThemeColor.setAttribute("content", ' . $metaColor . ');</script>';
+    metaThemeColor.setAttribute("content", "' . $metaColor . '");</script>';
 	} elseif ( $this->options->themeColor == 'purple' ) {
 		$color1                = '#a248ce';
 		$color2                = '#9932CC';
@@ -72,7 +72,7 @@
 		$this->options->color1 = $color1;
 		$metaColor             = '#702793';
 		echo '<script> var metaThemeColor = document.querySelector("meta[name=theme-color]");
-    metaThemeColor.setAttribute("content", ' . $metaColor . ');</script>';
+    metaThemeColor.setAttribute("content", "' . $metaColor . '");</script>';
 	} elseif ( $this->options->themeColor == 'yellow' ) {
 		$color1                = '#efdd28';
 		$color2                = '#f5e011';
@@ -81,7 +81,7 @@
 		$this->options->color1 = $color1;
 		$metaColor             = '#d1bf17';
 		echo '<script> var metaThemeColor = document.querySelector("meta[name=theme-color]");
-    metaThemeColor.setAttribute("content", ' . $metaColor . ');</script>';
+    metaThemeColor.setAttribute("content", "' . $metaColor . '");</script>';
 	} elseif ( $this->options->themeColor == 'light' ) {
 		$color1                = '#1aabed';
 		$color2                = '#03A9F4';
@@ -103,7 +103,7 @@
 		$color3 = $this->options->color3;
 		$quote  = $this->options->quote;;
 		echo '<script> var metaThemeColor = document.querySelector("meta[name=theme-color]");
-    metaThemeColor.setAttribute("content", ' . $metaColor . ');</script>';
+    metaThemeColor.setAttribute("content", "' . $metaColor . '");</script>';
 	}
 	?>
     <?php if ($this->options->themeColor != 'green'):?>
