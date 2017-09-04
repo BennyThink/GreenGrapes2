@@ -87,11 +87,11 @@ function themeConfig($form) {
 	), 'cursor1',
 		_t('鼠标指针设置'), _t('
 <strong>样式1</strong>
-    <img src="'.Helper::options()->themeUrl('cursor/default1.cur','GreenGrapes2').'">
-    <img src="'.Helper::options()->themeUrl('cursor/pointer1.cur','GreenGrapes2').'">
+    <img src="'.Helper::options()->themeUrl('extra/cursor/default1.cur','GreenGrapes2').'">
+    <img src="'.Helper::options()->themeUrl('extra/cursor/pointer1.cur','GreenGrapes2').'">
 <strong>样式2</strong>
-    <img src="'.Helper::options()->themeUrl('cursor/default2.cur','GreenGrapes2').'">
-    <img src="'.Helper::options()->themeUrl('cursor/pointer2.cur','GreenGrapes2').'">
+    <img src="'.Helper::options()->themeUrl('extra/cursor/default2.cur','GreenGrapes2').'">
+    <img src="'.Helper::options()->themeUrl('extra/cursor/pointer2.cur','GreenGrapes2').'">
 
 ' ));
 	$form->addInput($cursor->multiMode());
