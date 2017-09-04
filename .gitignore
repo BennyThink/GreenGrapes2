@@ -4,3 +4,5 @@
 .idea/vcs.xml
 .idea/workspace.xml
 avatarCache/*.jpg
+
+\.idea/inspectionProfiles/profiles_settings\.xml
