@@ -6,7 +6,7 @@
 
  * @package GreenGrapes2
  * @author Benny
- * @version 2.5.6
+ * @version 2.6.0
  * @link https://github.com/BennyThink/GreenGrapes
  */
 $this->need('header.php');
@@ -29,7 +29,7 @@ $this->need('header.php');
                 <section class="">
                     <div class="category-cloud"><?php $this->category(''); ?></div>
                     <h3 class="title">
-                        <a href="<?php $this->permalink() ?>"><?php if(timeZone($this->date->timeStamp))_e('<font color="#16a085" class="fa fa-magic"></font>'); $this->sticky(); $this->title(); ?></a>
+                        <a href="<?php $this->permalink() ?>"><?php if(timeZone($this->date->timeStamp))_e('<font color="'.$this->options->color1.'" class="fa fa-magic"></font>'); $this->sticky(); $this->title(); ?></a>
                     </h3>
                     <hr>
                     <div class="row">

@@ -16,7 +16,33 @@ function themeConfig($form) {
     </p>';
 
 	$options = Typecho_Widget::widget( 'Widget_Options' );
-	$bgImg   = new Typecho_Widget_Helper_Form_Element_Text( 'bgImg', null, $options->themeUrl( 'img/bg.jpg', 'GreenGrapes2' ), _t( '首页背景图片地址' ), _t( '在这里填入一个图片URL地址, 作为首页背景图片, 默认使用img下的header.png' ) );
+
+	$themeColor = new Typecho_Widget_Helper_Form_Element_Select( 'themeColor', array(
+		'red'    => '幽红色',
+		'blue'   => '深蓝色',
+		'dark'   => '暗黑色',
+		'purple' => '亮紫色',
+		'yellow' => '淡黄色',
+		'light'  => '轻蓝色',
+		'green'  => '鲜绿色（默认、推荐）',
+		'custom' => '自定义',
+	), 'green',
+		_t( '主题颜色选项；作者<a href="https://www.bennythink.com">（小土豆）</a><del>色盲</del>，所以推荐使用默认的鲜绿色主题' ),
+		_t( '选择一个色调作为您网站的主色调，如果这里的色彩还不够，
+		请选择自定义，然后设置下面的自定义色彩（需要设置五个自定义颜色值）' ) );
+	$form->addInput( $themeColor->multiMode() );
+
+	$color1 = new Typecho_Widget_Helper_Form_Element_Text( 'color1', null, null, _t( '主题颜色（请记得带#）' ), null );
+	$form->addInput( $color1 );
+	$color2 = new Typecho_Widget_Helper_Form_Element_Text( 'color2', null, null, _t( '次要颜色' ), '次要颜色一般要比主题颜色稍微淡一些' );
+	$form->addInput( $color2 );
+	$color3 = new Typecho_Widget_Helper_Form_Element_Text( 'color3', null, null, _t( '超链接颜色' ), null );
+	$form->addInput( $color3 );
+	$quote = new Typecho_Widget_Helper_Form_Element_Text( 'quote', null, null, _t( '块引用颜色' ), null );
+	$form->addInput( $quote );
+
+
+	$bgImg   = new Typecho_Widget_Helper_Form_Element_Text( 'bgImg', null, $options->themeUrl( 'img/bg.jpg', 'GreenGrapes2' ), _t( '首页背景图片地址' ), _t( '在这里填入一个图片URL地址, 作为首页背景图片, 默认使用img下的bg.png' ) );
 	$form->addInput( $bgImg );
 
 	$headIcon = new Typecho_Widget_Helper_Form_Element_Text( 'headerIcon', null, $options->themeUrl( 'img/head.jpg', 'GreenGrapes2' ), _t( '首页头像地址' ), _t( '在这里填入一个图片URL地址, 作为首页头像, 默认使用images下的head.png' ) );
