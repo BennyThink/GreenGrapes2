@@ -41,7 +41,6 @@ function themeConfig($form) {
 	$quote = new Typecho_Widget_Helper_Form_Element_Text( 'quote', null, null, _t( '块引用颜色' ), null );
 	$form->addInput( $quote );
 
-
 	$bgImg   = new Typecho_Widget_Helper_Form_Element_Text( 'bgImg', null, $options->themeUrl( 'img/bg.jpg', 'GreenGrapes2' ), _t( '首页背景图片地址' ), _t( '在这里填入一个图片URL地址, 作为首页背景图片, 默认使用img下的bg.png' ) );
 	$form->addInput( $bgImg );
 

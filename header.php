@@ -36,32 +36,69 @@
 	<link rel="stylesheet" href="<?php $this->options->themeUrl('css/loading.css'); ?>">
     <script src = "<?php $this->options->themeUrl('js/jquery.min.js'); ?>"></script>
     <!-- custom theme color suggested by kito-->
-    <?php
-    if ( $this->options->themeColor == 'red' ) {
-	    $color1 = '#e26153';$color2='#E74C3C';$color3='#d16d62';$quote='#FF4500';$hover='#FFB6C1';
-	    $this->options->color1=$color1;
-    } elseif ( $this->options->themeColor == 'blue' ) {
-	    $color1 = '#0f3e9b';$color2='#003399';$color3='#214999';$quote='#00BFFF';$hover='#0b445b';
-	    $this->options->color1=$color1;
-    } elseif ( $this->options->themeColor == 'dark' ) {
-	    $color1 = '#4f4b4b';$color2='#616161';$color3='#474040';$quote='#778899';$hover='#0b445b';
-	    $this->options->color1=$color1;
-    } elseif ( $this->options->themeColor == 'purple' ) {
-	    $color1 = '#a248ce';$color2='#9932CC';$color3='#a15ac4';$quote='#9370DB';$hover='#0b445b';
-	    $this->options->color1=$color1;
-    } elseif ( $this->options->themeColor == 'yellow' ) {
-	    $color1 = '#efdd28';$color2='#f5e011';$color3='#e2d43f';$quote='#eff446';$hover='#0b445b';
-	    $this->options->color1=$color1;
-    } elseif ( $this->options->themeColor == 'light' ) {
-	    $color1 = '#1aabed';$color2='#03A9F4';$color3='#32ade5';$quote='#87CEEB';$hover='#0b445b';
-	    $this->options->color1=$color1;
-    } elseif ( $this->options->themeColor == 'green' ) {
-	    $color1='#16a085';$color2='#009a61';$color3='#299982';$quote='#7AD03A';$hover='#0b445b';
-	    $this->options->color1=$color1;
-    } elseif ( $this->options->themeColor == 'custom' ) {
-	    $color1 = $this->options->color1;$color2=$this->options->color2;$color3=$this->options->color3;
-	    $quote=$this->options->quote;
-    }
+	<?php
+	if ( $this->options->themeColor == 'red' ) {
+		$color1                = '#e26153';
+		$color2                = '#E74C3C';
+		$color3                = '#d16d62';
+		$quote                 = '#FF4500';
+		$this->options->color1 = $color1;//？？？
+		$metaColor             = '#b7392c';
+		echo '<meta name="theme-color" content="' . $metaColor . '">';
+	} elseif ( $this->options->themeColor == 'blue' ) {
+		$color1                = '#0f3e9b';
+		$color2                = '#003399';
+		$color3                = '#214999';
+		$quote                 = '#00BFFF';
+		$this->options->color1 = $color1;
+		$metaColor             = '#072c77';
+		echo '<meta name="theme-color" content="' . $metaColor . '">';
+	} elseif ( $this->options->themeColor == 'dark' ) {
+		$color1                = '#4f4b4b';
+		$color2                = '#616161';
+		$color3                = '#474040';
+		$quote                 = '#778899';
+		$this->options->color1 = $color1;
+		$metaColor             = '#474242';
+		echo '<meta name="theme-color" content="' . $metaColor . '">';
+	} elseif ( $this->options->themeColor == 'purple' ) {
+		$color1                = '#a248ce';
+		$color2                = '#9932CC';
+		$color3                = '#a15ac4';
+		$quote                 = '#9370DB';
+		$this->options->color1 = $color1;
+		$metaColor             = '#702793';
+		echo '<meta name="theme-color" content="' . $metaColor . '">';
+	} elseif ( $this->options->themeColor == 'yellow' ) {
+		$color1                = '#efdd28';
+		$color2                = '#f5e011';
+		$color3                = '#e2d43f';
+		$quote                 = '#eff446';
+		$this->options->color1 = $color1;
+		$metaColor             = '#d1bf17';
+		echo '<meta name="theme-color" content="' . $metaColor . '">';
+	} elseif ( $this->options->themeColor == 'light' ) {
+		$color1                = '#1aabed';
+		$color2                = '#03A9F4';
+		$color3                = '#32ade5';
+		$quote                 = '#87CEEB';
+		$this->options->color1 = $color1;
+		$metaColor             = '#0c92ce';
+		echo '<meta name="theme-color" content="' . $metaColor . '">';
+	} elseif ( $this->options->themeColor == 'green' ) {
+		$color1                = '#16a085';
+		$color2                = '#009a61';
+		$color3                = '#299982';
+		$quote                 = '#7AD03A';
+		$metaColor             = '#299981';
+		$this->options->color1 = $color1;
+	} elseif ( $this->options->themeColor == 'custom' ) {
+		$color1 = $this->options->color1;
+		$color2 = $this->options->color2;
+		$color3 = $this->options->color3;
+		$quote  = $this->options->quote;;
+		echo '<meta name="theme-color" content="' . $Color2 . '">';
+	}
 
     ?>
     <?php if ($this->options->themeColor != 'green'):?>
@@ -69,96 +106,74 @@
         sup {
             color: <?php echo $color3?>;
         }
-
         blockquote {
             border-left: 4px solid <?php echo $quote?>;
         }
-
         .btn-success {
             background-color: <?php echo $quote?>;
             border-color: <?php echo $quote?>;
         }
-
         .category-cloud a {
             background-color: <?php echo $color1?>;
         }
-
         .widget-sets .panel-heading {
             border-bottom: 2px solid <?php echo $color1?>;
         }
         .widget-sets .nav-pills {
             border-bottom: 2px solid <?php echo $color1?>;
         }
-
         .panel.panel-green .panel-heading {
             background-color: <?php echo $color1?>;
         }
-
         .category a:hover {
-            background-color: <?php echo $hover?>;
+            background-color: <?php echo $metaColor?>;
         }
-
         .btn-green {
             border: 1px solid <?php echo $color1?> !important;
             color: <?php echo $color1?>;
         }
-
         .btn.btn-green:hover {
             background-color: <?php echo $color1?>;
         }
-
         .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
             background-color: <?php echo $color1?>;
         }
-
         .label-green {
             background-color: <?php echo $color1?>;
         }
-
         .article-copyright a, .article-content a {
             color: <?php echo $color2?>;
         }
-
         .article-copyright a:hover, .article-content a:hover {
             color: <?php echo $color2?>;
         }
-
         .hdbg2 {
             background: <?php echo $color3?>;
         }
-
         .m-nav .nav li li a:hover, .m-nav .nav li li.current-menu-item a {
             background-color: <?php echo $color3?>
         }
-
         .post-article .title a:hover {
             color: <?php echo $color1?>;
         }
-
         .post-article .previous-image a {
             background: <?php echo $color3?>;
         }
-
         .post-like a, .cbl-logo-like a {
             background: <?php echo $color3?>;
         }
-
         aside section h2 {
             background: <?php echo $color3?>;
         }
-
         #back-to-top:hover {
             border: <?php echo $color3?> 1px solid;
         }
-
         #back-to-top.red:hover #point-up path {
             fill: <?php echo $color3?>;
         }
-
         .m-header {
             background: <?php echo $color1?>;
         }
-
     </style>
     <?php endif;?>
 <?php if (!empty($this->options->switch) && in_array('EnableNotice', $this->options->switch)): ?>
