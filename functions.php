@@ -668,16 +668,13 @@ function avatar( $email ) {
 		if ( file_exists( $saveName ) && ( time() - filemtime( $saveName ) ) < $ct ) {
 			return '<img class="avatar" src="' . $yourUrl . $saveName . '" />';
 		} else {
-			//echo '文件不存在或者过期，重新获取';
 			$qqimg  = 'https://q.qlogo.cn/g?b=qq&nk='.$email.'&s=100';
 			//保存图片
 			copy( $qqimg, $saveName );
-
 			return '<img class="avatar" src="' . $yourUrl . $saveName . '" />';
 		}
 	} elseif ( file_exists( $saveName ) && ( time() - filemtime( $saveName ) ) < $ct ) {
-		//返回未超时的gravatar
-		//已有缓存
+		//返回未超时的gravatar、已有缓存
 		return '<img class="avatar" src="' . $yourUrl . $saveName . '" />';
 	} else {
 		//获取新的gravatar，并判断
@@ -685,12 +682,10 @@ function avatar( $email ) {
 		if ( preg_match( "/404/", $headers[0] ) ) {
 			//无头像，应该拷贝头像
 			copy( $yourUrl . 'usr/themes/GreenGrapes2/img/default.jpg', $saveName );
-
 			return '<img class="avatar" src="' . $yourUrl . 'usr/themes/GreenGrapes2/img/default.jpg" />';
 		} else {
 			//有gravatar
 			copy( 'https://www.gravatar.com/avatar/' . md5( strtolower( trim( $email ) ) ), $saveName );
-
 			return '<img class="avatar" src="' . $yourUrl . $saveName . '" />';
 		}
 
