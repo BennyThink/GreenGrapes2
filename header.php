@@ -87,7 +87,7 @@
 		$color2                = '#03A9F4';
 		$color3                = '#32ade5';
 		$quote                 = '#87CEEB';
-		$this->options->color1 = $color1;
+		//$this->options->color1 = $color1;
 		$metaColor             = '#0c92ce';
 		echo '<script> var metaThemeColor = document.querySelector("meta[name=theme-color]");
     metaThemeColor.setAttribute("content", "' . $metaColor . '");</script>';
@@ -96,22 +96,9 @@
 		$color2                = '#009a61';
 		$color3                = '#299982';
 		$quote                 = '#7AD03A';
-		$metaColor             = '#299981';
+		$metaColor = '#299981';
 		$this->options->color1 = $color1;
 	} elseif ( $this->options->themeColor == 'random' ) {
-		$r = dechex( rand( 0, 255 ) );
-		$g = dechex( rand( 0, 255 ) );
-		$b = dechex( rand( 0, 255 ) );
-		if ( strlen( $r ) == 1 ) {
-			$r = '0' . $r;
-		}
-		if ( strlen( $g ) == 1 ) {
-			$g = '0' . $g;
-		}
-		if ( strlen( $r ) == 1 ) {
-			$b = '0' . $b;
-		}
-		$color1 = $color2 = '#' . $r . $g . $b;
 
 		$r = dechex( rand( 0, 255 ) );
 		$g = dechex( rand( 0, 255 ) );
@@ -125,7 +112,7 @@
 		if ( strlen( $r ) == 1 ) {
 			$b = '0' . $b;
 		}
-		$color3 = '#' . $r . $g . $b;
+		$color1 = $color2 = $color3 = '#' . $r . $g . $b;
 
 		$r = dechex( rand( 0, 255 ) );
 		$g = dechex( rand( 0, 255 ) );
@@ -140,13 +127,11 @@
 			$b = '0' . $b;
 		}
 		$quote = '#' . $r . $g . $b;
-
-		$this->options->color1 = $color1;
-		$metaColor             = $color2;
+		//$this->options->color1 = $color1;
+		$metaColor = $color2;
 		echo '<script> var metaThemeColor = document.querySelector("meta[name=theme-color]");
     metaThemeColor.setAttribute("content", "' . $metaColor . '");</script>';
-	}
-	elseif ( $this->options->themeColor == 'custom' ) {
+	} elseif ( $this->options->themeColor == 'custom' ) {
 		$color1 = $this->options->color1;
 		$color2 = $this->options->color2;
 		$color3 = $this->options->color3;
