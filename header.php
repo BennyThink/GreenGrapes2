@@ -150,8 +150,8 @@
             border-left: 4px solid <?php echo $quote?>;
         }
         .btn-success {
-            background-color: <?php echo $quote?>;
-            border-color: <?php echo $quote?>;
+            background-color: <?php echo $color2?>;
+            border-color: <?php echo $color2?>;
         }
         .category-cloud a {
             background-color: <?php echo $color1?>;
