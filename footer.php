@@ -171,6 +171,26 @@
 elseif('ShowPC'==$this->options->Snow && !isMobile()&& !strpos($this->content,'iframe'))
     snow_display();
 ?>
+<?php if ( ! empty( $this->options->switch )
+           && in_array( 'EnableRandomColor', $this->options->switch )  ): ?>
+    <script>
+        function getRandomRGBValue() {
+            return Math.min(Math.floor(Math.random() * 255 + 1), 255);
+        }
+        function getRandomColor() {
+            var r = getRandomRGBValue(),
+                g = getRandomRGBValue(),
+                b = getRandomRGBValue();
+            return "#" + (((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1));
+        }
+
+        function changeThemeColor() {
+            var metaThemeColor = document.querySelector("meta[name=theme-color]");
+            metaThemeColor.setAttribute("content", getRandomColor());
+        }
+        changeThemeColor();
+    </script>
+<?php endif; ?>
 <?php //代码高亮
 if ('Close' != $this->options->SHTheme) {
     $settings = $this->options;
