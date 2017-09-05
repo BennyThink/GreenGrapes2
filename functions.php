@@ -25,6 +25,7 @@ function themeConfig($form) {
 		'yellow' => '淡黄色',
 		'light'  => '轻蓝色',
 		'green'  => '鲜绿色（默认、推荐）',
+		'random'  => '随机主题色',
 		'custom' => '自定义',
 	), 'green',
 		_t( '主题颜色选项；作者<a href="https://www.bennythink.com">（小土豆）</a><del>色盲</del>，所以推荐使用默认的鲜绿色主题' ),
