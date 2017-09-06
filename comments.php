@@ -53,7 +53,7 @@ Smilies_Plugin::output();?>
             logo: 'OωO表情',
             container: document.getElementsByClassName('OwO')[0],
             target: document.getElementsByClassName('OwO-textarea')[0],
-            api: '<?$this->options->themeUrl( '/js/OwO.CDN.json' )?>',
+            api: '<?php $this->options->themeUrl( '/js/OwO.CDN.json' )?>',
             position: 'down',
             width: '100%',
             maxHeight: '250px'
@@ -65,7 +65,7 @@ Smilies_Plugin::output();?>
             logo: 'OωO表情',
             container: document.getElementsByClassName('OwO')[0],
             target: document.getElementsByClassName('OwO-textarea')[0],
-            api: '<?$this->options->themeUrl( '/js/OwO.LOC.json' )?>',
+            api: '<?php $this->options->themeUrl( '/js/OwO.LOC.json' )?>',
             position: 'down',
             width: '100%',
             maxHeight: '250px'
