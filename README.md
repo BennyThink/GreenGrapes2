@@ -101,7 +101,7 @@ A:建议`git clone`本仓库，每次收到更新只要切换到对应的主题�
 我可没工夫写这玩意，直接看Git就得了。
 
 ## 演示 ##
-[奔跑的蜗牛壳](https://www.mingyueli.com)
+[奔跑的蜗牛壳](https://www.tougetu.com)
 
 ## 更多说明 ##
 
