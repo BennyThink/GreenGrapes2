@@ -30,7 +30,7 @@ function themeConfig($form) {
 	), 'green',
 		_t( '主题颜色选项；作者<a href="https://www.bennythink.com">（小土豆）</a><del>色盲</del>，所以推荐使用默认的鲜绿色主题' ),
 		_t( '选择一个色调作为您网站的主色调，如果这里的色彩还不够，
-		请选择自定义，然后设置下面的自定义色彩（需要设置五个自定义颜色值）' ) );
+		请选择自定义，然后设置下面的自定义色彩（需要设置四个自定义颜色值）' ) );
 	$form->addInput( $themeColor->multiMode() );
 
 	$color1 = new Typecho_Widget_Helper_Form_Element_Text( 'color1', null, null, _t( '主题颜色（请记得带#）' ), null );
@@ -136,7 +136,7 @@ function themeConfig($form) {
 		'LocalEmotions' => '使用本地表情源',
 	), 'LocalEmotions',
 		_t('主题表情设置'),
-		_t('本功能将会与similies插件共存。推荐使用CDN表情源，但是万一某一天我欠费了，那就换到本地表情源头吧。<br>
+		_t('本功能将会与similies插件共存。推荐使用本地表情源（万一某一天我欠费了，那就换到本地表情源头吧）<br>
     如果开启自带表情，建议到“设置-评论-允许使用的HTML标签和属性”中允许img标签，推荐如下：<br>	
 	&lt;blockquote&gt;&lt;pre&gt;&lt;code class=&quot;&quot;&gt;&lt;strong&gt;&lt;em&gt;&lt;h5&gt;&lt;h6&gt;&lt;a href title
 	&gt;&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;&lt;tbody&gt;&lt;td&gt;&lt;img src=&quot;&quot;&gt;<br>
@@ -155,30 +155,30 @@ function themeConfig($form) {
 
 	$switch = new Typecho_Widget_Helper_Form_Element_Checkbox('switch',
 		array(
-			'SmoothScroll' => _t('平滑滚动效果'),
-			'atargetblank' => _t('链接以新标签页形式打开'),
-			'Pangu' => _t('引用 Pangu.js 实现中英文间自动添加空格'),
-			'ShowBloggerCheckBox' => _t('隐藏侧边栏博主回复'),
-			'ShowThumbPic' => _t('显示博文缩略图'),
-			'ShowBreadCrumb' => _t('显示面包屑'),
-			'ShowPostBottomBar' => _t('文章页显示上一篇和下一篇'),
-			'showTypeColorful' => _t('显示打字彩虹特效（移动设备会自动关闭此特效）'),
-			'showTypeShake' => _t('显示打字震动特效（移动设备会自动关闭此特效）'),
-			'ShowLinksIcon' => _t('友情链接显示favicon（此功能有时会获取失败，比如说防盗链的网站、被墙网站）'),
-			'EnableNetease' => _t('开启网易云音乐支持，在文章中使用<code>{{音乐id}}</code>添加音乐（不自动播放）'),
-			'EnableNotice' => _t('开启来路提示功能'),
-			'EnableKiana' => _t('开启kiana挂件'),
-			'ShowFortunes' => _t('显示动态格言'),
-			'EnableHide' => _t('开启回复可见功能，在文章中使用<code>[hide]隐藏内容[/hide]</code>'),
-			'EnableCompress' => _t('开启压缩HTML代码功能，对性能略有提升'),
-			'EnableCopyright' => _t('开启复制版权提示'),
-			'EnableRandomColor' => _t('开启随机meta theme-color，有点辣眼睛'),
-			'EnableSlimbox' => _t('开启Slimbox2灯箱'),
+			'Pangu'             => _t( '引用 Pangu.js 实现中英文间自动添加空格' ),
+			'ShowBreadCrumb'    => _t( '显示面包屑' ),
+			'ShowPostBottomBar' => _t( '文章页显示上一篇和下一篇' ),
+			'ShowLinksIcon'     => _t( '友情链接显示favicon（此功能有时会获取失败，比如说防盗链的网站、被墙网站）' ),
+			'EnableNetease' => _t( '开启网易云音乐支持，在文章中使用<code>{{音乐id}}</code>添加音乐（不自动播放）' ),
+			'EnableNotice'  => _t( '开启来路提示功能' ),
+			'EnableKiana'   => _t( '开启kiana挂件' ),
+			'ShowFortunes'  => _t( '显示动态格言' ),
+			'EnableHide'    => _t( '开启回复可见功能，在文章中使用<code>[hide]隐藏内容[/hide]</code>' ),
+			'EnableSlimbox' => _t( '开启Slimbox2灯箱' ),
+			'showTypeColorful' => _t( '显示打字彩虹特效（移动设备会自动关闭此特效）' ),
 
+			'showTypeShake'    => _t( '显示打字震动特效（移动设备会自动关闭此特效）' ),
+			'SmoothScroll'        => _t( '平滑滚动效果' ),
+			'atargetblank'        => _t( '链接以新标签页形式打开' ),
+			'ShowBloggerCheckBox' => _t( '隐藏侧边栏博主回复' ),
+			'ShowThumbPic'        => _t( '显示博文缩略图' ),
+			'EnableCompress'    => _t( '开启压缩HTML代码功能，对性能略有提升' ),
+			'EnableCopyright'   => _t( '开启复制版权提示' ),
+			'EnableRandomColor' => _t( '开启随机meta theme-color，有点辣眼睛' ),
 		),
-		array('Pangu','ShowBreadCrumb','ShowPostBottomBar','ShowLinksIcon','ShowEmotions',
+		array('Pangu','ShowBreadCrumb','ShowPostBottomBar','ShowLinksIcon',
 			'showTypeColorful','EnableNetease','EnableNotice','EnableKiana','ShowFortunes',
-			'EnableHide'),
+			'EnableHide','EnableSlimbox'),
 		_t('杂项功能开关'),
 		_t('插入视频请使用iframe语法')
 	);
