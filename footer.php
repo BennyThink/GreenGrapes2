@@ -84,6 +84,9 @@
         jQuery("#loading").fadeOut(500);
     });
     console.info('%c The tiniest possibility of seeing you again excites me.', "background: white; color: #16a085; padding-left:10px;");
+    $('img').wrap(function () {
+        return '<a href="' + this.src + '" title="' + this.alt + '"></a>';
+    });
     };
 </script>
 <!--dynamic title-->
