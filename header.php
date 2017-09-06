@@ -34,6 +34,9 @@
     <link rel="stylesheet" href="<?php $this->options->themeUrl('css/font-awesome.min.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('css/main.css'); ?>">
 	<link rel="stylesheet" href="<?php $this->options->themeUrl('css/loading.css'); ?>">
+	<?php if (! empty( $this->options->switch ) && in_array( 'EnableSlimbox', $this->options->switch )): ?>
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('css/slimbox2.css'); ?>">
+    <?php endif;?>
     <script src = "<?php $this->options->themeUrl('js/jquery.min.js'); ?>"></script>
     <!-- custom theme color suggested by kito-->
 	<?php

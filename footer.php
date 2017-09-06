@@ -85,11 +85,8 @@
         jQuery("#loading").fadeOut(500);
     });
     console.info('%c The tiniest possibility of seeing you again excites me.', "background: white; color: #16a085; padding-left:10px;");
-    $('img').wrap(function () {
-        return '<a href="' + this.src + '" title="' + this.alt + '"></a>';
-    });
 
-	<?php if ( ! empty( $this->options->dynamicTitle ) ): ?>
+    <?php if ( ! empty( $this->options->dynamicTitle ) ): ?>
     //dynamic title
     window.onblur = function () {
         document.title = "<?=$this->options->dynamicTitle?>";
@@ -170,8 +167,26 @@
         metaThemeColor.setAttribute("content", getRandomColor());
     }
     changeThemeColor();
-	<?php endif; ?>
+ 	<?php endif; ?>
 </script>
+<?php if ( ! empty( $this->options->switch ) && in_array( 'EnableSlimbox', $this->options->switch ) ): ?>
+    <script src="<?php $this->options->themeUrl( 'js/slimbox2.js' ); ?>" async></script>
+    <script type="text/javascript">
+        $('img').wrap(function () {
+            return '<a href="' + this.src + '" title="' + this.alt + '"></a>';
+        });
+
+        jQuery(function ($) {
+            $(".article-content a:has(img)").slimbox({
+                overlayOpacity: 0.75,
+                overlayFadeDuration: 100,
+                imageFadeDuration: 400,
+                captionAnimationDuration: 200,
+                loop: true,
+                counterText: "Image {x} of {y}"
+            });
+        });</script>
+<?php endif; ?>
 <?php if ( ! empty( $this->options->switch )
            && in_array( 'EnableKiana', $this->options->switch ) && ! isMobile() ): ?>
     <script src="<?php $this->options->themeUrl( 'extra/kiana/bga.min.js' ); ?>" async></script>
