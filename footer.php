@@ -78,43 +78,42 @@
         document.body.addEventListener('input', POWERMODE);
     </script>
 <?php endif; ?>
-<!--loading-->
+
 <script type="text/javascript">
-    jQuery(window).ready(function() {
+    //loading and console info
+    jQuery(window).ready(function () {
         jQuery("#loading").fadeOut(500);
     });
     console.info('%c The tiniest possibility of seeing you again excites me.', "background: white; color: #16a085; padding-left:10px;");
     $('img').wrap(function () {
         return '<a href="' + this.src + '" title="' + this.alt + '"></a>';
     });
+
+	<?php if ( ! empty( $this->options->dynamicTitle ) ): ?>
+    //dynamic title
+    window.onblur = function () {
+        document.title = "<?=$this->options->dynamicTitle?>";
+        $("#web-icon").attr('href', "<?php $this->options->themeUrl( 'loss.ico' ); ?>");
+        window.onfocus = function () {
+            document.title = "<?php $this->archiveTitle( array(
+				'category' => _t( '分类 %s 下的文章' ),
+				'search'   => _t( '包含关键字 %s 的文章' ),
+				'tag'      => _t( '标签 %s 下的文章' ),
+				'author'   => _t( '%s 发布的文章' )
+			), '', ' - ' ); ?><?php $this->options->title(); ?>";
+            $("#web-icon").attr('href', "<?php $this->options->siteUrl(); ?>favicon.ico");
+        }
     };
-</script>
-<!--dynamic title-->
-<?php if ( ! empty( $this->options->dynamicTitle ) ): ?>
-    <script type="text/javascript">
-        window.onblur = function () {
-            document.title = "<?=$this->options->dynamicTitle?>";
-            $("#web-icon").attr('href', "<?php $this->options->themeUrl( 'loss.ico' ); ?>");
-            window.onfocus = function () {
-                document.title = "<?php $this->archiveTitle( array(
-					'category' => _t( '分类 %s 下的文章' ),
-					'search'   => _t( '包含关键字 %s 的文章' ),
-					'tag'      => _t( '标签 %s 下的文章' ),
-					'author'   => _t( '%s 发布的文章' )
-				), '', ' - ' ); ?><?php $this->options->title(); ?>";
-                $("#web-icon").attr('href', "<?php $this->options->siteUrl(); ?>favicon.ico");
-            }
-        };
-    </script>
-<?php endif; ?>
-<?php if (!empty($this->options->switch) && in_array('EnableCopyright', $this->options->switch)): ?>
-<script>
+	<?php endif; ?>
+
+	<?php if (! empty( $this->options->switch ) && in_array( 'EnableCopyright', $this->options->switch )): ?>
     document.body.addEventListener('copy', function (e) {
         if (window.getSelection().toString() && window.getSelection().toString().length > 42) {
             setClipboardText(e);
             alert('商业转载请联系作者获得授权，非商业转载请注明出处，谢谢合作。');
         }
     });
+
     function setClipboardText(event) {
         var clipboardData = event.clipboardData || window.clipboardData;
         if (clipboardData) {
@@ -135,25 +134,44 @@
                 + window.getSelection().toString();
 
             clipboardData.setData('text/html', htmlData);
-            clipboardData.setData('text/plain',textData);
+            clipboardData.setData('text/plain', textData);
         }
     }
-</script>
-<?php endif;?>
-<?php if (!empty($this->options->switch) && in_array('atargetblank', $this->options->switch)): ?>
-<script>
+	<?php endif;?>
+
+	<?php if (! empty( $this->options->switch ) && in_array( 'atargetblank', $this->options->switch )): ?>
     //Add target="_blank" to a tags
-    $(document).bind('DOMNodeInserted', function(event) {
+    $(document).bind('DOMNodeInserted', function (event) {
         $('a[href^="http"]').each(
-            function() {
+            function () {
                 if (!$(this).attr('target')) {
                     $(this).attr('target', '_blank')
                 }
             }
         );
     });
+	<?php endif; ?>
+
+	<?php if ( ! empty( $this->options->switch )
+	           && in_array( 'EnableRandomColor', $this->options->switch )  ): ?>
+    function getRandomRGBValue() {
+        return Math.min(Math.floor(Math.random() * 255 + 1), 255);
+    }
+
+    function getRandomColor() {
+        var r = getRandomRGBValue(),
+            g = getRandomRGBValue(),
+            b = getRandomRGBValue();
+        return "#" + (((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1));
+    }
+
+    function changeThemeColor() {
+        var metaThemeColor = document.querySelector("meta[name=theme-color]");
+        metaThemeColor.setAttribute("content", getRandomColor());
+    }
+    changeThemeColor();
+	<?php endif; ?>
 </script>
-<?php endif; ?>
 <?php if ( ! empty( $this->options->switch )
            && in_array( 'EnableKiana', $this->options->switch ) && ! isMobile() ): ?>
     <script src="<?php $this->options->themeUrl( 'extra/kiana/bga.min.js' ); ?>" async></script>
@@ -166,26 +184,7 @@
 elseif('ShowPC'==$this->options->Snow && !isMobile()&& !strpos($this->content,'iframe'))
     snow_display();
 ?>
-<?php if ( ! empty( $this->options->switch )
-           && in_array( 'EnableRandomColor', $this->options->switch )  ): ?>
-    <script>
-        function getRandomRGBValue() {
-            return Math.min(Math.floor(Math.random() * 255 + 1), 255);
-        }
-        function getRandomColor() {
-            var r = getRandomRGBValue(),
-                g = getRandomRGBValue(),
-                b = getRandomRGBValue();
-            return "#" + (((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1));
-        }
 
-        function changeThemeColor() {
-            var metaThemeColor = document.querySelector("meta[name=theme-color]");
-            metaThemeColor.setAttribute("content", getRandomColor());
-        }
-        changeThemeColor();
-    </script>
-<?php endif; ?>
 <?php //代码高亮
 if ('Close' != $this->options->SHTheme) {
     $settings = $this->options;
