@@ -53,8 +53,6 @@
 <script src = "<?php $this->options->themeUrl('js/particles.min.js'); ?>"></script>
 <script src = "<?php $this->options->themeUrl('js/headerCanvas.js'); ?>" async></script>
 <script src = "<?php $this->options->themeUrl('js/home.js'); ?>" async></script>
-<script src="<?php $this->options->themeUrl('js/zoom.min.js'); ?>" async></script>
-<link rel="stylesheet" href="<?php $this->options->themeUrl('css/zoom.css'); ?>" >
 <?php $this->footer(); ?>
 <!--Typing effect-->
 <?php if ( ! empty( $this->options->switch ) &&
@@ -86,13 +84,7 @@
         jQuery("#loading").fadeOut(500);
     });
     console.info('%c The tiniest possibility of seeing you again excites me.', "background: white; color: #16a085; padding-left:10px;");
-    var setupContents = function () {
-        $(".article-content img").each(function() {
-            $(this).attr('data-action', 'zoom');
-        });
     };
-    setupContents();
-    //$('#loading').remove(); this is the key to issue #2
 </script>
 <!--dynamic title-->
 <?php if ( ! empty( $this->options->dynamicTitle ) ): ?>
