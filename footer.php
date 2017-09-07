@@ -168,7 +168,21 @@
     }
     changeThemeColor();
  	<?php endif; ?>
-</script>
+    <?php if ( ! empty( $this->options->clickNotify ) ):
+    $jsString = '"' . str_replace( ' ', '","', $this->options->clickNotify ) . '"';?>
+    $("html,body").click(function (e) {
+        var ily = new Array(<?=$jsString?>);
+        var n = Math.floor(Math.random() * ily.length);
+        var $i = $("<b/>").text(ily[n]);
+        var x = e.pageX, y = e.pageY;
+        $i.css({"z-index": 99999, "top": y - 20, "left": x, "position": "absolute", "color": "#40aa52"});
+        $("body").append($i);
+        $i.animate({"top": y - 180, "opacity": 0}, 1500, function () {
+            $i.remove()
+        });
+        e.stopPropagation()
+    });
+	<?php endif; ?></script>
 <?php if ( ! empty( $this->options->switch ) && in_array( 'EnableSlimbox', $this->options->switch ) ): ?>
     <script src="<?php $this->options->themeUrl( 'js/slimbox2.js' ); ?>" async></script>
     <script type="text/javascript">
@@ -199,7 +213,6 @@
 elseif('ShowPC'==$this->options->Snow && !isMobile()&& !strpos($this->content,'iframe'))
     snow_display();
 ?>
-
 <?php //代码高亮
 if ('Close' != $this->options->SHTheme) {
     $settings = $this->options;

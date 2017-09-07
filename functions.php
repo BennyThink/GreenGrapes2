@@ -76,6 +76,10 @@ function themeConfig($form) {
         _t( '支付宝收款二维码；留空则禁用' ) );
 	$form->addInput( $alipayBR );
 
+	$clickNotify = new Typecho_Widget_Helper_Form_Element_Text( 'clickNotify', null, '"快说","你","是不是", "想我了"', _t( '鼠标点击提示词' ),
+		_t( '鼠标点击提示词，使用空格分隔，留空则禁用' ) );
+	$form->addInput( $clickNotify );
+
 	$notFound = new Typecho_Widget_Helper_Form_Element_Radio(
         'notFoundGame', array ('1' => 'Chrome小恐龙', '2' => '小仓鼠'), '',
         '404游戏', '用于在404的时候展示的一款HTML5游戏！如不选择，则为默认动画');
@@ -136,7 +140,7 @@ function themeConfig($form) {
 		'LocalEmotions' => '使用本地表情源',
 	), 'LocalEmotions',
 		_t('主题表情设置'),
-		_t('本功能将会与similies插件共存。推荐使用本地表情源（万一某一天我欠费了，那就换到本地表情源头吧）<br>
+		_t('本功能将会与similies插件共存。推荐使用本地表情源（万一某一天我欠费了呢）<br>
     如果开启自带表情，建议到“设置-评论-允许使用的HTML标签和属性”中允许img标签，推荐如下：<br>	
 	&lt;blockquote&gt;&lt;pre&gt;&lt;code class=&quot;&quot;&gt;&lt;strong&gt;&lt;em&gt;&lt;h5&gt;&lt;h6&gt;&lt;a href title
 	&gt;&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;&lt;tbody&gt;&lt;td&gt;&lt;img src=&quot;&quot;&gt;<br>
