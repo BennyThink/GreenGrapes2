@@ -76,7 +76,8 @@ function themeConfig($form) {
         _t( '支付宝收款二维码；留空则禁用' ) );
 	$form->addInput( $alipayBR );
 
-	$clickNotify = new Typecho_Widget_Helper_Form_Element_Text( 'clickNotify', null, '"快说","你","是不是", "想我了"', _t( '鼠标点击提示词' ),
+	$clickNotify = new Typecho_Widget_Helper_Form_Element_Text( 'clickNotify', null,
+        '快说 你 是不是 想我了', _t( '鼠标点击提示词' ),
 		_t( '鼠标点击提示词，使用空格分隔，留空则禁用' ) );
 	$form->addInput( $clickNotify );
 
