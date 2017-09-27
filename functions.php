@@ -179,6 +179,8 @@ function themeConfig($form) {
 			'EnableCompress'    => _t( '开启压缩HTML代码功能，对性能略有提升' ),
 			'EnableCopyright'   => _t( '开启复制版权提示' ),
 			'EnableRandomColor' => _t( '开启随机meta theme-color，有点辣眼睛' ),
+			'canvas_three' => _t( '开启canvas_three特效' ),
+			'canvas_lines' => _t( '开启canvas_lines特效' ),
 		),
 		array('Pangu','ShowBreadCrumb','ShowPostBottomBar','ShowLinksIcon',
 			'showTypeColorful','EnableNetease','EnableNotice','EnableKiana','ShowFortunes',

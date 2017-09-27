@@ -297,6 +297,18 @@ EOF;
     echo "\n";
 }
 ?>
+<?php if ( ! empty( $this->options->switch ) &&
+           in_array( 'canvas_three', $this->options->switch ) ):?>
+    <script src = "<?php $this->options->themeUrl('js/canvas/three.min.js'); ?>" ></script>
+    <script src = "<?php $this->options->themeUrl('js/canvas/three-waves.min.js'); ?>" async></script>
+<?php endif;?>
+
+<?php if ( ! empty( $this->options->switch ) &&
+           in_array( 'canvas_lines', $this->options->switch ) ):?>
+    <script src = "<?php $this->options->themeUrl('js/canvas/three.min.js'); ?>" ></script>
+    <script src = "<?php $this->options->themeUrl('js/canvas/canvas_lines.min.js'); ?>" async></script>
+<?php endif;?>
+
 </body></html>
 <?php if ( ! empty( $this->options->switch ) &&
            in_array( 'EnableCompress', $this->options->switch ) ) {
