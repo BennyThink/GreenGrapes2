@@ -137,7 +137,17 @@
 ->parse('<ul class="fa-ul"><li><a href="{permalink}" class="fa fa-calendar-o">&nbsp;&nbsp;{date}</a></li></ul>'); ?>
 </div></div></aside>
 <?php endif;?>
-
+<?php if(!empty($this->options->SidebarTool1)):?>
+    <aside >
+        <div class="panel panel-green hidden-xs">
+	        <?php
+	        $a = explode( "\n", $this->options->SidebarTool1 );
+	        if ( count( $a ) == 3 )
+		        echo '<div class="panel-heading"><i class="fa ' . $a[0] . '"></i> ' . $a[1] . '</div>' . $a[2];
+	        ?>
+        </div>
+    </aside>
+<?php endif;?>
 <aside >
         <div class="panel panel-green hidden-xs">
             <div class="panel-heading"><i class="fa fa-yelp"></i> 网站统计</div>

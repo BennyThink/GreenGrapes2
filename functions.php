@@ -243,6 +243,13 @@ function themeConfig($form) {
 某童鞋也许可以尝试<a href="https://comingon.top">使用我的piwik</a>，认证信息你懂的。'));
     $form->addInput($tongJi);
 
+	$SidebarTool1 = new Typecho_Widget_Helper_Form_Element_Textarea( 'SidebarTool1', null, null, _t( '侧边小工具' ),
+		_t( '侧边小工具代码，可以使用HTML（放个小广告什么的），默认加载到网站统计上面，留空则禁用。使用方法：<br>
+第一行：Font Awesome图标编号，如fa-moon-o，参考<a href="https://www.thinkcmf.com/font/font_awesome/icons.html">这里</a><br>
+第二行：侧边栏标题，可以使用HTML<br>
+第三行：侧边栏内容，可以使用HTML' ) );
+	$form->addInput( $SidebarTool1 );
+
     $MemorialDay = new Typecho_Widget_Helper_Form_Element_Textarea('MemorialDay',NULL,
     '06-04
 07-13',
