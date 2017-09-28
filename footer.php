@@ -55,22 +55,22 @@
 <script src = "<?php $this->options->themeUrl('js/home.js'); ?>" async></script>
 <?php $this->footer(); ?>
 <!--Typing effect-->
-<?php if ( ! empty( $this->options->switch ) &&
-           in_array( 'showTypeColorful', $this->options->switch ) && in_array( 'showTypeShake', $this->options->switch ) && ! isMobile() ): ?>
+<?php if ( ! empty( $this->options->effect ) &&
+           in_array( 'TypeColorful', $this->options->effect ) && in_array( 'TypeShake', $this->options->effect ) && ! isMobile() ): ?>
     <script src="<?php $this->options->themeUrl( 'js/typing.js' ); ?>"></script>
     <script type="text/javascript">
         POWERMODE.colorful = true;
         POWERMODE.shake = true;
         document.body.addEventListener('input', POWERMODE);
     </script>
-<?php elseif ( ! empty( $this->options->switch ) && in_array( 'showTypeColorful', $this->options->switch ) && ! isMobile() ): ?>
+<?php elseif ( ! empty( $this->options->effect ) && in_array( 'TypeColorful', $this->options->effect ) && ! isMobile() ): ?>
     <script src="<?php $this->options->themeUrl( 'js/typing.js' ); ?>"></script>
     <script type="text/javascript">
         POWERMODE.colorful = true;
         POWERMODE.shake = false;
         document.body.addEventListener('input', POWERMODE);
     </script>
-<?php elseif ( ! empty( $this->options->switch ) && in_array( 'showTypeShake', $this->options->switch ) && ! isMobile() ): ?>
+<?php elseif ( ! empty( $this->options->effect ) && in_array( 'TypeShake', $this->options->effect ) && ! isMobile() ): ?>
     <script src="<?php $this->options->themeUrl( 'js/typing.js' ); ?>"></script>
     <script type="text/javascript">
         POWERMODE.colorful = false;
@@ -149,8 +149,8 @@
     });
 	<?php endif; ?>
 
-	<?php if ( ! empty( $this->options->switch )
-	           && in_array( 'EnableRandomColor', $this->options->switch )  ): ?>
+	<?php if ( ! empty( $this->options->effect )
+	           && in_array( 'RandomColor', $this->options->switch )  ): ?>
     function getRandomRGBValue() {
         return Math.min(Math.floor(Math.random() * 255 + 1), 255);
     }
@@ -203,8 +203,8 @@
             });
         });</script>
 <?php endif; ?>
-<?php if ( ! empty( $this->options->switch )
-           && in_array( 'EnableKiana', $this->options->switch ) && ! isMobile() ): ?>
+<?php if ( ! empty( $this->options->effect )
+           && in_array( 'KianaWidgets', $this->options->effect ) && ! isMobile() ): ?>
     <script src="<?php $this->options->themeUrl( 'extra/kiana/bga.min.js' ); ?>" async></script>
 <?php endif; ?>
 <?php if ( ! empty( $this->options->switch ) && in_array( 'SmoothScroll', $this->options->switch ) ): ?>
@@ -297,14 +297,14 @@ EOF;
     echo "\n";
 }
 ?>
-<?php if ( ! empty( $this->options->switch ) &&
-           in_array( 'canvas_three', $this->options->switch ) ):?>
+<?php if ( ! empty( $this->options->effect ) &&
+           in_array( 'canvas_three', $this->options->effect ) ):?>
     <script src = "<?php $this->options->themeUrl('js/canvas/three.min.js'); ?>" ></script>
     <script src = "<?php $this->options->themeUrl('js/canvas/three-waves.min.js'); ?>" async></script>
 <?php endif;?>
 
-<?php if ( ! empty( $this->options->switch ) &&
-           in_array( 'canvas_lines', $this->options->switch ) ):?>
+<?php if ( ! empty( $this->options->effect ) &&
+           in_array( 'canvas_lines', $this->options->effect ) ):?>
     <script src = "<?php $this->options->themeUrl('js/canvas/three.min.js'); ?>" ></script>
     <script src = "<?php $this->options->themeUrl('js/canvas/canvas_lines.min.js'); ?>" async></script>
 <?php endif;?>

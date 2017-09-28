@@ -2,13 +2,13 @@
 date_default_timezone_set('Asia/Shanghai');
 
 function themeConfig($form) {
-	
+
 	echo '<p style="font-size:14px;" id="use-intro">
     <span style="display: block;
     margin-bottom: 10px;
     margin-top: 10px;
     font-size: 16px;">感谢您使用 GreenGrapes2 主题</span>
-    <span style="margin-bottom:10px;display:block">请关注 <a href="https://github.com/BennyThink/GreenGrapes2" target="_blank" 
+    <span style="margin-bottom:10px;display:block">请关注 <a href="https://github.com/BennyThink/GreenGrapes2" target="_blank"
 	style="color:#3384da;font-weight:bold;text-decoration:underline">GreenGrapes2</a> 以获得
 	<span style="color:#df3827;font-weight:bold;">最新版本支持</span></span>
     <a href="mailto:benny@bennythink.com" >帮助&amp;支持</a> &nbsp;
@@ -87,29 +87,21 @@ function themeConfig($form) {
     $form->addInput($notFound);
 
 	$showUA = new Typecho_Widget_Helper_Form_Element_Select('showUA', array(
-        'dontShow'=>'不显示UA',    
+        'dontShow'=>'不显示UA',
         'ShowUA' => '显示UA',
 		'ShowUAPic' => '显示UA与图片',
 		'ShowOwner' => '为博主显示UA与图片',
     ), 'ShowOwner',
     _t('UA选项'), _t('默认为博主显示UA与图片'));
     $form->addInput($showUA->multiMode());
-	
+
 	$showArchive = new Typecho_Widget_Helper_Form_Element_Select('showArchive', array(
-        'dontShow'=>'不显示归档',    
+        'dontShow'=>'不显示归档',
         'ShowAll' => '显示全部文章列表',
 		'ShowMonth' => '显示按月归档',
     ), 'ShowMonth',
     _t('侧栏文章归设置'), _t('默认为显示按月归档'));
     $form->addInput($showArchive->multiMode());
-
-    $Snow = new Typecho_Widget_Helper_Form_Element_Select('Snow', array(
-        'dontShow'=>'关闭下雪特效',
-        'ShowAll' => '全部开启下雪特效',
-        'ShowPC' => '仅移动设备关闭下雪特效',
-    ), 'ShowPC',
-        _t('下雪特效设置'), _t('默认为仅移动设备关闭下雪特效'));
-    $form->addInput($Snow->multiMode());
 
 	$cursor = new Typecho_Widget_Helper_Form_Element_Select('cursor', array(
 		'default'=>'默认鼠标指针',
@@ -142,11 +134,35 @@ function themeConfig($form) {
 	), 'LocalEmotions',
 		_t('主题表情设置'),
 		_t('本功能将会与similies插件共存。推荐使用本地表情源（万一某一天我欠费了呢）<br>
-    如果开启自带表情，建议到“设置-评论-允许使用的HTML标签和属性”中允许img标签，推荐如下：<br>	
+    如果开启自带表情，建议到“设置-评论-允许使用的HTML标签和属性”中允许img标签，推荐如下：<br>
 	&lt;blockquote&gt;&lt;pre&gt;&lt;code class=&quot;&quot;&gt;&lt;strong&gt;&lt;em&gt;&lt;h5&gt;&lt;h6&gt;&lt;a href title
 	&gt;&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;&lt;tbody&gt;&lt;td&gt;&lt;img src=&quot;&quot;&gt;<br>
 	如果表情显示为img标签，请尝试重装或者是升级Typecho到开发版'));
 	$form->addInput($Emotions->multiMode());
+
+	$Snow = new Typecho_Widget_Helper_Form_Element_Select('Snow', array(
+		'dontShow'=>'关闭下雪特效',
+		'ShowAll' => '全部开启下雪特效',
+		'ShowPC' => '仅移动设备关闭下雪特效',
+	), 'ShowPC',
+		_t('下雪特效设置'), _t('默认为仅移动设备关闭下雪特效'));
+	$form->addInput($Snow->multiMode());
+
+	$effect = new Typecho_Widget_Helper_Form_Element_Checkbox('effect',
+		array(
+
+			'KianaWidgets'   => _t( '开启kiana挂件' ),
+			'TypeColorful' => _t( '显示打字彩虹特效（移动设备会自动关闭此特效）' ),
+			'TypeShake'    => _t( '显示打字震动特效（移动设备会自动关闭此特效）' ),
+			'RandomColor' => _t( '开启随机meta theme-color，有点辣眼睛' ),
+			'canvas_three' => _t( '开启canvas_three特效' ),
+			'canvas_lines' => _t( '开启canvas_lines特效' ),
+		),
+		array('KianaWidgets','TypeColorful'),
+		_t('特效功能开关'),
+		_t('设置网站显示特效')
+	);
+	$form->addInput($effect->multiMode());
 
 	$markdownExtendBlock = new Typecho_Widget_Helper_Form_Element_Checkbox('markdownExtend',
         array(
@@ -166,25 +182,18 @@ function themeConfig($form) {
 			'ShowLinksIcon'     => _t( '友情链接显示favicon（此功能有时会获取失败，比如说防盗链的网站、被墙网站）' ),
 			'EnableNetease' => _t( '开启网易云音乐支持，在文章中使用<code>{{音乐id}}</code>添加音乐（不自动播放）' ),
 			'EnableNotice'  => _t( '开启来路提示功能' ),
-			'EnableKiana'   => _t( '开启kiana挂件' ),
 			'ShowFortunes'  => _t( '显示动态格言' ),
 			'EnableHide'    => _t( '开启回复可见功能，在文章中使用<code>[hide]隐藏内容[/hide]</code>' ),
 			'EnableSlimbox' => _t( '开启Slimbox2灯箱' ),
-			'showTypeColorful' => _t( '显示打字彩虹特效（移动设备会自动关闭此特效）' ),
-
-			'showTypeShake'    => _t( '显示打字震动特效（移动设备会自动关闭此特效）' ),
-			'SmoothScroll'        => _t( '平滑滚动效果' ),
+			'SmoothScroll'        => _t( '平滑滚动效果——让你的Chrome醋溜到底吧！' ),
 			'atargetblank'        => _t( '链接以新标签页形式打开' ),
 			'ShowBloggerCheckBox' => _t( '隐藏侧边栏博主回复' ),
 			'ShowThumbPic'        => _t( '显示博文缩略图' ),
 			'EnableCompress'    => _t( '开启压缩HTML代码功能，对性能略有提升' ),
 			'EnableCopyright'   => _t( '开启复制版权提示' ),
-			'EnableRandomColor' => _t( '开启随机meta theme-color，有点辣眼睛' ),
-			'canvas_three' => _t( '开启canvas_three特效' ),
-			'canvas_lines' => _t( '开启canvas_lines特效' ),
 		),
 		array('Pangu','ShowBreadCrumb','ShowPostBottomBar','ShowLinksIcon',
-			'showTypeColorful','EnableNetease','EnableNotice','EnableKiana','ShowFortunes',
+			'EnableNetease','EnableNotice','ShowFortunes',
 			'EnableHide','EnableSlimbox'),
 		_t('杂项功能开关'),
 		_t('插入视频请使用iframe语法')
@@ -217,19 +226,19 @@ function themeConfig($form) {
 请注意，如果使用自定CSS，需要将整个代码用!@包围，如<code>!@&lt;strong&gt;粗体&lt;strong&gt;!@</code>'));
     $form->addInput($motto);
 
-	$copyright = new Typecho_Widget_Helper_Form_Element_Textarea('copyright', NULL,NULL, 
-	_t('文章底部版权信息设置'), 
+	$copyright = new Typecho_Widget_Helper_Form_Element_Textarea('copyright', NULL,NULL,
+	_t('文章底部版权信息设置'),
 	_t('此处输入的文字将出现在每篇文章最底部.<br>
 	{{title}}表示文章标题，{{link}}表示文章链接,
 	{{name}}表示作者名字，{{homepage}}表示作者主页<br>
 	使用HTML语法，如不填写则为默认样式，使用帮助<a href="https://github.com/BennyThink/GreenGrapes2">请戳我</a>'));
     $form->addInput($copyright);
 
-	$footer = new Typecho_Widget_Helper_Form_Element_Textarea('footer',NULL,NULL, 
+	$footer = new Typecho_Widget_Helper_Form_Element_Textarea('footer',NULL,NULL,
 	_t('页脚footer代码'), _t('填入页脚footer，支持HTML，比如说备案号。如不需要则留空'));
 	$form->addInput($footer);
 
-    $tongJi = new Typecho_Widget_Helper_Form_Element_Textarea('tongJi', NULL, NULL, _t('站点统计代码'), 
+    $tongJi = new Typecho_Widget_Helper_Form_Element_Textarea('tongJi', NULL, NULL, _t('站点统计代码'),
 	_t('在这里可以填入百度统计、cnzz、Google Analytics等统计代码，只对非登录用户起作用<br>
 某童鞋也许可以尝试<a href="https://comingon.top">使用我的piwik</a>，认证信息你懂的。'));
     $form->addInput($tongJi);
@@ -241,7 +250,7 @@ function themeConfig($form) {
         如不需要，将其清空即可禁用此功能'));
     $form->addInput($MemorialDay);
 
-	$links = new Typecho_Widget_Helper_Form_Element_Textarea('links',NULL,NULL, 
+	$links = new Typecho_Widget_Helper_Form_Element_Textarea('links',NULL,NULL,
 	_t('友链样式的HTML代码'), _t('填入你的HTML代码，A标签即可，每行使用回车结尾，<strong>url结尾请不要带/</strong>。示例：<br>
 	1. &lt;a href="https://www.bennythink.com"&gt;土豆不好吃&lt;/a&gt;<br>
 	2. &lt;a href="https://www.bennythink.com"&gt;&lt;img src="https://www.bennythink.com/favicon.ico" width="16"/&gt;土豆不好吃&lt;/a&gt;<br>
@@ -249,7 +258,7 @@ function themeConfig($form) {
 	如果安装了Links插件，此项将不会生效<br>
 	请注意，<strong>切换主题之后此项将会被清空</strong>，请谨慎操作'));
 	$form->addInput($links);
-	
+
     //代码高亮设置
     $SHTheme = new Typecho_Widget_Helper_Form_Element_Select('SHTheme', array(
         'Close' => '关闭代码高亮',
@@ -736,7 +745,7 @@ function avatar( $email ) {
  * @return string img标签
  */
 function getUA($ua,$isPic){
-	 
+
         //开始解析操作系统
         $os = null;
         if (preg_match('/Windows NT 6.0/i', $ua))
@@ -749,21 +758,21 @@ function getUA($ua,$isPic){
             $os = "Windows 8.1";
         elseif (preg_match('/Windows NT 10.0/i', $ua))
             $os = "Windows 10";
-        elseif (preg_match('/Windows NT 5.1/i', $ua)) 
+        elseif (preg_match('/Windows NT 5.1/i', $ua))
             $os = "Windows XP";
-        elseif (preg_match('/Windows NT 5.2/i', $ua) && preg_match('/Win64/i', $ua)) 
+        elseif (preg_match('/Windows NT 5.2/i', $ua) && preg_match('/Win64/i', $ua))
             $os = "Windows XP 64 bit";
-		elseif (preg_match('/Windows NT 5.0/i', $ua)) 
+		elseif (preg_match('/Windows NT 5.0/i', $ua))
             $os = "Windows 2000 Professional";
-        elseif (preg_match('/Android ([0-9.]+)/i', $ua, $matches)) 
+        elseif (preg_match('/Android ([0-9.]+)/i', $ua, $matches))
             $os = "Android " . $matches[1];
-        elseif (preg_match('/iPhone OS ([_0-9]+)/i', $ua, $matches)) 
+        elseif (preg_match('/iPhone OS ([_0-9]+)/i', $ua, $matches))
             $os = 'iPhone ' . $matches[1];
-		elseif (preg_match('/iPad/i', $ua)) 
+		elseif (preg_match('/iPad/i', $ua))
             $os = "iPad";
-		elseif (preg_match('/Mac OS X ([_0-9]+)/i', $ua, $matches)) 
-            $os = 'Mac OS X ' . $matches[1];		
-		elseif (preg_match('/Windows Phone ([_0-9]+)/i', $ua, $matches)) 
+		elseif (preg_match('/Mac OS X ([_0-9]+)/i', $ua, $matches))
+            $os = 'Mac OS X ' . $matches[1];
+		elseif (preg_match('/Windows Phone ([_0-9]+)/i', $ua, $matches))
             $os = 'Windows Phone ' . $matches[1];
 		elseif(preg_match('/Gentoo/i',$ua))
 			$os = 'Gentoo Linux';
@@ -781,64 +790,64 @@ function getUA($ua,$isPic){
 			$os = 'SunOS';
 		elseif(preg_match('/BlackBerry/i',$ua))
 			$os = 'BlackBerry';
-        else 
+        else
             $os = '未知操作系统';
-        
+
 		//解析浏览器
-        if (preg_match('#(Camino|Chimera)[ /]([a-zA-Z0-9.]+)#i', $ua, $matches)) 
+        if (preg_match('#(Camino|Chimera)[ /]([a-zA-Z0-9.]+)#i', $ua, $matches))
             $browser = 'Camino ' . $matches[2];
-        elseif (preg_match('#SE 2([a-zA-Z0-9.]+)#i', $ua, $matches)) 
+        elseif (preg_match('#SE 2([a-zA-Z0-9.]+)#i', $ua, $matches))
             $browser = '搜狗浏览器 2' . $matches[1];
-        elseif (preg_match('#360([a-zA-Z0-9.]+)#i', $ua, $matches)) 
+        elseif (preg_match('#360([a-zA-Z0-9.]+)#i', $ua, $matches))
             $browser = '360浏览器 ' . $matches[1];
-        elseif (preg_match('#Maxthon( |\/)([a-zA-Z0-9.]+)#i', $ua, $matches)) 
+        elseif (preg_match('#Maxthon( |\/)([a-zA-Z0-9.]+)#i', $ua, $matches))
 			$browser = 'Maxthon ' . $matches[2];
-		elseif (preg_match('#Edge( |\/)([a-zA-Z0-9.]+)#i', $ua, $matches)) 
+		elseif (preg_match('#Edge( |\/)([a-zA-Z0-9.]+)#i', $ua, $matches))
             $browser = 'Edge ' . $matches[2];
-		elseif (preg_match('#MicroMessenger/([a-zA-Z0-9.]+)#i', $ua, $matches)) 
-			$browser = '微信 ' . $matches[1]; 
-		elseif (preg_match('#QQ/([a-zA-Z0-9.]+)#i', $ua, $matches)) 
-            $browser = '手机QQ ' . $matches[1];	
-		elseif (preg_match('#Chrome/([a-zA-Z0-9.]+)#i', $ua, $matches)) 
+		elseif (preg_match('#MicroMessenger/([a-zA-Z0-9.]+)#i', $ua, $matches))
+			$browser = '微信 ' . $matches[1];
+		elseif (preg_match('#QQ/([a-zA-Z0-9.]+)#i', $ua, $matches))
+            $browser = '手机QQ ' . $matches[1];
+		elseif (preg_match('#Chrome/([a-zA-Z0-9.]+)#i', $ua, $matches))
             $browser = 'Chrome ' . $matches[1];
         elseif (preg_match('#CriOS/([a-zA-Z0-9.]+)#i', $ua, $matches))
 	        $browser = 'Chrome ' . $matches[1];
         elseif (preg_match('#Chromium/([a-zA-Z0-9.]+)#i', $ua, $matches))
             $browser = 'Chromium ' . $matches[1];
-        elseif (preg_match('#XiaoMi/MiuiBrowser/([0-9.]+)#i', $ua, $matches)) 
+        elseif (preg_match('#XiaoMi/MiuiBrowser/([0-9.]+)#i', $ua, $matches))
             $browser = '小米浏览器 ' . $matches[1];
-        elseif (preg_match('#Safari/([a-zA-Z0-9.]+)#i', $ua, $matches)) 
+        elseif (preg_match('#Safari/([a-zA-Z0-9.]+)#i', $ua, $matches))
             $browser = 'Safari ' . $matches[1];
         elseif (preg_match('#opera mini#i', $ua)) {
             preg_match('#Opera/([a-zA-Z0-9.]+)#i', $ua, $matches);
             $browser = 'Opera Mini ' . $matches[1];}
-        elseif (preg_match('#Opera.([a-zA-Z0-9.]+)#i', $ua, $matches)) 
+        elseif (preg_match('#Opera.([a-zA-Z0-9.]+)#i', $ua, $matches))
             $browser = 'Opera ' . $matches[1];
-        elseif (preg_match('#TencentTraveler ([a-zA-Z0-9.]+)#i', $ua, $matches)) 
+        elseif (preg_match('#TencentTraveler ([a-zA-Z0-9.]+)#i', $ua, $matches))
             $browser = '腾讯TT浏览器 ' . $matches[1];
-		elseif (preg_match('#QQBrowser ([a-zA-Z0-9.]+)#i', $ua, $matches)) 
+		elseif (preg_match('#QQBrowser ([a-zA-Z0-9.]+)#i', $ua, $matches))
             $browser = 'QQ浏览器 ' . $matches[1];
-        elseif (preg_match('#UCWEB([a-zA-Z0-9.]+)#i', $ua, $matches)) 
+        elseif (preg_match('#UCWEB([a-zA-Z0-9.]+)#i', $ua, $matches))
             $browser = 'UCWEB ' . $matches[1];
-        elseif (preg_match('#wp-(iphone|android)/([a-zA-Z0-9.]+)#i', $ua, $matches)) 
+        elseif (preg_match('#wp-(iphone|android)/([a-zA-Z0-9.]+)#i', $ua, $matches))
             $browser = 'WordPress客户端 ' . $matches[1];
-        elseif (preg_match('#MSIE ([a-zA-Z0-9.]+)#i', $ua, $matches)) 
-            $browser = 'Internet Explorer ' . $matches[1];         
-		elseif (preg_match('#Trident/([a-zA-Z0-9.]+)#i', $ua, $matches)) 
-            $browser = 'Internet Explorer 11';       		
-		elseif (preg_match('#(Firefox|Phoenix|Firebird|BonEcho|GranParadiso|Minefield|Iceweasel)/([a-zA-Z0-9.]+)#i', $ua, $matches)) 
+        elseif (preg_match('#MSIE ([a-zA-Z0-9.]+)#i', $ua, $matches))
+            $browser = 'Internet Explorer ' . $matches[1];
+		elseif (preg_match('#Trident/([a-zA-Z0-9.]+)#i', $ua, $matches))
+            $browser = 'Internet Explorer 11';
+		elseif (preg_match('#(Firefox|Phoenix|Firebird|BonEcho|GranParadiso|Minefield|Iceweasel)/([a-zA-Z0-9.]+)#i', $ua, $matches))
             $browser = 'Firefox ' . $matches[2];
         elseif(preg_match('/curl/i',$ua))
 			$browser = 'curl';
-		else 
-            $browser = '未知浏览器';	
-		
+		else
+            $browser = '未知浏览器';
+
 		//return $os . "  |  " . $browser;
 		$prePath1=Helper::options()->themeUrl.'/img/ua/';
 		$prePath2=$prePath1;
 		//$test1=$prePath1;
 		//$test2=$prePath2;
-		//确定UA图片		
+		//确定UA图片
 		if(strstr($os,'Vista')) 			$prePath1.='Vista'.'.png';
 		elseif(strstr($os,'Windows 7')) 	$prePath1.= 'Windows7'.'.png';
 		elseif(strstr($os,'Windows 8')) 	$prePath1.= 'Windows8'.'.png';
@@ -878,13 +887,13 @@ function getUA($ua,$isPic){
 		elseif(strstr($browser,'Internet Explorer'))	$prePath2.= 'ie'.'.png';
 		elseif(strstr($browser,'WordPress客户端'))	$prePath2.= 'wordpress'.'.png';
 		elseif(strstr($browser,'Firefox'))	$prePath2.= 'firefox'.'.png';
-		else	$prePath2.= 'unknowBrowser'.'.png';		
+		else	$prePath2.= 'unknowBrowser'.'.png';
 		//end
 		if($isPic==0)
 			return $os . "  |  " . $browser;
 		elseif($isPic==1)
 			//echo $prePath1.'  '.$prePath2;
-			return '<img src="'.$prePath1.'"/>'.'<font  color=#ff6600>'.$os. "  |  " .'</font>'. 
+			return '<img src="'.$prePath1.'"/>'.'<font  color=#ff6600>'.$os. "  |  " .'</font>'.
 				   '<img src="'.$prePath2.'"/>'.'<font  color=#ff6600>'.$browser.'</font>';
 		else
 			echo '出错了';
@@ -1035,7 +1044,7 @@ function _renderPart($content) {
 	if ((!empty($options->switch) && in_array('EnableNetease', $options->switch))) {
         $content = _renderNetease($content);
     }
-	
+
     $content = _escapeCharacter($content);
     $content = _renderCards($content);
     return $content;
@@ -1053,8 +1062,8 @@ function _renderDeleteTag($content) {
 }
 
 function _renderNetease($content) {
-    $content = preg_replace('/\{\{(.+?)\}\}/i',     
-		'<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 
+    $content = preg_replace('/\{\{(.+?)\}\}/i',
+		'<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86
 		src="//music.163.com/outchain/player?type=2&id='.'$1'.'&auto=0&height=66"></iframe>', $content);
     return $content;
 }
@@ -1248,7 +1257,7 @@ else
             <?php $comments->threadedComments(); ?>
         </div>
     <?php } ?>
-    
+
 </li>
 <?php
 
