@@ -2,9 +2,9 @@
     <div id="comments">
     <div class="comments-block">
         <p class="ui <?php $this->options->singleColor() ?> ribbon label comments"><?php $this->commentsNum(_t('还不快抢沙发'), _t('只有地板了'), _t('<span class="comment-highlight">%d</span> 条评论')); ?></p>
-        
+
 		<?php $comments->listComments(); ?>
-<!--评论输出-->  
+<!--评论输出-->
 <?php $comments->pageNav('&laquo; 前一页', '后一页 &raquo;'); ?>
     </div>
 <?php if($this->allow('comment')): ?>
@@ -31,13 +31,13 @@
             <?php endif; ?>
 
             <div class="comments-field">
-                <textarea class="textarea form-control OwO-textarea" rows="8" cols="50" id="comment-content" placeholder="<?php _e('回复内容，必填'); ?><?php _e(' (可以使用markdown、emoji和部分HTML语法哦)')?>" name="text"><?php $this->remember('text'); ?></textarea>
+                <textarea class="textarea form-control OwO-textarea" rows="8" cols="50" id="comment-content" placeholder="<?php _e('回复内容，必填（去你妹的实名制）'); ?>" name="text"><?php $this->remember('text'); ?></textarea>
 <?php if ( 'CDNEmmotions' == $this->options->Emotions || 'LocalEmotions' == $this->options->Emotions ): ?>
 <div class="OwO"></div>
 <?php endif;?>
 <?php if(isset($this->options->plugins['activated']['Smilies']))
 Smilies_Plugin::output();?>
-			</div>		
+			</div>
             <button type="submit" id="comment-submit" class="btn btn-success"><?php _e('提交评论'); ?></button>
         </form>
     </div>
