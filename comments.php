@@ -31,7 +31,7 @@
             <?php endif; ?>
 
             <div class="comments-field">
-                <textarea class="textarea form-control OwO-textarea" rows="8" cols="50" id="comment-content" placeholder="<?php _e('回复内容，必填（去你妹的实名制）'); ?>" name="text"><?php $this->remember('text'); ?></textarea>
+                <textarea class="textarea form-control OwO-textarea" rows="8" cols="50" id="comment-content" placeholder="<?php if(!empty($this->options->commentWord)) _e($this->options->commentWord); ?>" name="text"><?php $this->remember('text'); ?></textarea>
 <?php if ( 'CDNEmmotions' == $this->options->Emotions || 'LocalEmotions' == $this->options->Emotions ): ?>
 <div class="OwO"></div>
 <?php endif;?>
