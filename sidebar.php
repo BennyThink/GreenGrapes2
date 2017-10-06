@@ -176,5 +176,8 @@
     <?php if(!empty($this->options->EmailFeed)): ?>
 <li><i class="fa-li fa fa-envelope "></i><a href="<?php echo $this->options->EmailFeed; ?>">邮件 订阅</a></li>
     <?php endif;?>
+	<?php if(!empty($this->options->TelegramFeed)): ?>
+<li><i class="fa-li fa fa-heartbeat "></i><a href="<?php echo $this->options->TelegramFeed; ?>">Telegram 频道</a></li>
+	<?php endif;?>
 </ul></div></div>
 </aside></aside>
