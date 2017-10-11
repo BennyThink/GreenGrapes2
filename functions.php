@@ -82,9 +82,9 @@ function themeConfig($form) {
 	$form->addInput( $clickNotify );
 
 	$notFound = new Typecho_Widget_Helper_Form_Element_Radio(
-        'notFoundGame', array ('1' => 'Chrome小恐龙', '2' => '小仓鼠'), '',
-        '404游戏', '用于在404的时候展示的一款HTML5游戏！如不选择，则为默认动画');
-    $form->addInput($notFound);
+		'notFoundGame', array( '1' => 'Chrome小恐龙', '2' => 'MomoTheCat' ), '',
+		'404游戏', '用于在404的时候展示的一款HTML5游戏！如不选择，那就有个彩蛋呗。' );
+	$form->addInput( $notFound );
 
 	$showUA = new Typecho_Widget_Helper_Form_Element_Select('showUA', array(
         'dontShow'=>'不显示UA',
