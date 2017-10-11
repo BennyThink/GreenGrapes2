@@ -78,7 +78,10 @@
         document.body.addEventListener('input', POWERMODE);
     </script>
 <?php endif; ?>
-
+<?php if ( ! empty( $this->options->switch ) && in_array( 'Pangu', $this->options->switch ) ): ?>
+    <script src="<?php $this->options->themeUrl( 'js/pangu.min.js' ); ?>"></script>
+    <script> pangu.spacingPage(); </script>
+<?php endif; ?>
 <script type="text/javascript">
     //loading and console info
     jQuery(window).ready(function () {

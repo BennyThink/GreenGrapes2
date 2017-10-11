@@ -60,6 +60,9 @@ function themeConfig($form) {
 	$searchWord = new Typecho_Widget_Helper_Form_Element_Text( 'searchWord', null, '搜点什么呗', _t( '搜索框预留词' ), _t( '搜索框预留内容' ) );
 	$form->addInput( $searchWord );
 
+	$commentWord = new Typecho_Widget_Helper_Form_Element_Text( 'commentWord', null, '回复内容，必填（求你妹的实名制）', _t( '评论框预留词' ), _t( '留空则不显示' ) );
+	$form->addInput( $commentWord );
+
 	$dynamicTitle = new Typecho_Widget_Helper_Form_Element_Text( 'dynamicTitle', null, '喵 (●\'◡\'●)~快回来', _t( '动态标题' ), _t( '动态标题预留词语，留空则禁用此功能，默认为喵 (●\'◡\'●)~快回来' ) );
 	$form->addInput( $dynamicTitle );
 
@@ -68,6 +71,9 @@ function themeConfig($form) {
 
 	$EmailFeed = new Typecho_Widget_Helper_Form_Element_Text( 'EmailFeed', null, null, _t( '邮件订阅设置' ), _t( '邮件订阅地址，推荐使用<a href="https://www.feedburner.com/">Feed Burner</a>；留空则禁用' ) );
 	$form->addInput( $EmailFeed );
+
+	$TelegramFeed = new Typecho_Widget_Helper_Form_Element_Text( 'TelegramFeed', null, null, _t( 'Telegram频道' ), _t( '输入你的Telegram频道；留空则禁用' ) );
+	$form->addInput( $TelegramFeed );
 
 	$wechatBR = new Typecho_Widget_Helper_Form_Element_Text( 'wechatBR', null, null, _t( '微信打赏设置' ),
         _t( '微信收款二维码；留空则禁用' ) );
