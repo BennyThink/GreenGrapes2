@@ -168,7 +168,7 @@
 <ul class="fa-ul">
     <?php if($this->user->hasLogin()): ?>
 <li><i class="fa-li fa fa-spinner fa-spin"></i><a href="<?php $this->options->adminUrl(); ?>"><?php $this->user->screenName(); ?></a></li>
-<li><i class="fa-li fa fa-spinner fa-spin"></i><a href="<?php $this->options->logoutUrl(); ?>">登出</a></li>
+<li><i class="fa-li fa fa-circle-o-notch fa-spin"></i><a href="<?php $this->options->logoutUrl(); ?>">登出</a></li>
     <?php else: ?>
 <li><i class="fa-li fa fa-user fa-fw"></i><a href="<?php $this->options->adminUrl('login.php'); ?>">登录</a></li>
     <?php endif; ?>
@@ -176,8 +176,8 @@
     <?php if(!empty($this->options->EmailFeed)): ?>
 <li><i class="fa-li fa fa-envelope "></i><a href="<?php echo $this->options->EmailFeed; ?>">邮件 订阅</a></li>
     <?php endif;?>
-	<?php if(!empty($this->options->TelegramFeed)): ?>
-<li><i class="fa-li fa fa-heartbeat "></i><a href="<?php echo $this->options->TelegramFeed; ?>">Telegram 频道</a></li>
+	<?php if(!empty($this->options->TelegramChannel)): ?>
+<li><i class="fa-li fa fa-heart-o "></i><a href="<?php echo $this->options->TelegramChannel; ?>">Telegram 频道</a></li>
 	<?php endif;?>
 	<?php if(!empty($this->options->TelegramGroup)): ?>
         <li><i class="fa-li fa fa-moon-o "></i><a href="<?php echo $this->options->TelegramGroup; ?>">Telegram 群组</a></li>
