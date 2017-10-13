@@ -72,8 +72,11 @@ function themeConfig($form) {
 	$EmailFeed = new Typecho_Widget_Helper_Form_Element_Text( 'EmailFeed', null, null, _t( '邮件订阅设置' ), _t( '邮件订阅地址，推荐使用<a href="https://www.feedburner.com/">Feed Burner</a>；留空则禁用' ) );
 	$form->addInput( $EmailFeed );
 
-	$TelegramFeed = new Typecho_Widget_Helper_Form_Element_Text( 'TelegramFeed', null, null, _t( 'Telegram频道' ), _t( '输入你的Telegram频道；留空则禁用' ) );
-	$form->addInput( $TelegramFeed );
+	$TelegramChannel = new Typecho_Widget_Helper_Form_Element_Text( 'TelegramChannel', null, null, _t( 'Telegram频道' ), _t( '输入你的Telegram频道地址；留空则禁用' ) );
+	$form->addInput( $TelegramChannel );
+
+	$TelegramGroup = new Typecho_Widget_Helper_Form_Element_Text( 'TelegramGroup', null, null, _t( 'Telegram群' ), _t( '输入你的Telegram群地址；留空则禁用' ) );
+	$form->addInput( $TelegramGroup );
 
 	$wechatBR = new Typecho_Widget_Helper_Form_Element_Text( 'wechatBR', null, null, _t( '微信打赏设置' ),
         _t( '微信收款二维码；留空则禁用' ) );

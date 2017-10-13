@@ -179,5 +179,8 @@
 	<?php if(!empty($this->options->TelegramFeed)): ?>
 <li><i class="fa-li fa fa-heartbeat "></i><a href="<?php echo $this->options->TelegramFeed; ?>">Telegram 频道</a></li>
 	<?php endif;?>
+	<?php if(!empty($this->options->TelegramGroup)): ?>
+        <li><i class="fa-li fa fa-moon-o "></i><a href="<?php echo $this->options->TelegramGroup; ?>">Telegram 群组</a></li>
+	<?php endif;?>
 </ul></div></div>
 </aside></aside>
