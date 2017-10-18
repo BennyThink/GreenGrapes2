@@ -182,5 +182,13 @@
 	<?php if(!empty($this->options->TelegramGroup)): ?>
         <li><i class="fa-li fa fa-moon-o "></i><a href="<?php echo $this->options->TelegramGroup; ?>">Telegram 群组</a></li>
 	<?php endif;?>
+	<?php if ( $this->options->Snow != 'dontShow' ): ?>
+        <li><i class="fa-li fa fa-toggle-off"></i>
+            <a href="javascript:void(0);"
+               onclick="var child=document.getElementById('Snow');child.parentNode.removeChild(child);">
+                <i class="fa fa-ban" aria-hidden="true"></i> <i class="fa fa-snowflake-o" aria-hidden="true"></i>
+            </a>
+        </li>
+	<?php endif; ?>
 </ul></div></div>
 </aside></aside>
