@@ -185,7 +185,7 @@
 	<?php if ( $this->options->Snow != 'dontShow' ): ?>
         <li><i class="fa-li fa fa-toggle-off"></i>
             <a href="javascript:void(0);"
-               onclick="var child=document.getElementById('Snow');child.parentNode.removeChild(child);">
+               onclick="var child=document.getElementById('Snow');child.parentNode.removeChild(child);var exp = new Date();exp.setTime(exp.getTime() + 30 * 24 * 60 * 60 * 1000);document.cookie = 'snow=0' + ';expires=' + exp.toUTCString();">
                 <i class="fa fa-ban" aria-hidden="true"></i> <i class="fa fa-snowflake-o" aria-hidden="true"></i>
             </a>
         </li>
