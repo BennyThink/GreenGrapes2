@@ -428,8 +428,8 @@ function weather(){
             $realip = getenv("REMOTE_ADDR");
         }
     }
-
-    //$realip = '123.206.87.223';
+	if ( $realip == '127.0.0.1' )
+		return '本地测试就不要查天气预报啦😊';
     //在线IP库
     $url = "http://ip.taobao.com/service/getIpInfo.php?ip=" . $realip;
     $ip = json_decode(file_get_contents($url));
