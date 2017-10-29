@@ -87,7 +87,7 @@
     jQuery(window).ready(function () {
         jQuery("#loading").fadeOut(500);
     });
-    console.info('%c The tiniest possibility of seeing you again excites me.', "background: white; color: #16a085; padding-left:10px;");
+    console.info('%c 眼见何事，情系何处，身在何方，心思何人？', "background: white; color: #16a085; padding-left:10px;");
 
     <?php if ( ! empty( $this->options->dynamicTitle ) ): ?>
     //dynamic title
