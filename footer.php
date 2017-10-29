@@ -311,7 +311,6 @@ EOF;
     <script src = "<?php $this->options->themeUrl('js/canvas/three.min.js'); ?>" ></script>
     <script src = "<?php $this->options->themeUrl('js/canvas/canvas_lines.min.js'); ?>" async></script>
 <?php endif;?>
-
 </body></html>
 <?php if ( ! empty( $this->options->switch ) &&
            in_array( 'EnableCompress', $this->options->switch ) ) {
@@ -320,4 +319,4 @@ EOF;
 	print compressHtml( $html_source );
 	ob_end_flush();
 } ?>
-<!--I'm always here... By Benny 2017-->
+<!--By Benny 2017🌙-->

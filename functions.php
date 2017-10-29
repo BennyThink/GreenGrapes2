@@ -60,7 +60,7 @@ function themeConfig($form) {
 	$searchWord = new Typecho_Widget_Helper_Form_Element_Text( 'searchWord', null, '搜点什么呗', _t( '搜索框预留词' ), _t( '搜索框预留内容' ) );
 	$form->addInput( $searchWord );
 
-	$commentWord = new Typecho_Widget_Helper_Form_Element_Text( 'commentWord', null, '回复内容，必填（求你妹的实名制）', _t( '评论框预留词' ), _t( '留空则不显示' ) );
+	$commentWord = new Typecho_Widget_Helper_Form_Element_Text( 'commentWord', null, '眼见何事，情系何处，身在何方，心思何人？', _t( '评论框预留词' ), _t( '留空则不显示' ) );
 	$form->addInput( $commentWord );
 
 	$dynamicTitle = new Typecho_Widget_Helper_Form_Element_Text( 'dynamicTitle', null, '喵 (●\'◡\'●)~快回来', _t( '动态标题' ), _t( '动态标题预留词语，留空则禁用此功能，默认为喵 (●\'◡\'●)~快回来' ) );
