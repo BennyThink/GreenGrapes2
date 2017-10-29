@@ -1,7 +1,7 @@
 <?php
 /**
  * 绿葡萄的主题, 一款有科技感颗粒、自定义头像的、功能丰富的、好看的标签云的响应式模板。
- * 为<a href="https://www.tougetu.com">小蜗牛童鞋</a>精心打造。<br>
+ * 为<a href="https://www.tougetu.com">小蜗牛</a>创作。<br>
  * 原作者<a href="https://github.com/hongweipeng/GreenGrapes">hongweipeng</a>
 
  * @package GreenGrapes2

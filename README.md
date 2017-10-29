@@ -4,6 +4,8 @@
 
 ![](http://i.imgur.com/dD8mg7T.png)
 
+**请注意，由于个人原因，此款主题可能不会再积极更新；如果有更多需求，请提交issue**
+
 ## 使用方法 ##
 1. 下载Typecho主题，得到一个文件夹
 2. 重命名整个文件夹为`GreenGrapes2`并上传至`usr/themes/`目录下
