@@ -51,7 +51,7 @@ function themeConfig($form) {
 	$siteIcon = new Typecho_Widget_Helper_Form_Element_Text( 'sideName', null, null, _t( '侧栏用户名' ), _t( '在这里填入一个左侧显示的用户名, 默认不显示' ) );
 	$form->addInput( $siteIcon );
 
-	$siteCache = new Typecho_Widget_Helper_Form_Element_Text( 'cacheTime', null, '1209600', _t( '缓存时间' ), _t( '头像缓存时间，默认1209600即14天' ) );
+	$siteCache = new Typecho_Widget_Helper_Form_Element_Text( 'cacheTime', null, '604800', _t( '缓存时间' ), _t( '头像缓存时间，默认604800即7天' ) );
 	$form->addInput( $siteCache );
 
 	$siteCreate = new Typecho_Widget_Helper_Form_Element_Text( 'createTime', null, '2016-12-23 13:59:00', _t( '建站时间' ), _t( '填入形如2016-12-23 13:59:00，时间可以省略。如不填写，则默认为2016-12-23' ) );
@@ -721,7 +721,7 @@ function avatar( $email ) {
 	$saveNamePng = 'usr/themes/GreenGrapes2/avatarCache/' . md5( strtolower( trim( $email ) ) ) . '.png';
 	clearstatcache();
 	if ( empty( Helper::options()->cacheTime ) ) {
-		$ct = 1209600;
+		$ct = 604800;
 	} else {
 		$ct = Helper::options()->cacheTime;
 	}
