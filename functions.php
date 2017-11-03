@@ -200,10 +200,12 @@ function themeConfig($form) {
 			'ShowThumbPic'        => _t( '显示博文缩略图' ),
 			'EnableCompress'    => _t( '开启压缩HTML代码功能，对性能略有提升' ),
 			'EnableCopyright'   => _t( '开启复制版权提示' ),
+			'RandomGravatar'   => _t( '无gravatar随机头像' ),
+
 		),
 		array('Pangu','ShowBreadCrumb','ShowPostBottomBar','ShowLinksIcon',
 			'EnableNetease','EnableNotice','ShowFortunes',
-			'EnableHide','EnableSlimbox'),
+			'EnableHide','EnableSlimbox','RandomGravatar'),
 		_t('杂项功能开关'),
 		_t('插入视频请使用iframe语法')
 	);
@@ -715,7 +717,8 @@ function get_post_view($archive)
  */
 function avatar( $email ) {
 	$yourUrl  = Helper::options()->siteUrl;
-	$saveName = 'usr/themes/GreenGrapes2/avatarCache/' . md5( strtolower( trim( $email ) ) ) . '.jpg';
+	$saveNameJpg = 'usr/themes/GreenGrapes2/avatarCache/' . md5( strtolower( trim( $email ) ) ) . '.jpg';
+	$saveNamePng = 'usr/themes/GreenGrapes2/avatarCache/' . md5( strtolower( trim( $email ) ) ) . '.png';
 	clearstatcache();
 	if ( empty( Helper::options()->cacheTime ) ) {
 		$ct = 1209600;
@@ -725,28 +728,41 @@ function avatar( $email ) {
 
 	if ( strpos( $email, "@qq.com" ) ) {
 		//如果是QQ邮箱的话，测试缓存策略
-		if ( file_exists( $saveName ) && ( time() - filemtime( $saveName ) ) < $ct ) {
-			return '<img class="avatar" src="' . $yourUrl . $saveName . '" />';
+		if ( file_exists( $saveNameJpg ) && ( time() - filemtime( $saveNameJpg ) ) < $ct ) {
+			return '<img class="avatar" src="' . $yourUrl . $saveNameJpg . '" />';
 		} else {
 			$qqimg  = 'https://q.qlogo.cn/g?b=qq&nk='.$email.'&s=100';
 			//保存图片
-			copy( $qqimg, $saveName );
-			return '<img class="avatar" src="' . $yourUrl . $saveName . '" />';
+			copy( $qqimg, $saveNameJpg );
+			return '<img class="avatar" src="' . $yourUrl . $saveNameJpg . '" />';
 		}
-	} elseif ( file_exists( $saveName ) && ( time() - filemtime( $saveName ) ) < $ct ) {
+	} elseif ( file_exists( $saveNameJpg ) && ( time() - filemtime( $saveNameJpg ) ) < $ct ) {
 		//返回未超时的gravatar、已有缓存
-		return '<img class="avatar" src="' . $yourUrl . $saveName . '" />';
+		return '<img class="avatar" src="' . $yourUrl . $saveNameJpg . '" />';
 	} else {
 		//获取新的gravatar，并判断
 		$headers = @get_headers( 'https://www.gravatar.com/avatar/' . md5( strtolower( trim( $email ) ) ) . '?d=404' );
 		if ( preg_match( "/404/", $headers[0] ) ) {
-			//无头像，应该拷贝头像
-			copy( $yourUrl . 'usr/themes/GreenGrapes2/img/default.jpg', $saveName );
-			return '<img class="avatar" src="' . $yourUrl . 'usr/themes/GreenGrapes2/img/default.jpg" />';
+			if ( ! empty( Helper::options()->switch ) && in_array( 'RandomGravatar', Helper::options()->switch ) ) {
+				// This code is a pile of shit!!
+				if ( file_exists( $saveNamePng ) && ( time() - filemtime( $saveNamePng ) ) < $ct ) {
+					return '<img class="avatar" src="' . $yourUrl . $saveNamePng . '" />';
+				} else {
+					//开启随机头像
+					$index = rand( 1, 25 );
+					copy( $yourUrl . 'usr/themes/GreenGrapes2/img/gravatar/' . $index . '.png', $saveNamePng );
+					return '<img class="avatar" src="' . $yourUrl . 'usr/themes/GreenGrapes2/img/gravatar/' . $index . '.png" />';
+				}
+			} else {
+				//未开启随机头像 无头像，应该拷贝头像
+				copy( $yourUrl . 'usr/themes/GreenGrapes2/img/gravatar/0.jpg', $saveNameJpg );
+
+				return '<img class="avatar" src="' . $yourUrl . 'usr/themes/GreenGrapes2/img/gravatar/0.jpg" />';
+			}
 		} else {
 			//有gravatar
-			copy( 'https://www.gravatar.com/avatar/' . md5( strtolower( trim( $email ) ) ), $saveName );
-			return '<img class="avatar" src="' . $yourUrl . $saveName . '" />';
+			copy( 'https://www.gravatar.com/avatar/' . md5( strtolower( trim( $email ) ) ), $saveNameJpg );
+			return '<img class="avatar" src="' . $yourUrl . $saveNameJpg . '" />';
 		}
 
 	}
@@ -1235,9 +1251,7 @@ echo $commentClass;
 ?>">
 
     <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
-
 <span itemprop="image"><?php $imgurl=avatar($comments->mail);echo $imgurl;?></span>
-<!--new avatar system-->
     </div>
     <div class="comment-body">
         <cite class="fn" itemprop="name"><?php $singleCommentOptions->beforeAuthor();
