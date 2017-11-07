@@ -138,11 +138,11 @@ function themeConfig($form) {
 
 	$Emotions = new Typecho_Widget_Helper_Form_Element_Select('Emotions', array(
 		'offEmotions'=>'关闭表情',
-		'CDNEmmotions' => '使用CDN表情源',
+		'CDNEmmotions' => '使用CDN表情源（已倒闭）',
 		'LocalEmotions' => '使用本地表情源',
 	), 'LocalEmotions',
 		_t('主题表情设置'),
-		_t('本功能将会与similies插件共存。推荐使用本地表情源（万一某一天我欠费了呢）<br>
+		_t('本功能将会与similies插件共存。推荐使用本地表情源(CDN表情源已倒闭）<br>
     如果开启自带表情，建议到“设置-评论-允许使用的HTML标签和属性”中允许img标签，推荐如下：<br>
 	&lt;blockquote&gt;&lt;pre&gt;&lt;code class=&quot;&quot;&gt;&lt;strong&gt;&lt;em&gt;&lt;h5&gt;&lt;h6&gt;&lt;a href title
 	&gt;&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;&lt;tbody&gt;&lt;td&gt;&lt;img src=&quot;&quot;&gt;<br>
