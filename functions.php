@@ -164,7 +164,7 @@ function themeConfig($form) {
 		'ShowBlogger' => '仅博主显示',
 
 	), 'dontShow',
-		_t('评论者地理位置'), _t('默认为不显示，其中为所有人显示（隐藏博主）需要在下面的选项中输入博主的用户名。'));
+		_t('评论者地理位置'), _t('默认为不显示，其中为所有人显示（隐藏博主）需要在下面的选项中输入博主的用户名（显示的名字，也就是screenName）'));
 	$form->addInput($CommentsIP->multiMode());
 
 	$username = new Typecho_Widget_Helper_Form_Element_Text( 'username', null, '',

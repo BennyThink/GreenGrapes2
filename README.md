@@ -107,6 +107,8 @@ CDN表情倒闭啦。如果有想继续使用CDN表情的，请创建自己的CD
 ```update set bk_comments text=REPLACE(text,'okwbu9s8e.qnssl.com/tb01.jpg,'your.domain/usr/themes/GreenGrapes2/img/similies/type')```
 挺复杂的。
 
+10. 博主认证
+需要在地理位置下面输入你的用户名，更准确的说screenName，就是显示在各种地方的那个大家能看到的名字，默认情况下和登录名是一样的，但是有些人可能登录的时候是“Benny”，显示的名字确实“小土豆”，在这种情况下这里就要填入“小土豆”。
 
 ## 演示 ##
 [奔跑的蜗牛壳](https://www.tougetu.com)
