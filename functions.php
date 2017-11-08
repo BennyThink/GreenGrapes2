@@ -164,8 +164,13 @@ function themeConfig($form) {
 		'ShowBlogger' => '仅博主显示',
 
 	), 'dontShow',
-		_t('评论者地理位置'), _t('默认为不显示，其中为所有人显示（隐藏博主）尚未实现。'));
+		_t('评论者地理位置'), _t('默认为不显示，其中为所有人显示（隐藏博主）需要在下面的选项中输入博主的用户名。'));
 	$form->addInput($CommentsIP->multiMode());
+
+	$username = new Typecho_Widget_Helper_Form_Element_Text( 'username', null, '',
+        _t( '博主认证设置' ),
+        _t( '请在这里输入你的用户名或者是任何想显示认证标志的用户名，以空格分隔' ) );
+	$form->addInput( $username );
 
 	$effect = new Typecho_Widget_Helper_Form_Element_Checkbox('effect',
 		array(
@@ -1265,7 +1270,14 @@ function threadedComments($comments, $options){
         </div>
         <div class="comment-body">
             <cite class="fn" itemprop="name"><?php $singleCommentOptions->beforeAuthor();
-	            $comments->author();
+            $comments->author();//here
+
+                $arr=explode(' ',Helper::options()->username);
+                $flag=false;
+	            if ( in_array( $comments->author, $arr ) ) {
+		            echo ' <img src="' . Helper::options()->themeUrl . '/img/vip.png"</img>';
+		            $flag=true;
+	            }
 	            $singleCommentOptions->afterAuthor();
 	            if ( Helper::options()->CommentsIP != 'dontShow' ) {
 
@@ -1278,7 +1290,7 @@ function threadedComments($comments, $options){
 		            }
 		            if ( Helper::options()->CommentsIP == 'ShowAll' ) {
 			            echo '<span style="color:#3CB371;"> [' . $address . ' 网友]</span>';
-		            } elseif ( Helper::options()->CommentsIP == 'ShowAllHide' /*$xxx!=$comments->author*/ ) {
+		            } elseif ( Helper::options()->CommentsIP == 'ShowAllHide' && !$flag ) {
 			            echo '<span style="color:#3CB371;"> [' . $address . ' 网友]</span>';
 
 		            } elseif ( Helper::options()->CommentsIP == 'ShowBlogger' && $user->hasLogin() ) {
