@@ -201,6 +201,7 @@ function themeConfig($form) {
 			'EnableCompress'    => _t( '开启压缩HTML代码功能，对性能略有提升' ),
 			'EnableCopyright'   => _t( '开启复制版权提示' ),
 			'RandomGravatar'   => _t( '无gravatar随机头像' ),
+			'PostMagic'   => _t( '新文章显示new图片，如不选择，则显示魔术棒' ),
 
 		),
 		array('Pangu','ShowBreadCrumb','ShowPostBottomBar','ShowLinksIcon',

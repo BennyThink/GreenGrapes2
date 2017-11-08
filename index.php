@@ -29,7 +29,16 @@ $this->need('header.php');
                 <section class="">
                     <div class="category-cloud"><?php $this->category(''); ?></div>
                     <h3 class="title">
-                        <a href="<?php $this->permalink() ?>"><?php if(timeZone($this->date->timeStamp))_e('<font color="'.$this->options->color1.'" class="fa fa-magic"></font>'); $this->sticky(); $this->title(); ?></a>
+                        <a href="<?php $this->permalink() ?>"><?php if ( timeZone( $this->date->timeStamp ) ) {
+		                        if ( ! empty( $this->options->switch ) &&
+		                             in_array( 'PostMagic', $this->options->switch ) ) {
+			                        echo '<img src="' . $this->options->themeUrl . '/img/new.gif"/>&nbsp;';
+		                        } else {
+			                        _e( '<font color="' . $this->options->color1 . '" class="fa fa-magic"></font>&nbsp;' );
+		                        }
+	                        }
+		                    $this->sticky();
+		                    $this->title(); ?></a>
                     </h3>
                     <hr>
                     <div class="row">
