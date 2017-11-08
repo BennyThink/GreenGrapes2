@@ -157,6 +157,16 @@ function themeConfig($form) {
 		_t('下雪特效设置'), _t('默认为仅移动设备关闭下雪特效'));
 	$form->addInput($Snow->multiMode());
 
+	$CommentsIP = new Typecho_Widget_Helper_Form_Element_Select('CommentsIP', array(
+		'dontShow'=>'不显示',
+		'ShowAll' => '为所有人显示',
+		'ShowAllHide' => '为所有人显示（隐藏博主）',
+		'ShowBlogger' => '仅博主显示',
+
+	), 'dontShow',
+		_t('评论者地理位置'), _t('默认为不显示，其中为所有人显示（隐藏博主）尚未实现。'));
+	$form->addInput($CommentsIP->multiMode());
+
 	$effect = new Typecho_Widget_Helper_Form_Element_Checkbox('effect',
 		array(
 
@@ -1218,7 +1228,6 @@ function _renderCards($content) {
 
 
 //custom render for markdownExtend
-
 /**
  * 重写的评论函数
  * @param $comments 评论
@@ -1227,69 +1236,89 @@ function _renderCards($content) {
 function threadedComments($comments, $options){
 	//Helper::options()->logoutUrl();
 	Typecho_Widget::widget('Widget_User')->to($user);
-    $singleCommentOptions = $options;
-    $commentClass = '';
-    if ($comments->authorId) {
-        if ($comments->authorId == $comments->ownerId) {
-            $commentClass .= ' comment-by-author';
-        } else {
-            $commentClass .= ' comment-by-user';
-        }
-    }
+	$singleCommentOptions = $options;
+	$commentClass = '';
+	if ($comments->authorId) {
+		if ($comments->authorId == $comments->ownerId) {
+			$commentClass .= ' comment-by-author';
+		} else {
+			$commentClass .= ' comment-by-user';
+		}
+	}
 
-    $commentLevelClass = $comments->levels > 0 ? ' comment-child' : ' comment-parent';
+	$commentLevelClass = $comments->levels > 0 ? ' comment-child' : ' comment-parent';
 
-    ?>
-<li itemscope itemtype="http://schema.org/UserComments" id="<?php $comments->theId(); ?>" class="comment-li<?php
-if ($comments->levels > 0) {
-    echo ' comment-child';
-    $comments->levelsAlt(' comment-level-odd', ' comment-level-even');
-} else {
-    echo ' comment-parent';
-}
-$comments->alt(' comment-odd', ' comment-even');
-echo $commentClass;
-?>">
+	?>
+    <li itemscope itemtype="http://schema.org/UserComments" id="<?php $comments->theId(); ?>" class="comment-li<?php
+	if ($comments->levels > 0) {
+		echo ' comment-child';
+		$comments->levelsAlt(' comment-level-odd', ' comment-level-even');
+	} else {
+		echo ' comment-parent';
+	}
+	$comments->alt(' comment-odd', ' comment-even');
+	echo $commentClass;
+	?>">
 
-    <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
-<span itemprop="image"><?php $imgurl=avatar($comments->mail);echo $imgurl;?></span>
-    </div>
-    <div class="comment-body">
-        <cite class="fn" itemprop="name"><?php $singleCommentOptions->beforeAuthor();
-            $comments->author();
-            $singleCommentOptions->afterAuthor(); ?></cite>
-        <div class="comment-content" itemprop="commentText">
-            <?php $comments->content(); ?>
+        <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+            <span itemprop="image"><?php $imgurl=avatar($comments->mail);echo $imgurl;?></span>
         </div>
-        <div class="comment-footer">
-            <time itemprop="commentTime" datetime="<?php $comments->date('c'); ?>"><?php $singleCommentOptions->beforeDate();
-				$comments->date('Y-m-d H:i:s');
-                    $singleCommentOptions->afterDate(); ?></time>
-					<!--UA设置的判定-->
-<?php
-if('dontShow'==Helper::options()->showUA)
-	echo '';
-elseif('ShowUA'==Helper::options()->showUA)
-	echo '<font  color=#ff6600>'.getUA($comments->agent,0).'</font>';
-elseif('ShowUAPic'==Helper::options()->showUA)
-	//echo '<font  color=#ff6600>'.getUA($comments->agent,1).'</font>';
-	echo getUA($comments->agent,1);
-elseif('ShowOwner'==Helper::options()->showUA && $user->hasLogin())
-	//echo getUA($comments->agent,1);
-	echo getUA($comments->agent,1);
-else
-	echo '';
-?>
-<?php $comments->reply($singleCommentOptions->replyWord); ?>
-        </div>
-    </div>
-    <?php if ($comments->children) { ?>
-        <div class="comment-children" itemprop="discusses">
-            <?php $comments->threadedComments(); ?>
-        </div>
-    <?php } ?>
+        <div class="comment-body">
+            <cite class="fn" itemprop="name"><?php $singleCommentOptions->beforeAuthor();
+	            $comments->author();
+	            $singleCommentOptions->afterAuthor();
+	            if ( Helper::options()->CommentsIP != 'dontShow' ) {
 
-</li>
-<?php
+		            include_once( 'extra/ip/IP.php' );
+		            $addresses = IPLocation_IP::find( $comments->ip );
+		            $address   = 'unknown';
+		            if ( ! empty( $addresses ) ) {
+			            $addresses = array_unique( $addresses );
+			            $address   = implode( '', $addresses );
+		            }
+		            if ( Helper::options()->CommentsIP == 'ShowAll' ) {
+			            echo '<span style="color:#3CB371;"> [' . $address . ' 网友]</span>';
+		            } elseif ( Helper::options()->CommentsIP == 'ShowAllHide' /*$xxx!=$comments->author*/ ) {
+			            echo '<span style="color:#3CB371;"> [' . $address . ' 网友]</span>';
+
+		            } elseif ( Helper::options()->CommentsIP == 'ShowBlogger' && $user->hasLogin() ) {
+			            echo '<span style="color:#3CB371;"> [' . $address . ' 网友]</span>';
+		            }
+	            }
+				?>
+            </cite>
+            <div class="comment-content" itemprop="commentText">
+				<?php $comments->content(); ?>
+            </div>
+            <div class="comment-footer">
+                <time itemprop="commentTime" datetime="<?php $comments->date('c'); ?>"><?php $singleCommentOptions->beforeDate();
+					$comments->date('Y-m-d H:i:s');
+					$singleCommentOptions->afterDate(); ?></time>
+                <!--UA设置的判定-->
+				<?php
+				if('dontShow'==Helper::options()->showUA)
+					echo '';
+                elseif('ShowUA'==Helper::options()->showUA)
+					echo '<font  color=#ff6600>'.getUA($comments->agent,0).'</font>';
+                elseif('ShowUAPic'==Helper::options()->showUA)
+					//echo '<font  color=#ff6600>'.getUA($comments->agent,1).'</font>';
+					echo getUA($comments->agent,1);
+                elseif('ShowOwner'==Helper::options()->showUA && $user->hasLogin())
+					//echo getUA($comments->agent,1);
+					echo getUA($comments->agent,1);
+				else
+					echo '';
+				?>
+				<?php $comments->reply($singleCommentOptions->replyWord); ?>
+            </div>
+        </div>
+		<?php if ($comments->children) { ?>
+            <div class="comment-children" itemprop="discusses">
+				<?php $comments->threadedComments(); ?>
+            </div>
+		<?php } ?>
+
+    </li>
+	<?php
 
 }
