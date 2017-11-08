@@ -31,7 +31,7 @@
             <?php endif; ?>
 
             <div class="comments-field">
-                <textarea class="textarea form-control OwO-textarea" rows="8" cols="50" id="comment-content" placeholder="<?php if(!empty($this->options->commentWord)) _e($this->options->commentWord); ?>" name="text"><?php $this->remember('text'); ?></textarea>
+                <textarea class="textarea form-control OwO-textarea" rows="8" cols="50" id="comment-content" placeholder="<?php if(!empty($this->options->commentWord)) _e($this->options->commentWord); ?>" name="text" onkeydown="if(event.ctrlKey&&event.keyCode==13){document.getElementById('comment-submit').click();return false};"><?php $this->remember('text'); ?></textarea>
 <?php if ( 'CDNEmmotions' == $this->options->Emotions || 'LocalEmotions' == $this->options->Emotions ): ?>
 <div class="OwO"></div>
 <?php endif;?>
