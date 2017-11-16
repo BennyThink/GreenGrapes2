@@ -96,17 +96,16 @@
         $("#web-icon").attr('href', "<?php $this->options->themeUrl( 'loss.ico' ); ?>");
         window.onfocus = function () {
             document.title = "<?php $this->archiveTitle( array(
-				'category' => _t( '分类 %s 下的文章' ),
-				'search'   => _t( '包含关键字 %s 的文章' ),
-				'tag'      => _t( '标签 %s 下的文章' ),
-				'author'   => _t( '%s 发布的文章' )
-			), '', ' - ' ); ?><?php $this->options->title(); ?>";
+			    'category' => _t( '分类 %s 下的文章' ),
+			    'search'   => _t( '包含关键字 %s 的文章' ),
+			    'tag'      => _t( '标签 %s 下的文章' ),
+			    'author'   => _t( '%s 发布的文章' )
+		    ), '', ' - ' ); ?><?php $this->options->title(); ?>";
             $("#web-icon").attr('href', "<?php $this->options->siteUrl(); ?>favicon.ico");
         }
     };
-	<?php endif; ?>
-
-	<?php if (! empty( $this->options->switch ) && in_array( 'EnableCopyright', $this->options->switch )): ?>
+    <?php endif; ?>
+    <?php if (! empty( $this->options->switch ) && in_array( 'EnableCopyright', $this->options->switch )): ?>
     document.body.addEventListener('copy', function (e) {
         if (window.getSelection().toString() && window.getSelection().toString().length > 42) {
             setClipboardText(e);
@@ -138,9 +137,7 @@
         }
     }
 	<?php endif;?>
-
-	<?php if (! empty( $this->options->switch ) && in_array( 'atargetblank', $this->options->switch )): ?>
-    //Add target="_blank" to a tags
+    <?php if (! empty( $this->options->switch ) && in_array( 'atargetblank', $this->options->switch )): ?>
     $(document).bind('DOMNodeInserted', function (event) {
         $('a[href^="http"]').each(
             function () {
@@ -150,8 +147,7 @@
             }
         );
     });
-	<?php endif; ?>
-
+    <?php endif; ?>
 	<?php if ( ! empty( $this->options->effect )
 	           && in_array( 'RandomColor', $this->options->switch )  ): ?>
     function getRandomRGBValue() {
@@ -187,7 +183,29 @@
             e.stopPropagation()
         }
     });
-	<?php endif; ?></script>
+	<?php endif; ?>
+    <?php if ( ! empty( $this->options->switch ) &&
+               in_array( 'TOC', $this->options->switch ) ):?>
+    window.content_index_showTocToggle = false;
+    if (document.getElementById("index-ul") !== null)
+        document.getElementById("index-ul").style.display = "none";
+
+    function toggleToc() {
+        var tts = "[显示]";
+        var tth = "[隐藏]";
+        if (window.content_index_showTocToggle) {
+            window.content_index_showTocToggle = false;
+
+            document.getElementById("index-ul").style.display = "none";
+            document.getElementById("content-index-togglelink").innerHTML = tts
+        } else {
+            window.content_index_showTocToggle = true;
+            document.getElementById("index-ul").style.display = "block";
+            document.getElementById("content-index-togglelink").innerHTML = tth
+        }
+    }
+    <?php endif;?>
+</script>
 <?php if ( ! empty( $this->options->switch ) && in_array( 'EnableSlimbox', $this->options->switch ) ): ?>
     <script src="<?php $this->options->themeUrl( 'js/slimbox2.js' ); ?>" async></script>
     <script type="text/javascript">

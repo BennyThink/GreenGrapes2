@@ -40,7 +40,7 @@
 	                <?php
 	                if ( ! empty( $this->options->switch ) &&
 	                     in_array( 'EnableHide', $this->options->switch ) ) {
-                        //$this->content();
+
 		                $db     = Typecho_Db::get();
 		                $sql    = $db->select()->from( 'table.comments' )
 		                             ->where( 'cid = ?', $this->cid )
@@ -52,10 +52,18 @@
 		                } else {
 			                $content = preg_replace( "/\[hide\](.*?)\[\/hide\]/sm", '<div class="reply2view">此处内容需要评论回复后方可阅读。</div>', $this->content );
 		                }
-		                echo render( $content );
+		                $mycontent = render( $content );
 	                } else {
-		                echo render( $this->content );
+		                $mycontent = render( $this->content );
 	                }
+
+	                if ( ! empty( $this->options->switch ) &&
+	                     in_array( 'TOC', $this->options->switch ) ) {
+		                echo toc_parse( $mycontent );
+	                } else {
+		                echo $mycontent;
+	                }
+
 	                ?>
                 </div>
                 <?php if($this->allow('ping')): ?>

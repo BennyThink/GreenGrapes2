@@ -217,6 +217,7 @@ function themeConfig($form) {
 			'EnableCopyright'   => _t( '开启复制版权提示' ),
 			'RandomGravatar'   => _t( '无gravatar随机头像' ),
 			'PostMagic'   => _t( '新文章显示new图片，如不选择，则显示魔术棒' ),
+			'TOC'   => _t( '显示目录' ),
 
 		),
 		array('Pangu','ShowBreadCrumb','ShowPostBottomBar','ShowLinksIcon',
@@ -332,6 +333,34 @@ function themeConfig($form) {
         'themeAutoUpdate' => _t('开启自动更新检查')),
         array('themeAutoUpdate'), _t('主题自动更新检查'),_t('当您进入设置的时候，主题将会自动查询新版本（但是不会更新）'));
     $form->addInput($themeUpdate->multiMode());
+
+}
+
+/**
+ * 添加目录
+ * @param $cont
+ *
+ * @return mixed|string
+ */
+function toc_parse($cont){
+
+	$matches = array();
+	$ul_li   = '';
+	$r       = "/<h2>(.*?)<\/h2>/im";
+	if (  preg_match_all( $r, $cont, $matches ) ) {
+		foreach ( $matches[1] as $num => $title ) {
+			$title   = trim( strip_tags( $title ) );
+			$cont = str_replace( $matches[0][ $num ], '<h2 id="title-' . $num . '">' . $title . '</h2>', $cont );
+			$ul_li   .= '🌙 <a href="#title-' . $num . '">' . $title . "</a><br>\n";
+		}
+		$cont = '<div id="article-index">
+                            <strong>文章目录<a id="content-index-togglelink" href="javascript:toggleToc()" class="hidetoc">[显示]</a></strong>
+                            <ul id="index-ul">' . $ul_li . '</ul>
+                        </div>' . $cont;
+	}
+
+	return $cont;
+
 
 }
 
