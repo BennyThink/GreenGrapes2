@@ -181,6 +181,7 @@ function themeConfig($form) {
 			'RandomColor' => _t( '开启随机meta theme-color，有点辣眼睛' ),
 			'canvas_three' => _t( '开启canvas_three特效' ),
 			'canvas_lines' => _t( '开启canvas_lines特效' ),
+			'baffle'    => _t( '开启baffle特效（就是会让标题先是乱码啊~）' ),
 		),
 		array('KianaWidgets','TypeColorful'),
 		_t('特效功能开关'),

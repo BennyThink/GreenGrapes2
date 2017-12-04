@@ -78,6 +78,12 @@
         document.body.addEventListener('input', POWERMODE);
     </script>
 <?php endif; ?>
+<?php if ( ! empty( $this->options->effect ) &&
+           in_array( 'baffle', $this->options->effect ) ): ?>
+    <script src="<?php $this->options->themeUrl( 'js/baffle.min.js' ); ?>"></script>
+    <script>const title = baffle('.title').start();
+        title.reveal(2000);</script>
+<?php endif; ?>
 <?php if ( ! empty( $this->options->switch ) && in_array( 'Pangu', $this->options->switch ) ): ?>
     <script src="<?php $this->options->themeUrl( 'js/pangu.min.js' ); ?>"></script>
     <script> pangu.spacingPage(); </script>
