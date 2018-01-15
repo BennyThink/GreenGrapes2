@@ -269,7 +269,7 @@ function themeConfig($form) {
 
     $tongJi = new Typecho_Widget_Helper_Form_Element_Textarea('tongJi', NULL, NULL, _t('站点统计代码'),
 	_t('在这里可以填入百度统计、cnzz、Google Analytics等统计代码，只对非登录用户起作用<br>
-某童鞋也许可以尝试<a href="https://comingon.top">使用我的piwik</a>，认证信息你懂的。'));
+某童鞋也许可以尝试使用旧域名，认证信息你懂的。'));
     $form->addInput($tongJi);
 
 	$SidebarTool1 = new Typecho_Widget_Helper_Form_Element_Textarea( 'SidebarTool1', null, null, _t( '侧边小工具' ),

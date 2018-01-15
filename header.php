@@ -263,10 +263,7 @@
 </style>
     <?php endif;?>
 	<!--统计代码-->
-	<?php if (!$this->user->hasLogin()): ?>
-    <?php $this->options->tongJi();
-    echo "\n"; ?>
-	<?php endif ?>
+    <?php $this->options->tongJi(); ?>
 </head>
 <body>
 <div id="loading">
