@@ -35,9 +35,62 @@
 <?php if ( 'CDNEmmotions' == $this->options->Emotions || 'LocalEmotions' == $this->options->Emotions ): ?>
 <div class="OwO"></div>
 <?php endif;?>
-<?php if(isset($this->options->plugins['activated']['Smilies']))
-Smilies_Plugin::output();?>
-			</div>
+<script>
+    var v = document.getElementById('comment-content');
+    var table = {'code': '``', 'bold': '****', 'del': '~~~~', 'italics': '**', 'link': '[]()'};
+
+    function tools(op) {
+        var pos = v.selectionEnd;
+        var loc = op === 'link' ? 3 : table[op].length / 2;
+
+        v.value = v.value.slice(0, pos) + table[op] + v.value.slice(pos, v.value.length);
+        v.setSelectionRange(pos + loc, pos + loc);
+        v.focus();
+    }
+
+    function sign() {
+        var myDate = new Date();
+        var date = myDate.toLocaleString().split('/').join('-');
+        v.value = v.value + '签到成功！签到时间：' + date + '，每日签到，生活更精彩哦😘'
+
+    }
+</script>
+
+	            <?php if ( ! empty( $this->options->commentSwitch ) &&
+	                       in_array( 'code', $this->options->commentSwitch ) ) : ?>
+                    <span class="muted ml5 comt-italic"><i class="fa fa-code"></i><a
+                                href="javascript:tools('code')" style="color:#999999"> 代码</a></span>
+                    <span class="muted ml5 comt-italic"><i
+                                class="fa fa-paste"></i><a
+                                href="javascript:window.open('https://pastebin.com/','','menubar=no,toolbar=no,location=yes,status=yes,resizable=yes,,scrollbars=yes')"
+                                style="color:#999999"> PasteBin</a></span><?php endif; ?>
+	            <?php if ( ! empty( $this->options->commentSwitch ) &&
+	                       in_array( 'bold', $this->options->commentSwitch ) ) : ?>
+                    <span class="muted ml5 comt-strong"><i class="fa fa-bold"></i><a
+                                href="javascript:tools('bold')" style="color:#999999"> 加粗</a></span>
+	            <?php endif; ?>
+	            <?php if ( ! empty( $this->options->commentSwitch ) &&
+	                       in_array( 'del', $this->options->commentSwitch ) ) : ?>
+                    <span class="muted ml5 comt-del"><i class="fa fa-strikethrough"></i><a
+                                href="javascript:tools('del')" style="color:#999999"> 删除线</a></span>
+	            <?php endif; ?>
+	            <?php if ( ! empty( $this->options->commentSwitch ) &&
+	                       in_array( 'italics', $this->options->commentSwitch ) )  : ?>
+                    <span class="muted ml5 comt-italic"><i class="fa fa-italic"></i><a
+                                href="javascript:tools('italics')" style="color:#999999"> 斜体</a></span>
+	            <?php endif; ?>
+	            <?php if ( ! empty( $this->options->commentSwitch ) &&
+	                       in_array( 'link', $this->options->commentSwitch ) )  : ?>
+                    <span class="muted ml5 comt-italic"><i class="fa fa-link" aria-hidden="true"></i><a
+                                href="javascript:tools('link')" style="color:#999999"> 链接</a></span>
+	            <?php endif; ?>
+	            <?php if ( ! empty( $this->options->commentSwitch ) &&
+	                       in_array( 'sign', $this->options->commentSwitch ) )  : ?>
+                    <span class="muted ml5 comt-sign"><i class="fa fa-pencil-square-o"></i><a
+                                href="javascript:sign()" style="color:#999999"> 签到</a></span>
+	            <?php endif; ?>
+
+            </div>
             <button type="submit" id="comment-submit" class="btn btn-success"><?php _e('提交评论'); ?></button>
         </form>
     </div>

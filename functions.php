@@ -172,6 +172,22 @@ function themeConfig($form) {
         _t( '请在这里输入你的用户名或者是任何想显示认证标志的用户名，以空格分隔' ) );
 	$form->addInput( $username );
 
+	$commentSwitch = new Typecho_Widget_Helper_Form_Element_Checkbox('commentSwitch',
+		array(
+
+			'code'   => _t( '代码' ),
+			'bold' => _t( '加粗' ),
+			'del'    => _t( '删除线' ),
+			'italics' => _t( '斜体' ),
+			'link' => _t( '链接' ),
+			'sign' => _t( '签到' ),
+		),
+		array('code','bold','del','italics','link','sign'),
+		_t('评论功能开关'),
+		_t('设置评论框下面的按钮开关')
+	);
+	$form->addInput($commentSwitch->multiMode());
+
 	$effect = new Typecho_Widget_Helper_Form_Element_Checkbox('effect',
 		array(
 
