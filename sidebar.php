@@ -189,7 +189,7 @@
                onclick="for(var i=0;i<document.styleSheets.length;i++)try{if(-1!==document.styleSheets[i].rules[0].cssText.indexOf('grayscale')){document.styleSheets[i].disabled=!0;break}}catch(err){}">
                 关闭黑白
 	            <?php
-	            $arr = explode( ',', $this->options->MemorialDay );
+	            $arr = explode( '|', $this->options->MemorialDay );
 	            foreach ( $arr as $each_day ) {
 		            $new = ltrim( rtrim( $each_day ) );
 		            if ( count( explode( ' ', $new ) ) != 1 && strpos( $new, date( 'm-d', time() ) ) === 0 )

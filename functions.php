@@ -142,7 +142,7 @@ function themeConfig($form) {
 		'LocalEmotions' => '使用本地表情源',
 	), 'LocalEmotions',
 		_t('主题表情设置'),
-		_t('本功能将<strong>不会</strong>与similies插件共存。推荐使用本地表情源(CDN表情源已倒闭）<br>
+		_t('本功能将<trong>不会</strong>与similies插件共存。推荐使用本地表情源(CDN表情源已倒闭）<br>
     如果开启自带表情，建议到“设置-评论-允许使用的HTML标签和属性”中允许img标签，推荐如下：<br>
 	&lt;blockquote&gt;&lt;pre&gt;&lt;code class=&quot;&quot;&gt;&lt;strong&gt;&lt;em&gt;&lt;h5&gt;&lt;h6&gt;&lt;a href title
 	&gt;&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;&lt;tbody&gt;&lt;td&gt;&lt;img src=&quot;&quot;&gt;<br>
@@ -296,13 +296,13 @@ function themeConfig($form) {
 	$form->addInput( $SidebarTool1 );
 
     $MemorialDay = new Typecho_Widget_Helper_Form_Element_Textarea('MemorialDay',NULL,
-    '06-04,
-07-13,',
+    '06-04 What is dead may never die.|
+05-08 I have no enemies, and no hatred.|',
         _t('纪念日设置'), _t("每年固定时间开启黑白模式缅怀逝去的生命，默认开启06-04和07-13。留空则为禁用<br>
-        每个纪念日使用英文半角逗号分隔，纪念日与描述信息使用空格分隔，支持如下三种模式：<br>
-        03-12 描述信息1,<br>
-        03-11,<br>
-        03-10 ".htmlspecialchars('<a href="http://www.z.cn" target="_blank">说明链接</a>')));
+        每个纪念日使用管道符|分隔，纪念日与描述信息使用空格分隔，支持如下三种模式：<br>
+        03-12 描述信息1|<br>
+        03-11|<br>
+        03-10 ".htmlspecialchars('<a href="http://www.z.cn" target="_blank">说明链接</a>').'|'));
     $form->addInput($MemorialDay);
 
 	$links = new Typecho_Widget_Helper_Form_Element_Textarea('links',NULL,NULL,

@@ -6,7 +6,7 @@
 
  * @package GreenGrapes2
  * @author Benny
- * @version 2.7.0
+ * @version 2.7.1
  * @link https://github.com/BennyThink/GreenGrapes
  */
 $this->need('header.php');
