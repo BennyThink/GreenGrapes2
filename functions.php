@@ -503,7 +503,7 @@ function weather(){
     if ((string)$ip->code == '1') {
         return false;
     }
-    $data = str_split($ip->data->city, strlen($ip->data->city) - 3)[0];
+	$data=$ip->data->city;
 
     if(empty($data))
         return '对不起，未能查询到天气';
