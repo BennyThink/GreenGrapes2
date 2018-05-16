@@ -814,7 +814,7 @@ function avatar( $email ) {
 					return '<img class="avatar" src="' . $yourUrl . $saveNamePng . '" />';
 				} else {
 					//开启随机头像
-					$index = rand( 1, 25 );
+					$index = rand( 1, 19 );
 					copy( $yourUrl . 'usr/themes/GreenGrapes2/img/gravatar/' . $index . '.png', $saveNamePng );
 					return '<img class="avatar" src="' . $yourUrl . 'usr/themes/GreenGrapes2/img/gravatar/' . $index . '.png" />';
 				}
