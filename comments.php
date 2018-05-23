@@ -63,7 +63,12 @@
                     <span class="muted ml5 comt-italic"><i
                                 class="fa fa-paste"></i><a
                                 href="javascript:window.open('https://pastebin.com/','','menubar=no,toolbar=no,location=yes,status=yes,resizable=yes,,scrollbars=yes')"
-                                style="color:#999999"> PasteBin</a></span><?php endif; ?>
+                                style="color:#999999"> Pastebin</a></span>
+                    <span class="muted ml5 comt-italic"><i
+                                class="fa fa-github-alt"></i><a
+                                href="javascript:window.open('https://gist.github.com/','','menubar=no,toolbar=no,location=yes,status=yes,resizable=yes,,scrollbars=yes')"
+                                style="color:#999999"> Gist</a></span>
+                <?php endif; ?>
 	            <?php if ( ! empty( $this->options->commentSwitch ) &&
 	                       in_array( 'bold', $this->options->commentSwitch ) ) : ?>
                     <span class="muted ml5 comt-strong"><i class="fa fa-bold"></i><a
