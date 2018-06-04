@@ -7,7 +7,7 @@
     <meta name="renderer" content="webkit">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 <?php if (!empty($this->options->MemorialDay)&&
-        strpos($this->options->MemorialDay, date('m-d', time()))): ?>
+        strstr($this->options->MemorialDay, date('m-d', time()))): ?>
     <meta name="theme-color" content="#808080">
     <style type="text/css">
         <!--

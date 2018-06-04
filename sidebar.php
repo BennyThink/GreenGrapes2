@@ -183,7 +183,7 @@
 	<?php if(!empty($this->options->TelegramGroup)): ?>
         <li><i class="fa-li fa fa-moon-o "></i><a href="<?php echo $this->options->TelegramGroup; ?>">Telegram 群组</a></li>
 	<?php endif;?>
-	<?php  if(strpos($this->options->MemorialDay,date('m-d',time()))):?>
+	<?php  if(strstr($this->options->MemorialDay,date('m-d',time()))):?>
         <li><i class="fa-li fa fa-adjust"></i>
             <a href="javascript:void(0);"
                onclick="for(var i=0;i<document.styleSheets.length;i++)try{if(-1!==document.styleSheets[i].rules[0].cssText.indexOf('grayscale')){document.styleSheets[i].disabled=!0;break}}catch(err){}">
